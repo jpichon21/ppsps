@@ -19,7 +19,7 @@
         ->port('2222')
         ->set('account_dir', 'rougeot')
         ->set('branch', 'staging')
-        ->set('deploy_path', '/home/{{account_dir}}/src_staging');
+        ->set('deploy_path', '/home/{{account_dir}}/ppsps_staging');
 
     host('ppsps-dev.logomotion.fr')
         ->stage('dev')
@@ -28,7 +28,7 @@
         ->port('2222')
         ->set('account_dir', 'rougeot')
         ->set('branch', 'dev')
-        ->set('deploy_path', '/home/{{account_dir}}/src_dev');
+        ->set('deploy_path', '/home/{{account_dir}}/ppsps_dev');
 
     task('deploy', [
         'deploy:info',
