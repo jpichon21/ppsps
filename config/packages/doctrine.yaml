@@ -4,6 +4,10 @@ doctrine:
         driver: 'pdo_mysql'
         server_version: '5.7'
         charset: utf8mb4
+        host: '%env(DATABASE_HOST)%'
+        user: '%env(DATABASE_USER)%'
+        password: '%env(DATABASE_PWD)%'
+        dbname: '%env(DATABASE_NAME)%'
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci

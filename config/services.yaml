@@ -25,3 +25,20 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    admin.situation:
+        class: App\Admin\SituationAdmin
+        arguments: [~, App\Entity\Situation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Situation }
+    
+    admin.risk:
+        class: App\Admin\RiskAdmin
+        arguments: [~, App\Entity\Risk, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Risk }
+    
+    admin.measure:
+        class: App\Admin\MeasureAdmin
+        arguments: [~, App\Entity\Measure, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Measure }
