@@ -25,6 +25,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Form\SituationType:
     admin.situation:
         class: App\Admin\SituationAdmin
         arguments: [~, App\Entity\Situation, ~]
@@ -42,3 +43,9 @@ services:
         arguments: [~, App\Entity\Measure, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Measure }
+    
+    admin.app.config:
+        class: App\Admin\ConfigAdmin
+        arguments: [~, App\Entity\Config, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Config }

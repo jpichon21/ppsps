@@ -18,7 +18,16 @@ class SituationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Situation::class);
     }
-
+    
+    public function findRisks($situationID) {
+        return $this->createQueryBuilder('s')
+        ->innerJoin('s.risks','r')
+        ->where('s.id = :id')
+        ->setParameter('id', $situationID)
+        ->getQuery()
+        ->getResult();
+    }
+    
     // /**
     //  * @return Situation[] Returns an array of Situation objects
     //  */
