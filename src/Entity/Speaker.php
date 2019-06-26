@@ -41,10 +41,9 @@ class Speaker
      */
     private $mail;
 
-   /**
-     * @ORM\ManyToOne(targetEntity="Ppsps", inversedBy="speakers")
-     * @ORM\JoinColumn(name="Ppsps_id", referencedColumnName="id", nullable=false)
-    */
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="speakers")
+     */
     private $ppsps;
 
     public function getId(): ?int
@@ -112,17 +111,12 @@ class Speaker
         return $this;
     }
 
-    /**
-     * Get ppsps
-     *
-     * @return Collection
-     */
-    public function getPpsps()
+    public function getPpsps(): ?Ppsps
     {
         return $this->ppsps;
     }
-    
-    public function setPpsps($ppsps)
+
+    public function setPpsps(?Ppsps $ppsps): self
     {
         $this->ppsps = $ppsps;
 

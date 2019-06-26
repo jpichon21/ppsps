@@ -36,13 +36,13 @@ services:
         class: App\Admin\RiskAdmin
         arguments: [~, App\Entity\Risk, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Risk }
+            - { name: sonata.admin, manager_type: orm, label: Risque }
     
     admin.measure:
         class: App\Admin\MeasureAdmin
         arguments: [~, App\Entity\Measure, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Measure }
+            - { name: sonata.admin, manager_type: orm, label: Mesure }
     
     admin.app.config:
         class: App\Admin\ConfigAdmin
@@ -53,24 +53,34 @@ services:
         class: App\Admin\PpspsAdmin
         arguments: [~, App\Entity\Ppsps, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Ppsps }
+            - { name: sonata.admin, manager_type: orm, label: PPSPS }
     admin.dealer:
         class: App\Admin\DealerAdmin
         arguments: [~, App\Entity\Dealer, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Dealer }
+            - { name: sonata.admin, manager_type: orm, label: Dealer, show_in_dashboard: false }
     admin.speaker:
         class: App\Admin\SpeakerAdmin
         arguments: [~, App\Entity\Speaker, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Speaker }
+            - { name: sonata.admin, manager_type: orm, label: Speaker, show_in_dashboard: false }
     admin.people:
         class: App\Admin\PeopleAdmin
         arguments: [~, App\Entity\People, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: People }
+            - { name: sonata.admin, manager_type: orm, label: People, show_in_dashboard: false }
     admin.effective:
         class: App\Admin\EffectiveAdmin
         arguments: [~, App\Entity\Effective, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Effective }
+            - { name: sonata.admin, manager_type: orm, label: Effective, show_in_dashboard: false }
+    admin.app.update:
+        class: App\Admin\UpdateAdmin
+        arguments: [~, App\Entity\Update, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Update, show_in_dashboard: false }
+    admin.diffusion:
+        class: App\Admin\DiffusionAdmin
+        arguments: [~, App\Entity\Diffusion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Diffusion, show_in_dashboard: false }

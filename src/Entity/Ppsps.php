@@ -143,11 +143,6 @@ class Ppsps
      */
     private $periodOfExecution;
 
-   /**
-    * @ORM\OneToMany(targetEntity="Speaker", mappedBy="ppsps", orphanRemoval=true)
-    */
-    private $speakers;
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\People", mappedBy="organisation")
      */
@@ -216,11 +211,6 @@ class Ppsps
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $accomodation;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $accomodationDescr;
 
     /**
@@ -259,6 +249,26 @@ class Ppsps
     private $situation = [];
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Update", mappedBy="ppsps")
+     */
+    private $updates;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps")
+     */
+    private $diffusions;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $accomodation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps")
+     */
+    private $speakers;
+
+    /**
      * Constructor
     */
     public function __construct()
@@ -267,6 +277,9 @@ class Ppsps
         $this->speaker = new ArrayCollection();
         $this->organisationOfPeoples = new ArrayCollection();
         $this->effectives = new ArrayCollection();
+        $this->updates = new ArrayCollection();
+        $this->diffusions = new ArrayCollection();
+        $this->speakers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -597,40 +610,6 @@ class Ppsps
     }
 
     /**
-     * Get speakers
-     *
-     * @return Collection
-     */
-    public function getSpeakers()
-    {
-        return $this->speakers;
-    }
-
-    /**
-     * Add speakers
-     *
-     * @param Speaker $speakers
-     *
-     * @return Category
-     */
-    public function addSpeaker($speakers)
-    {
-        $this->speakers[] = $speakers;
-
-        return $this;
-    }
-
-    /**
-     * Remove speakers
-     *
-     * @param Speaker $speakers
-     */
-    public function removeSpeaker($speakers)
-    {
-        $this->speakers->removeElement($speakers);
-    }
-
-    /**
      * @return Collection|People[]
      */
     public function getOrganisationOfPeoples(): Collection
@@ -824,18 +803,6 @@ class Ppsps
         return $this;
     }
 
-    public function getAccomodation(): ?string
-    {
-        return $this->accomodation;
-    }
-
-    public function setAccomodation(?string $accomodation): self
-    {
-        $this->accomodation = $accomodation;
-
-        return $this;
-    }
-
     public function getAccomodationDescr(): ?string
     {
         return $this->accomodationDescr;
@@ -928,6 +895,111 @@ class Ppsps
     public function setSituation(?array $situation): self
     {
         $this->situation = $situation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Update[]
+     */
+    public function getUpdates(): Collection
+    {
+        return $this->updates;
+    }
+
+    public function addUpdate(Update $update): self
+    {
+        if (!$this->updates->contains($update)) {
+            $this->updates[] = $update;
+            $update->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUpdate(Update $update): self
+    {
+        if ($this->updates->contains($update)) {
+            $this->updates->removeElement($update);
+            // set the owning side to null (unless already changed)
+            if ($update->getPpsps() === $this) {
+                $update->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Diffusion[]
+     */
+    public function getDiffusions(): Collection
+    {
+        return $this->diffusions;
+    }
+
+    public function addDiffusion(Diffusion $diffusion): self
+    {
+        if (!$this->diffusions->contains($diffusion)) {
+            $this->diffusions[] = $diffusion;
+            $diffusion->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiffusion(Diffusion $diffusion): self
+    {
+        if ($this->diffusions->contains($diffusion)) {
+            $this->diffusions->removeElement($diffusion);
+            // set the owning side to null (unless already changed)
+            if ($diffusion->getPpsps() === $this) {
+                $diffusion->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAccomodation(): ?bool
+    {
+        return $this->accomodation;
+    }
+
+    public function setAccomodation(?bool $accomodation): self
+    {
+        $this->accomodation = $accomodation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Speaker[]
+     */
+    public function getSpeakers(): Collection
+    {
+        return $this->speakers;
+    }
+
+    public function addSpeaker(Speaker $speaker): self
+    {
+        if (!$this->speakers->contains($speaker)) {
+            $this->speakers[] = $speaker;
+            $speaker->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpeaker(Speaker $speaker): self
+    {
+        if ($this->speakers->contains($speaker)) {
+            $this->speakers->removeElement($speaker);
+            // set the owning side to null (unless already changed)
+            if ($speaker->getPpsps() === $this) {
+                $speaker->setPpsps(null);
+            }
+        }
 
         return $this;
     }

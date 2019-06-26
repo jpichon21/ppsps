@@ -47,6 +47,28 @@ final class PpspsAdmin extends AbstractAdmin
                     'label' => 'Maitre d\'oeuvre',
                     'required' => false
                 ])
+                ->add('diffusions', CollectionType::class, [
+                    'label' => 'Configurations du tableau des diffusion',
+                    'required' => false,
+                    'by_reference' => false,
+                    'type_options' => [
+                        'delete' => true,
+                    ],
+                ], [
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                ])
+                ->add('updates', CollectionType::class, [
+                    'label' => 'Configurations du tableau de mises à jour',
+                    'required' => false,
+                    'by_reference' => false,
+                    'type_options' => [
+                        'delete' => true,
+                    ],
+                ], [
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                ])
             ->end()
             ->with('Identification des traveaux')
                 ->add('AddressConstrSite', TextType::class, [
