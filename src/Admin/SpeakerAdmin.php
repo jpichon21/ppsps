@@ -8,19 +8,18 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 
-final class RiskAdmin extends AbstractAdmin
+final class SpeakerAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class);
-        $formMapper->add('mail', TextareaType::class);
-        $formMapper->add('Situation', ModelType::class , array(
-            'class' => 'App\Entity\Situation',
-            'multiple' => false, 
-            'by_reference' => false,
-            'label'=>'Choissisez la situation associés a ce risque'));
+        $formMapper->add('contact', TextType::class);
+        $formMapper->add('address', TextType::class);
+        $formMapper->add('fax', TextType::class);
+        $formMapper->add('mail', TextType::class);
+
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

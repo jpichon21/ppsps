@@ -49,3 +49,28 @@ services:
         arguments: [~, App\Entity\Config, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Config }
+    admin.app.ppsps:
+        class: App\Admin\PpspsAdmin
+        arguments: [~, App\Entity\Ppsps, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Ppsps }
+    admin.dealer:
+        class: App\Admin\DealerAdmin
+        arguments: [~, App\Entity\Dealer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Dealer }
+    admin.speaker:
+        class: App\Admin\SpeakerAdmin
+        arguments: [~, App\Entity\Speaker, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Speaker }
+    admin.people:
+        class: App\Admin\PeopleAdmin
+        arguments: [~, App\Entity\People, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: People }
+    admin.effective:
+        class: App\Admin\EffectiveAdmin
+        arguments: [~, App\Entity\Effective, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Effective }

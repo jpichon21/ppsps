@@ -8,19 +8,26 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 
-final class RiskAdmin extends AbstractAdmin
+final class DealerAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class);
-        $formMapper->add('mail', TextareaType::class);
-        $formMapper->add('Situation', ModelType::class , array(
-            'class' => 'App\Entity\Situation',
-            'multiple' => false, 
-            'by_reference' => false,
-            'label'=>'Choissisez la situation associés a ce risque'));
+        $formMapper->add('mail', TextType::class);
+        $formMapper->add('sendingDate', DateTimePickerType::class, [
+            'label' => 'Envoyée le',
+            'dp_side_by_side'       => true,
+            'dp_use_current'        => false,
+            'dp_use_seconds'        => false,
+            'dp_use_minutes'        => false,
+            'dp_collapse'           => true,
+            'dp_calendar_weeks'     => false,
+            'dp_view_mode'          => 'days',
+            'dp_min_view_mode'      => 'days',
+            'required' => false,
+        ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
