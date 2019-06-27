@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PeopleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ToolRepository")
  */
-class People
+class Tool
 {
     /**
      * @ORM\Id()
@@ -24,12 +24,12 @@ class People
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $rank;
+    private $descr;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="organisationOfPeoples")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="tools")
      */
-    private $organisation;
+    private $situation;
 
     public function getId(): ?int
     {
@@ -48,26 +48,26 @@ class People
         return $this;
     }
 
-    public function getRank(): ?string
+    public function getDescr(): ?string
     {
-        return $this->rank;
+        return $this->descr;
     }
 
-    public function setRank(?string $rank): self
+    public function setDescr(?string $descr): self
     {
-        $this->rank = $rank;
+        $this->descr = $descr;
 
         return $this;
     }
 
-    public function getOrganisation(): ?Ppsps
+    public function getSituation(): ?Situation
     {
-        return $this->organisation;
+        return $this->situation;
     }
 
-    public function setOrganisation(?Ppsps $organisation): self
+    public function setSituation(?Situation $situation): self
     {
-        $this->organisation = $organisation;
+        $this->situation = $situation;
 
         return $this;
     }

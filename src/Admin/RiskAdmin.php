@@ -15,7 +15,7 @@ final class RiskAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class);
-        $formMapper->add('mail', TextareaType::class);
+        $formMapper->add('descr', TextareaType::class);
         $formMapper->add('Situation', ModelType::class , array(
             'class' => 'App\Entity\Situation',
             'multiple' => false, 

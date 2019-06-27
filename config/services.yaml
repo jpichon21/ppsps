@@ -64,23 +64,38 @@ services:
         arguments: [~, App\Entity\Speaker, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Speaker, show_in_dashboard: false }
-    admin.people:
-        class: App\Admin\PeopleAdmin
-        arguments: [~, App\Entity\People, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: People, show_in_dashboard: false }
     admin.effective:
         class: App\Admin\EffectiveAdmin
         arguments: [~, App\Entity\Effective, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Effective, show_in_dashboard: false }
-    admin.app.update:
-        class: App\Admin\UpdateAdmin
-        arguments: [~, App\Entity\Update, ~]
+    admin.updatePpsps:
+        class: App\Admin\UpdatePpspsAdmin
+        arguments: [~, App\Entity\UpdatePpsps, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Update, show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: UpdatePpsps, show_in_dashboard: false }
     admin.diffusion:
         class: App\Admin\DiffusionAdmin
         arguments: [~, App\Entity\Diffusion, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Diffusion, show_in_dashboard: false }
+    admin.tool:
+        class: App\Admin\ToolAdmin
+        arguments: [~, App\Entity\Tool, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Outil }
+    admin.workDirector:
+        class: App\Admin\WorkDirectorAdmin
+        arguments: [~, App\Entity\WorkDirector, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: WD }
+    admin.leader:
+        class: App\Admin\LeaderAdmin
+        arguments: [~, App\Entity\Leader, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Leader }
+    admin.siteManager:
+        class: App\Admin\SiteManagerAdmin
+        arguments: [~, App\Entity\SiteManager, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: SiteManager }

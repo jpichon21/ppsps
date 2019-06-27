@@ -27,15 +27,16 @@ class Dealer
     private $mail;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $sendingDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ppsps", inversedBy="dealers")
-     * @ORM\JoinColumn(name="Ppsp_id", referencedColumnName="id", nullable=false)
-    */
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="dealers")
+     * @ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", nullable=false)
+     */
     private $ppsps;
+
 
     public function getId(): ?int
     {
@@ -78,17 +79,12 @@ class Dealer
         return $this;
     }
 
-    /**
-     * Get ppsps
-     *
-     * @return Collection
-     */
-    public function getPpsps()
+    public function getPpsps(): ?Ppsps
     {
         return $this->ppsps;
     }
-    
-    public function setPpsps($ppsps)
+
+    public function setPpsps(?Ppsps $ppsps): self
     {
         $this->ppsps = $ppsps;
 

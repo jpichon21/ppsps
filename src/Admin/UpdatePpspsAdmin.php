@@ -8,10 +8,10 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Sonata\CoreBundle\Form\Type\DateTimePickerType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Sonata\Form\Type\DatePickerType;
 
-final class UpdateAdmin extends AbstractAdmin
+final class UpdatePpspsAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -23,12 +23,10 @@ final class UpdateAdmin extends AbstractAdmin
             'label' => 'Indice',
             'required' => false
         ]);
-        $formMapper->add('updateDate', DateTimePickerType::class, [
+        $formMapper->add('updateDate', DatePickerType::class, [
             'label' => 'Date',
             'dp_side_by_side'       => true,
             'dp_use_current'        => false,
-            'dp_use_seconds'        => false,
-            'dp_use_minutes'        => false,
             'dp_collapse'           => true,
             'dp_calendar_weeks'     => false,
             'dp_view_mode'          => 'days',

@@ -8,16 +8,17 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use App\Form\Type\SituationFormType;
 use Sonata\AdminBundle\Form\Type\CollectionType as SonataCollectionType;
+use App\Form\Type\CollectionSituationFormType;
 
 final class ConfigAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('situation', SonataCollectionType::class, [
+        $formMapper->add('situation', CollectionSituationFormType::class, [
             'allow_add' => true,
             'allow_delete' => true,
             'entry_type' => SituationFormType::class,
-            'by_reference' => false
+            'by_reference' => false,
         ],[
             'edit' => 'inline',
             'inline' => 'table',

@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Sonata\Form\Type\DateTimePickerType;
+use Sonata\Form\Type\DatePickerType;
 use Sonata\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -22,7 +22,7 @@ final class PpspsAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Configuration général')
+            ->with('Configuration générale')
                 ->add('siteName', TextType::class, [
                     'label' => 'Nom du chantier',
                     'required' => false
@@ -58,7 +58,7 @@ final class PpspsAdmin extends AbstractAdmin
                     'edit' => 'inline',
                     'inline' => 'table',
                 ])
-                ->add('updates', CollectionType::class, [
+                ->add('updatesPpsps', CollectionType::class, [
                     'label' => 'Configurations du tableau de mises à jour',
                     'required' => false,
                     'by_reference' => false,
@@ -94,7 +94,7 @@ final class PpspsAdmin extends AbstractAdmin
             ->end()
             ->with('Description des travaux')
                 ->add('siteType', ChoiceType::class, [
-                    'label' => 'Adresse du chantier',
+                    'label' => 'L\'entreprise intervient sur le chantier en tant que :',
                     'choices' => [
                         'Titulaire exclusif' => 'exclusif',
                         'Co-titulaire' => 'co-titular',
@@ -117,24 +117,20 @@ final class PpspsAdmin extends AbstractAdmin
                 ])
             ->end()
             ->with('Calendrier des travaux')
-                ->add('dateBegin', DateTimePickerType::class, [
+                ->add('dateBegin', DatePickerType::class, [
                     'label' => 'Date de début prévu du chantier',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('dateEnd', DateTimePickerType::class, [
+                ->add('dateEnd', DatePickerType::class, [
                     'label' => 'Date de fin prévu du chantier',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
@@ -152,72 +148,80 @@ final class PpspsAdmin extends AbstractAdmin
                     'expanded' => true,
                     'required' => false
                 ])
-                ->add('winterRestBegin', DateTimePickerType::class, [
+                ->add('winterRestBegin', DatePickerType::class, [
                     'label' => 'Date de début des congés d\'hiver',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('winterRestEnd', DateTimePickerType::class, [
+                ->add('winterRestEnd', DatePickerType::class, [
                     'label' => 'Date de fin des congés d\'hiver',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('summerRestBegin', DateTimePickerType::class, [
+                ->add('summerRestBegin', DatePickerType::class, [
                     'label' => 'Date de début des congés d\'été',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('summerRestEnd', DateTimePickerType::class, [
+                ->add('summerRestEnd', DatePickerType::class, [
                     'label' => 'Date de fin des congés d\'été',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('openingSite', DateTimePickerType::class, [
+                ->add('otherRestBegin', DatePickerType::class, [
+                    'label' => 'Date de début des autres congés',
+                    'dp_side_by_side'       => true,
+                    'dp_use_current'        => false,
+                    'dp_collapse'           => true,
+                    'dp_calendar_weeks'     => false,
+                    'dp_view_mode'          => 'days',
+                    'dp_min_view_mode'      => 'days',
+                    'required' => false,
+                ])
+                ->add('otherRestEnd', DatePickerType::class, [
+                    'label' => 'Date de fin des autres congés',
+                    'dp_side_by_side'       => true,
+                    'dp_use_current'        => false,
+                    'dp_collapse'           => true,
+                    'dp_calendar_weeks'     => false,
+                    'dp_view_mode'          => 'days',
+                    'dp_min_view_mode'      => 'days',
+                    'required' => false,
+                ])
+                ->add('openingSite', DatePickerType::class, [
                     'label' => 'déclaration d\'Ouverture de chantier',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('startingWork', DateTimePickerType::class, [
+                ->add('startingWork', DatePickerType::class, [
                     'label' => 'déclaration d\'Intention de commencer les Travaux (D.I.C.T.)',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
@@ -239,8 +243,42 @@ final class PpspsAdmin extends AbstractAdmin
                 ])
             ->end()
             ->with('Organisation de l\'entreprise (ou du groupement)')
-                ->add('organisationOfPeoples', CollectionType::class, [
-                    'label' => 'Personne',
+                ->add('AQSE', TextType::class, [
+                    'label' => 'Animateur Qualité Sécurité Environnement',
+                    'required' => false
+                ])
+                ->add('workDirector', TextType::class, [
+                    'label' => 'Directeur de Travaux',
+                    'required' => false
+                ])
+                ->add('workDirectors', CollectionType::class, [
+                    'label' => 'Conducteur(s) de Travaux',
+                    'required' => false,
+                    'by_reference' => false,
+                    'type_options' => [
+                        'delete' => true,
+                    ],
+                ], [
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                ])
+                ->add('masterCompanion', TextType::class, [
+                    'label' => 'Maitre compagnon',
+                    'required' => false
+                ])
+                ->add('siteManagers', CollectionType::class, [
+                    'label' => 'Chef(s) de chantier',
+                    'required' => false,
+                    'by_reference' => false,
+                    'type_options' => [
+                        'delete' => true,
+                    ],
+                ], [
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                ])
+                ->add('leaders', CollectionType::class, [
+                    'label' => 'Chef(s) d\'équipe',
                     'required' => false,
                     'by_reference' => false,
                     'type_options' => [
@@ -262,6 +300,22 @@ final class PpspsAdmin extends AbstractAdmin
                 ], [
                     'edit' => 'inline',
                     'inline' => 'table',
+                ])
+            ->end()
+            ->with('C.I.S.S.T.')
+                ->add('myCissct', ChoiceType::class, [
+                    'label' => 'Obligation',
+                    'choices' => [
+                        'Oui' => 'Oui',
+                        'Non' => 'Non',
+                        'Non applicable (activités VRD, menuiserie, éléctricité' => 'Non applicable (activités VRD, menuiserie, éléctricité',
+                    ],
+                    'required' => false,
+                    'expanded' => true,
+                ])
+                ->add('chiefWorkRepresentative', TextType::class, [
+                    'label' => 'Répresentant sur le chantier',
+                    'required' => false
                 ])
             ->end()
             ->with('Effectif')
@@ -298,24 +352,20 @@ final class PpspsAdmin extends AbstractAdmin
                     'label' => 'Réference du PGC',
                     'required' => false
                 ])
-                ->add('PGCDate', DateTimePickerType::class, [
+                ->add('PGCDate', DatePickerType::class, [
                     'label' => 'Date PGC',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',
                     'dp_min_view_mode'      => 'days',
                     'required' => false,
                 ])
-                ->add('inspectionVisitDate', DateTimePickerType::class, [
+                ->add('inspectionVisitDate', DatePickerType::class, [
                     'label' => 'Date de la visite d\'inspection commune',
                     'dp_side_by_side'       => true,
                     'dp_use_current'        => false,
-                    'dp_use_seconds'        => false,
-                    'dp_use_minutes'        => false,
                     'dp_collapse'           => true,
                     'dp_calendar_weeks'     => false,
                     'dp_view_mode'          => 'days',

@@ -18,6 +18,11 @@ class SituationFormType extends AbstractType
         $this->situationRepository = $situationRepository;
         $this->riskRepository = $riskRepository;
     }
+    
+    public function getBlockPrefix()
+    {
+        return 'situationForm';
+    }
 
     public static function getSubscribedEvents()
     {
@@ -25,7 +30,6 @@ class SituationFormType extends AbstractType
         // event and that the preSetData method should be called.
         return [FormEvents::PRE_SET_DATA => 'preSetData'];
     }
-
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -37,25 +41,35 @@ class SituationFormType extends AbstractType
             $situation = $event->getData()['situation'];
             $form = $event->getForm();
             if ($situation !== null) {
-                $form->add('risk', ChoiceType::class, [
-                    'label' => 'Risque Potentiel',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'choices' => $this->getRiskListFromSituation($situation),
-                ]);
+                $riskChoiceList = $this->getRiskListFromSituation($situation);
+                if ($riskChoiceList !== false) {
+                    $form->add('risk', ChoiceType::class, [
+                        'label' => 'Risque Potentiel',
+                        'multiple' => true,
+                        'expanded' => true,
+                        'choices' => $riskChoiceList,
+                    ]);
+                }
+            }
+            if ($situation !== null) {
+                $toolChoiceList = $this->getToolListFromSituation($situation);
+                if ($toolChoiceList !== false) {
+                    $form->add('tool', ChoiceType::class, [
+                        'label' => 'Liste des outils concernés',
+                        'multiple' => true,
+                        'expanded' => true,
+                        'choices' => $toolChoiceList,
+                    ]);
+                }
             }
             if (isset($event->getData()['risk'])) {
                 if($event->getData()['risk'] !== []){
-                    foreach ($this->getRiskListFromSituation($situation) as $index => $risk) {
-                        if ($this->riskRepository->find($risk)->getMeasures()->getValues() !== []) {
-                            $form->add('measure'.$index, ChoiceType::class, [
-                                'label' => 'Mesure pris en considération',
-                                'multiple' => true,
-                                'expanded' => true,
-                                'choices' => $this->getMeasureListFromRisk($risk)
-                            ]);
-                        }
-                    }
+                    $form->add('measure', ChoiceType::class, [
+                        'label' => 'Mesure pris en compte',
+                        'multiple' => true,
+                        'expanded' => true,
+                        'choices' => $this->getMeasureListFromRisk($event->getData()['risk']),
+                    ]);
                 }
             }
         });
@@ -65,7 +79,10 @@ class SituationFormType extends AbstractType
         foreach ($this->situationRepository->findAll() as $situation) {
             $situationChoiceList[$situation->getName()] = $situation->getId();
         }
-        return $situationChoiceList;
+        if (isset($situationChoiceList)) {
+            return $situationChoiceList;
+        }
+        return false;
     }
 
     private function getRiskListFromSituation($situationId) {
@@ -73,14 +90,33 @@ class SituationFormType extends AbstractType
         foreach ($situation->getRisks() as $risk) {
             $riskChoiceList[$risk->getName()] = $risk->getId();
         }
-        return $riskChoiceList;
+        if (isset($riskChoiceList)) {
+            return $riskChoiceList;
+        }
+        return false;
     }
 
-    private function getMeasureListFromRisk($riskId) {
-        $risk = $this->riskRepository->find($riskId);
-        foreach ($risk->getMeasures() as $measure) {
-            $measureChoiceList[$measure->getName()] = $measure->getId();
+    private function getToolListFromSituation($situationId) {
+        $situation = $this->situationRepository->find($situationId);
+        foreach ($situation->getTools() as $tool) {
+            $toolChoiceList[$tool->getName()] = $tool->getId();
         }
-        return $measureChoiceList;
+        if (isset($toolChoiceList)) {
+            return $toolChoiceList;
+        }
+        return false;
+    }
+
+    private function getMeasureListFromRisk($riskList) {
+        foreach ($riskList as $risk) {
+            $risk = $this->riskRepository->find($risk);
+            foreach ($risk->getMeasures() as $measure) {
+                $measureChoiceList[$measure->getName()] = $measure->getId();
+            }
+        }
+        if (isset($measureChoiceList)) {
+            return $measureChoiceList;
+        }
+        return false;
     }
 }

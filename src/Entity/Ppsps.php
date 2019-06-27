@@ -64,12 +64,12 @@ class Ppsps
     private $mandatoryDescr;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateBegin;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $dateEnd;
 
@@ -79,39 +79,34 @@ class Ppsps
     private $rest = [];
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $winterRestBegin;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $winterRestEnd;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $summerRestBegin;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $summerRestEnd;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $openingSite;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $startingWork;
-
-    /**
-    * @ORM\OneToMany(targetEntity="Dealer", mappedBy="ppsps", orphanRemoval=true)
-    */
-    private $dealers;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -144,17 +139,12 @@ class Ppsps
     private $periodOfExecution;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\People", mappedBy="organisation")
-     */
-    private $organisationOfPeoples;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $cissct;
+    private $Cissct;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Effective", mappedBy="ppsps")
+     * @ORM\OneToMany(targetEntity="App\Entity\Effective", mappedBy="ppsps", cascade={"persist"})
      */
     private $effectives;
 
@@ -184,12 +174,12 @@ class Ppsps
     private $PGCRef;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $PGCDate;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $inspectionVisitDate;
 
@@ -249,12 +239,7 @@ class Ppsps
     private $situation = [];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Update", mappedBy="ppsps")
-     */
-    private $updates;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps")
+     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps", cascade={"persist"})
      */
     private $diffusions;
 
@@ -264,22 +249,84 @@ class Ppsps
     private $accomodation;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps")
+     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps", cascade={"persist"})
      */
     private $speakers;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $otherRestBegin;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $otherRestEnd;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $chiefWorkRepresentative;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $myCissct;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UpdatePpsps", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $updatesPpsps;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Dealer", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $dealers;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $AQSE;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $workDirector;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $masterCompanion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Leader", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $leaders;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SiteManager", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $siteManagers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\WorkDirector", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $workDirectors;
 
     /**
      * Constructor
     */
     public function __construct()
     {
-        $this->dealers = new ArrayCollection();
         $this->speaker = new ArrayCollection();
-        $this->organisationOfPeoples = new ArrayCollection();
         $this->effectives = new ArrayCollection();
-        $this->updates = new ArrayCollection();
         $this->diffusions = new ArrayCollection();
         $this->speakers = new ArrayCollection();
+        $this->updatesPpsps = new ArrayCollection();
+        $this->dealers = new ArrayCollection();
+        $this->leaders = new ArrayCollection();
+        $this->siteManagers = new ArrayCollection();
+        $this->workDirectors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -512,31 +559,7 @@ class Ppsps
     {
         return $this->dealers;
     }
-
-    /**
-     * Add dealers
-     *
-     * @param Dealer $dealers
-     *
-     * @return Category
-     */
-    public function addDealer($dealers)
-    {
-        $this->dealers[] = $dealers;
-
-        return $this;
-    }
-
-    /**
-     * Remove dealers
-     *
-     * @param Dealer $dealers
-     */
-    public function removeDealer($dealers)
-    {
-        $this->dealers->removeElement($dealers);
-    }
-
+    
     public function getSiteName(): ?string
     {
         return $this->siteName;
@@ -605,49 +628,6 @@ class Ppsps
     public function setPeriodOfExecution(?string $periodOfExecution): self
     {
         $this->periodOfExecution = $periodOfExecution;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|People[]
-     */
-    public function getOrganisationOfPeoples(): Collection
-    {
-        return $this->organisationOfPeoples;
-    }
-
-    public function addOrganisationOfPeople(People $organisationOfPeople): self
-    {
-        if (!$this->organisationOfPeoples->contains($organisationOfPeople)) {
-            $this->organisationOfPeoples[] = $organisationOfPeople;
-            $organisationOfPeople->setOrganisation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrganisationOfPeople(People $organisationOfPeople): self
-    {
-        if ($this->organisationOfPeoples->contains($organisationOfPeople)) {
-            $this->organisationOfPeoples->removeElement($organisationOfPeople);
-            // set the owning side to null (unless already changed)
-            if ($organisationOfPeople->getOrganisation() === $this) {
-                $organisationOfPeople->setOrganisation(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCissct(): ?string
-    {
-        return $this->cissct;
-    }
-
-    public function setCissct(?string $cissct): self
-    {
-        $this->cissct = $cissct;
 
         return $this;
     }
@@ -900,37 +880,6 @@ class Ppsps
     }
 
     /**
-     * @return Collection|Update[]
-     */
-    public function getUpdates(): Collection
-    {
-        return $this->updates;
-    }
-
-    public function addUpdate(Update $update): self
-    {
-        if (!$this->updates->contains($update)) {
-            $this->updates[] = $update;
-            $update->setPpsps($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUpdate(Update $update): self
-    {
-        if ($this->updates->contains($update)) {
-            $this->updates->removeElement($update);
-            // set the owning side to null (unless already changed)
-            if ($update->getPpsps() === $this) {
-                $update->setPpsps(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Diffusion[]
      */
     public function getDiffusions(): Collection
@@ -998,6 +947,237 @@ class Ppsps
             // set the owning side to null (unless already changed)
             if ($speaker->getPpsps() === $this) {
                 $speaker->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getOtherRestBegin(): ?\DateTimeInterface
+    {
+        return $this->otherRestBegin;
+    }
+
+    public function setOtherRestBegin(?\DateTimeInterface $otherRestBegin): self
+    {
+        $this->otherRestBegin = $otherRestBegin;
+
+        return $this;
+    }
+
+    public function getOtherRestEnd(): ?\DateTimeInterface
+    {
+        return $this->otherRestEnd;
+    }
+
+    public function setOtherRestEnd(?\DateTimeInterface $otherRestEnd): self
+    {
+        $this->otherRestEnd = $otherRestEnd;
+
+        return $this;
+    }
+
+    public function getChiefWorkRepresentative(): ?string
+    {
+        return $this->chiefWorkRepresentative;
+    }
+
+    public function setChiefWorkRepresentative(?string $chiefWorkRepresentative): self
+    {
+        $this->chiefWorkRepresentative = $chiefWorkRepresentative;
+
+        return $this;
+    }
+
+    public function getMyCissct(): ?string
+    {
+        return $this->myCissct;
+    }
+
+    public function setMyCissct(?string $myCissct): self
+    {
+        $this->myCissct = $myCissct;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UpdatePpsps[]
+     */
+    public function getUpdatesPpsps(): Collection
+    {
+        return $this->updatesPpsps;
+    }
+
+    public function addUpdatesPpsp(UpdatePpsps $updatesPpsp): self
+    {
+        if (!$this->updatesPpsps->contains($updatesPpsp)) {
+            $this->updatesPpsps[] = $updatesPpsp;
+            $updatesPpsp->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUpdatesPpsp(UpdatePpsps $updatesPpsp): self
+    {
+        if ($this->updatesPpsps->contains($updatesPpsp)) {
+            $this->updatesPpsps->removeElement($updatesPpsp);
+            // set the owning side to null (unless already changed)
+            if ($updatesPpsp->getPpsps() === $this) {
+                $updatesPpsp->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addDealer(Dealer $dealer): self
+    {
+        if (!$this->dealers->contains($dealer)) {
+            $this->dealers[] = $dealer;
+            $dealer->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDealer(Dealer $dealer): self
+    {
+        if ($this->dealers->contains($dealer)) {
+            $this->dealers->removeElement($dealer);
+            // set the owning side to null (unless already changed)
+            if ($dealer->getPpsps() === $this) {
+                $dealer->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAQSE(): ?string
+    {
+        return $this->AQSE;
+    }
+
+    public function setAQSE(?string $AQSE): self
+    {
+        $this->AQSE = $AQSE;
+
+        return $this;
+    }
+
+    public function getWorkDirector(): ?string
+    {
+        return $this->workDirector;
+    }
+
+    public function setWorkDirector(?string $workDirector): self
+    {
+        $this->workDirector = $workDirector;
+
+        return $this;
+    }
+
+    public function getMasterCompanion(): ?string
+    {
+        return $this->masterCompanion;
+    }
+
+    public function setMasterCompanion(?string $masterCompanion): self
+    {
+        $this->masterCompanion = $masterCompanion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Leader[]
+     */
+    public function getLeaders(): Collection
+    {
+        return $this->leaders;
+    }
+
+    public function addLeader(Leader $leader): self
+    {
+        if (!$this->leaders->contains($leader)) {
+            $this->leaders[] = $leader;
+            $leader->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeader(Leader $leader): self
+    {
+        if ($this->leaders->contains($leader)) {
+            $this->leaders->removeElement($leader);
+            // set the owning side to null (unless already changed)
+            if ($leader->getPpsps() === $this) {
+                $leader->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SiteManager[]
+     */
+    public function getSiteManagers(): Collection
+    {
+        return $this->siteManagers;
+    }
+
+    public function addSiteManager(SiteManager $siteManager): self
+    {
+        if (!$this->siteManagers->contains($siteManager)) {
+            $this->siteManagers[] = $siteManager;
+            $siteManager->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSiteManager(SiteManager $siteManager): self
+    {
+        if ($this->siteManagers->contains($siteManager)) {
+            $this->siteManagers->removeElement($siteManager);
+            // set the owning side to null (unless already changed)
+            if ($siteManager->getPpsps() === $this) {
+                $siteManager->setPpsps(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WorkDirector[]
+     */
+    public function getWorkDirectors(): Collection
+    {
+        return $this->workDirectors;
+    }
+
+    public function addWorkDirector(WorkDirector $workDirector): self
+    {
+        if (!$this->workDirectors->contains($workDirector)) {
+            $this->workDirectors[] = $workDirector;
+            $workDirector->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkDirector(WorkDirector $workDirector): self
+    {
+        if ($this->workDirectors->contains($workDirector)) {
+            $this->workDirectors->removeElement($workDirector);
+            // set the owning side to null (unless already changed)
+            if ($workDirector->getPpsps() === $this) {
+                $workDirector->setPpsps(null);
             }
         }
 

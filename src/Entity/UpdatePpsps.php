@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UpdateRepository")
  */
-class Update
+class UpdatePpsps
 {
     /**
      * @ORM\Id()
@@ -27,7 +27,7 @@ class Update
     private $indexUpdate;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $updateDate;
 
@@ -42,7 +42,7 @@ class Update
     private $aprovedBy;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="updates")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="updatesPpsps")
      */
     private $ppsps;
 

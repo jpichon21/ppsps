@@ -27,7 +27,7 @@ class Diffusion
     private $name;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $date;
 
@@ -39,7 +39,7 @@ class Diffusion
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $numeric;
+    private $isNumeric;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="diffusions")
@@ -104,14 +104,14 @@ class Diffusion
         return $this;
     }
 
-    public function getNumeric(): ?bool
+    public function getIsNumeric(): ?bool
     {
-        return $this->numeric;
+        return $this->isNumeric;
     }
 
-    public function setNumeric(?bool $numeric): self
+    public function setIsNumeric(?bool $isNumeric): self
     {
-        $this->numeric = $numeric;
+        $this->isNumeric = $isNumeric;
 
         return $this;
     }

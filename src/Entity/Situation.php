@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -33,6 +34,11 @@ class Situation
     private $risks;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Tool", mappedBy="situation")
+     */
+    private $tools;
+
+    /**
      * to string method
      *
      * @return string
@@ -48,6 +54,7 @@ class Situation
     public function __construct()
     {
         $this->risks = new ArrayCollection();
+        $this->tools = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,5 +118,36 @@ class Situation
     public function removeRisks($risks)
     {
         $this->risks->removeElement($risks);
+    }
+
+    /**
+     * @return Collection|Tool[]
+     */
+    public function getTools(): Collection
+    {
+        return $this->tools;
+    }
+
+    public function addTool(Tool $tool): self
+    {
+        if (!$this->tools->contains($tool)) {
+            $this->tools[] = $tool;
+            $tool->setSituation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTool(Tool $tool): self
+    {
+        if ($this->tools->contains($tool)) {
+            $this->tools->removeElement($tool);
+            // set the owning side to null (unless already changed)
+            if ($tool->getSituation() === $this) {
+                $tool->setSituation(null);
+            }
+        }
+
+        return $this;
     }
 }

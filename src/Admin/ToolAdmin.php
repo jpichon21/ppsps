@@ -7,24 +7,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Sonata\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Sonata\AdminBundle\Form\Type\ModelType;
 
-final class DealerAdmin extends AbstractAdmin
+final class ToolAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class);
-        $formMapper->add('mail', TextType::class);
-        $formMapper->add('sendingDate', DatePickerType::class, [
-            'label' => 'Envoyée le',
-            'dp_side_by_side'       => true,
-            'dp_use_current'        => false,
-            'dp_collapse'           => true,
-            'dp_calendar_weeks'     => false,
-            'dp_view_mode'          => 'days',
-            'dp_min_view_mode'      => 'days',
-            'required' => false,
-        ]);
+        $formMapper->add('descr', TextareaType::class);
+        $formMapper->add('situation', ModelType::class , array(
+            'class' => 'App\Entity\Situation',
+            'multiple' => false, 
+            'by_reference' => false,
+            'label'=>'Choissisez les outils associés a cette mesure'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
