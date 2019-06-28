@@ -535,6 +535,7 @@ final class PpspsAdmin extends AbstractAdmin
             'actions' => [
                 'edit' => [],
                 'delete' => [],
+                'export' => ['template' => 'admin/action/export.html.twig']
             ]
         ]);
     }
