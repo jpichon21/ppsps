@@ -25,11 +25,35 @@ final class ToolAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
+        $datagridMapper->add('situation', null, [
+            'label' => 'Situation'
+        ]);
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name');
+        unset($this->listModes['mosaic']);
+        $listMapper->add('name', null, [
+            'label' => 'Nom'
+        ]);
+        $listMapper->add('descr', null, [
+            'label' => 'Description'
+        ]);
+        $listMapper->add('situation', null, [
+            'label' => 'Situation'
+        ]);
+        $listMapper->add('_action', null, [
+            'actions' => [
+                'edit' => [],
+                'delete' => [],
+            ]
+        ]);
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->orderBy('o.situation');
+        return $query;
     }
 }

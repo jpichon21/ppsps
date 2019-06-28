@@ -30,30 +30,35 @@ services:
         class: App\Admin\SituationAdmin
         arguments: [~, App\Entity\Situation, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Situation }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Situation }
     
     admin.risk:
         class: App\Admin\RiskAdmin
         arguments: [~, App\Entity\Risk, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Risque }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Risque }
     
     admin.measure:
         class: App\Admin\MeasureAdmin
         arguments: [~, App\Entity\Measure, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Mesure }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Mesure }
     
-    admin.app.config:
-        class: App\Admin\ConfigAdmin
-        arguments: [~, App\Entity\Config, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Config }
     admin.app.ppsps:
         class: App\Admin\PpspsAdmin
         arguments: [~, App\Entity\Ppsps, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: PPSPS }
+            - { name: sonata.admin, manager_type: orm, group: 'Création de PPSPS', label: PPSPS }
+    admin.app.config:
+        class: App\Admin\ConfigAdmin
+        arguments: [~, App\Entity\Config, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Config, show_in_dashboard: false }
+    admin.tool:
+        class: App\Admin\ToolAdmin
+        arguments: [~, App\Entity\Tool, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Outil }
     admin.dealer:
         class: App\Admin\DealerAdmin
         arguments: [~, App\Entity\Dealer, ~]
@@ -79,23 +84,18 @@ services:
         arguments: [~, App\Entity\Diffusion, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Diffusion, show_in_dashboard: false }
-    admin.tool:
-        class: App\Admin\ToolAdmin
-        arguments: [~, App\Entity\Tool, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Outil }
     admin.workDirector:
         class: App\Admin\WorkDirectorAdmin
         arguments: [~, App\Entity\WorkDirector, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: WD }
+            - { name: sonata.admin, manager_type: orm, label: WD, show_in_dashboard: false }
     admin.leader:
         class: App\Admin\LeaderAdmin
         arguments: [~, App\Entity\Leader, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Leader }
+            - { name: sonata.admin, manager_type: orm, label: Leader, show_in_dashboard: false }
     admin.siteManager:
         class: App\Admin\SiteManagerAdmin
         arguments: [~, App\Entity\SiteManager, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: SiteManager }
+            - { name: sonata.admin, manager_type: orm, label: SiteManager, show_in_dashboard: false }

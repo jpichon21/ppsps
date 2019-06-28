@@ -13,8 +13,12 @@ final class SituationAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
-        $formMapper->add('descr', TextareaType::class);
+        $formMapper->add('name', TextType::class, [
+            'label' => 'Nom'
+        ]);
+        $formMapper->add('descr', TextareaType::class, [
+            'label' => 'Description'
+        ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -24,6 +28,18 @@ final class SituationAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name');
+        unset($this->listModes['mosaic']);
+        $listMapper->add('name', null, [
+            'label' => 'Nom'
+        ]);
+        $listMapper->add('descr', null, [
+            'label' => 'Description'
+        ]);
+        $listMapper->add('_action', null, [
+            'actions' => [
+                'edit' => [],
+                'delete' => [],
+            ]
+        ]);
     }
 }

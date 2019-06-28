@@ -18,7 +18,7 @@ final class DiffusionAdmin extends AbstractAdmin
         $formMapper->add('recipient', TextType::class, [
             'label' => 'Destinataire'
         ]);
-        $formMapper->add('name', IntegerType::class, [
+        $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
         $formMapper->add('date', DatePickerType::class, [
@@ -49,6 +49,7 @@ final class DiffusionAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper->addIdentifier('name');
     }
 }

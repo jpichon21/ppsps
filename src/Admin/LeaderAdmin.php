@@ -12,7 +12,9 @@ final class LeaderAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
+        $formMapper->add('name', TextType::class, [
+            'label' => 'Nom'
+        ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -22,6 +24,7 @@ final class LeaderAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper->addIdentifier('name');
     }
 }

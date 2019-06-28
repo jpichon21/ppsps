@@ -33,6 +33,7 @@ final class ConfigAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper->addIdentifier('situation');
     }
 

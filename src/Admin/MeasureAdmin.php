@@ -14,8 +14,12 @@ final class MeasureAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
-        $formMapper->add('descr', TextareaType::class);
+        $formMapper->add('name', TextType::class, [
+            'label' => 'Nom'
+        ]);
+        $formMapper->add('descr', TextareaType::class, [
+            'label' => 'Description'
+        ]);
         $formMapper->add('Risk', ModelType::class , array(
             'class' => 'App\Entity\Risk',
             'multiple' => false, 
@@ -25,11 +29,35 @@ final class MeasureAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
+        $datagridMapper->add('risk', null, [
+            'label' => 'Risque'
+        ]);
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name');
+        unset($this->listModes['mosaic']);
+        $listMapper->add('name', null, [
+            'label' => 'Nom'
+        ]);
+        $listMapper->add('descr', null, [
+            'label' => 'Description'
+        ]);
+        $listMapper->add('risk', null, [
+            'label' => 'Risque'
+        ]);
+        $listMapper->add('_action', null, [
+            'actions' => [
+                'edit' => [],
+                'delete' => [],
+            ]
+        ]);
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->orderBy('o.risk');
+        return $query;
     }
 }

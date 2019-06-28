@@ -13,8 +13,12 @@ final class DealerAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
-        $formMapper->add('mail', TextType::class);
+        $formMapper->add('name', TextType::class, [
+            'label' => 'Nom'
+        ]);
+        $formMapper->add('mail', TextType::class, [
+            'label' => 'Email'
+        ]);
         $formMapper->add('sendingDate', DatePickerType::class, [
             'label' => 'Envoyée le',
             'dp_side_by_side'       => true,
@@ -34,6 +38,7 @@ final class DealerAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper->addIdentifier('name');
     }
 }

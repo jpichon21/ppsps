@@ -314,6 +314,11 @@ class Ppsps
     private $workDirectors;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $status;
+
+    /**
      * Constructor
     */
     public function __construct()
@@ -1180,6 +1185,18 @@ class Ppsps
                 $workDirector->setPpsps(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

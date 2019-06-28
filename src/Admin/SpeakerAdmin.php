@@ -14,11 +14,21 @@ final class SpeakerAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
-        $formMapper->add('contact', TextType::class);
-        $formMapper->add('address', TextType::class);
-        $formMapper->add('fax', TextType::class);
-        $formMapper->add('mail', TextType::class);
+        $formMapper->add('name', TextType::class, [
+            'label' => 'Nom'
+        ]);
+        $formMapper->add('contact', TextType::class, [
+            'label' => 'Contact'
+        ]);
+        $formMapper->add('address', TextType::class, [
+            'label' => 'Adresse'
+        ]);
+        $formMapper->add('fax', TextType::class, [
+            'label' => 'Fax'
+        ]);
+        $formMapper->add('mail', TextType::class, [
+            'label' => 'Email'
+        ]);
 
     }
 
@@ -29,6 +39,7 @@ final class SpeakerAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper->addIdentifier('name');
     }
 }
