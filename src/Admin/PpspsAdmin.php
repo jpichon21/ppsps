@@ -16,9 +16,14 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use App\Form\Type\SituationFormType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType as SymfonyCollectionType;
 use Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class PpspsAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->remove('export');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

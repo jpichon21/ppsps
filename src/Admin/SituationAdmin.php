@@ -8,9 +8,14 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class SituationAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->remove('export');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', TextType::class, [

@@ -7,12 +7,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Sonata\Form\Type\DatePickerType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class UpdatePpspsAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->remove('export');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('updateObject', TextType::class, [

@@ -9,13 +9,22 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class ToolAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->remove('export');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class);
-        $formMapper->add('descr', TextareaType::class);
+        $formMapper->add('name', TextType::class, [
+            'label' => 'Nom'
+        ]);
+        $formMapper->add('descr', TextareaType::class,[
+            'label' => 'Description'
+        ]);
         $formMapper->add('situation', ModelType::class , array(
             'class' => 'App\Entity\Situation',
             'multiple' => false, 

@@ -9,9 +9,14 @@ use Sonata\AdminBundle\Form\FormMapper;
 use App\Form\Type\SituationFormType;
 use Sonata\AdminBundle\Form\Type\CollectionType as SonataCollectionType;
 use App\Form\Type\CollectionSituationFormType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class ConfigAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->remove('export');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('situation', CollectionSituationFormType::class, [

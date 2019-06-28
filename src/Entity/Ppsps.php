@@ -319,6 +319,16 @@ class Ppsps
     private $status;
 
     /**
+     * to string method
+     *
+     * @return string
+    */
+    public function __toString()
+    {
+        return $this->getSiteName().' - '.$this->getSiteNumber();
+    }
+
+    /**
      * Constructor
     */
     public function __construct()

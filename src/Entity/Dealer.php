@@ -33,7 +33,6 @@ class Dealer
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="dealers")
-     * @ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", nullable=false)
      */
     private $ppsps;
 

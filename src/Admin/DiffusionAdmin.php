@@ -10,9 +10,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Sonata\CoreBundle\Form\Type\DatePickerType;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 final class DiffusionAdmin extends AbstractAdmin
 {
+    public function configureRoutes(RouteCollection $collection) {
+        $collection->remove('export');
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('recipient', TextType::class, [
