@@ -27,8 +27,8 @@ final class PpspsAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->tab('Configuration du ppsps')
-                ->with('Etat du document')
+            ->tab('Configuration du Ppsps')
+                ->with('État du document')
                     ->add('status', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
@@ -61,11 +61,11 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                     ->add('projectManager', TextType::class, [
-                        'label' => 'Maitre d\'oeuvre',
+                        'label' => 'Maître d\'oeuvre',
                         'required' => false
                     ])
                     ->add('diffusions', CollectionType::class, [
-                        'label' => 'Configurations du tableau des diffusion',
+                        'label' => 'Configuration du tableau des diffusions',
                         'required' => false,
                         'by_reference' => false,
                         'type_options' => [
@@ -76,7 +76,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                     ->add('updatesPpsps', CollectionType::class, [
-                        'label' => 'Configurations du tableau de mises à jour',
+                        'label' => 'Configuration du tableau de mise à jour',
                         'required' => false,
                         'by_reference' => false,
                         'type_options' => [
@@ -87,7 +87,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Identification des traveaux')
+                ->with('Identification des travaux')
                     ->add('AddressConstrSite', TextType::class, [
                         'label' => 'Adresse du chantier',
                         'required' => false
@@ -129,7 +129,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false 
                     ])
                     ->add('subWorkDescr', TextareaType::class, [
-                        'label' => 'Traveaux sous-traites envisage',
+                        'label' => 'Travaux sous-traités envisagés',
                         'required' => false
                     ])
                 ->end()
@@ -155,7 +155,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                     ->add('rest', ChoiceType::class, [
-                        'label' => 'Arrèts de chantier',
+                        'label' => 'Arrêt de chantier',
                         'choices' => [
                             'Congés été' => 'summer-rest',
                             'Congés Hiver' => 'winter-rest',
@@ -164,26 +164,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'multiple' => true,
                         'expanded' => true,
                         'required' => false
-                    ])
-                    ->add('winterRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des congés d\'hiver',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('winterRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des congés d\'hiver',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
                     ])
                     ->add('summerRestBegin', DatePickerType::class, [
                         'label' => 'Date de début des congés d\'été',
@@ -197,6 +177,26 @@ final class PpspsAdmin extends AbstractAdmin
                     ])
                     ->add('summerRestEnd', DatePickerType::class, [
                         'label' => 'Date de fin des congés d\'été',
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => false,
+                        'dp_collapse'           => true,
+                        'dp_calendar_weeks'     => false,
+                        'dp_view_mode'          => 'days',
+                        'dp_min_view_mode'      => 'days',
+                        'required' => false,
+                    ])
+                    ->add('winterRestBegin', DatePickerType::class, [
+                        'label' => 'Date de début des congés d\'hiver',
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => false,
+                        'dp_collapse'           => true,
+                        'dp_calendar_weeks'     => false,
+                        'dp_view_mode'          => 'days',
+                        'dp_min_view_mode'      => 'days',
+                        'required' => false,
+                    ])
+                    ->add('winterRestEnd', DatePickerType::class, [
+                        'label' => 'Date de fin des congés d\'hiver',
                         'dp_side_by_side'       => true,
                         'dp_use_current'        => false,
                         'dp_collapse'           => true,
@@ -226,7 +226,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                     ->add('openingSite', DatePickerType::class, [
-                        'label' => 'déclaration d\'Ouverture de chantier',
+                        'label' => 'Déclaration d\'ouverture de chantier',
                         'dp_side_by_side'       => true,
                         'dp_use_current'        => false,
                         'dp_collapse'           => true,
@@ -236,7 +236,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                     ->add('startingWork', DatePickerType::class, [
-                        'label' => 'déclaration d\'Intention de commencer les Travaux (D.I.C.T.)',
+                        'label' => 'Déclaration d\'intention de commencer les travaux (D.I.C.T.)',
                         'dp_side_by_side'       => true,
                         'dp_use_current'        => false,
                         'dp_collapse'           => true,
@@ -280,7 +280,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                     ->add('masterCompanion', TextType::class, [
-                        'label' => 'Maitre compagnon',
+                        'label' => 'Maître compagnon',
                         'required' => false
                     ])
                     ->add('siteManagers', CollectionType::class, [
@@ -308,7 +308,7 @@ final class PpspsAdmin extends AbstractAdmin
                 ->end()
                 ->with('Intervenants')
                     ->add('speakers', CollectionType::class, [
-                        'label' => 'Intervenant',
+                        'label' => false,
                         'required' => false,
                         'by_reference' => false,
                         'type_options' => [
@@ -325,7 +325,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'choices' => [
                             'Oui' => 'Oui',
                             'Non' => 'Non',
-                            'Non applicable (activités VRD, menuiserie, éléctricité' => 'Non applicable (activités VRD, menuiserie, éléctricité',
+                            'Non applicable (activités VRD, menuiserie, éléctricité)' => 'Non applicable (activités VRD, menuiserie, éléctricité)',
                         ],
                         'required' => false,
                         'expanded' => true,
@@ -348,7 +348,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Hygiène,santé et sécurité au travail')
+                ->with('Hygiène, santé et sécurité au travail')
                     ->add('securityCoordinator', CheckboxType::class, [
                         'label'=> 'Coordonateur sécurité',
                         'required' => false
@@ -390,7 +390,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                 ->end()
-                ->with('Innventaires des instalations Rougeot ou groupement d\'entreprise')
+                ->with('Inventaire des installations Rougeot ou groupement d\'entreprises')
                     ->add('listOfInstallations', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
@@ -452,7 +452,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                 ->end()
-                ->with('Mesure Générales de préventions')
+                ->with('Mesures Générales de préventions')
                     ->add('mandatoryDocument', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
@@ -470,7 +470,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'expanded' => true,
                     ])
                     ->add('particularSecurityDetail', TextType::class, [
-                        'label' => 'Détail des mesure particulière',
+                        'label' => 'Détail des mesures particulières',
                         'required' => false
                     ])
                 ->end()
