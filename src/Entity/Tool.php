@@ -38,7 +38,7 @@ class Tool
     */
     public function __toString()
     {
-        return $this->getName().'-'.$this->situation->getName();
+        return $this->getName().' - '.$this->situation->getName();
     }
 
     public function getId(): ?int
