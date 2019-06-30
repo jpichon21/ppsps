@@ -21,7 +21,7 @@ deploy_staging:
     - echo "$SSH_PRIVATE_KEY" | ssh-add -
   environment:
     name: staging
-    url: http://ppsps-dev.logomotion.fr/
+    url: http://ppsps-staging.logomotion.fr/
   when: manual
   only: 
     - staging
