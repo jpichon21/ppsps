@@ -42,7 +42,7 @@ services:
         class: App\Admin\MeasureAdmin
         arguments: [~, App\Entity\Measure, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Mesure }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Mesures }
     
     admin.app.ppsps:
         class: App\Admin\PpspsAdmin

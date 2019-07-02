@@ -55,7 +55,7 @@ class SituationFormType extends AbstractType
                 $toolChoiceList = $this->getToolListFromSituation($situation);
                 if ($toolChoiceList !== false) {
                     $form->add('tool', ChoiceType::class, [
-                        'label' => 'Liste des outils concernés',
+                        'label' => 'Moyens/matériels concernés',
                         'multiple' => true,
                         'expanded' => true,
                         'choices' => $toolChoiceList,
@@ -65,7 +65,7 @@ class SituationFormType extends AbstractType
             if (isset($event->getData()['risk'])) {
                 if($event->getData()['risk'] !== []){
                     $form->add('measure', ChoiceType::class, [
-                        'label' => 'Mesure pris en compte',
+                        'label' => 'Mesures prises en compte',
                         'multiple' => true,
                         'expanded' => true,
                         'choices' => $this->getMeasureListFromRisk($event->getData()['risk']),

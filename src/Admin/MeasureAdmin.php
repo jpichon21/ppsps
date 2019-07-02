@@ -19,6 +19,7 @@ final class MeasureAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper->with('Mesure');
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
