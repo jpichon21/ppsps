@@ -19,6 +19,7 @@ final class ToolAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper->with('Moyen/Matériel');
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);

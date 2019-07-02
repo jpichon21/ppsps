@@ -58,7 +58,7 @@ services:
         class: App\Admin\ToolAdmin
         arguments: [~, App\Entity\Tool, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Outil et situations }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Moyens et matériels }
     admin.dealer:
         class: App\Admin\DealerAdmin
         arguments: [~, App\Entity\Dealer, ~]
