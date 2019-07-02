@@ -30,7 +30,7 @@ services:
         class: App\Admin\SituationAdmin
         arguments: [~, App\Entity\Situation, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Situation }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Situations de travail }
     
     admin.risk:
         class: App\Admin\RiskAdmin

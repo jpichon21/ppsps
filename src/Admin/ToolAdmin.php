@@ -29,13 +29,13 @@ final class ToolAdmin extends AbstractAdmin
             'class' => 'App\Entity\Situation',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissisez les outils associés a cette mesure'));
+            'label'=>'Choissisez la situation de travail associée a ce moyen/matériel'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('situation', null, [
-            'label' => 'Situation'
+            'label' => 'Situation de travail'
         ]);
     }
 
@@ -49,7 +49,7 @@ final class ToolAdmin extends AbstractAdmin
             'label' => 'Description'
         ]);
         $listMapper->add('situation', null, [
-            'label' => 'Situation'
+            'label' => 'Situation de travail'
         ]);
         $listMapper->add('_action', null, [
             'actions' => [

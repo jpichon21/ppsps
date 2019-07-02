@@ -34,7 +34,7 @@ class SituationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('situation', ChoiceType::class, [
-            'label' => 'Choix de la situation',
+            'label' => 'Choix de la situation de travail',
             'choices' => $this->getSituationChoiceList(),
         ]);
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {

@@ -481,7 +481,9 @@ final class PpspsAdmin extends AbstractAdmin
                         'allow_add' => true,
                         'allow_delete' => true,
                         'entry_type' => SituationFormType::class,
-                        'by_reference' => false
+                        'by_reference' => false,
+                        'label' => false,
+                        'required' => false
                     ],[
                         'edit' => 'inline',
                         'inline' => 'table',

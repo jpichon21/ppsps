@@ -18,6 +18,7 @@ final class SituationAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper->with('Situation de travail');
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
