@@ -44,7 +44,7 @@ class SituationFormType extends AbstractType
                 $riskChoiceList = $this->getRiskListFromSituation($situation);
                 if ($riskChoiceList !== false) {
                     $form->add('risk', ChoiceType::class, [
-                        'label' => 'Risque Potentiel',
+                        'label' => 'Risques associés',
                         'multiple' => true,
                         'expanded' => true,
                         'choices' => $riskChoiceList,

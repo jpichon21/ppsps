@@ -19,6 +19,7 @@ final class RiskAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper->with('Risque associé');
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
