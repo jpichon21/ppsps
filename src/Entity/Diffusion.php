@@ -47,9 +47,9 @@ class Diffusion
     private $ppsps;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $external;
+    private $email;
 
     public function getId(): ?int
     {
@@ -128,14 +128,14 @@ class Diffusion
         return $this;
     }
 
-    public function getExternal(): ?bool
+    public function getEmail(): ?string
     {
-        return $this->external;
+        return $this->email;
     }
 
-    public function setExternal(?bool $external): self
+    public function setEmail(?string $email): self
     {
-        $this->external = $external;
+        $this->email = $email;
 
         return $this;
     }

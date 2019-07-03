@@ -64,6 +64,22 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Maître d\'oeuvre',
                         'required' => false
                     ])
+                    ->add('AddressAccessSite', TextType::class, [
+                        'label' => 'Adresse d\'accès au chantier',
+                        'required' => false
+                    ])
+                    ->add('referent', TextType::class, [
+                        'label' => 'Personne référente sur site',
+                        'required' => false
+                    ])
+                    ->add('referentPhone', TextType::class, [
+                        'label' => 'Téléphone du référent',
+                        'required' => false
+                    ])
+                    ->add('referentMail', TextType::class, [
+                        'label' => 'Mail du référent',
+                        'required' => false
+                    ])
                     ->add('diffusions', CollectionType::class, [
                         'label' => 'Configuration du tableau des diffusions',
                         'required' => false,
@@ -87,28 +103,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Identification des travaux')
-                    ->add('AddressConstrSite', TextType::class, [
-                        'label' => 'Adresse du chantier',
-                        'required' => false
-                    ])
-                    ->add('AddressAccessSite', TextType::class, [
-                        'label' => 'Adresse d\'accès au chantier',
-                        'required' => false
-                    ])
-                    ->add('referent', TextType::class, [
-                        'label' => 'Personne référente sur site',
-                        'required' => false
-                    ])
-                    ->add('referentPhone', TextType::class, [
-                        'label' => 'Téléphone',
-                        'required' => false
-                    ])
-                    ->add('referentMail', TextType::class, [
-                        'label' => 'Mail',
-                        'required' => false
-                    ])
-                ->end()
                 ->with('Description des travaux')
                     ->add('siteType', ChoiceType::class, [
                         'label' => 'L\'entreprise intervient sur le chantier en tant que :',
@@ -128,9 +122,16 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Description des travaux propres à ROUGEOT (ou du Groupement)',
                         'required' => false 
                     ])
-                    ->add('subWorkDescr', TextareaType::class, [
+                    ->add('subcontractedWorks', CollectionType::class, [
                         'label' => 'Travaux sous-traités envisagés',
-                        'required' => false
+                        'required' => false,
+                        'by_reference' => false,
+                        'type_options' => [
+                            'delete' => true,
+                        ],
+                    ], [
+                        'edit' => 'inline',
+                        'inline' => 'table',
                     ])
                 ->end()
                 ->with('Calendrier des travaux')
@@ -306,35 +307,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Intervenants')
-                    ->add('speakers', CollectionType::class, [
-                        'label' => false,
-                        'required' => false,
-                        'by_reference' => false,
-                        'type_options' => [
-                            'delete' => true,
-                        ],
-                    ], [
-                        'edit' => 'inline',
-                        'inline' => 'table',
-                    ])
-                ->end()
-                ->with('C.I.S.S.T.')
-                    ->add('myCissct', ChoiceType::class, [
-                        'label' => 'Obligation',
-                        'choices' => [
-                            'Oui' => 'Oui',
-                            'Non' => 'Non',
-                            'Non applicable (activités VRD, menuiserie, éléctricité)' => 'Non applicable (activités VRD, menuiserie, éléctricité)',
-                        ],
-                        'required' => false,
-                        'expanded' => true,
-                    ])
-                    ->add('chiefWorkRepresentative', TextType::class, [
-                        'label' => 'Répresentant sur le chantier',
-                        'required' => false
-                    ])
-                ->end()
                 ->with('Effectif')
                     ->add('effectives', CollectionType::class, [
                         'label' => false,
@@ -348,7 +320,30 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Hygiène, santé et sécurité au travail')
+                ->with('Intervenants suplémentaires')
+                    ->add('speakers', CollectionType::class, [
+                        'label' => false,
+                        'required' => false,
+                        'by_reference' => false,
+                        'type_options' => [
+                            'delete' => true,
+                        ],
+                    ], [
+                        'edit' => 'inline',
+                        'inline' => 'table',
+                    ])
+                ->end()
+                ->with('C.I.S.S.T.')
+                    ->add('myCissct', CheckboxType::class, [
+                        'label'=> 'Obligation',
+                        'required' => false
+                    ])
+                    ->add('chiefWorkRepresentative', TextType::class, [
+                        'label' => 'Représentant de l\'entreprise au CISST',
+                        'required' => false
+                    ])
+                ->end()
+                ->with('Coordination SPS')
                     ->add('securityCoordinator', CheckboxType::class, [
                         'label'=> 'Coordonateur sécurité',
                         'required' => false
@@ -359,6 +354,15 @@ final class PpspsAdmin extends AbstractAdmin
                     ])
                     ->add('inspectionVisit', CheckboxType::class, [
                         'label'=> 'Visite d\'inspection commune',
+                        'required' => false
+                    ])
+                    ->add('siteLevel', ChoiceType::class, [
+                        'label'=> 'Niveau de chantier',
+                        'choices' => [
+                            'Niveau 1' => 'Niveau 1',
+                            'Niveau 2' => 'Niveau 2',
+                            'Niveau 3' => 'Niveau 3',
+                        ],
                         'required' => false
                     ])
                     ->add('securityCoordinatorName', TextType::class, [
@@ -390,17 +394,19 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                 ->end()
-                ->with('Inventaire des installations Rougeot ou groupement d\'entreprises')
+                ->with('Installations de chantier')
                     ->add('listOfInstallations', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
+                            'Installation mobile équipée' => 'Installation mobile équipée',
+                            'WC raccordé' => 'WC raccordé',
+                            'WC non raccordé' => 'WC non raccordé',
+                            'Installation fixe' => 'Installation fixe',
                             'Bureau de chantier' => 'Bureau de chantier',
                             'Vestiaire' => 'Vestiaire',
-                            'Réféctoire' => 'Réféctoire',
-                            'WC' => 'WC',
+                            'Réfectoire' => 'Réfectoire',
                             'Lavabos' => 'Lavabos',
                             'Douche' => 'Douche',
-                            'Préfabriqué' => 'Préfabriqué',
                         ],
                         'multiple' => true,
                         'expanded' => true,
@@ -409,20 +415,8 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Autre',
                         'required' => false
                     ])
-                    ->add('maintainer', CheckboxType::class, [
-                        'label'=> 'Maintenu par ROUGEOT',
-                        'required' => false
-                    ])
-                    ->add('otherMaintainer', TextType::class, [
-                        'label' => 'Maintenu par',
-                        'required' => false
-                    ])
-                    ->add('accomodation', CheckboxType::class, [
-                        'label'=> 'Hébergement du personnel sur chantier',
-                        'required' => false
-                    ])
-                    ->add('accomodationDescr', TextAreaType::class, [
-                        'label' => 'Commentaire',
+                    ->add('maintainer', TextType::class, [
+                        'label' => 'Maintenu et entretenu par l\'entreprise',
                         'required' => false
                     ])
                 ->end()
@@ -452,7 +446,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                 ->end()
-                ->with('Mesures Générales de préventions')
+                ->with('Documents oligatoires')
                     ->add('mandatoryDocument', ChoiceType::class, [
                         'label' => false,
                         'choices' => [

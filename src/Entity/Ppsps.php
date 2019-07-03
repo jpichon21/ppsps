@@ -189,19 +189,9 @@ class Ppsps
     private $listOfInstallations = [];
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $maintainer;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $otherMaintainer;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $accomodationDescr;
 
     /**
      * @ORM\Column(type="array", nullable=true)
@@ -244,11 +234,6 @@ class Ppsps
     private $diffusions;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $accomodation;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps", cascade={"persist"})
      */
     private $speakers;
@@ -269,7 +254,7 @@ class Ppsps
     private $chiefWorkRepresentative;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="boolean", length=255, nullable=true)
      */
     private $myCissct;
 
@@ -319,6 +304,16 @@ class Ppsps
     private $status;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $siteLevel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SubcontractedWork", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $subcontractedWorks;
+
+    /**
      * to string method
      *
      * @return string
@@ -342,6 +337,7 @@ class Ppsps
         $this->leaders = new ArrayCollection();
         $this->siteManagers = new ArrayCollection();
         $this->workDirectors = new ArrayCollection();
+        $this->subcontractedWorks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -774,38 +770,14 @@ class Ppsps
         return $this;
     }
 
-    public function getMaintainer(): ?bool
+    public function getMaintainer(): ?string
     {
         return $this->maintainer;
     }
 
-    public function setMaintainer(?bool $maintainer): self
+    public function setMaintainer(?string $maintainer): self
     {
         $this->maintainer = $maintainer;
-
-        return $this;
-    }
-
-    public function getOtherMaintainer(): ?string
-    {
-        return $this->otherMaintainer;
-    }
-
-    public function setOtherMaintainer(?string $otherMaintainer): self
-    {
-        $this->otherMaintainer = $otherMaintainer;
-
-        return $this;
-    }
-
-    public function getAccomodationDescr(): ?string
-    {
-        return $this->accomodationDescr;
-    }
-
-    public function setAccomodationDescr(?string $accomodationDescr): self
-    {
-        $this->accomodationDescr = $accomodationDescr;
 
         return $this;
     }
@@ -925,18 +897,6 @@ class Ppsps
         return $this;
     }
 
-    public function getAccomodation(): ?bool
-    {
-        return $this->accomodation;
-    }
-
-    public function setAccomodation(?bool $accomodation): self
-    {
-        $this->accomodation = $accomodation;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Speaker[]
      */
@@ -1004,12 +964,12 @@ class Ppsps
         return $this;
     }
 
-    public function getMyCissct(): ?string
+    public function getMyCissct(): ?bool
     {
         return $this->myCissct;
     }
 
-    public function setMyCissct(?string $myCissct): self
+    public function setMyCissct(?bool $myCissct): self
     {
         $this->myCissct = $myCissct;
 
@@ -1207,6 +1167,49 @@ class Ppsps
     public function setStatus(?string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getSiteLevel(): ?string
+    {
+        return $this->siteLevel;
+    }
+
+    public function setSiteLevel(?string $siteLevel): self
+    {
+        $this->siteLevel = $siteLevel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SubcontractedWork[]
+     */
+    public function getSubcontractedWorks(): Collection
+    {
+        return $this->subcontractedWorks;
+    }
+
+    public function addSubcontractedWork(SubcontractedWork $subcontractedWork): self
+    {
+        if (!$this->subcontractedWorks->contains($subcontractedWork)) {
+            $this->subcontractedWorks[] = $subcontractedWork;
+            $subcontractedWork->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubcontractedWork(SubcontractedWork $subcontractedWork): self
+    {
+        if ($this->subcontractedWorks->contains($subcontractedWork)) {
+            $this->subcontractedWorks->removeElement($subcontractedWork);
+            // set the owning side to null (unless already changed)
+            if ($subcontractedWork->getPpsps() === $this) {
+                $subcontractedWork->setPpsps(null);
+            }
+        }
 
         return $this;
     }

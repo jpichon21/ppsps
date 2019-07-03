@@ -33,6 +33,7 @@ class SituationFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder->add('situation', ChoiceType::class, [
             'label' => 'Choix de la situation de travail',
             'choices' => $this->getSituationChoiceList(),
@@ -41,6 +42,11 @@ class SituationFormType extends AbstractType
             $situation = $event->getData()['situation'];
             $form = $event->getForm();
             if ($situation !== null) {
+                $form->add('situation', ChoiceType::class, [
+                    'label' => 'Choix de la situation de travail',
+                    'choices' => $this->getSituationChoiceList(),
+                    'sonata_help' => $this->situationRepository->findById($situation)[0]->getDescr()
+                ]);
                 $riskChoiceList = $this->getRiskListFromSituation($situation);
                 if ($riskChoiceList !== false) {
                     $form->add('risk', ChoiceType::class, [

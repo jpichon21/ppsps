@@ -94,8 +94,13 @@ services:
         arguments: [~, App\Entity\Leader, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Leader, show_in_dashboard: false }
+    admin.SubcontractedWork:
+        class: App\Admin\SubcontractedWorkAdmin
+        arguments: [~, App\Entity\SubcontractedWork, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: SubcontractedWork, show_in_dashboard: false }
     admin.siteManager:
         class: App\Admin\SiteManagerAdmin
         arguments: [~, App\Entity\SiteManager, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: SiteManager, show_in_dashboard: false }
+          - { name: sonata.admin, manager_type: orm, label: SiteManager, show_in_dashboard: false }

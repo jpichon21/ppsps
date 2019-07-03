@@ -26,6 +26,9 @@ final class DiffusionAdmin extends AbstractAdmin
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
+        $formMapper->add('email', TextType::class, [
+            'label' => 'Email'
+        ]);
         $formMapper->add('date', DatePickerType::class, [
             'label' => 'Date',
             'dp_side_by_side'       => true,
@@ -40,10 +43,7 @@ final class DiffusionAdmin extends AbstractAdmin
             'label' => 'Papier'
         ]);
         $formMapper->add('isNumeric', CheckboxType::class, [
-            'label' => 'numerique'
-        ]);
-        $formMapper->add('external', CheckboxType::class, [
-            'label' => 'externe'
+            'label' => 'Numerique'
         ]);
     }
 
