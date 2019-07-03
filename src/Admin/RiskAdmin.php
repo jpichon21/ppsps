@@ -19,6 +19,7 @@ final class RiskAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper->with('Risque associé');
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
@@ -29,13 +30,13 @@ final class RiskAdmin extends AbstractAdmin
             'class' => 'App\Entity\Situation',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissisez la situation associés a ce risque'));
+            'label'=>'Choissisez la situation de travail associée à ce risque'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('situation', null, [
-            'label' => 'Situation'
+            'label' => 'Situation de travail'
         ]);
     }
 
@@ -49,7 +50,7 @@ final class RiskAdmin extends AbstractAdmin
             'label' => 'Description'
         ]);
         $listMapper->add('situation', null, [
-            'label' => 'Situation'
+            'label' => 'Situation de travail'
         ]);
         $listMapper->add('_action', null, [
             'actions' => [

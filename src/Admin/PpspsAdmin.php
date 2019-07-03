@@ -57,7 +57,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])        
                     ->add('owner', TextType::class, [
-                        'label' => 'Maitre de l\'ouvrage',
+                        'label' => 'Maître d\'ouvrage',
                         'required' => false
                     ])
                     ->add('projectManager', TextType::class, [
@@ -481,7 +481,9 @@ final class PpspsAdmin extends AbstractAdmin
                         'allow_add' => true,
                         'allow_delete' => true,
                         'entry_type' => SituationFormType::class,
-                        'by_reference' => false
+                        'by_reference' => false,
+                        'label' => false,
+                        'required' => false
                     ],[
                         'edit' => 'inline',
                         'inline' => 'table',
@@ -523,10 +525,10 @@ final class PpspsAdmin extends AbstractAdmin
             'label' => 'Période d\'éxecution'
         ]);
         $listMapper->add('owner', null, [
-            'label' => 'Maitre de l\'ouvrage',
+            'label' => 'Maître d\'ouvrage',
         ]);
         $listMapper->add('projectManager', null, [
-            'label' => 'Maitre d\'oeuvre',
+            'label' => 'Maître d\'oeuvre',
         ]);
         $listMapper->add('status', ChoiceType::class, [
             'label' => 'Etat du document',

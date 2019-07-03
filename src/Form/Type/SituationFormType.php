@@ -34,7 +34,7 @@ class SituationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('situation', ChoiceType::class, [
-            'label' => 'Choix de la situation',
+            'label' => 'Choix de la situation de travail',
             'choices' => $this->getSituationChoiceList(),
         ]);
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
@@ -44,7 +44,7 @@ class SituationFormType extends AbstractType
                 $riskChoiceList = $this->getRiskListFromSituation($situation);
                 if ($riskChoiceList !== false) {
                     $form->add('risk', ChoiceType::class, [
-                        'label' => 'Risque Potentiel',
+                        'label' => 'Risques associés',
                         'multiple' => true,
                         'expanded' => true,
                         'choices' => $riskChoiceList,
@@ -55,7 +55,7 @@ class SituationFormType extends AbstractType
                 $toolChoiceList = $this->getToolListFromSituation($situation);
                 if ($toolChoiceList !== false) {
                     $form->add('tool', ChoiceType::class, [
-                        'label' => 'Liste des outils concernés',
+                        'label' => 'Moyens/matériels concernés',
                         'multiple' => true,
                         'expanded' => true,
                         'choices' => $toolChoiceList,
@@ -65,7 +65,7 @@ class SituationFormType extends AbstractType
             if (isset($event->getData()['risk'])) {
                 if($event->getData()['risk'] !== []){
                     $form->add('measure', ChoiceType::class, [
-                        'label' => 'Mesure pris en compte',
+                        'label' => 'Mesures prises en compte',
                         'multiple' => true,
                         'expanded' => true,
                         'choices' => $this->getMeasureListFromRisk($event->getData()['risk']),

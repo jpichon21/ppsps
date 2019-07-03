@@ -30,19 +30,19 @@ services:
         class: App\Admin\SituationAdmin
         arguments: [~, App\Entity\Situation, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Mise à jour données clients, label: Situations }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Situations de travail }
     
     admin.risk:
         class: App\Admin\RiskAdmin
         arguments: [~, App\Entity\Risk, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Mise à jour données clients, label: Risques }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Risques associés}
     
     admin.measure:
         class: App\Admin\MeasureAdmin
         arguments: [~, App\Entity\Measure, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Mise à jour données clients, label: Mesures }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Mesures }
     
     admin.app.ppsps:
         class: App\Admin\PpspsAdmin
@@ -58,7 +58,7 @@ services:
         class: App\Admin\ToolAdmin
         arguments: [~, App\Entity\Tool, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Mise à jour données clients, label: Outils et situations }
+            - { name: sonata.admin, manager_type: orm, group: 'Configuration', label: Moyens et matériels }
     admin.dealer:
         class: App\Admin\DealerAdmin
         arguments: [~, App\Entity\Dealer, ~]

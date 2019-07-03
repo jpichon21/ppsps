@@ -19,6 +19,7 @@ final class MeasureAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $formMapper->with('Mesure');
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
@@ -29,13 +30,13 @@ final class MeasureAdmin extends AbstractAdmin
             'class' => 'App\Entity\Risk',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissisez les risques associés a cette mesure'));
+            'label'=>'Choissise le risque associé à cette mesure'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('risk', null, [
-            'label' => 'Risque'
+            'label' => 'Risque associé'
         ]);
     }
 
@@ -49,7 +50,7 @@ final class MeasureAdmin extends AbstractAdmin
             'label' => 'Description'
         ]);
         $listMapper->add('risk', null, [
-            'label' => 'Risque'
+            'label' => 'Risque associé'
         ]);
         $listMapper->add('_action', null, [
             'actions' => [
