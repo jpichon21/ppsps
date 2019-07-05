@@ -104,3 +104,8 @@ services:
         arguments: [~, App\Entity\SiteManager, ~]
         tags:
           - { name: sonata.admin, manager_type: orm, label: SiteManager, show_in_dashboard: false }
+    admin.person:
+        class: App\Admin\PersonAdmin
+        arguments: [~, App\Entity\Person, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: Personnes, group: 'Configuration' }

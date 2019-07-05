@@ -281,26 +281,6 @@ class Ppsps
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $masterCompanion;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Leader", mappedBy="ppsps", cascade={"persist"})
-     */
-    private $leaders;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SiteManager", mappedBy="ppsps", cascade={"persist"})
-     */
-    private $siteManagers;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WorkDirector", mappedBy="ppsps", cascade={"persist"})
-     */
-    private $workDirectors;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $status;
 
     /**
@@ -312,6 +292,30 @@ class Ppsps
      * @ORM\OneToMany(targetEntity="App\Entity\SubcontractedWork", mappedBy="ppsps", cascade={"persist"})
      */
     private $subcontractedWorks;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
+     * @ORM\JoinTable(name="ppsps_workdirector")
+     */
+    private $workDirectors;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
+     * @ORM\JoinTable(name="ppsps_leader")
+     */
+    private $leaders;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
+     * @ORM\JoinTable(name="ppsps_sitemanager")
+     */
+    private $siteManagers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Person")
+     * @ORM\JoinTable(name="ppsps_mastercompanion")
+     */
+    private $masterCompanion;
 
     /**
      * to string method
@@ -334,10 +338,10 @@ class Ppsps
         $this->speakers = new ArrayCollection();
         $this->updatesPpsps = new ArrayCollection();
         $this->dealers = new ArrayCollection();
+        $this->subcontractedWorks = new ArrayCollection();
+        $this->workDirectors = new ArrayCollection();
         $this->leaders = new ArrayCollection();
         $this->siteManagers = new ArrayCollection();
-        $this->workDirectors = new ArrayCollection();
-        $this->subcontractedWorks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -1054,111 +1058,6 @@ class Ppsps
         return $this;
     }
 
-    public function getMasterCompanion(): ?string
-    {
-        return $this->masterCompanion;
-    }
-
-    public function setMasterCompanion(?string $masterCompanion): self
-    {
-        $this->masterCompanion = $masterCompanion;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Leader[]
-     */
-    public function getLeaders(): Collection
-    {
-        return $this->leaders;
-    }
-
-    public function addLeader(Leader $leader): self
-    {
-        if (!$this->leaders->contains($leader)) {
-            $this->leaders[] = $leader;
-            $leader->setPpsps($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLeader(Leader $leader): self
-    {
-        if ($this->leaders->contains($leader)) {
-            $this->leaders->removeElement($leader);
-            // set the owning side to null (unless already changed)
-            if ($leader->getPpsps() === $this) {
-                $leader->setPpsps(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|SiteManager[]
-     */
-    public function getSiteManagers(): Collection
-    {
-        return $this->siteManagers;
-    }
-
-    public function addSiteManager(SiteManager $siteManager): self
-    {
-        if (!$this->siteManagers->contains($siteManager)) {
-            $this->siteManagers[] = $siteManager;
-            $siteManager->setPpsps($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSiteManager(SiteManager $siteManager): self
-    {
-        if ($this->siteManagers->contains($siteManager)) {
-            $this->siteManagers->removeElement($siteManager);
-            // set the owning side to null (unless already changed)
-            if ($siteManager->getPpsps() === $this) {
-                $siteManager->setPpsps(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|WorkDirector[]
-     */
-    public function getWorkDirectors(): Collection
-    {
-        return $this->workDirectors;
-    }
-
-    public function addWorkDirector(WorkDirector $workDirector): self
-    {
-        if (!$this->workDirectors->contains($workDirector)) {
-            $this->workDirectors[] = $workDirector;
-            $workDirector->setPpsps($this);
-        }
-
-        return $this;
-    }
-
-    public function removeWorkDirector(WorkDirector $workDirector): self
-    {
-        if ($this->workDirectors->contains($workDirector)) {
-            $this->workDirectors->removeElement($workDirector);
-            // set the owning side to null (unless already changed)
-            if ($workDirector->getPpsps() === $this) {
-                $workDirector->setPpsps(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getStatus(): ?string
     {
         return $this->status;
@@ -1213,4 +1112,95 @@ class Ppsps
 
         return $this;
     }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getWorkDirectors(): Collection
+    {
+        return $this->workDirectors;
+    }
+
+    public function addWorkDirector(Person $workDirector): self
+    {
+        if (!$this->workDirectors->contains($workDirector)) {
+            $this->workDirectors[] = $workDirector;
+        }
+
+        return $this;
+    }
+
+    public function removeWorkDirector(Person $workDirector): self
+    {
+        if ($this->workDirectors->contains($workDirector)) {
+            $this->workDirectors->removeElement($workDirector);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getLeaders(): Collection
+    {
+        return $this->leaders;
+    }
+
+    public function addLeader(Person $leader): self
+    {
+        if (!$this->leaders->contains($leader)) {
+            $this->leaders[] = $leader;
+        }
+
+        return $this;
+    }
+
+    public function removeLeader(Person $leader): self
+    {
+        if ($this->leaders->contains($leader)) {
+            $this->leaders->removeElement($leader);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getSiteManagers(): Collection
+    {
+        return $this->siteManagers;
+    }
+
+    public function addSiteManager(Person $siteManager): self
+    {
+        if (!$this->siteManagers->contains($siteManager)) {
+            $this->siteManagers[] = $siteManager;
+        }
+
+        return $this;
+    }
+
+    public function removeSiteManager(Person $siteManager): self
+    {
+        if ($this->siteManagers->contains($siteManager)) {
+            $this->siteManagers->removeElement($siteManager);
+        }
+
+        return $this;
+    }
+
+    public function getMasterCompanion(): ?Person
+    {
+        return $this->masterCompanion;
+    }
+
+    public function setMasterCompanion(?Person $masterCompanion): self
+    {
+        $this->masterCompanion = $masterCompanion;
+
+        return $this;
+    }
+
 }

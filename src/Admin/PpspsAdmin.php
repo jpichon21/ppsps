@@ -17,6 +17,7 @@ use App\Form\Type\SituationFormType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType as SymfonyCollectionType;
 use Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 
 final class PpspsAdmin extends AbstractAdmin
 {
@@ -269,42 +270,28 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Directeur de Travaux',
                         'required' => false
                     ])
-                    ->add('workDirectors', CollectionType::class, [
+                    ->add('workDirectors', ModelAutocompleteType::class, [
                         'label' => 'Conducteur(s) de Travaux',
                         'required' => false,
-                        'by_reference' => false,
-                        'type_options' => [
-                            'delete' => true,
-                        ],
-                    ], [
-                        'edit' => 'inline',
-                        'inline' => 'table',
+                        'multiple' => true,
+                        'property' => 'name'
                     ])
-                    ->add('masterCompanion', TextType::class, [
+                    ->add('masterCompanion', ModelAutocompleteType::class, [
                         'label' => 'Maître compagnon',
-                        'required' => false
+                        'required' => false,
+                        'property' => 'name'
                     ])
-                    ->add('siteManagers', CollectionType::class, [
+                    ->add('siteManagers', ModelAutocompleteType::class, [
                         'label' => 'Chef(s) de chantier',
+                        'property' => 'name',
                         'required' => false,
-                        'by_reference' => false,
-                        'type_options' => [
-                            'delete' => true,
-                        ],
-                    ], [
-                        'edit' => 'inline',
-                        'inline' => 'table',
+                        'multiple' => true
                     ])
-                    ->add('leaders', CollectionType::class, [
+                    ->add('leaders', ModelAutocompleteType::class, [
                         'label' => 'Chef(s) d\'équipe',
+                        'property' => 'name',
                         'required' => false,
-                        'by_reference' => false,
-                        'type_options' => [
-                            'delete' => true,
-                        ],
-                    ], [
-                        'edit' => 'inline',
-                        'inline' => 'table',
+                        'multiple' => true
                     ])
                 ->end()
                 ->with('Effectif')
