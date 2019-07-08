@@ -109,3 +109,8 @@ services:
         arguments: [~, App\Entity\Person, ~]
         tags:
           - { name: sonata.admin, manager_type: orm, label: Personnes, group: 'Configuration' }
+    admin.annex:
+        class: App\Admin\AnnexAdmin
+        arguments: [~, App\Entity\Annex, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: Annexe, group: 'Configuration', show_in_dashboard: false }

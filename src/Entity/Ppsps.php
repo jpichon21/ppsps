@@ -318,6 +318,11 @@ class Ppsps
     private $masterCompanion;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist"})
+     */
+    private $annexs;
+
+    /**
      * to string method
      *
      * @return string
@@ -342,6 +347,7 @@ class Ppsps
         $this->workDirectors = new ArrayCollection();
         $this->leaders = new ArrayCollection();
         $this->siteManagers = new ArrayCollection();
+        $this->annexs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -1199,6 +1205,37 @@ class Ppsps
     public function setMasterCompanion(?Person $masterCompanion): self
     {
         $this->masterCompanion = $masterCompanion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Annex[]
+     */
+    public function getAnnexs(): Collection
+    {
+        return $this->annexs;
+    }
+
+    public function addAnnex(Annex $annex): self
+    {
+        if (!$this->annexs->contains($annex)) {
+            $this->annexs[] = $annex;
+            $annex->setPpsps($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnex(Annex $annex): self
+    {
+        if ($this->annexs->contains($annex)) {
+            $this->annexs->removeElement($annex);
+            // set the owning side to null (unless already changed)
+            if ($annex->getPpsps() === $this) {
+                $annex->setPpsps(null);
+            }
+        }
 
         return $this;
     }

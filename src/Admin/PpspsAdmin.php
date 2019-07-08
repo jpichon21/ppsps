@@ -455,6 +455,19 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                 ->end()
+                ->with('Liste d\'annexes')
+                    ->add('annexs', CollectionType::class, [
+                        'label' => false,
+                        'required' => false,
+                        'by_reference' => false,
+                        'type_options' => [
+                            'delete' => true,
+                        ],
+                    ], [
+                        'edit' => 'inline',
+                        'inline' => 'table',
+                    ])
+                ->end()
             ->end()
             ->tab('Configuration de l\'analyse des risques')
                 ->with('Analyse des risques')
