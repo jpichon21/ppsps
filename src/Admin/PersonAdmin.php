@@ -33,6 +33,16 @@ final class PersonAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         unset($this->listModes['mosaic']);
-        $listMapper->addIdentifier('name');
+        $listMapper->add('name', null, ['label' => 'nom'])
+        ->add('company', null, ['label' => 'Contact'])
+        ->add('address', null, ['label' => 'Adresse'])
+        ->add('fax', null, ['label' => 'Fax'])
+        ->add('email', null, ['label' => 'Email']);
+        $listMapper->add('_action', null, [
+            'actions' => [
+                'edit' => [],
+                'delete' => [],
+            ]
+        ]);
     }
 }
