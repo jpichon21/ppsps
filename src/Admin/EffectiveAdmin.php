@@ -27,9 +27,6 @@ final class EffectiveAdmin extends AbstractAdmin
         $formMapper->add('maximum', IntegerType::class, [
             'label' => 'Maximum(nombre)'
         ]);
-        $formMapper->add('peakPeriod', TextType::class, [
-            'label' => 'Période de pointe(mois)'
-        ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
