@@ -74,31 +74,6 @@ class Ppsps
     private $dateEnd;
 
     /**
-     * @ORM\Column(type="array", length=255, nullable=true)
-     */
-    private $rest = [];
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $winterRestBegin;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $winterRestEnd;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $summerRestBegin;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $summerRestEnd;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $openingSite;
@@ -239,16 +214,6 @@ class Ppsps
     private $speakers;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $otherRestBegin;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $otherRestEnd;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $chiefWorkRepresentative;
@@ -321,6 +286,16 @@ class Ppsps
      * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist"})
      */
     private $annexs;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $beginStopWork;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $endStopWork;
 
     /**
      * to string method
@@ -483,66 +458,6 @@ class Ppsps
     public function setDateEnd(?\DateTimeInterface $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
-
-        return $this;
-    }
-
-    public function getRest(): ?array
-    {
-        return $this->rest;
-    }
-
-    public function setRest(?array $rest): self
-    {
-        $this->rest = $rest;
-
-        return $this;
-    }
-
-    public function getWinterRestBegin(): ?\DateTimeInterface
-    {
-        return $this->winterRestBegin;
-    }
-
-    public function setWinterRestBegin(?\DateTimeInterface $winterRestBegin): self
-    {
-        $this->winterRestBegin = $winterRestBegin;
-
-        return $this;
-    }
-
-    public function getWinterRestEnd(): ?\DateTimeInterface
-    {
-        return $this->winterRestEnd;
-    }
-
-    public function setWinterRestEnd(?\DateTimeInterface $winterRestEnd): self
-    {
-        $this->winterRestEnd = $winterRestEnd;
-
-        return $this;
-    }
-
-    public function getSummerRestBegin(): ?\DateTimeInterface
-    {
-        return $this->summerRestBegin;
-    }
-
-    public function setSummerRestBegin(?\DateTimeInterface $summerRestBegin): self
-    {
-        $this->summerRestBegin = $summerRestBegin;
-
-        return $this;
-    }
-
-    public function getSummerRestEnd(): ?\DateTimeInterface
-    {
-        return $this->summerRestEnd;
-    }
-
-    public function setSummerRestEnd(?\DateTimeInterface $summerRestEnd): self
-    {
-        $this->summerRestEnd = $summerRestEnd;
 
         return $this;
     }
@@ -938,30 +853,6 @@ class Ppsps
         return $this;
     }
 
-    public function getOtherRestBegin(): ?\DateTimeInterface
-    {
-        return $this->otherRestBegin;
-    }
-
-    public function setOtherRestBegin(?\DateTimeInterface $otherRestBegin): self
-    {
-        $this->otherRestBegin = $otherRestBegin;
-
-        return $this;
-    }
-
-    public function getOtherRestEnd(): ?\DateTimeInterface
-    {
-        return $this->otherRestEnd;
-    }
-
-    public function setOtherRestEnd(?\DateTimeInterface $otherRestEnd): self
-    {
-        $this->otherRestEnd = $otherRestEnd;
-
-        return $this;
-    }
-
     public function getChiefWorkRepresentative(): ?string
     {
         return $this->chiefWorkRepresentative;
@@ -1236,6 +1127,30 @@ class Ppsps
                 $annex->setPpsps(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBeginStopWork(): ?\DateTimeInterface
+    {
+        return $this->beginStopWork;
+    }
+
+    public function setBeginStopWork(?\DateTimeInterface $beginStopWork): self
+    {
+        $this->beginStopWork = $beginStopWork;
+
+        return $this;
+    }
+
+    public function getEndStopWork(): ?\DateTimeInterface
+    {
+        return $this->endStopWork;
+    }
+
+    public function setEndStopWork(?\DateTimeInterface $endStopWork): self
+    {
+        $this->endStopWork = $endStopWork;
 
         return $this;
     }

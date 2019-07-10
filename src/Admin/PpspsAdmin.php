@@ -156,77 +156,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
-                    ->add('rest', ChoiceType::class, [
-                        'label' => 'Arrêt de chantier',
-                        'choices' => [
-                            'Congés été' => 'summer-rest',
-                            'Congés Hiver' => 'winter-rest',
-                            'Autre' => 'other',
-                        ],
-                        'multiple' => true,
-                        'expanded' => true,
-                        'required' => false
-                    ])
-                    ->add('summerRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des congés d\'été',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('summerRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des congés d\'été',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('winterRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des congés d\'hiver',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('winterRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des congés d\'hiver',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('otherRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des autres congés',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('otherRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des autres congés',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
                     ->add('openingSite', DatePickerType::class, [
                         'label' => 'Déclaration d\'ouverture de chantier',
                         'dp_side_by_side'       => true,
@@ -248,6 +177,28 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                 ->end()
+                ->with('Arrêts de chantier')
+                    ->add('beginStopWork', DatePickerType::class, [
+                        'label' => 'Du',
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => false,
+                        'dp_collapse'           => true,
+                        'dp_calendar_weeks'     => false,
+                        'dp_view_mode'          => 'days',
+                        'dp_min_view_mode'      => 'days',
+                        'required' => false,
+                    ])
+                    ->add('endStopWork', DatePickerType::class, [
+                        'label' => 'Au',
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => false,
+                        'dp_collapse'           => true,
+                        'dp_calendar_weeks'     => false,
+                        'dp_view_mode'          => 'days',
+                        'dp_min_view_mode'      => 'days',
+                        'required' => false,
+                    ])
+                ->end()            
                 ->with('Concessionaire')
                     ->add('dealers', CollectionType::class, [
                         'label' => 'Concessionaire',
