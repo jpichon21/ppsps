@@ -22,6 +22,7 @@ final class PersonAdmin extends AbstractAdmin
         ->add('address', TextType::class, ['label' => 'Adresse', 'required' => false])
         ->add('fax', TextType::class, ['label' => 'Fax', 'required' => false])
         ->add('email', TextType::class, ['label' => 'Email', 'required' => false])
+        ->add('phoneNumber', TextType::class, ['label' => 'Numéro de téléphone', 'required' => false])
         ;
     }
 
@@ -37,7 +38,8 @@ final class PersonAdmin extends AbstractAdmin
         ->add('company', null, ['label' => 'Contact'])
         ->add('address', null, ['label' => 'Adresse'])
         ->add('fax', null, ['label' => 'Fax'])
-        ->add('email', null, ['label' => 'Email']);
+        ->add('email', null, ['label' => 'Email'])
+        ->add('phoneNumber', null, ['label' => 'Numéro de téléphone']);
         $listMapper->add('_action', null, [
             'actions' => [
                 'edit' => [],
