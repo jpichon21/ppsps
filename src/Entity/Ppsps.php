@@ -241,11 +241,6 @@ class Ppsps
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $workDirector;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $status;
 
     /**
@@ -266,21 +261,9 @@ class Ppsps
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_leader")
-     */
-    private $leaders;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
      * @ORM\JoinTable(name="ppsps_sitemanager")
      */
     private $siteManagers;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_mastercompanion")
-     */
-    private $masterCompanion;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist"})
@@ -301,6 +284,11 @@ class Ppsps
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $optionalDICTMessage;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isMaintenedByRougeot;
 
     /**
      * to string method
@@ -324,8 +312,6 @@ class Ppsps
         $this->updatesPpsps = new ArrayCollection();
         $this->dealers = new ArrayCollection();
         $this->subcontractedWorks = new ArrayCollection();
-        $this->workDirectors = new ArrayCollection();
-        $this->leaders = new ArrayCollection();
         $this->siteManagers = new ArrayCollection();
         $this->annexs = new ArrayCollection();
     }
@@ -948,18 +934,6 @@ class Ppsps
         return $this;
     }
 
-    public function getWorkDirector(): ?string
-    {
-        return $this->workDirector;
-    }
-
-    public function setWorkDirector(?string $workDirector): self
-    {
-        $this->workDirector = $workDirector;
-
-        return $this;
-    }
-
     public function getStatus(): ?string
     {
         return $this->status;
@@ -1044,32 +1018,6 @@ class Ppsps
     /**
      * @return Collection|Person[]
      */
-    public function getLeaders(): Collection
-    {
-        return $this->leaders;
-    }
-
-    public function addLeader(Person $leader): self
-    {
-        if (!$this->leaders->contains($leader)) {
-            $this->leaders[] = $leader;
-        }
-
-        return $this;
-    }
-
-    public function removeLeader(Person $leader): self
-    {
-        if ($this->leaders->contains($leader)) {
-            $this->leaders->removeElement($leader);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
     public function getSiteManagers(): Collection
     {
         return $this->siteManagers;
@@ -1089,18 +1037,6 @@ class Ppsps
         if ($this->siteManagers->contains($siteManager)) {
             $this->siteManagers->removeElement($siteManager);
         }
-
-        return $this;
-    }
-
-    public function getMasterCompanion(): ?Person
-    {
-        return $this->masterCompanion;
-    }
-
-    public function setMasterCompanion(?Person $masterCompanion): self
-    {
-        $this->masterCompanion = $masterCompanion;
 
         return $this;
     }
@@ -1168,6 +1104,18 @@ class Ppsps
     public function setOptionalDICTMessage(?string $optionalDICTMessage): self
     {
         $this->optionalDICTMessage = $optionalDICTMessage;
+
+        return $this;
+    }
+
+    public function getIsMaintenedByRougeot(): ?bool
+    {
+        return $this->isMaintenedByRougeot;
+    }
+
+    public function setIsMaintenedByRougeot(?bool $isMaintenedByRougeot): self
+    {
+        $this->isMaintenedByRougeot = $isMaintenedByRougeot;
 
         return $this;
     }

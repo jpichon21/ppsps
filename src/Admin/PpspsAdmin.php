@@ -221,29 +221,14 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Animateur Qualité Sécurité Environnement',
                         'required' => false
                     ])
-                    ->add('workDirector', TextType::class, [
-                        'label' => 'Directeur de Travaux',
-                        'required' => false
-                    ])
                     ->add('workDirectors', ModelAutocompleteType::class, [
                         'label' => 'Conducteur(s) de Travaux',
                         'required' => false,
                         'multiple' => true,
                         'property' => 'name'
                     ])
-                    ->add('masterCompanion', ModelAutocompleteType::class, [
-                        'label' => 'Maître compagnon',
-                        'required' => false,
-                        'property' => 'name'
-                    ])
                     ->add('siteManagers', ModelAutocompleteType::class, [
                         'label' => 'Chef(s) de chantier',
-                        'property' => 'name',
-                        'required' => false,
-                        'multiple' => true
-                    ])
-                    ->add('leaders', ModelAutocompleteType::class, [
-                        'label' => 'Chef(s) d\'équipe',
                         'property' => 'name',
                         'required' => false,
                         'multiple' => true
@@ -337,6 +322,14 @@ final class PpspsAdmin extends AbstractAdmin
                     ])
                 ->end()
                 ->with('Installations de chantier')
+                    ->add('isMaintenedByRougeot', CheckboxType::class, [
+                        'label'=> 'Maintenu par rougeot',
+                        'required' => false
+                    ])
+                    ->add('maintainer', TextType::class, [
+                        'label' => 'Maintenu et entretenu par l\'entreprise',
+                        'required' => false
+                    ])
                     ->add('listOfInstallations', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
@@ -355,10 +348,6 @@ final class PpspsAdmin extends AbstractAdmin
                     ])
                     ->add('otherInstalation', TextType::class, [
                         'label' => 'Autre',
-                        'required' => false
-                    ])
-                    ->add('maintainer', TextType::class, [
-                        'label' => 'Maintenu et entretenu par l\'entreprise',
                         'required' => false
                     ])
                 ->end()
