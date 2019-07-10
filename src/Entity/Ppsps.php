@@ -236,11 +236,6 @@ class Ppsps
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $AQSE;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $status;
 
     /**
@@ -289,6 +284,11 @@ class Ppsps
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isMaintenedByRougeot;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Person", inversedBy="ppsp")
+     */
+    private $AQSE;
 
     /**
      * to string method
@@ -922,18 +922,6 @@ class Ppsps
         return $this;
     }
 
-    public function getAQSE(): ?string
-    {
-        return $this->AQSE;
-    }
-
-    public function setAQSE(?string $AQSE): self
-    {
-        $this->AQSE = $AQSE;
-
-        return $this;
-    }
-
     public function getStatus(): ?string
     {
         return $this->status;
@@ -1116,6 +1104,18 @@ class Ppsps
     public function setIsMaintenedByRougeot(?bool $isMaintenedByRougeot): self
     {
         $this->isMaintenedByRougeot = $isMaintenedByRougeot;
+
+        return $this;
+    }
+
+    public function getAQSE(): ?Person
+    {
+        return $this->AQSE;
+    }
+
+    public function setAQSE(?Person $AQSE): self
+    {
+        $this->AQSE = $AQSE;
 
         return $this;
     }

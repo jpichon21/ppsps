@@ -48,6 +48,16 @@ class Person
      */
     private $phoneNumber;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ppsps", mappedBy="AQSE")
+     */
+    private $ppsp;
+
+    public function __construct()
+    {
+        $this->ppsp = new ArrayCollection();
+    }
+
     public function __toString()
     {
         return $this->name;
@@ -126,6 +136,37 @@ class Person
     public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ppsps[]
+     */
+    public function getPpsp(): Collection
+    {
+        return $this->ppsp;
+    }
+
+    public function addPpsp(Ppsps $ppsp): self
+    {
+        if (!$this->ppsp->contains($ppsp)) {
+            $this->ppsp[] = $ppsp;
+            $ppsp->setAQSE($this);
+        }
+
+        return $this;
+    }
+
+    public function removePpsp(Ppsps $ppsp): self
+    {
+        if ($this->ppsp->contains($ppsp)) {
+            $this->ppsp->removeElement($ppsp);
+            // set the owning side to null (unless already changed)
+            if ($ppsp->getAQSE() === $this) {
+                $ppsp->setAQSE(null);
+            }
+        }
 
         return $this;
     }
