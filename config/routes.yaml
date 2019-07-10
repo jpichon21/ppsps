@@ -1,4 +1,7 @@
 pdf:
     path: /
     controller: App\Controller\PdfController::index
+generatePDF:
+    path: /generate/{id}
+    controller: App\Controller\PdfController::generatePDF
     
