@@ -247,7 +247,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Intervenants suplémentaires')
+                ->with('Organismes de prévention')
                     ->add('speakers', CollectionType::class, [
                         'label' => false,
                         'required' => false,
@@ -260,19 +260,19 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('C.I.S.S.T.')
+                ->with('C.I.S.S.C.T.')
                     ->add('myCissct', CheckboxType::class, [
                         'label'=> 'Obligation',
                         'required' => false
                     ])
                     ->add('chiefWorkRepresentative', TextType::class, [
-                        'label' => 'Représentant de l\'entreprise au CISST',
+                        'label' => 'Représentant de l\'entreprise au CISSCT',
                         'required' => false
                     ])
                 ->end()
-                ->with('Coordination SPS')
+                ->with('Coordonation SPS')
                     ->add('securityCoordinator', CheckboxType::class, [
-                        'label'=> 'Coordonateur sécurité',
+                        'label'=> 'Coordonnateur sécurité',
                         'required' => false
                     ])
                     ->add('PGC', CheckboxType::class, [
@@ -351,7 +351,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                 ->end()
-                ->with('Aptitudes particulières du personnel affecté au chantier')
+                ->with('Autorisation et habilitation particulière au chantier')
                     ->add('suiabilityList', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
