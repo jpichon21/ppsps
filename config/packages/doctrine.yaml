@@ -4,7 +4,6 @@ doctrine:
         driver: 'pdo_mysql'
         server_version: '5.7'
         charset: utf8mb4
-        url: '%env(DATABASE_URL)%'
         host: '%env(DATABASE_HOST)%'
         user: '%env(DATABASE_USER)%'
         password: '%env(DATABASE_PWD)%'
