@@ -298,6 +298,11 @@ class Ppsps
     private $endStopWork;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $optionalDICTMessage;
+
+    /**
      * to string method
      *
      * @return string
@@ -1151,6 +1156,18 @@ class Ppsps
     public function setEndStopWork(?\DateTimeInterface $endStopWork): self
     {
         $this->endStopWork = $endStopWork;
+
+        return $this;
+    }
+
+    public function getOptionalDICTMessage(): ?string
+    {
+        return $this->optionalDICTMessage;
+    }
+
+    public function setOptionalDICTMessage(?string $optionalDICTMessage): self
+    {
+        $this->optionalDICTMessage = $optionalDICTMessage;
 
         return $this;
     }

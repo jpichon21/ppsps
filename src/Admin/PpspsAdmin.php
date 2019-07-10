@@ -211,6 +211,10 @@ final class PpspsAdmin extends AbstractAdmin
                         'edit' => 'inline',
                         'inline' => 'table',
                     ])
+                    ->add('optionalDICTMessage', TextType::class, [
+                        'label' => 'Message voir en annexe',
+                        'required' => false
+                    ])
                 ->end()
                 ->with('Organisation de l\'entreprise (ou du groupement)')
                     ->add('AQSE', TextType::class, [
