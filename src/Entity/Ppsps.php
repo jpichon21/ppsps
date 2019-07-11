@@ -291,6 +291,11 @@ class Ppsps
     private $AQSE;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Groupment", inversedBy="ppsps")
+     */
+    private $groupment;
+
+    /**
      * to string method
      *
      * @return string
@@ -1117,6 +1122,18 @@ class Ppsps
     public function setAQSE(?Person $AQSE): self
     {
         $this->AQSE = $AQSE;
+
+        return $this;
+    }
+
+    public function getGroupment(): ?Groupment
+    {
+        return $this->groupment;
+    }
+
+    public function setGroupment(?Groupment $groupment): self
+    {
+        $this->groupment = $groupment;
 
         return $this;
     }

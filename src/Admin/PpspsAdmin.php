@@ -25,6 +25,19 @@ final class PpspsAdmin extends AbstractAdmin
         $collection->remove('export');
     }
 
+
+    public function prePersist($object)
+    {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object)
+    {
+        if ($object->getGroupment() === null) {
+            $object->setGroupment($this->getUser()->getGroupment());
+        }
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -439,6 +452,11 @@ final class PpspsAdmin extends AbstractAdmin
         $datagridMapper->add('siteNumber', null, [
             'label' => 'Numéro du chantier'
         ]);
+        if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            $datagridMapper->add('groupment', null, [
+                'label' => 'Groupe'
+            ]);
+        }
         $datagridMapper->add('status', ChoiceFilter::class, [
             'label' => 'Etat du document',
             'choices' => [
@@ -480,5 +498,21 @@ final class PpspsAdmin extends AbstractAdmin
                 'export' => ['template' => 'admin/action/export.html.twig']
             ]
         ]);
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        if (!in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            $query->where($query->expr()->eq($query->getRootAliases()[0] . '.groupment', ':groupmentId'));
+            $query->setParameter('groupmentId', $this->getUser()->getGroupment()->getId());
+        }
+        return $query;
+    }
+
+    private function getUser()
+    {
+        $tokenStorage = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken();
+        return ($tokenStorage) ? $tokenStorage->getUser() : null;
     }
 }

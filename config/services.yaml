@@ -109,9 +109,19 @@ services:
         class: App\Admin\PersonAdmin
         arguments: [~, App\Entity\Person, ~]
         tags:
-          - { name: sonata.admin, manager_type: orm, label: Personnes, group: 'Configuration' }
+          - { name: sonata.admin, manager_type: orm, label: Personnes, group: 'Gestion des PPSPS' }
     admin.annex:
         class: App\Admin\AnnexAdmin
         arguments: [~, App\Entity\Annex, ~]
         tags:
           - { name: sonata.admin, manager_type: orm, label: Annexe, group: 'Configuration', show_in_dashboard: false }
+    admin.users:
+        class: App\Admin\UserAdmin
+        arguments: [~, App\Entity\User, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: Utilisateur, group: 'Gestion des utilisateurs', show_in_dashboard: true }
+    admin.group:
+        class: App\Admin\GroupmentAdmin
+        arguments: [~, App\Entity\Groupment, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: Groupe, group: 'Gestion des utilisateurs', show_in_dashboard: true }

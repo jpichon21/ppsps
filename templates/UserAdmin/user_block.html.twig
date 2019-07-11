@@ -1,0 +1,12 @@
+{% block user_block %}
+    {% if app.user %}
+    <li class="user-footer">
+        <div>
+            <a href="{{path('admin_logout')}}" class="btn btn-primary btn-block">
+                <i class="fa fa-sign-out fa-fw"></i> 
+                {{ 'user_block_logout'|trans({}, 'SonataAdminBundle') }}
+            </a>
+        </div>
+    </li>
+    {% endif %}
+{% endblock %}
