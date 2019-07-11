@@ -109,6 +109,7 @@ class PDFparserService
             'endStopWork' => $this->dateParser($ppsps->getEndStopWork()),
             'optionalDICTMessage' => $ppsps->getOptionalDICTMessage(),
             'isMaintenedByRougeot' => $ppsps->getIsMaintenedByRougeot(),
+            'annexs' => $ppsps->getAnnexs()->getValues()
         ];
     }
 

@@ -13,39 +13,24 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 final class AnnexAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', TextType::class, [
+            ->add('annexName', TextType::class, [
                 'label' => 'Nom du fichier',
                 'required' => true
-            ])
-            ->add('file', FileType::class, [
+            ]);               
+        $formMapper
+            ->add('file', VichFileType::class, [
                 'label' => 'Fichier',
-                'required' => false
-            ])
-        ;
-    }
-
-    public function prePersist($annex)
-    {
-        $this->manageFileUpload($annex);
-    }
-
-    public function preUpdate($annex)
-    {
-        $this->manageFileUpload($annex);
-    }
-
-    private function manageFileUpload($annex)
-    {
-        if ($annex->getFile()) {
-            $annex->upload();
-            $annex->refreshUpdated();
-        }
+                'required' => false,
+                'allow_delete'  => false, 
+                'download_link' => false,
+        ]);       
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
