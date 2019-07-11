@@ -314,6 +314,7 @@ class Ppsps
         $this->subcontractedWorks = new ArrayCollection();
         $this->siteManagers = new ArrayCollection();
         $this->annexs = new ArrayCollection();
+        $this->workDirectors = new ArrayCollection();
     }
 
     public function getId(): ?int
