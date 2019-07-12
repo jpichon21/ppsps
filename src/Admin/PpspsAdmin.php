@@ -179,16 +179,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
-                    ->add('startingWork', DatePickerType::class, [
-                        'label' => 'Déclaration d\'intention de commencer les travaux (D.I.C.T.)',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
                 ->end()
                 ->with('Arrêts de chantier')
                     ->add('beginStopWork', DatePickerType::class, [
@@ -225,7 +215,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                     ->add('optionalDICTMessage', TextType::class, [
-                        'label' => 'Message voir en annexe',
+                        'label' => 'Renvoyer en annexe',
                         'required' => false
                     ])
                 ->end()
@@ -366,7 +356,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                 ->end()
-                ->with('Autorisation et habilitation particulière au chantier')
+                ->with('Autorisation et habilitation particulière du personnel')
                     ->add('suiabilityList', ChoiceType::class, [
                         'label' => false,
                         'choices' => [

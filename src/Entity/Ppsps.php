@@ -79,11 +79,6 @@ class Ppsps
     private $openingSite;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $startingWork;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $siteName;
@@ -467,18 +462,6 @@ class Ppsps
     public function setOpeningSite(?\DateTimeInterface $openingSite): self
     {
         $this->openingSite = $openingSite;
-
-        return $this;
-    }
-
-    public function getStartingWork(): ?\DateTimeInterface
-    {
-        return $this->startingWork;
-    }
-
-    public function setStartingWork(?\DateTimeInterface $startingWork): self
-    {
-        $this->startingWork = $startingWork;
 
         return $this;
     }
