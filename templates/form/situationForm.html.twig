@@ -1,32 +1,43 @@
 {% block situationForm_widget %}
         <div class="row">
-                <div class="col-md-3">
+            <div class="col-md-6">
+                {{ form_row(form.situationGroup) }}
+            </div>
+            {% if form.situation is defined %}
+                <div class="col-md-6">
                     {{ form_row(form.situation) }}
                 </div>
-            {% if form.tool is defined %}
-                <div class="col-md-3">
-                    {{ form_row(form.tool) }}
-                </div>
             {% else %}
-                <div class="col-md-3">
+                <div class="col-md-6">
                     
                 </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            {% if form.tool is defined %}
+            <div class="col-md-4">
+                {{ form_row(form.tool) }}
+            </div>
+            {% else %}
+            <div class="col-md-4">
+                
+            </div>
             {% endif %}
             {% if form.risk is defined %}
-                <div class="col-md-3">
-                    {{ form_row(form.risk) }}
-                </div>
+            <div class="col-md-4">
+                {{ form_row(form.risk) }}
+            </div>
             {% else %}
-                <div class="col-md-3">
-                    
-                </div>
+            <div class="col-md-4">
+                
+            </div>
             {% endif %}
             {% if form.measure is defined %}
-                <div class="col-md-3">
+                <div class="col-md-4">
                     {{ form_row(form.measure) }}
                 </div>
             {% else %}
-                <div class="col-md-3">
+                <div class="col-md-4">
                     
                 </div>
             {% endif %}

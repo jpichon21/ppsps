@@ -39,6 +39,11 @@ class Situation
     private $tools;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SituationGroup", inversedBy="situations")
+     */
+    private $situationGroup;
+
+    /**
      * to string method
      *
      * @return string
@@ -147,6 +152,18 @@ class Situation
                 $tool->setSituation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSituationGroup(): ?SituationGroup
+    {
+        return $this->situationGroup;
+    }
+
+    public function setSituationGroup(?SituationGroup $situationGroup): self
+    {
+        $this->situationGroup = $situationGroup;
 
         return $this;
     }

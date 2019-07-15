@@ -130,3 +130,8 @@ services:
         arguments: [~, App\Entity\GroupmentLogo, ~]
         tags:
           - { name: sonata.admin, manager_type: orm, label: Logo des groupes, group: 'Gestion des utilisateurs', show_in_dashboard: true }
+    admin.situationGroup:
+        class: App\Admin\SituationGroupAdmin
+        arguments: [~, App\Entity\SituationGroup, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: Groupe de situations, group: 'Configuration', show_in_dashboard: true }

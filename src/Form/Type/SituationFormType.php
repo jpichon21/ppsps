@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Repository\SituationRepository;
 use App\Repository\RiskRepository;
+use App\Repository\SituationGroupRepository;
 use App\Entity\Situation;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormEvent;
@@ -14,8 +15,9 @@ class SituationFormType extends AbstractType
 {
     private $situationRepository;
 
-    public function __construct(SituationRepository $situationRepository, RiskRepository $riskRepository) {
+    public function __construct(SituationRepository $situationRepository, RiskRepository $riskRepository, SituationGroupRepository $situationGroupRepository) {
         $this->situationRepository = $situationRepository;
+        $this->situationGroupRepository = $situationGroupRepository;
         $this->riskRepository = $riskRepository;
     }
     
@@ -34,19 +36,37 @@ class SituationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         
-        $builder->add('situation', ChoiceType::class, [
+        $builder->add('situationGroup', ChoiceType::class, [
             'label' => 'Choix de la situation de travail',
-            'choices' => $this->getSituationChoiceList(),
+            'choices' => $this->getSituationGroupChoiceList(),
         ]);
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-            $situation = $event->getData()['situation'];
+            $situationGroup = $event->getData()['situationGroup'];
+            if (isset($event->getData()['situation'])) {
+                $situation = $event->getData()['situation'];
+            } else {
+                $situation = null;
+            }
             $form = $event->getForm();
-            if ($situation !== null) {
-                $form->add('situation', ChoiceType::class, [
+            if ($situationGroup !== null) {
+                $form->add('situationGroup', ChoiceType::class, [
                     'label' => 'Choix de la situation de travail',
-                    'choices' => $this->getSituationChoiceList(),
-                    'sonata_help' => $this->situationRepository->findById($situation)[0]->getDescr()
+                    'choices' => $this->getSituationGroupChoiceList(),
                 ]);
+                if ($situation !== null) {
+                    $form->add('situation', ChoiceType::class, [
+                        'label' => 'Choix de la situation de travail',
+                        'choices' => $this->getSituationByGroupChoiceList($situationGroup),
+                        'sonata_help' => $this->situationRepository->findById($situation)[0]->getDescr()
+                    ]);       
+                } else {
+                    $form->add('situation', ChoiceType::class, [
+                        'label' => 'Choix de la situation de travail',
+                        'choices' => $this->getSituationByGroupChoiceList($situationGroup),
+                    ]);
+                }
+            }
+            if($situation !== null) {
                 $riskChoiceList = $this->getRiskListFromSituation($situation);
                 if ($riskChoiceList !== false) {
                     $form->add('risk', ChoiceType::class, [
@@ -80,9 +100,20 @@ class SituationFormType extends AbstractType
             }
         });
     }
+    
+    private function getSituationGroupChoiceList() {
+        foreach ($this->situationGroupRepository->findAll() as $situationGroup) {
+            $situationGroupChoiceList[$situationGroup->getName()] = $situationGroup->getId();
+        }
+        if (isset($situationGroupChoiceList)) {
+            return $situationGroupChoiceList;
+        }
+        return false;
+    }
 
-    private function getSituationChoiceList() {
-        foreach ($this->situationRepository->findAll() as $situation) {
+    private function getSituationByGroupChoiceList($situationGroupId) {
+        $situationGroup = $this->situationGroupRepository->find($situationGroupId);
+        foreach ($this->situationRepository->findBySituationGroup($situationGroup) as $situation) {
             $situationChoiceList[$situation->getName()] = $situation->getId();
         }
         if (isset($situationChoiceList)) {
