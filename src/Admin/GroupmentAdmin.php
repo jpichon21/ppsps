@@ -6,8 +6,9 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
+use Sonata\AdminBundle\Form\Type\ModelListType;
 
 final class GroupmentAdmin extends AbstractAdmin
 {
@@ -16,6 +17,12 @@ final class GroupmentAdmin extends AbstractAdmin
         $formMapper
         ->add('name', TextType::class, [
             'label' => 'Intitulé du groupe',
+        ]);
+        $formMapper
+        ->add('logo', ModelListType::class, [
+            'label' => 'Logo du groupe',
+            'required' => false,
+            'btn_add' => true,
         ]);
     }
 

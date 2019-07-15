@@ -36,6 +36,11 @@ class Groupment
     private $ppsps;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\GroupmentLogo", cascade={"persist", "remove"})
+     */
+    private $logo;
+
+    /**
      * to string method
      *
      * @return string
@@ -149,6 +154,18 @@ class Groupment
                 $ppsp->setGroupment(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLogo(): ?GroupmentLogo
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?GroupmentLogo $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }
