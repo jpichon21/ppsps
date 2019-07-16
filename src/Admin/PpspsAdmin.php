@@ -18,6 +18,8 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType as SymfonyCollecti
 use Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
+use App\Entity\SituationGroup;
+use App\Entity\Situation;
 
 final class PpspsAdmin extends AbstractAdmin
 {
@@ -33,9 +35,76 @@ final class PpspsAdmin extends AbstractAdmin
 
     public function preUpdate($object)
     {
+        $situationLists = $object->getSituation();
+        foreach ($situationLists as $key => $situation) {
+            if(isset($situation['situationGroup'])){
+                if(isset($situation['situation'])){
+                    if(!$this->checkIntegritySituation($situation['situationGroup'], $situation['situation'])){
+                        unset($situationLists[$key]['situation']);
+                        unset($situationLists[$key]['risk']);
+                        unset($situationLists[$key]['tool']);
+                        unset($situationLists[$key]['measure']);
+                    }
+                    if(isset($situation['risk'])) {
+                        if ($situation['risk'] === null || $situation['risk'] === []) {
+                            unset($situationLists[$key]['measure']);
+                        }
+                        foreach ($situation['risk'] as $risk) {
+                            if(!$this->checkIntegrityRisk($situation['situation'], $risk)){
+                                unset($situationLists[$key]['risk']);
+                                break;
+                            }
+                        }
+                    }
+                    if(isset($situation['tool'])) {
+                        foreach ($situation['tool'] as $tool) {
+                            if(!$this->checkIntegrityTool($situation['situation'], $tool)){
+                                unset($situationLists[$key]['tool']);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        $object->setSituation($situationLists);
         if ($object->getGroupment() === null) {
             $object->setGroupment($this->getUser()->getGroupment());
         }
+    }
+
+    private function checkIntegritySituation($situationGroupId, $situationId) {
+        $em =  $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $situationLists = $em->getRepository(SituationGroup::class)->findOneById($situationGroupId)->getSituations();
+        foreach ($situationLists as $situation) {
+            $arrayOfSituationId[] = $situation->getId();
+        }
+
+        return in_array($situationId, $arrayOfSituationId);
+    }
+
+    private function checkIntegrityRisk($situationId, $riskId) {
+        $em =  $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $riskLists = $em->getRepository(Situation::class)->findOneById($situationId)->getRisks();
+        foreach ($riskLists as $risk) {
+            $arrayOfRiskId[] = $risk->getId();
+        }
+        if (!isset($arrayOfRiskId)) {
+            return false;
+        }
+        return in_array($riskId, $arrayOfRiskId);
+    }
+
+    private function checkIntegrityTool($situationId, $toolId) {
+        $em =  $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $toolLists = $em->getRepository(Situation::class)->findOneById($situationId)->getTools();
+        foreach ($toolLists as $tool) {
+            $arrayOfToolId[] = $tool->getId();
+        }
+        if (!isset($arrayOfToolId)) {
+            return false;
+        }
+        return in_array($toolId, $arrayOfToolId);
     }
 
     protected function configureFormFields(FormMapper $formMapper)

@@ -6,7 +6,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use App\Repository\SituationRepository;
 use App\Repository\RiskRepository;
 use App\Repository\SituationGroupRepository;
-use App\Entity\Situation;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -37,33 +36,35 @@ class SituationFormType extends AbstractType
     {
         
         $builder->add('situationGroup', ChoiceType::class, [
-            'label' => 'Choix de la situation de travail',
+            'label' => 'Choix du type de situation',
             'choices' => $this->getSituationGroupChoiceList(),
         ]);
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $situationGroup = $event->getData()['situationGroup'];
+            $form = $event->getForm();
             if (isset($event->getData()['situation'])) {
                 $situation = $event->getData()['situation'];
             } else {
                 $situation = null;
             }
-            $form = $event->getForm();
             if ($situationGroup !== null) {
                 $form->add('situationGroup', ChoiceType::class, [
-                    'label' => 'Choix de la situation de travail',
+                    'label' => 'Choix du type de situation',
                     'choices' => $this->getSituationGroupChoiceList(),
                 ]);
                 if ($situation !== null) {
                     $form->add('situation', ChoiceType::class, [
                         'label' => 'Choix de la situation de travail',
                         'choices' => $this->getSituationByGroupChoiceList($situationGroup),
-                        'sonata_help' => $this->situationRepository->findById($situation)[0]->getDescr()
+                        // 'sonata_help' => $this->situationRepository->findById($situation)[0]->getDescr(),
                     ]);       
                 } else {
-                    $form->add('situation', ChoiceType::class, [
-                        'label' => 'Choix de la situation de travail',
-                        'choices' => $this->getSituationByGroupChoiceList($situationGroup),
-                    ]);
+                    if ($this->getSituationByGroupChoiceList($situationGroup) !== false) {
+                        $form->add('situation', ChoiceType::class, [
+                            'label' => 'Choix de la situation de travail',
+                            'choices' => $this->getSituationByGroupChoiceList($situationGroup),
+                        ]);
+                    }
                 }
             }
             if($situation !== null) {
