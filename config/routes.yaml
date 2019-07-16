@@ -1,5 +1,5 @@
 pdf:
-    path: /
+    path: /preview/{id}
     controller: App\Controller\PdfController::index
 generatePDF:
     path: /generate/{id}

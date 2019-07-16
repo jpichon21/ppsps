@@ -4,6 +4,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\PDFparserService;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 
 class PdfController extends Controller
 {
@@ -25,13 +26,16 @@ class PdfController extends Controller
     }
 
      /**
-     * @Route("/", name="pdf", methods={"GET"})
+     * @Route("/preview/{id}", name="pdf", methods={"GET"})
      */
-    public function index()
+    public function index($id)
     {
-     return $this->render(
-         'pdf_layout.html.twig'
-     );
+        $ppsps = $this->PDFparserService->getPpspsById($id);
+        return $this->render(
+            'pdf_layout.html.twig',[
+                'ppsps' => $ppsps,
+            ]
+        );
     }
 
     /**
@@ -40,10 +44,13 @@ class PdfController extends Controller
     public function generatePDF($id)
     {
         $ppsps = $this->PDFparserService->getPpspsById($id);
-        return $this->render(
-            'pdf_layout.html.twig',[
-                'ppsps' => $ppsps,
-            ]
+        $html = $this->renderView('pdf_layout.html.twig',[
+            'ppsps' => $ppsps,
+        ]);
+        $dayDate = new \DateTime();
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'PPSPS'.'_'.$ppsps['siteName'].'_'.$ppsps['siteNumber'].'.pdf'
         );
     }
 }

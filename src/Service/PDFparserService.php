@@ -74,7 +74,6 @@ class PDFparserService
             'dateBegin' => $this->dateParser($ppsps->getDateBegin()),
             'dateEnd' => $this->dateParser($ppsps->getDateEnd()),
             'openingSite' => $this->dateParser($ppsps->getOpeningSite()),
-            'startingWork' => $this->dateParser($ppsps->getStartingWork()),
             'siteName' => $ppsps->getSiteName(),
             'siteNumber' => $ppsps->getSiteNumber(),
             'globalSiteAddress' => $ppsps->getGlobalSiteAddress(),
@@ -93,13 +92,16 @@ class PDFparserService
             'otherInstalation' => $ppsps->getOtherInstalation(),
             'particularSecurityMeasure' => $ppsps->getParticularSecurityMeasure(),
             'particularSecurityDetail' => $ppsps->getParticularSecurityDetail(),
-            'situation' => $this->situationParser($ppsps->getSituation()),
+            'situations' => $this->situationParser($ppsps->getSituation()),
             'diffusions' => $this->diffusionParser($ppsps->getDiffusions()->getValues()),
             'speakers' => $this->speakerParser($ppsps->getSpeakers()->getValues()),
             'chiefWorkRepresentative' => $ppsps->getChiefWorkRepresentative(),
             'myCissct' => $ppsps->getMyCissct(),
-            'updatesPpsps' => $this->updateParser($ppsps->getUpdatesPpsps()),
-            'dealers' => $this->dealerParser($ppsps->getDealers()),
+            'updatesPpsps' => $this->updateParser($ppsps->getUpdatesPpsps()->getValues()),
+            'dealers' => $this->dealerParser($ppsps->getDealers()->getValues()),
+            'securityCoordinatorName' => $ppsps->getSecurityCoordinatorName(),
+            'AQSE' => $ppsps->getAQSE(),
+            'maintainer' => $ppsps->getMaintainer(),
             'status' => $ppsps->getStatus(),
             'siteLevel' => $ppsps->getSiteLevel(),
             'subContractedWorks' => $this->subContractedWorkParser($ppsps->getSubContractedWorks()->getValues()),
@@ -109,6 +111,8 @@ class PDFparserService
             'endStopWork' => $this->dateParser($ppsps->getEndStopWork()),
             'optionalDICTMessage' => $ppsps->getOptionalDICTMessage(),
             'isMaintenedByRougeot' => $ppsps->getIsMaintenedByRougeot(),
+            'isGuardian' => $ppsps->getIsGuardian(),
+            'isControlled' => $ppsps->getIsControlled(),
             'annexs' => $ppsps->getAnnexs()->getValues()
         ];
     }
@@ -208,25 +212,28 @@ class PDFparserService
     }
     
     private function situationParser($situationsList) {
+
         if ($situationsList == []) {
             return null;
         }
         foreach ($situationsList as $key => $situation) {
-            $situations[$key]['situation'] = $this->situationRepository->findById($situation['situation'])[0]->getName();
-            
-            if (isset($situation['risk'])) {
-                foreach ($situation['risk'] as $riskKey => $risk) {
-                    $situations[$key]['risk'][$riskKey] = $this->riskRepository->findById($risk)[0]->getName();
+            if(isset($situation['situation'])) {
+                $situations[$key]['situation'] = $this->situationRepository->findById($situation['situation'])[0]->getName();
+                
+                if (isset($situation['risk'])) {
+                    foreach ($situation['risk'] as $riskKey => $risk) {
+                        $situations[$key]['risk'][$riskKey] = $this->riskRepository->findById($risk)[0]->getName();
+                    }
                 }
-            }
-            if (isset($situation['tool'])) {
-                foreach ($situation['tool'] as $toolKey => $tool) {
-                    $situations[$key]['tool'][$toolKey] = $this->toolRepository->findById($tool)[0]->getName();
+                if (isset($situation['tool'])) {
+                    foreach ($situation['tool'] as $toolKey => $tool) {
+                        $situations[$key]['tool'][$toolKey] = $this->toolRepository->findById($tool)[0]->getName();
+                    }
                 }
-            }
-            if (isset($situation['measure'])) {
-                foreach ($situation['measure'] as $measureKey => $measure) {
-                    $situations[$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getName();
+                if (isset($situation['measure'])) {
+                    foreach ($situation['measure'] as $measureKey => $measure) {
+                        $situations[$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getName();
+                    }
                 }
             }
         }

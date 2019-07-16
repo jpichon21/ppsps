@@ -291,6 +291,16 @@ class Ppsps
     private $groupment;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isControlled;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isGuardian;
+
+    /**
      * to string method
      *
      * @return string
@@ -1117,6 +1127,30 @@ class Ppsps
     public function setGroupment(?Groupment $groupment): self
     {
         $this->groupment = $groupment;
+
+        return $this;
+    }
+
+    public function getIsControlled(): ?bool
+    {
+        return $this->isControlled;
+    }
+
+    public function setIsControlled(bool $isControlled): self
+    {
+        $this->isControlled = $isControlled;
+
+        return $this;
+    }
+
+    public function getIsGuardian(): ?bool
+    {
+        return $this->isGuardian;
+    }
+
+    public function setIsGuardian(?bool $isGuardian): self
+    {
+        $this->isGuardian = $isGuardian;
 
         return $this;
     }

@@ -394,6 +394,14 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
+                    ->add('isControlled', CheckboxType::class, [
+                        'label'=> 'Accès Contrôlé',
+                        'required' => false
+                    ])
+                    ->add('isGuardian', CheckboxType::class, [
+                        'label'=> 'Présence d\'un Gardien',
+                        'required' => false
+                    ])
                 ->end()
                 ->with('Installations de chantier')
                     ->add('isMaintenedByRougeot', CheckboxType::class, [
