@@ -11,3 +11,8 @@ vich_uploader:
         upload_destination: '%kernel.project_dir%/public/groupLogo'
         namer: vich_uploader.namer_uniqid
         inject_on_load: true
+      ppsps_image:
+        uri_prefix: /public/ppspsImage
+        upload_destination: '%kernel.project_dir%/public/ppspsImage'
+        namer: vich_uploader.namer_uniqid
+        inject_on_load: true

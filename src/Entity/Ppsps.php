@@ -301,6 +301,11 @@ class Ppsps
     private $isGuardian;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PpspsImage", inversedBy="ppsps")
+     */
+    private $image;
+
+    /**
      * to string method
      *
      * @return string
@@ -1151,6 +1156,18 @@ class Ppsps
     public function setIsGuardian(?bool $isGuardian): self
     {
         $this->isGuardian = $isGuardian;
+
+        return $this;
+    }
+
+    public function getImage(): ?PpspsImage
+    {
+        return $this->image;
+    }
+
+    public function setImage(?PpspsImage $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

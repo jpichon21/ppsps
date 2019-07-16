@@ -28,6 +28,7 @@ security:
             - ROLE_ADMIN_LEADERADMIN_ALL
             - ROLE_ADMIN_SUBCONTRACTEDWORK_ALL
             - ROLE_ADMIN_ANNEX_ALL
+            - ROLE_ADMIN_PPSPSIMAGE_ALL
 
     providers:
         users:

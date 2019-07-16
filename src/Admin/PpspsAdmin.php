@@ -20,6 +20,9 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 use App\Entity\SituationGroup;
 use App\Entity\Situation;
+use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Form\ChoiceList\ModelChoiceList;
+use App\Entity\PpspsImage;
 
 final class PpspsAdmin extends AbstractAdmin
 {
@@ -109,6 +112,7 @@ final class PpspsAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+
         $formMapper
             ->tab('Configuration du Ppsps')
                 ->with('État du document')
@@ -120,6 +124,13 @@ final class PpspsAdmin extends AbstractAdmin
                             'Archivé' => 'Archivé',
                         ],
                         'required' => true
+                    ])
+                ->end()                
+                ->with('Image du chantier')
+                    ->add('image', ModelType::class, [
+                        'label' => 'Image du chantier',
+                        'required' => false,
+                        'by_reference' => false,
                     ])
                 ->end()
                 ->with('Configuration générale')

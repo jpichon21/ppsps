@@ -69,6 +69,12 @@ class PDFparserService
         } else {
             $logo = $ppsps->getGroupment()->getLogo()->getImageFile()->getBasename();
         }
+        
+        if ($ppsps->getImage() == null) {
+            $image = null;
+        } else {
+            $image = $ppsps->getImage()->getImageFile()->getBasename();
+        }
 
         return [
             'AddressConstrSite' => $ppsps->getAddressConstrSite(),
@@ -123,7 +129,8 @@ class PDFparserService
             'isGuardian' => $ppsps->getIsGuardian(),
             'isControlled' => $ppsps->getIsControlled(),
             'annexs' => $ppsps->getAnnexs()->getValues(),
-            'logo' => $logo
+            'logo' => $logo,
+            'image' => $image
         ];
     }
 
