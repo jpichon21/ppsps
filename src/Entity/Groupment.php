@@ -36,9 +36,10 @@ class Groupment
     private $ppsps;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\GroupmentLogo", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\GroupmentLogo", inversedBy="groupments", cascade={"persist"})
      */
     private $logo;
+
 
     /**
      * to string method

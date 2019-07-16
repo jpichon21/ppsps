@@ -61,6 +61,15 @@ class PDFparserService
 
     public function getPpspsById($id) {
         $ppsps = $this->ppspsRepository->findByid($id)[0];
+        
+        if ($ppsps->getGroupment() == null) {
+            $logo = null;
+        } else if ($ppsps->getGroupment()->getLogo() == null) {
+            $logo = null;
+        } else {
+            $logo = $ppsps->getGroupment()->getLogo()->getImageFile()->getBasename();
+        }
+
         return [
             'AddressConstrSite' => $ppsps->getAddressConstrSite(),
             'AddressAccessSite' => $ppsps->getAddressAccessSite(),
@@ -113,7 +122,8 @@ class PDFparserService
             'isMaintenedByRougeot' => $ppsps->getIsMaintenedByRougeot(),
             'isGuardian' => $ppsps->getIsGuardian(),
             'isControlled' => $ppsps->getIsControlled(),
-            'annexs' => $ppsps->getAnnexs()->getValues()
+            'annexs' => $ppsps->getAnnexs()->getValues(),
+            'logo' => $logo
         ];
     }
 

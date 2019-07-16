@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -41,6 +43,16 @@ class GroupmentLogo implements \Serializable
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Groupment", mappedBy="logo", cascade={"persist"})
+     */
+    private $groupments;
+
+    public function __construct()
+    {
+        $this->groupments = new ArrayCollection();
+    }
 
     public function __toString()
     {
@@ -112,5 +124,36 @@ class GroupmentLogo implements \Serializable
             $this->updatedAt,
             $this->name,
           ) = unserialize($serialized);
+      }
+
+      /**
+       * @return Collection|Groupment[]
+       */
+      public function getGroupments(): Collection
+      {
+          return $this->groupments;
+      }
+
+      public function addGroupment(Groupment $groupment): self
+      {
+          if (!$this->groupments->contains($groupment)) {
+              $this->groupments[] = $groupment;
+              $groupment->setLogo($this);
+          }
+
+          return $this;
+      }
+
+      public function removeGroupment(Groupment $groupment): self
+      {
+          if ($this->groupments->contains($groupment)) {
+              $this->groupments->removeElement($groupment);
+              // set the owning side to null (unless already changed)
+              if ($groupment->getLogo() === $this) {
+                  $groupment->setLogo(null);
+              }
+          }
+
+          return $this;
       }
 }
