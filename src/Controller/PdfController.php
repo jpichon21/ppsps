@@ -47,7 +47,6 @@ class PdfController extends Controller
         $html = $this->renderView('pdf_layout.html.twig',[
             'ppsps' => $ppsps,
         ]);
-        $dayDate = new \DateTime();
         return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             iconv("UTF-8", "ASCII//TRANSLIT", 'PPSPS'.'_'.$ppsps['siteName'].'_'.$ppsps['siteNumber'].'.pdf')

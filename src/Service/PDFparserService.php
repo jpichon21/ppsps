@@ -137,6 +137,7 @@ class PDFparserService
             'isGuardian' => $ppsps->getIsGuardian(),
             'isControlled' => $ppsps->getIsControlled(),
             'annexs' => $ppsps->getAnnexs()->getValues(),
+            'mandatoryDocument' => $ppsps->getMandatoryDocument(),
             'logo' => $logo,
             'image' => $image
         ];
