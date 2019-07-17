@@ -28,7 +28,7 @@ class PdfController extends Controller
      /**
      * @Route("/preview/{id}", name="pdf", methods={"GET"})
      */
-    public function index($id)
+    public function previewPDF($id)
     {
         $ppsps = $this->PDFparserService->getPpspsById($id);
         return $this->render(

@@ -81,6 +81,7 @@
     </style>
     <base href="{{ absolute_url('/') }}">
     <body>
+        {% if ppsps['image'] is not null %}
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
@@ -98,6 +99,7 @@
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endif %}
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
