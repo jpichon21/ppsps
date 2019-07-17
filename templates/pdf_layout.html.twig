@@ -1112,13 +1112,35 @@
                             <tr>
                                 <td class="bold underline title" colspan="5">Installations de chantier</td>
                             </tr> 
-                        {% if listOfInstallations is defined and listOfInstallations != null %}
-                            {% for value in listOfInstallations %}
-                                <tr>
-                                    <td colspan="5"><input type="checkbox" checked="true" name="" />&nbsp;{{value}}</td>
-                                </tr>        
-                            {% endfor %}
-                        {% endif %}
+                    {% if ppsps['listOfInstallations'] is defined and ppsps['listOfInstallations'] != null %}
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Installation mobile équipée" in ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Installation mobile équipée</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "WC raccordé" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;WC raccordé</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "WC non raccordé" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;WC non raccordé</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Installation fixe" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Installation fixe</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Bureau de chantier" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Bureau de chantier</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Vestiaire" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Vestiaire</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Réfectoire" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Réfectoire</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Lavabos" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Lavabos</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Douche" in  ppsps['listOfInstallations'] %} checked {% endif %} />&nbsp;Douche</td>
+                        </tr>
+                     {% endif %}
                             <tr>
                                 <td colspan="5">Les tables sont recouvertes d'un revêtement lavable, les baraques de chantier sont équipées de bancs, chauffe-plats et les locaux sont éclairées, aérés, chauffés etc.</td>
                             </tr>
@@ -1181,14 +1203,51 @@
                         <tr>
                             <td class="bold underline title" colspan="5">Aptitudes particulières du personnel affecté au chantier</td>
                         </tr>
-                    {% if suiabilityList is defined and suiabilityList != null %}
-                        {% for value in suiabilityList %}
-                            <tr>
-                                <td colspan="5"><input type="checkbox" checked="true" name="" />&nbsp;{{value}}</td>
-                            </tr>        
-                        {% endfor %}
-                    {% endif %}
-                         <tr>
+                {% if ppsps['suiabilityList'] is defined and ppsps['suiabilityList']  != null %}
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "F.C.O." in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;F.C.O.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Conduite d'engins" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Conduite d'engins</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Conduite de nacelles élévatrices ou P.E.M.P." in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Conduite de nacelles élévatrices ou P.E.M.P.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Utilisation d'explosifs CPT" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Utilisation d'explosifs CPT</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Travail en égout CATE 2" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Travail en égout CATE 2</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "H0/B0V" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;H0/B0V</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "H1/B1T" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;H1/B1T</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "H2/B2T" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;H2/B2T</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Grutier" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Grutier</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "H2/B2T" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;H2/B2T</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "F.I.M.O." in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;F.I.M.O.</td>
+                        </tr>
+                           <tr>
+                            <td><input type="checkbox" name="" {% if "Echafaudage: montage/démontage" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Echafaudage: montage/démontage</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Echafaudage: réception" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Echafaudage: réception</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" {% if "Harnais" in  ppsps['suiabilityList'] %} checked {% endif %} />&nbsp;Harnais</td>
+                        </tr>
+                {% endif %}
+                        <tr>
                             <td colspan="5">Pour les intérimaires, le conducteur de travaux ou le chef de chantier délivre une autorisation spécialement pour le chantier après contrôle des documents justificatifs (CACES et aptitude médicale)</td>
                         </tr>
                     </tbody>
@@ -1319,33 +1378,37 @@
                         <tr>
                             <td class="bold underline title">Registres et documents obligatoires présents au démarrage du chantier :</td>
                         </tr>
+
+                {% if ppsps['mandatoryDocument'] is defined and ppsps['mandatoryDocument']  != null %}
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Registre unique de sécurité</td>
+                            <td><input type="checkbox" name="" {% if "Registre unique de sécurité" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Registre unique de sécurité</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Registre d'observations</td>
+                            <td><input type="checkbox" name="" {% if "Registre d'observations" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Registre d'observations</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Registre du personnel sur chantier</td>
+                            <td><input type="checkbox" name="" {% if "Registre du personnel sur chantier" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Registre du personnel sur chantier</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Registre des avis de dangers grave et imminent</td>
+                            <td><input type="checkbox" name="" {% if "Registre des avis de dangers grave et imminent" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Registre des avis de dangers grave et imminent</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;PV de contrôle installation grue</td>
+                            <td><input type="checkbox" name="" {% if "PV de contrôle installation grue" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;PV de contrôle installation grue</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;PV de contrôle installation électrique</td>
+                            <td><input type="checkbox" name="" {% if "PV de contrôle installation électrique" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;PV de contrôle installation électrique</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Permis de démolir</td>
+                            <td><input type="checkbox" name="" {% if "Permis de démolir" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Permis de démolir</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Autorisation de voirie</td>
+                            <td><input type="checkbox" name="" {% if "Autorisation de voirie" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Autorisation de voirie</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" checked="true" />&nbsp;Arrêté de circulation</td>
+                            <td><input type="checkbox" name="" {% if "Arrêté de circulation" in  ppsps['mandatoryDocument'] %} checked {% endif %} />&nbsp;Arrêté de circulation</td>
                         </tr>
+                {% endif %}
+
                     </tbody>
                     <table class="col1 center">
                         <tbody>
