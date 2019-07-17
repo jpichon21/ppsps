@@ -37,6 +37,7 @@ class Groupment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\GroupmentLogo", inversedBy="groupments", cascade={"persist"})
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $logo;
 
