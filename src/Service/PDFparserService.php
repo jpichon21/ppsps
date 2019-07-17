@@ -9,6 +9,7 @@ namespace App\Service;
 use App\Entity\Ppsps;
 use App\Repository\PpspsRepository;
 use App\Repository\SituationRepository;
+use App\Repository\SituationGroupRepository;
 use App\Repository\MeasureRepository;
 use App\Repository\ToolRepository;
 use App\Repository\RiskRepository;
@@ -24,6 +25,11 @@ class PDFparserService
      * @var SituationRepository
      */
     private $situationRepository;
+
+    /**
+     * @var SituationRepository
+     */
+    private $situationGroupRepository;
 
     /**
      * @var RiskRepository
@@ -48,12 +54,14 @@ class PDFparserService
     public function __construct(
         PpspsRepository $ppspsRepository,
         SituationRepository $situationRepository,
+        SituationGroupRepository $situationGroupRepository,
         ToolRepository $toolRepository,
         MeasureRepository $measureRepository,
         RiskRepository $riskRepository
     ) {
         $this->ppspsRepository = $ppspsRepository;
         $this->situationRepository = $situationRepository;
+        $this->situationGroupRepository = $situationGroupRepository;
         $this->toolRepository = $toolRepository;
         $this->measureRepository = $measureRepository;
         $this->riskRepository = $riskRepository;
@@ -229,31 +237,41 @@ class PDFparserService
     }
     
     private function situationParser($situationsList) {
-
         if ($situationsList == []) {
             return null;
         }
+        $situationGroupList = [];
         foreach ($situationsList as $key => $situation) {
-            if(isset($situation['situation'])) {
-                $situations[$key]['situation'] = $this->situationRepository->findById($situation['situation'])[0]->getName();
-                
-                if (isset($situation['risk'])) {
-                    foreach ($situation['risk'] as $riskKey => $risk) {
-                        $situations[$key]['risk'][$riskKey] = $this->riskRepository->findById($risk)[0]->getName();
-                    }
-                }
-                if (isset($situation['tool'])) {
-                    foreach ($situation['tool'] as $toolKey => $tool) {
-                        $situations[$key]['tool'][$toolKey] = $this->toolRepository->findById($tool)[0]->getName();
-                    }
-                }
-                if (isset($situation['measure'])) {
-                    foreach ($situation['measure'] as $measureKey => $measure) {
-                        $situations[$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getName();
+            if (!in_array($situation['situationGroup'],$situationGroupList)) {
+                $situationGroupList[] =$situation['situationGroup'];
+            }
+        }
+        foreach ($situationGroupList as $situationGroup){
+            $situations[$situationGroup]['situationGroup'] = $this->situationGroupRepository->findById($situationGroup)[0]->getName();
+            foreach ($situationsList as $key => $situation) {
+                if(isset($situation['situation'])) {
+                    if ($situationGroup = $situation['situationGroup']) {
+                        $situations[$situationGroup][$key]['situation'] = $this->situationRepository->findById($situation['situation'])[0]->getName();
+                        if (isset($situation['risk'])) {
+                            foreach ($situation['risk'] as $riskKey => $risk) {
+                                $situations[$situationGroup][$key]['risk'][$riskKey] = $this->riskRepository->findById($risk)[0]->getName();
+                            }
+                        }
+                        if (isset($situation['tool'])) {
+                            foreach ($situation['tool'] as $toolKey => $tool) {
+                                $situations[$situationGroup][$key]['tool'][$toolKey] = $this->toolRepository->findById($tool)[0]->getName();
+                            }
+                        }
+                        if (isset($situation['measure'])) {
+                            foreach ($situation['measure'] as $measureKey => $measure) {
+                                $situations[$situationGroup][$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getName();
+                            }
+                        }
                     }
                 }
             }
         }
+
         return $situations;
     }
 
