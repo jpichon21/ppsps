@@ -21,8 +21,6 @@ use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 use App\Entity\SituationGroup;
 use App\Entity\Situation;
 use Sonata\AdminBundle\Form\Type\ModelType;
-use Sonata\AdminBundle\Form\ChoiceList\ModelChoiceList;
-use App\Entity\PpspsImage;
 
 final class PpspsAdmin extends AbstractAdmin
 {

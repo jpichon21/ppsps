@@ -140,3 +140,8 @@ services:
         arguments: [~, App\Entity\PpspsImage, ~]
         tags:
           - { name: sonata.admin, manager_type: orm, label: Image du PPSPS, group: 'Gestion des PPSPS', show_in_dashboard: false }
+    kernel.listener.doctrine:
+        class: App\Listener\DoctrineListener
+        public: false
+        tags:
+            - { name: doctrine.event_listener, event: preFlush, method: preFlush }

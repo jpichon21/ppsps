@@ -79,6 +79,7 @@
             page-break-after: always;
         }
     </style>
+
     <base href="{{ absolute_url('/') }}">
     <body>
         {% if ppsps['image'] is not null %}
@@ -143,7 +144,8 @@
                             <th>Date</th>
                         </tr>
                     {% if ppsps['updatesPpsps'] is defined and ppsps['updatesPpsps'] != null %}
-                            {% set lastRow = ppsps['updatesPpsps']|last %}
+                            {% set lastArray = ppsps['updatesPpsps']|last %}
+                            {% set lastRow = lastArray|last %}
                                 <tr>
                                     <td>{{lastRow.indexUpdate}}</td>
                                     <td>{{lastRow.updateDate}}</td>
@@ -214,7 +216,9 @@
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
-       <div class="pageContainer">
+        {% if ppsps['diffusions'] is defined and ppsps['diffusions'] != null %}
+        {% for value in ppsps['diffusions'] %}
+        <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
                 {% if ppsps['logo'] is not null %}
@@ -239,25 +243,27 @@
                             <th>Mail</th>
                             <th>Papier</th>
                         </tr>
-                    {% if ppsps['diffusions'] is defined and ppsps['diffusions'] != null %}
-                        {% for value in ppsps['diffusions'] %}
-                            <tr>
-                                <td>{{value.recipient}}</td>
-                                <td>{{value.name}}</td>
-                                <td>{{value.date}}</td>
-                                <td {% if value.isNumeric == null %}class="grey"{% endif %} >{% if value.isNumeric != null %}Oui{% endif %}</td>
-                                <td {% if value.paper != true %}class="grey"{% endif %} >{% if value.paper == true %}Oui{% endif %}</td>
-                            </tr>        
+                        {% for subvalue in value %}
+                        <tr>
+                            <td>{{subvalue.recipient}}</td>
+                            <td>{{subvalue.name}}</td>
+                            <td>{{subvalue.date}}</td>
+                            <td {% if subvalue.isNumeric == null %}class="grey"{% endif %} >{% if subvalue.isNumeric != null %}Oui{% endif %}</td>
+                            <td {% if subvalue.paper != true %}class="grey"{% endif %} >{% if subvalue.paper == true %}Oui{% endif %}</td>
+                        </tr>
                         {% endfor %}
-                    {% endif %}
                     </tbody>
                 </table>
-                            <div class="bottomLeft">NOM DU DOCUMENT</div>
+                <div class="bottomLeft">NOM DU DOCUMENT</div>
                 <div class="rightPage">page X</div>
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
         <!--Page 2-->
+        {% if ppsps['updatesPpsps'] is defined and ppsps['updatesPpsps'] != null %}
+        {% for value in ppsps['updatesPpsps'] %}
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
@@ -276,17 +282,15 @@
                             <th>Réalisé par :</th>
                             <th>Validé par :</th>
                         </tr>
-                    {% if ppsps['updatesPpsps'] is defined and ppsps['updatesPpsps'] != null %}
-                        {% for value in ppsps['updatesPpsps'] %}
+                            {% for subvalue in value %}
                             <tr>
-                                <td>{{value.updateObject}}</td>
-                                <td>{{value.indexUpdate}}</td>
-                                <td>{{value.updateDate}}</td>
-                                <td>{{value.writeBy}}</td>
-                                <td>{{value.aprovedBy}}</td>
+                                <td>{{subvalue.updateObject}}</td>
+                                <td>{{subvalue.indexUpdate}}</td>
+                                <td>{{subvalue.updateDate}}</td>
+                                <td>{{subvalue.writeBy}}</td>
+                                <td>{{subvalue.aprovedBy}}</td>
                             </tr>        
-                        {% endfor %}
-                    {% endif %}
+                            {% endfor %}
                     </tbody>
                 </table>
                 <div class="bottomLeft">NOM DU DOCUMENT</div>
@@ -294,6 +298,8 @@
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
         <!--SOMMAIRE-->
         <div class="pageContainer">
             <div class="pageContent">
@@ -665,31 +671,6 @@
                 <table class="col1 transparent small">
                     <tbody>
                         <tr>
-                            <td class="bold underline title">Travaux sous-traités envisagés :</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="col1">
-                    <tbody>
-                        <tr>
-                            <td class="bold">Nom du sous-traitant</td>
-                            <td class="bold">Travaux sous-traités</td>
-                            <td class="bold">Adresse</td>
-                        </tr>
-                        {% if ppsps['subContractedWorks'] is defined and ppsps['subContractedWorks'] != null %}
-                            {% for values in ppsps['subContractedWorks'] %}>
-                                <tr>
-                                    <td>{{values.subContractor}}</td>
-                                    <td>{{values.subcontractedActivity}}</td>
-                                    <td>{{values.address}}</td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                    </tbody>
-                </table>
-                <table class="col1 transparent small">
-                    <tbody>
-                        <tr>
                             <td class="bold underline title">Planning d'éxécution</td>
                         </tr>
                         <tr>
@@ -720,7 +701,49 @@
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% if ppsps['subContractedWorks'] is defined and ppsps['subContractedWorks'] != null %}
+        {% for values in ppsps['subContractedWorks'] %}>
+        <div class="pageContainer">
+                <div class="pageContent">
+                    <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+                     {% if ppsps['logo'] is not null %}
+                    <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ ppsps['logo']) }}"></div>
+                    {% else %}
+                    <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+                    {% endif %}
+                    <table class="col1 transparent small">
+                            <tbody>
+                                <tr>
+                                    <td class="bold underline title">Listes des travaux sous-traités envisagés :</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="col1">
+                            <tbody>
+                                <tr>
+                                    <td class="bold">Nom du sous-traitant</td>
+                                    <td class="bold">Travaux sous-traités</td>
+                                    <td class="bold">Adresse</td>
+                                </tr>
+                                {% for subvalues in values %}
+                                <tr>
+                                    <td>{{subvalues.subContractor}}</td>
+                                    <td>{{subvalues.subcontractedActivity}}</td>
+                                    <td>{{subvalues.address}}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                    </table>
+                <div class="bottomLeft">NOM DU DOCUMENT</div>
+                <div class="rightPage">page X</div>
+                <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
          <!--Page 4-->
+         {% if ppsps['dealers'] is defined and ppsps['dealers'] != null %}
+         {% for value in ppsps['dealers'] %}
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
@@ -736,19 +759,17 @@
                             <th>Contact</th>
                             <th>D.C.I.T. envoyée le</th>
                         </tr>
-                    {% if ppsps['dealers'] is defined and ppsps['dealers'] != null %}
-                        {% for value in ppsps['dealers'] %}
+                        {% for subvalue in value %}
                         <tr>
-                            <td>{{value.name}}</td>
-                            <td>{{value.mail}}</td>
-                            {% if value.sendingDate != null %}
-                                <td>{{value.sendingDate}}</td>
+                            <td>{{subvalue.name}}</td>
+                            <td>{{subvalue.mail}}</td>
+                            {% if subvalue.sendingDate != null %}
+                                <td>{{subvalue.sendingDate}}</td>
                             {% else %}
                                 <td>{{ "now"|date("d/m/Y", "Europe/Paris") }}</td>
                             {% endif %}
                         </tr>        
                         {% endfor %}
-                     {% endif %}
                     </tbody>
                 </table>
                  <div class="bottomLeft">NOM DU DOCUMENT</div>
@@ -756,11 +777,13 @@
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
         <!--Page 7-->
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
-                 {% if ppsps['logo'] is not null %}
+                    {% if ppsps['logo'] is not null %}
                 <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ ppsps['logo']) }}"></div>
                 {% else %}
                 <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
@@ -790,22 +813,7 @@
                             {% for item in ppsps['workDirectors'] %}
                                 <tr>
                                     <td>
-                                        {{item.name}}<br>
-                                        {% if item.company != null %}
-                                            {{item.company}}<br>
-                                        {% endif %}
-                                        {% if item.address != null %}
-                                            {{item.address}}<br>
-                                        {% endif %}
-                                        {% if item.fax != null %}
-                                            {{item.fax}}<br>
-                                        {% endif %}
-                                        {% if item.email != null %}
-                                            {{item.email}}<br>
-                                        {% endif %}
-                                        {% if item.phoneNumber != null %}
-                                            {{item.phoneNumber}}
-                                        {% endif %}
+                                        {{item.name}}
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -821,28 +829,30 @@
                         {% for item in ppsps['siteManagers'] %}
                             <tr>
                                 <td>
-                                    {{item.name}}<br>
-                                    {% if item.company != null %}
-                                        {{item.company}}<br>
-                                    {% endif %}
-                                    {% if item.address != null %}
-                                        {{item.address}}<br>
-                                    {% endif %}
-                                    {% if item.fax != null %}
-                                        {{item.fax}}<br>
-                                    {% endif %}
-                                    {% if item.email != null %}
-                                        {{item.email}}<br>
-                                    {% endif %}
-                                    {% if item.phoneNumber != null %}
-                                        {{item.phoneNumber}}
-                                    {% endif %}
+                                    {{item.name}}
                                 </td>
                             </tr>
                         {% endfor %}
                      {% endif %}
                     </tbody>
                 </table>
+                <div class="bottomLeft">NOM DU DOCUMENT</div>
+                <div class="rightPage">page X</div>
+                <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+            </div>
+        </div>
+        {% if ppsps['speakers'] is defined and ppsps['speakers'] != null %}
+        {% for value in ppsps['speakers'] %}
+        <div class="pageContainer">
+            <div class="pageContent">
+                <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+                 {% if ppsps['logo'] is not null %}
+                <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ ppsps['logo']) }}"></div>
+                {% else %}
+                <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+                {% endif %}
+                <h3 class="">1.1.2 Organisation de l'entreprise (ou groupement) et intervenants</h3>
+                <div id="bottomPipe"></div>
                 <table class="col1">
                     <tbody>
                         <tr>
@@ -852,24 +862,22 @@
                             <th class="">Fax </th>
                             <th class="">Mail </th>
                         </tr>
-                    {% if ppsps['speakers'] is defined and ppsps['speakers'] != null %}
-                        {% for value in ppsps['speakers'] %}
+                        {% for subvalue in value %}
                             <tr>
-                                <td>{{value.name}}</td>
-                                <td>{{value.contact}}</td>
-                                <td>{{value.address}}</td>
-                                <td>{{value.fax}}</td>
-                                <td>{{value.Mail}}</td>
+                                <td>{{subvalue.name}}</td>
+                                <td>{{subvalue.contact}}</td>
+                                <td>{{subvalue.address}}</td>
+                                <td>{{subvalue.fax}}</td>
+                                <td>{{subvalue.Mail}}</td>
                             </tr>        
-                      {% endfor %}
-                    {% endif %}
+                        {% endfor %}
                         <tr>
                             <td>Sous-traitant </td>
                             <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
                         </tr>
-    
                     </tbody>
                 </table>
+                {% if value == ppsps['speakers']|last %}
                 <table class="col1 transparent small">
                     <tbody>
                         <tr>
@@ -899,12 +907,17 @@
                         </table>
                     </tbody>
                 </table>
+                {% endif %}
                 <div class="bottomLeft">NOM DU DOCUMENT</div>
                 <div class="rightPage">page X</div>
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
         <!--Page 8-->
+        {% if ppsps['effectives'] is defined and ppsps['effectives'] != null %}
+        {% for value in ppsps['effectives'] %}
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
@@ -922,18 +935,16 @@
                             <th>Moyen <i>(nombre)</i></th>
                             <th>Maximum <i>(nombre)</i></th>
                         </tr>
-                    {% if ppsps['effectives'] is defined and ppsps['effectives'] != null %}
-                        {% for value in ppsps['effectives'] %}
+                        {% for subvalue in value %}
                         <tr>
-                            <td>{{value.business}}</td>
-                            <td>{{value.average}}</td>
-                            <td>{{value.maximum}}</td>
+                            <td>{{subvalue.business}}</td>
+                            <td>{{subvalue.average}}</td>
+                            <td>{{subvalue.maximum}}</td>
                         </tr>
                         {% endfor %}
-                    {% endif %}
-                      
                     </tbody>
                 </table>
+                {% if value == ppsps['effectives']|last %}
                 <h3 class="textLeft">Horaires sur le chantier</h3>
                 <table class="col1">
                     <tbody>
@@ -969,12 +980,14 @@
                         </tr>
                     </tbody>
                 </table>
-    
+                {% endif %}
                 <div class="bottomLeft">NOM DU DOCUMENT</div>
                 <div class="rightPage">page X</div>
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
         <!--Page 9-->
         <div class="pageContainer">
             <div class="pageContent">
@@ -1624,7 +1637,20 @@
                 </table>
                 {% endfor %}
                 {% endif %}
+                <div class="bottomLeft">NOM DU DOCUMENT</div>
+                <div class="rightPage">page X</div>
+                <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+            </div>
+        </div>
     </body>
-    
+    {% block javascripts %}        
+    <script>
+        var list= document.getElementsByClassName("rightPage");
+        for (var i = 0; i < list.length; i++) {
+            let number = i+1
+            list[i].innerHTML = 'Page ' + number + '/' + list.length
+        }
+    </script>
+    {% endblock javascripts %}
     
 </html>

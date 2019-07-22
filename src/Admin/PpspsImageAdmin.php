@@ -23,7 +23,7 @@ final class PpspsImageAdmin extends AbstractAdmin
         $formMapper
             ->add('imageFile', VichFileType::class, [
                 'label' => 'Fichier',
-                'required' => false,
+                'required' => true,
                 'allow_delete'  => false, 
                 'download_link' => false,
                 'attr' => [

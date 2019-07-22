@@ -44,6 +44,13 @@ class Situation
     private $situationGroup;
 
     /**
+     * @var datetime $deletedAt
+     *
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    /**
      * to string method
      *
      * @return string
@@ -166,5 +173,26 @@ class Situation
         $this->situationGroup = $situationGroup;
 
         return $this;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param  \DateTime $deletedAt
+     * @return Plan
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+        return $this;
+    }
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
     }
 }

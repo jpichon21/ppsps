@@ -147,13 +147,18 @@ class PDFparserService
         if ($diffusionsList === []) {
             return null;
         }
+
+        $page = 0;
         foreach ($diffusionsList as $key => $diffusion) {
-            $diffusions[$key]['recipient'] = $diffusion->getRecipient();
-            $diffusions[$key]['name'] = $diffusion->getName();
-            $diffusions[$key]['date'] = $this->dateParser($diffusion->getDate());
-            $diffusions[$key]['paper'] = $diffusion->getPaper();
-            $diffusions[$key]['isNumeric'] = $diffusion->getIsNumeric();
-            $diffusions[$key]['email'] = $diffusion->getEmail();
+            if ($key % 29 === 0) {
+                $page++;
+            }
+            $diffusions[$page][$key]['recipient'] = $diffusion->getRecipient();
+            $diffusions[$page][$key]['name'] = $diffusion->getName();
+            $diffusions[$page][$key]['date'] = $this->dateParser($diffusion->getDate());
+            $diffusions[$page][$key]['paper'] = $diffusion->getPaper();
+            $diffusions[$page][$key]['isNumeric'] = $diffusion->getIsNumeric();
+            $diffusions[$page][$key]['email'] = $diffusion->getEmail();
         }
         return $diffusions;
     }
@@ -162,12 +167,16 @@ class PDFparserService
         if ($updatesList === []) {
             return null;
         }
+        $page = 0;
         foreach ($updatesList as $key => $update) {
-            $updates[$key]['updateObject'] = $update->getUpdateObject();
-            $updates[$key]['indexUpdate'] = $update->getIndexUpdate();
-            $updates[$key]['updateDate'] = $this->dateParser($update->getUpdateDate());
-            $updates[$key]['writeBy'] = $update->getWriteBy();
-            $updates[$key]['aprovedBy'] = $update->getAprovedBy();
+            if ($key % 29 === 0) {
+                $page++;
+            }
+            $updates[$page][$key]['updateObject'] = $update->getUpdateObject();
+            $updates[$page][$key]['indexUpdate'] = $update->getIndexUpdate();
+            $updates[$page][$key]['updateDate'] = $this->dateParser($update->getUpdateDate());
+            $updates[$page][$key]['writeBy'] = $update->getWriteBy();
+            $updates[$page][$key]['aprovedBy'] = $update->getAprovedBy();
         }
         return $updates;
     }
@@ -176,12 +185,16 @@ class PDFparserService
         if ($speakersList === []) {
             return null;
         }
+        $page = 0;
         foreach ($speakersList as $key => $speaker) {
-            $speakers[$key]['name'] = $speaker->getName();
-            $speakers[$key]['contact'] = $speaker->getContact();
-            $speakers[$key]['address'] = $speaker->getAddress();
-            $speakers[$key]['fax'] = $speaker->getFax();
-            $speakers[$key]['Mail'] = $speaker->getMail();
+            if ($key % 18 === 0) {
+                $page++;
+            }
+            $speakers[$page][$key]['name'] = $speaker->getName();
+            $speakers[$page][$key]['contact'] = $speaker->getContact();
+            $speakers[$page][$key]['address'] = $speaker->getAddress();
+            $speakers[$page][$key]['fax'] = $speaker->getFax();
+            $speakers[$page][$key]['Mail'] = $speaker->getMail();
         }
         return $speakers;
     }
@@ -190,10 +203,14 @@ class PDFparserService
         if ($effectivesList === []) {
             return null;
         }
+        $page = 0;
         foreach ($effectivesList as $key => $effective) {
-            $effectives[$key]['business'] = $effective->getBusiness();
-            $effectives[$key]['average'] = $effective->getAverage();
-            $effectives[$key]['maximum'] = $effective->getMaximum();
+            if ($key % 29 === 0) {
+                $page++;
+            }
+            $effectives[$page][$key]['business'] = $effective->getBusiness();
+            $effectives[$page][$key]['average'] = $effective->getAverage();
+            $effectives[$page][$key]['maximum'] = $effective->getMaximum();
         }
         return $effectives;
     }
@@ -202,10 +219,14 @@ class PDFparserService
         if ($dealersList === []) {
             return null;
         }
+        $page = 0;
         foreach ($dealersList as $key => $dealer) {
-            $dealers[$key]['name'] = $dealer->getName();
-            $dealers[$key]['mail'] = $dealer->getMail();
-            $dealers[$key]['sendingDate'] = $this->dateParser($dealer->getSendingDate());
+            if ($key % 29 === 0) {
+                $page++;
+            }
+            $dealers[$page][$key]['name'] = $dealer->getName();
+            $dealers[$page][$key]['mail'] = $dealer->getMail();
+            $dealers[$page][$key]['sendingDate'] = $this->dateParser($dealer->getSendingDate());
         }
         return $dealers;
     }
@@ -214,10 +235,14 @@ class PDFparserService
         if ($subContractedWorksList === []) {
             return null;
         }
+        $page = 0;
         foreach ($subContractedWorksList as $key => $subContractedWork) {
-            $subContractedWorks[$key]['subContractor'] = $subContractedWork->getSubContractor();
-            $subContractedWorks[$key]['address'] = $subContractedWork->getAddress();
-            $subContractedWorks[$key]['subcontractedActivity'] = $subContractedWork->getSubcontractedActivity();
+            if ($key % 29 === 0) {
+                $page++;
+            }
+            $subContractedWorks[$page][$key]['subContractor'] = $subContractedWork->getSubContractor();
+            $subContractedWorks[$page][$key]['address'] = $subContractedWork->getAddress();
+            $subContractedWorks[$page][$key]['subcontractedActivity'] = $subContractedWork->getSubcontractedActivity();
         }
         return $subContractedWorks;
     }
@@ -272,7 +297,6 @@ class PDFparserService
                 }
             }
         }
-
         return $situations;
     }
 
