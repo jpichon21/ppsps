@@ -269,10 +269,10 @@ class PDFparserService
         $situationGroupList = [];
         foreach ($situationsList as $key => $situation) {
             if (!in_array($situation['situationGroup'],$situationGroupList)) {
-                $situationGroupList[] =$situation['situationGroup'];
+                $situationGroupList[] = $situation['situationGroup'];
             }
         }
-        foreach ($situationGroupList as $situationGroup){
+        foreach ($situationGroupList as $key => $situationGroup){
             $situations[$situationGroup]['situationGroup'] = $this->situationGroupRepository->findById($situationGroup)[0]->getName();
             foreach ($situationsList as $key => $situation) {
                 if(isset($situation['situation'])) {
@@ -295,6 +295,18 @@ class PDFparserService
                         }
                     }
                 }
+            }
+        }
+        foreach ($situations as $key => $situation){
+            if(count($situation) > 3) {
+                $chunk = array_chunk($situation, 3, 3);
+                $situations[$key] = $chunk;
+            } else {
+                unset($situations[$key]);
+                $situations[$key][0] = $situation;
+            }
+            if (isset($situation['situationGroup'])) {
+                $situations[$key]['situationGroup'] = $situation['situationGroup'];
             }
         }
         return $situations;

@@ -569,7 +569,7 @@ final class PpspsAdmin extends AbstractAdmin
         ]);
         $listMapper->add('_action', null, [
             'actions' => [
-                'edit' => [],
+                'edit' => ['template' => 'admin/action/customeditaction.html.twig'],
                 'delete' => [],
                 'preview' => ['template' => 'admin/action/preview.html.twig'],
                 'export' => ['template' => 'admin/action/export.html.twig']

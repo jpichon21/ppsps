@@ -1,0 +1,587 @@
+
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h2 class="">1.2 Coordination S.P.S.</h2>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Observations :</td>
+                </tr>
+                <tr>
+                    <td class="">Coordinateur sécurité</td>
+                    <td><input type="checkbox" name="" {% if securityCoordinator == true %}checked="true"{% endif %} />&nbsp;Oui</td>
+                    <td><input type="checkbox" name="" {% if securityCoordinator == false %}checked="true"{% endif %} />&nbsp;Non</td>
+                    <td class="" colspan="2">Nom : <b>{{securityCoordinatorName}}</b> <td>
+                </tr>
+                <tr>
+                    <td class="">PGC</td>
+                    <td><input type="checkbox" name="" {% if PGC == true %}checked="true"{% endif %} />&nbsp;Oui</td>
+                    <td><input type="checkbox" name="" {% if PGC == false %}checked="true"{% endif %} />&nbsp;Non</td>
+                    <td class="">Date : <b>{{PGCDate}}</b> </td>
+                    <td class="">Ref : <b>{{PGCRef}}</b> </td>
+                </tr>
+                <tr>
+                    <td class="">Visite d'Inspection Commune</td>
+                    <td><input type="checkbox" name="" {% if inspectionVisitDate != null %}checked="true"{% endif %}/>&nbsp;Oui</td>
+                    <td><input type="checkbox" name="" {% if inspectionVisitDate == null %}checked="true"{% endif %} />&nbsp;Non</td>
+                    <td class="" colspan="2">Date : <b>{{inspectionVisitDate}}</b></td>
+                </tr>
+                <tr>
+                    <td class="">Niveau de chantier</td>
+                    <td><input type="checkbox" name="" {% if siteLevel == "Niveau 1" %}checked="true"{% endif %}/>&nbsp;1</td>
+                    <td><input type="checkbox" name="" {% if siteLevel == "Niveau 2" %}checked="true"{% endif %}/>&nbsp;2</td>
+                    <td><input type="checkbox" name="" {% if siteLevel == "Niveau 3" %}checked="true"{% endif %}/>&nbsp;3</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Accès circulation, parkings et clôture :</td>
+                </tr>
+                <tr>
+                    <td class="" colspan="5">Un <i class="bold">" Plan d'accès au Chantier (PAC) "</i> et <i class="bold">" Plan d'Installation de Chantier (PIC)"</i> sont joints : </td>
+                </tr>
+                <tr>
+                    <td class="" colspan="3">Accès Contrôlé</td>
+                    <td><input type="checkbox" name=""  {% if isControlled == true %}checked="true"{% endif %} />&nbsp;Oui</td>
+                    <td><input type="checkbox" name="" {% if isControlled == false %}checked="true"{% endif %}/>&nbsp;Non</td>
+                </tr>
+                <tr>
+                    <td class="" colspan="3">Présence d'un Gardien</td>
+                    <td><input type="checkbox" name="" {% if isGuardian == true %}checked="true"{% endif %} />&nbsp;Oui</td>
+                    <td><input type="checkbox" name="" {% if isGuardian == false %}checked="true"{% endif %} />&nbsp;Non</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Livraisons</td>
+                </tr>
+                <tr>
+                    <td class="" colspan="5">Le <i class="bold">" Plan d'accès au Chantier (PAC) "</i> et <i class="bold">" Plan d'Installation de Chantier (PIC)"</i> sont communiqués aux fournisseurs concernés dans le cadre de l'envoi du protocole de chargement / déchargement.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Stockage</td>
+                </tr>
+                <tr>
+                    <td class="" colspan="5">Les lieux de stockage (matériaux, matériel, décehts) sont précisés sur le <i class="bold">" Plan d'Installation de Chantier (PIC)"</i></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 1}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+<!--Page 10-->
+    <!--Page 9-->
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Affichage</td>
+                </tr>
+                <tr>
+                    <td>Le panneau d'affichage du chantier comprend au minimum :</td>
+                </tr>
+                <tr>
+                    <td>- Règlement Intérieur</td>
+                </tr>
+                <tr>
+                    <td>- Horaires de travail</td>
+                </tr>
+                <tr>
+                    <td>- Coordonnées de l'Inspection du Travail et de la Médecine du Travail</td>
+                </tr>
+                <tr>
+                    <td>- Membres du C.H.S.C.T., délégués du personnel, C.E. et les comptes-rendus de ces réunions</td>
+                </tr>
+                <tr>
+                    <td>- Affiche <i class="bold">"Fiche Secours</i></td>
+                </tr>
+                <tr>
+                    <td>- Liste des S.S.T.</td>
+                </tr>
+                <tr>
+                    <td>- Congés annuels (note interne du Service RH)</td>
+                </tr>
+                <tr>
+                    <td>- Informations Q.S.E.</td>
+                </tr>
+            </tbody>
+            <table class="col1 transparent small">
+                <tbody>
+                    <tr>
+                        <td class="bold underline title" colspan="5">Installations de chantier</td>
+                    </tr> 
+            {% if listOfInstallations is defined and listOfInstallations != null %}
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Installation mobile équipée" in listOfInstallations %} checked {% endif %} />&nbsp;Installation mobile équipée</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "WC raccordé" in  listOfInstallations %} checked {% endif %} />&nbsp;WC raccordé</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "WC non raccordé" in  listOfInstallations %} checked {% endif %} />&nbsp;WC non raccordé</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Installation fixe" in  listOfInstallations %} checked {% endif %} />&nbsp;Installation fixe</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Bureau de chantier" in  listOfInstallations %} checked {% endif %} />&nbsp;Bureau de chantier</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Vestiaire" in  listOfInstallations %} checked {% endif %} />&nbsp;Vestiaire</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Réfectoire" in  listOfInstallations %} checked {% endif %} />&nbsp;Réfectoire</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Lavabos" in  listOfInstallations %} checked {% endif %} />&nbsp;Lavabos</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Douche" in  listOfInstallations %} checked {% endif %} />&nbsp;Douche</td>
+                </tr>
+                {% endif %}
+                    <tr>
+                        <td colspan="5">Les tables sont recouvertes d'un revêtement lavable, les baraques de chantier sont équipées de bancs, chauffe-plats et les locaux sont éclairées, aérés, chauffés etc.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">L'ensemble des installations est raccordé aux réseaux et entretenu régulièrement par :</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="" colspan="3"  {% if isMaintenedByRougeot == true %}checked="true"{% endif %} />&nbsp;Rougeot</td>
+                        <td><input type="checkbox" name="" colspan="2" {% if isMaintenedByRougeot == false %}checked="true"{% endif %} />&nbsp;Autre : <b>{{maintainer}}</b> <td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">Ces installations sont adaptées au fur et à mesure de l'avancement des travaux, en focntion de l'effectif total du chantier</td>
+                    </tr>
+                </tbody>
+            </table>
+        </table>
+
+
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 2}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h3 class="">1.2.1 Surveillance médicale du personnel et aptitudes particulières</h3>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Surveillance médicale du personnel</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Elle est assurée par le(s) médecin(s) du travail.</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Les visites médicales sont obligatoires pour tout le personnel.</td>
+                </tr>
+                <tr>
+                    <td colspan="5">- Visite d'embauche à l'entrée du salarié dans l'entreprise,</td>
+                </tr>
+                <tr>
+                    <td colspan="5">- Visite annuelle,</td>
+                </tr>
+                <tr>
+                    <td colspan="5">- Visite de reprise du travail après un arrêt de travail (suite à un accident, maladie professionnelle ou maternité),</td>
+                </tr>
+                <tr>
+                    <td colspan="5">- Examens particuliers effectués en fonction des risques spécifiques auxquels pourraient être soumises certaines catégories de personnels</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Aptitudes particulières du personnel affecté au chantier</td>
+                </tr>
+        {% if suiabilityList is defined and suiabilityList  != null %}
+                <tr>
+                    <td><input type="checkbox" name="" {% if "F.C.O." in  suiabilityList %} checked {% endif %} />&nbsp;F.C.O.</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Conduite d'engins" in  suiabilityList %} checked {% endif %} />&nbsp;Conduite d'engins</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Conduite de nacelles élévatrices ou P.E.M.P." in  suiabilityList %} checked {% endif %} />&nbsp;Conduite de nacelles élévatrices ou P.E.M.P.</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Utilisation d'explosifs CPT" in  suiabilityList %} checked {% endif %} />&nbsp;Utilisation d'explosifs CPT</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Travail en égout CATE 2" in  suiabilityList %} checked {% endif %} />&nbsp;Travail en égout CATE 2</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "H0/B0V" in  suiabilityList %} checked {% endif %} />&nbsp;H0/B0V</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "H1/B1T" in  suiabilityList %} checked {% endif %} />&nbsp;H1/B1T</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "H2/B2T" in  suiabilityList %} checked {% endif %} />&nbsp;H2/B2T</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Grutier" in  suiabilityList %} checked {% endif %} />&nbsp;Grutier</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "H2/B2T" in  suiabilityList %} checked {% endif %} />&nbsp;H2/B2T</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "F.I.M.O." in  suiabilityList %} checked {% endif %} />&nbsp;F.I.M.O.</td>
+                </tr>
+                    <tr>
+                    <td><input type="checkbox" name="" {% if "Echafaudage: montage/démontage" in  suiabilityList %} checked {% endif %} />&nbsp;Echafaudage: montage/démontage</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Echafaudage: réception" in  suiabilityList %} checked {% endif %} />&nbsp;Echafaudage: réception</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Harnais" in  suiabilityList %} checked {% endif %} />&nbsp;Harnais</td>
+                </tr>
+        {% endif %}
+                <tr>
+                    <td colspan="5">Pour les intérimaires, le conducteur de travaux ou le chef de chantier délivre une autorisation spécialement pour le chantier après contrôle des documents justificatifs (CACES et aptitude médicale)</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 3}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+<!--Page 10-->
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h3 class="">1.2.2 Organisation des secours</h3>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td colspan="5">Les consignes de premiers secours se trouvent sur l'affiche Affiche secours et sont affichées sur chantier.</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Cas de blessures légères :</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ Sans conséquences sur l'activité de l'ouvrier (la personne ne quitte pas le chantier) :</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ Secours sur place par le Sauveteur Secouriste du Travail,</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ Information de l'encadrement chantier.</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ Avec conséquences sur l'activité de l'ouvrier (la personne ne quitte pas le chantier) :</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ Premiers soins par le Sauveteur Secouriste du Travail,</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ Constat par le Chef de Chantier, avec le S.S.T. éventuellement, renseignement de la <i class="bold">Fiche Evénement SSE</i> envoyée au Service RH dans les 24 heures,</td>
+                </tr>
+                <tr>
+                    <td class="bold underline title" colspan="5">En cas d'accident grave ou mortel :</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ L'encadrement travaux (CPT ou CDT) prévient par téléphone immédiatement :</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ Le SAMU 15, les POMPIERS 18 ou 112 et (si accident mortel) la GENDARMERIE ou la POLICE 17</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ le Responsable de l'affaire : DR ou DA si groupement et/ou le mandataire</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ l'Animateur Qualité Sécurité Environnement de l'entité dont il dépend</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ l'Animateur Qualité Sécurité Environnement prévient à son tour (ou le responsable de l'affaire)</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ le R.Q.S.E., le coordonnateur SPS et le Responsable Juridique</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ la CARSAT Prévention dans les 2-3 heures, l'OPPBTP et, dans le cas d'un accident mortel, l'inspecteur du travail</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ le RRH</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ lle Service RH prévient :</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ la Caisse Primaire du salarié</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ la société de Travail Temporaire sir le salarié est intérimaire</td>
+                </tr>
+                <tr>
+                    <td colspan="5">✓ le CHSCT de l'entité</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Les S.S.T. (Sauveteurs Secouristes du Travail)</td>
+                </tr>
+                <tr>
+                    <td colspan="5">La liste des <i>"Sauveteurs Secouristes du Travail"</i> est affichée sur le chantier.</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">La boîte à pharmacie</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Des boîtes à pharmacie sont à disposition sur le chantier afin d'effectuer les premiers secours et sont gérées par le chef de chantier.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 4}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+<!--Page 11-->
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h3 class="">1.2.3 Documents obligatoires</h3>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Registres et documents obligatoires présents au démarrage du chantier :</td>
+                </tr>
+
+        {% if mandatoryDocument is defined and mandatoryDocument  != null %}
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Registre unique de sécurité" in  mandatoryDocument %} checked {% endif %} />&nbsp;Registre unique de sécurité</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Registre d'observations" in  mandatoryDocument %} checked {% endif %} />&nbsp;Registre d'observations</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Registre du personnel sur chantier" in  mandatoryDocument %} checked {% endif %} />&nbsp;Registre du personnel sur chantier</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Registre des avis de dangers grave et imminent" in  mandatoryDocument %} checked {% endif %} />&nbsp;Registre des avis de dangers grave et imminent</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "PV de contrôle installation grue" in  mandatoryDocument %} checked {% endif %} />&nbsp;PV de contrôle installation grue</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "PV de contrôle installation électrique" in  mandatoryDocument %} checked {% endif %} />&nbsp;PV de contrôle installation électrique</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Permis de démolir" in  mandatoryDocument %} checked {% endif %} />&nbsp;Permis de démolir</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Autorisation de voirie" in  mandatoryDocument %} checked {% endif %} />&nbsp;Autorisation de voirie</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if "Arrêté de circulation" in  mandatoryDocument %} checked {% endif %} />&nbsp;Arrêté de circulation</td>
+                </tr>
+        {% endif %}
+
+            </tbody>
+            <table class="col1 center">
+                <tbody>
+                    <tr>
+                        <td>⇨ Ces documents sont tenus à jour et disponibles sur chantier.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Accueil et formation des nouveaux arrivants sur le chantier :</td>
+                </tr>
+                <tr>
+                    <td colspan="5">L’accueil est assuré par le CDT ou le CC et se formalise sur <i class="bold">l' "Attestation de remise du livret d'accueil"</i> pour le personnel ROUGEOT (et le personnel du groupement si ROUGEOT est mandataire), les intérimaires,
+                        le représentant sur chantier de l’entreprise sous-traitante et les loueurs.</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">Réunion spécifique d'information ou de formation à la sécurité propre au chantier</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Il peut être organisé pour le personnel de l’entreprise (ou groupement) des réunions spécifiques d’information, de formation ou de sensibilisation à la sécurité propre au chantier, afin notamment de présenter le P.P.S.P.S. du chantier
+                        et les recommandations qu’il contient.</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Equipements de protections individuelles EPI :</td>
+                </tr>
+                <tr>
+                    <td>Chaque salarié reçoit un paquetage (dont le contenu est adapté à l’activité du salarié), renouvelé annuellement,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Casque</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Vêtements de travail,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Chaussures ou bottes de sécurité,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Vêtements de pluie,</td>
+                </tr>
+                <tr>
+                    <td>Des équipements spécifiques sont disponibles sur le chantier en fonction des risques et sont remis au salarié :</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Protections auditives,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Lunettes,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Masques respiratoires,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Jugulaires pour le casque,</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; - Gants de protection,</td>
+                </tr>
+                <tr>
+                    <td>A la demande et contre remise de l’équipement usagé, il est remis un équipement de remplacement aux salariés.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 5}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+<!--Page 11-->
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Protection contre l'incendie :</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ Dans les cantonnements :</td>
+                </tr>
+                <tr>
+                    <td>Un extincteur portatif ABC de 6 litres au minimum pour 200 m2 de plancher, avec un minimum d’un appareil par niveau. Lorsque les locaux présentent des risques d’incendie particuliers, notamment des risques électriques, plaque
+                    </td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ Dans les véhicules :</td>
+                </tr>
+                <tr>
+                    <td>- Camionnettes de chantier
+                        < 3,5 T : 1 extincteur ABC 2 kg en cabine</td>
+                </tr>
+                <tr>
+                    <td>- Camions monoblocs et camions articulés entre 3,5 T et 7,5 T : 1 extincteur ABC 2 kg en cabine</td>
+                </tr>
+                <tr>
+                    <td>- Camions monoblocs et camions articulés > 7,5 T : 1 extincteur ABC 2 kg en cabine + 1 extincteur 6 kg en extérieur</td>
+                </tr>
+                <tr>
+                    <td class="mini">Pour le transport de matières dangereuses (exemple : le fioul), quel que soit le poids du véhicule, rajout d’un extincteur ABC 2 kg.</td>
+                </tr>
+                <tr>
+                    <td class="underline" colspan="5">⇨ Au poste de travail :</td>
+                </tr>
+                <tr>
+                    <td>- 1 extincteur 2 kg CO2 dans la cabine de grue</td>
+                </tr>
+                <tr>
+                    <td>- 1 extincteur 6 kg ABC à chaque risque de flamme (ex : chalumeau, etc.)</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="">1.2.4 Consignes spécifiques au chantier</h3>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="title" colspan="2">Existe-t-il des consignes de sécurité particulières, en-dehors des heures normales de travail ?</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if particularSecurityMeasure != null %}checked="true"{% endif %} />&nbsp;Oui</td>
+                    <td><input type="checkbox" name="" {% if particularSecurityMeasure == null %}checked="true"{% endif %}  />&nbsp;Non</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Si oui, détailler :</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{particularSecurityDetail}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{ page + 6 }}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endblock %}

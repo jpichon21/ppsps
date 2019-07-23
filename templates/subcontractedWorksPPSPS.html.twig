@@ -1,0 +1,44 @@
+
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+{% if subContractedWorks is defined and subContractedWorks != null %}
+{% for key, values in subContractedWorks %}
+<div class="pageContainer">
+        <div class="pageContent">
+            <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+                {% if logo is not null %}
+            <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+            {% else %}
+            <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+            {% endif %}
+            <table class="col1 transparent small">
+                    <tbody>
+                        <tr>
+                            <td class="bold underline title">Listes des travaux sous-traités envisagés :</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="col1">
+                    <tbody>
+                        <tr>
+                            <td class="bold">Nom du sous-traitant</td>
+                            <td class="bold">Travaux sous-traités</td>
+                            <td class="bold">Adresse</td>
+                        </tr>
+                        {% for subvalues in values %}
+                        <tr>
+                            <td>{{subvalues.subContractor}}</td>
+                            <td>{{subvalues.subcontractedActivity}}</td>
+                            <td>{{subvalues.address}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + key}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

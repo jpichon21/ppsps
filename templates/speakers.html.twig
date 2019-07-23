@@ -1,0 +1,77 @@
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+{% if speakers is defined and speakers != null %}
+{% for key, value in speakers %}
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h3 class="">1.1.2 Organisation de l'entreprise (ou groupement) et intervenants</h3>
+        <div id="bottomPipe"></div>
+        <table class="col1">
+            <tbody>
+                <tr>
+                    <th class="">Intervenants </th>
+                    <th class="">Contact </th>
+                    <th class="">Adresse </th>
+                    <th class="">Fax </th>
+                    <th class="">Mail </th>
+                </tr>
+                {% for subvalue in value %}
+                    <tr>
+                        <td>{{subvalue.name}}</td>
+                        <td>{{subvalue.contact}}</td>
+                        <td>{{subvalue.address}}</td>
+                        <td>{{subvalue.fax}}</td>
+                        <td>{{subvalue.Mail}}</td>
+                    </tr>        
+                {% endfor %}
+                <tr>
+                    <td>Sous-traitant </td>
+                    <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if value == speakers|last %}
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title" colspan="5">C.I.S.S.C.T. (Collège Interentreprises de Sécurité, de Santé et de Conditions de Travail)</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Obligation :</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4">&nbsp;- pour les opérations de bâtiment : volume travaux > 10 000 hommes-jour et plus de 10 entreprises</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4">&nbsp;- pour les opérations de génie civil : volume travaux > 10 000 hommes-jour et plus de 5 entreprises</td>
+                </tr>
+                {# <tr>
+                    <td colspan="2"><input type="checkbox" name="" {% if myCissct == true %}checked="true"{% endif %} />&nbsp;Oui</td>
+                    <td colspan="2"><input type="checkbox" name="" {% if myCissct == false %}checked="true"{% endif %} />&nbsp;Non</td>
+                </tr> #}
+                <table class="col1">
+                    <tbody>
+                        <tr>
+                            {# <td>Le représentant sur le chantier est le Conducteur de Travaux : <b>{{chiefWorkRepresentative}}</b></td> #}
+                        </tr>
+                    </tbody>
+                </table>
+            </tbody>
+        </table>
+        {% endif %}
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + key}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

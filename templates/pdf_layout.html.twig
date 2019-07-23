@@ -1573,7 +1573,9 @@
             </div>
         </div>
         <!--Tableau des risques-->
-
+        {% if ppsps['situations'] is defined and ppsps['situations'] != null %}
+        {% for items in ppsps['situations'] %}
+        
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
@@ -1583,8 +1585,7 @@
                 <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
                 {% endif %}
                 <h2 class="">1.3 Analyse des risques de ROUGEOT et des sous-traitants</h2>
-                {% if ppsps['situations'] is defined and ppsps['situations'] != null %}
-                {% for items in ppsps['situations'] %}
+
                 <table class="col1">
                     <tbody>
                         <tr>
@@ -1635,13 +1636,13 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                {% endfor %}
-                {% endif %}
                 <div class="bottomLeft">NOM DU DOCUMENT</div>
                 <div class="rightPage">page X</div>
                 <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
             </div>
         </div>
+        {% endfor %}
+        {% endif %}
     </body>
     {% block javascripts %}        
     <script>
