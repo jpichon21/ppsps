@@ -509,6 +509,24 @@
                 <tr>
                     <td>&nbsp; - Chaussures ou bottes de sécurité <img height="32px" width="32px" src="{{ asset('img/icons/bottes.png') }}"></td>
                 </tr>
+                
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 5}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+<!--Page 11-->
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <table class="col1 transparent small">
                 <tr>
                     <td>Ces équipements sont complétés en fonction des tâches à réaliser, notamment par :
                     </td>
@@ -529,24 +547,10 @@
                     <td>Chaque salarié reçoit un paquetage renouvelé annuellement qui comprend une tenue complète de vêtements de travail et les équipements de protection individuelle décrits ci-dessous sont renouvelés au fur et à mesure des besoins.
                     </td>
                 </tr>
-            </tbody>
         </table>
-        <div class="bottomLeft">NOM DU DOCUMENT</div>
-        <div class="rightPage">page {{page + 5}}</div>
-        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
-    </div>
-</div>
-<!--Page 11-->
-<div class="pageContainer">
-    <div class="pageContent">
-        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
-            {% if logo is not null %}
-        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
-        {% else %}
-        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
-        {% endif %}
         <table class="col1 transparent small">
             <tbody>
+            
                 <tr>
                     <td class="bold underline title">Protection contre l'incendie :</td>
                 </tr>
