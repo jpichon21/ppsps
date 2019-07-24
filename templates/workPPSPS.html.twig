@@ -1,0 +1,109 @@
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+         {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h1>Plan Particulier de Sécurité et de Protection de la Santé</h1>
+        <h2 class="">1. Renseignements généraux</h2>
+        <h3 class="">1.1 Identification des travaux</h3>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Localisation :</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="">Adresse du chantier :</td>
+                    <td><b>{{AddressConstrSite}}</b></td>
+                </tr>
+                <tr>
+                    <td class="">Adresse d'accès au chantier :</td>
+                    <td><b>{{AddressAccessSite}}</b></td>
+                </tr>
+                <tr>
+                    <td class="">Personne référente sur site :</td>
+                    <td><b>{{referent}}</b></td>
+                </tr>
+                <tr>
+                    <td class="">Téléphone :</td>
+                    <td><b>{{referentPhone}}</b></td>
+                </tr>
+                <tr>
+                    <td class="">Mail :</td>
+                    <td><b>{{referentMail}}</b></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">L'entreprise intervient sur le chantier en tant que :</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if siteType == "exclusif" %}checked="true"{% endif %} />&nbsp;Titulaire Exclusif</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if siteType == "co-titular" %}checked="true"{% endif %}  />&nbsp;Co-titulaire</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if siteType == "subcontractor" %} checked="true"{% endif %} />&nbsp;Sous-traitant de l'entreprise</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" {% if siteType == "mandatory" %} checked="true"{% endif %} />&nbsp;Groupement intégré - Mandataire</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Description des travaux propres à ROUGEOT (ou du Groupement) :</td>
+                </tr>
+                <tr>
+                    <td>{{descrWork}}</td>
+                </tr>
+                {% if mandatoryDescr is defined and mandatoryDescr != null %}
+                <tr>
+                    <td>{{mandatoryDescr}}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Planning d'éxécution</td>
+                </tr>
+                <tr>
+                    <td>Ce planning prévisionnel est joint au P.P.S.P.S.</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1 transparent small">
+            <tbody>
+                <tr>
+                    <td class="bold underline title">Calendrier des travaux :</td>
+                </tr>
+                <tr>
+                    <td>Durée prévue du chantier : Du <b>{{dateBegin}}</b> au <b>{{dateEnd}}</b></td>
+                </tr>
+            {% if beginStopWork is defined and beginStopWork != null and endStopWork is defined and endStopWork != null %}
+                <tr>
+                    <td>Arrêt prévu du chantier du <b>{{beginStopWork}}</b> au <b>{{endStopWork}}</b></td>
+                </tr>
+            {% endif %}
+                <tr>
+                    <td>Déclaration d'Ouverture de Chantier faite le <b>{{openingSite}}</b></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page + 1}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endblock %}

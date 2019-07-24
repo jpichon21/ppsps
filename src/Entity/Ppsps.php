@@ -74,39 +74,9 @@ class Ppsps
     private $dateEnd;
 
     /**
-     * @ORM\Column(type="array", length=255, nullable=true)
-     */
-    private $rest = [];
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $winterRestBegin;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $winterRestEnd;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $summerRestBegin;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $summerRestEnd;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $openingSite;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $startingWork;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -239,16 +209,6 @@ class Ppsps
     private $speakers;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $otherRestBegin;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $otherRestEnd;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $chiefWorkRepresentative;
@@ -267,16 +227,6 @@ class Ppsps
      * @ORM\OneToMany(targetEntity="App\Entity\Dealer", mappedBy="ppsps", cascade={"persist"})
      */
     private $dealers;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $AQSE;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $workDirector;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -301,26 +251,59 @@ class Ppsps
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_leader")
-     */
-    private $leaders;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
      * @ORM\JoinTable(name="ppsps_sitemanager")
      */
     private $siteManagers;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_mastercompanion")
-     */
-    private $masterCompanion;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist"})
      */
     private $annexs;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $beginStopWork;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $endStopWork;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $optionalDICTMessage;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isMaintenedByRougeot;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Person", inversedBy="ppsp")
+     */
+    private $AQSE;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Groupment", inversedBy="ppsps")
+     */
+    private $groupment;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isControlled;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isGuardian;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PpspsImage", inversedBy="ppsps")
+     */
+    private $image;
 
     /**
      * to string method
@@ -344,10 +327,9 @@ class Ppsps
         $this->updatesPpsps = new ArrayCollection();
         $this->dealers = new ArrayCollection();
         $this->subcontractedWorks = new ArrayCollection();
-        $this->workDirectors = new ArrayCollection();
-        $this->leaders = new ArrayCollection();
         $this->siteManagers = new ArrayCollection();
         $this->annexs = new ArrayCollection();
+        $this->workDirectors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -487,66 +469,6 @@ class Ppsps
         return $this;
     }
 
-    public function getRest(): ?array
-    {
-        return $this->rest;
-    }
-
-    public function setRest(?array $rest): self
-    {
-        $this->rest = $rest;
-
-        return $this;
-    }
-
-    public function getWinterRestBegin(): ?\DateTimeInterface
-    {
-        return $this->winterRestBegin;
-    }
-
-    public function setWinterRestBegin(?\DateTimeInterface $winterRestBegin): self
-    {
-        $this->winterRestBegin = $winterRestBegin;
-
-        return $this;
-    }
-
-    public function getWinterRestEnd(): ?\DateTimeInterface
-    {
-        return $this->winterRestEnd;
-    }
-
-    public function setWinterRestEnd(?\DateTimeInterface $winterRestEnd): self
-    {
-        $this->winterRestEnd = $winterRestEnd;
-
-        return $this;
-    }
-
-    public function getSummerRestBegin(): ?\DateTimeInterface
-    {
-        return $this->summerRestBegin;
-    }
-
-    public function setSummerRestBegin(?\DateTimeInterface $summerRestBegin): self
-    {
-        $this->summerRestBegin = $summerRestBegin;
-
-        return $this;
-    }
-
-    public function getSummerRestEnd(): ?\DateTimeInterface
-    {
-        return $this->summerRestEnd;
-    }
-
-    public function setSummerRestEnd(?\DateTimeInterface $summerRestEnd): self
-    {
-        $this->summerRestEnd = $summerRestEnd;
-
-        return $this;
-    }
-
     public function getOpeningSite(): ?\DateTimeInterface
     {
         return $this->openingSite;
@@ -555,18 +477,6 @@ class Ppsps
     public function setOpeningSite(?\DateTimeInterface $openingSite): self
     {
         $this->openingSite = $openingSite;
-
-        return $this;
-    }
-
-    public function getStartingWork(): ?\DateTimeInterface
-    {
-        return $this->startingWork;
-    }
-
-    public function setStartingWork(?\DateTimeInterface $startingWork): self
-    {
-        $this->startingWork = $startingWork;
 
         return $this;
     }
@@ -938,30 +848,6 @@ class Ppsps
         return $this;
     }
 
-    public function getOtherRestBegin(): ?\DateTimeInterface
-    {
-        return $this->otherRestBegin;
-    }
-
-    public function setOtherRestBegin(?\DateTimeInterface $otherRestBegin): self
-    {
-        $this->otherRestBegin = $otherRestBegin;
-
-        return $this;
-    }
-
-    public function getOtherRestEnd(): ?\DateTimeInterface
-    {
-        return $this->otherRestEnd;
-    }
-
-    public function setOtherRestEnd(?\DateTimeInterface $otherRestEnd): self
-    {
-        $this->otherRestEnd = $otherRestEnd;
-
-        return $this;
-    }
-
     public function getChiefWorkRepresentative(): ?string
     {
         return $this->chiefWorkRepresentative;
@@ -1036,30 +922,6 @@ class Ppsps
                 $dealer->setPpsps(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getAQSE(): ?string
-    {
-        return $this->AQSE;
-    }
-
-    public function setAQSE(?string $AQSE): self
-    {
-        $this->AQSE = $AQSE;
-
-        return $this;
-    }
-
-    public function getWorkDirector(): ?string
-    {
-        return $this->workDirector;
-    }
-
-    public function setWorkDirector(?string $workDirector): self
-    {
-        $this->workDirector = $workDirector;
 
         return $this;
     }
@@ -1148,32 +1010,6 @@ class Ppsps
     /**
      * @return Collection|Person[]
      */
-    public function getLeaders(): Collection
-    {
-        return $this->leaders;
-    }
-
-    public function addLeader(Person $leader): self
-    {
-        if (!$this->leaders->contains($leader)) {
-            $this->leaders[] = $leader;
-        }
-
-        return $this;
-    }
-
-    public function removeLeader(Person $leader): self
-    {
-        if ($this->leaders->contains($leader)) {
-            $this->leaders->removeElement($leader);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
     public function getSiteManagers(): Collection
     {
         return $this->siteManagers;
@@ -1193,18 +1029,6 @@ class Ppsps
         if ($this->siteManagers->contains($siteManager)) {
             $this->siteManagers->removeElement($siteManager);
         }
-
-        return $this;
-    }
-
-    public function getMasterCompanion(): ?Person
-    {
-        return $this->masterCompanion;
-    }
-
-    public function setMasterCompanion(?Person $masterCompanion): self
-    {
-        $this->masterCompanion = $masterCompanion;
 
         return $this;
     }
@@ -1236,6 +1060,114 @@ class Ppsps
                 $annex->setPpsps(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBeginStopWork(): ?\DateTimeInterface
+    {
+        return $this->beginStopWork;
+    }
+
+    public function setBeginStopWork(?\DateTimeInterface $beginStopWork): self
+    {
+        $this->beginStopWork = $beginStopWork;
+
+        return $this;
+    }
+
+    public function getEndStopWork(): ?\DateTimeInterface
+    {
+        return $this->endStopWork;
+    }
+
+    public function setEndStopWork(?\DateTimeInterface $endStopWork): self
+    {
+        $this->endStopWork = $endStopWork;
+
+        return $this;
+    }
+
+    public function getOptionalDICTMessage(): ?string
+    {
+        return $this->optionalDICTMessage;
+    }
+
+    public function setOptionalDICTMessage(?string $optionalDICTMessage): self
+    {
+        $this->optionalDICTMessage = $optionalDICTMessage;
+
+        return $this;
+    }
+
+    public function getIsMaintenedByRougeot(): ?bool
+    {
+        return $this->isMaintenedByRougeot;
+    }
+
+    public function setIsMaintenedByRougeot(?bool $isMaintenedByRougeot): self
+    {
+        $this->isMaintenedByRougeot = $isMaintenedByRougeot;
+
+        return $this;
+    }
+
+    public function getAQSE(): ?Person
+    {
+        return $this->AQSE;
+    }
+
+    public function setAQSE(?Person $AQSE): self
+    {
+        $this->AQSE = $AQSE;
+
+        return $this;
+    }
+
+    public function getGroupment(): ?Groupment
+    {
+        return $this->groupment;
+    }
+
+    public function setGroupment(?Groupment $groupment): self
+    {
+        $this->groupment = $groupment;
+
+        return $this;
+    }
+
+    public function getIsControlled(): ?bool
+    {
+        return $this->isControlled;
+    }
+
+    public function setIsControlled(bool $isControlled): self
+    {
+        $this->isControlled = $isControlled;
+
+        return $this;
+    }
+
+    public function getIsGuardian(): ?bool
+    {
+        return $this->isGuardian;
+    }
+
+    public function setIsGuardian(?bool $isGuardian): self
+    {
+        $this->isGuardian = $isGuardian;
+
+        return $this;
+    }
+
+    public function getImage(): ?PpspsImage
+    {
+        return $this->image;
+    }
+
+    public function setImage(?PpspsImage $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

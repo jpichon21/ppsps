@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AnnexRepository")
+ * @Vich\Uploadable
  */
 class Annex
 {
-    const SERVER_PATH_TO_ADMIN_FOLDER = '../public/annexs';
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -20,6 +21,7 @@ class Annex
 
     /**
      * Unmapped property to handle file uploads
+     * @Vich\UploadableField(mapping="annexs", fileNameProperty="name")
      */
     private $file;
 
@@ -34,70 +36,36 @@ class Annex
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $filename;
+    private $annexName;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated;
-
+    private $updatedAt;
+    
     /**
-     * @param UploadedFile $file
-     */
-    public function setFile($file = null)
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     *
+     * @return Annex
+    */
+    public function setFile(File $file = null)
     {
         $this->file = $file;
+
+        if ($file) 
+            $this->updatedAt = new \DateTimeImmutable();
+        
+        return $this;
     }
 
     /**
-     * @return UploadedFile
+     * @return File|null
      */
     public function getFile()
     {
         return $this->file;
-    }
-
-    /**
-     * Manages the copying of the file to the relevant place on the server
-     */
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // we use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and target filename as params
-        $this->getFile()->move(
-            self::SERVER_PATH_TO_ADMIN_FOLDER,
-            $this->getFile()->getClientOriginalName()
-        );
-        // set the path property to the filename where you've saved the file
-        $this->filename = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
-        $this->setFile(null);
-    }
-
-    /**
-        * Lifecycle callback to upload the file to the server.
-        */
-    public function lifecycleFileUpload()
-    {
-        $this->upload();
-    }
-
-    /**
-        * Updates the hash value to force the preUpdate and postUpdate events to fire.
-        */
-    public function refreshUpdated()
-    {
-        $this->setUpdated(new \DateTime());
     }
 
     public function getId(): ?int
@@ -128,28 +96,17 @@ class Annex
 
         return $this;
     }
-
-    public function getFilename(): ?string
+    
+    public function getAnnexName(): ?string
     {
-        return $this->filename;
+        return $this->annexName;
     }
 
-    public function setFilename(string $filename): self
+    public function setAnnexName(?string $annexName): self
     {
-        $this->filename = $filename;
+        $this->annexName = $annexName;
 
         return $this;
     }
 
-    public function getUpdated(): ?\DateTimeInterface
-    {
-        return $this->updated;
-    }
-
-    public function setUpdated(?\DateTimeInterface $updated): self
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
 }

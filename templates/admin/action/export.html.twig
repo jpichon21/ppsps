@@ -1,4 +1,7 @@
-<a href="#" class="btn btn-sm btn-default edit_link" title="Exporter en PDF">
+
+{% if object.status == 'Validé' or object.status == 'Archivé' %}
+<a href="{{path('generatePDF', {id: object.id})}}" class="btn btn-sm btn-default edit_link" title="Exporter en PDF">
     <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
     Exporter
 </a>
+{% endif %}

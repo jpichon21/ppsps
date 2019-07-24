@@ -1,0 +1,119 @@
+
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+         {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h1>P.P.S.P.S.</h1>
+        <p>Plan Particulier pour la Sécurité et la Protection de la Santé</p>	
+        <table class="tableLeft col2">
+            <tbody>
+                <tr>
+                    <th>Nom du Chantier</th>
+                    <th>N°</th>
+                    <th>Adresse</th>
+                    <th>Période d'éxécution</th>
+                </tr>
+                <tr>
+                    <td>{{siteName}}</td>
+                    <td>{{siteNumber}}</td>
+                    <td>{{globalSiteAddress}}</td>
+                    <td>{{periodOfExecution}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="maitreOuvrage col3 row2">
+            <tbody>
+                <tr>
+                    <th>Maître de l'Ouvrage</th>
+                </tr>
+                <tr>
+                    <td>{{owner}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="tableLeft col2">
+            <tbody>
+                <tr>
+                    <th>Indice de Révision</th>
+                    <th>Date</th>
+                </tr>
+            {% if updatesPpsps is defined and updatesPpsps != null %}
+                    {% set lastArray = updatesPpsps|last %}
+                    {% set lastRow = lastArray|last %}
+                        <tr>
+                            <td>{{lastRow.indexUpdate}}</td>
+                            <td>{{lastRow.updateDate}}</td>
+                        </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        <table class="col1">
+            <thead>
+                <tr>
+                    <th colspan="4">Visas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Rédacteur</th>
+                    <th>Conducteur de travaux</th>
+                    <th>Approbateur</th>
+                    <th>Directeur de projet</th>
+                </tr>
+                <tr>
+                    <td>Nom : </td>
+                    <td></td>
+                    <td>Nom : </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Date : </td>
+                    <td></td>
+                    <td>Date : </td>
+                    <td></td>
+                </tr>
+                <tr class="row2">
+                    <td>Signature : </td>
+                    <td></td>
+                    <td>Signature : </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="col1">
+            <thead>
+                <tr>
+                    <th colspan="2">Visas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Approbateur</th>
+                    <th>QSE</th>
+                </tr>
+                <tr>
+                    <td>Nom : </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Date : </td>
+                    <td></td>
+                </tr>
+                <tr class="row2">
+                    <td>Signature : </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{page}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endblock page %}

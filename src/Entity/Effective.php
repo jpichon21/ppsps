@@ -32,11 +32,6 @@ class Effective
     private $maximum;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $peakPeriod;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Ppsps", inversedBy="effectives")
      */
     private $ppsps;
@@ -78,18 +73,6 @@ class Effective
     public function setMaximum(?int $maximum): self
     {
         $this->maximum = $maximum;
-
-        return $this;
-    }
-
-    public function getPeakPeriod(): ?string
-    {
-        return $this->peakPeriod;
-    }
-
-    public function setPeakPeriod(?string $peakPeriod): self
-    {
-        $this->peakPeriod = $peakPeriod;
 
         return $this;
     }

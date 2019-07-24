@@ -18,6 +18,9 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType as SymfonyCollecti
 use Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
+use App\Entity\SituationGroup;
+use App\Entity\Situation;
+use Sonata\AdminBundle\Form\Type\ModelType;
 
 final class PpspsAdmin extends AbstractAdmin
 {
@@ -25,8 +28,89 @@ final class PpspsAdmin extends AbstractAdmin
         $collection->remove('export');
     }
 
+
+    public function prePersist($object)
+    {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object)
+    {
+        $situationLists = $object->getSituation();
+        foreach ($situationLists as $key => $situation) {
+            if(isset($situation['situationGroup'])){
+                if(isset($situation['situation'])){
+                    if(!$this->checkIntegritySituation($situation['situationGroup'], $situation['situation'])){
+                        unset($situationLists[$key]['situation']);
+                        unset($situationLists[$key]['risk']);
+                        unset($situationLists[$key]['tool']);
+                        unset($situationLists[$key]['measure']);
+                    }
+                    if(isset($situation['risk'])) {
+                        if ($situation['risk'] === null || $situation['risk'] === []) {
+                            unset($situationLists[$key]['measure']);
+                        }
+                        foreach ($situation['risk'] as $risk) {
+                            if(!$this->checkIntegrityRisk($situation['situation'], $risk)){
+                                unset($situationLists[$key]['risk']);
+                                break;
+                            }
+                        }
+                    }
+                    if(isset($situation['tool'])) {
+                        foreach ($situation['tool'] as $tool) {
+                            if(!$this->checkIntegrityTool($situation['situation'], $tool)){
+                                unset($situationLists[$key]['tool']);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        $object->setSituation($situationLists);
+        if ($object->getGroupment() === null) {
+            $object->setGroupment($this->getUser()->getGroupment());
+        }
+    }
+
+    private function checkIntegritySituation($situationGroupId, $situationId) {
+        $em =  $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $situationLists = $em->getRepository(SituationGroup::class)->findOneById($situationGroupId)->getSituations();
+        foreach ($situationLists as $situation) {
+            $arrayOfSituationId[] = $situation->getId();
+        }
+
+        return in_array($situationId, $arrayOfSituationId);
+    }
+
+    private function checkIntegrityRisk($situationId, $riskId) {
+        $em =  $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $riskLists = $em->getRepository(Situation::class)->findOneById($situationId)->getRisks();
+        foreach ($riskLists as $risk) {
+            $arrayOfRiskId[] = $risk->getId();
+        }
+        if (!isset($arrayOfRiskId)) {
+            return false;
+        }
+        return in_array($riskId, $arrayOfRiskId);
+    }
+
+    private function checkIntegrityTool($situationId, $toolId) {
+        $em =  $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
+        $toolLists = $em->getRepository(Situation::class)->findOneById($situationId)->getTools();
+        foreach ($toolLists as $tool) {
+            $arrayOfToolId[] = $tool->getId();
+        }
+        if (!isset($arrayOfToolId)) {
+            return false;
+        }
+        return in_array($toolId, $arrayOfToolId);
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
+
         $formMapper
             ->tab('Configuration du Ppsps')
                 ->with('État du document')
@@ -38,6 +122,13 @@ final class PpspsAdmin extends AbstractAdmin
                             'Archivé' => 'Archivé',
                         ],
                         'required' => true
+                    ])
+                ->end()                
+                ->with('Image du chantier')
+                    ->add('image', ModelType::class, [
+                        'label' => 'Image du chantier',
+                        'required' => false,
+                        'by_reference' => false,
                     ])
                 ->end()
                 ->with('Configuration générale')
@@ -156,77 +247,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
-                    ->add('rest', ChoiceType::class, [
-                        'label' => 'Arrêt de chantier',
-                        'choices' => [
-                            'Congés été' => 'summer-rest',
-                            'Congés Hiver' => 'winter-rest',
-                            'Autre' => 'other',
-                        ],
-                        'multiple' => true,
-                        'expanded' => true,
-                        'required' => false
-                    ])
-                    ->add('summerRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des congés d\'été',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('summerRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des congés d\'été',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('winterRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des congés d\'hiver',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('winterRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des congés d\'hiver',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('otherRestBegin', DatePickerType::class, [
-                        'label' => 'Date de début des autres congés',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
-                    ->add('otherRestEnd', DatePickerType::class, [
-                        'label' => 'Date de fin des autres congés',
-                        'dp_side_by_side'       => true,
-                        'dp_use_current'        => false,
-                        'dp_collapse'           => true,
-                        'dp_calendar_weeks'     => false,
-                        'dp_view_mode'          => 'days',
-                        'dp_min_view_mode'      => 'days',
-                        'required' => false,
-                    ])
                     ->add('openingSite', DatePickerType::class, [
                         'label' => 'Déclaration d\'ouverture de chantier',
                         'dp_side_by_side'       => true,
@@ -237,8 +257,10 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
-                    ->add('startingWork', DatePickerType::class, [
-                        'label' => 'Déclaration d\'intention de commencer les travaux (D.I.C.T.)',
+                ->end()
+                ->with('Arrêts de chantier')
+                    ->add('beginStopWork', DatePickerType::class, [
+                        'label' => 'Du',
                         'dp_side_by_side'       => true,
                         'dp_use_current'        => false,
                         'dp_collapse'           => true,
@@ -247,7 +269,17 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
-                ->end()
+                    ->add('endStopWork', DatePickerType::class, [
+                        'label' => 'Au',
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => false,
+                        'dp_collapse'           => true,
+                        'dp_calendar_weeks'     => false,
+                        'dp_view_mode'          => 'days',
+                        'dp_min_view_mode'      => 'days',
+                        'required' => false,
+                    ])
+                ->end()            
                 ->with('Concessionaire')
                     ->add('dealers', CollectionType::class, [
                         'label' => 'Concessionaire',
@@ -260,15 +292,17 @@ final class PpspsAdmin extends AbstractAdmin
                         'edit' => 'inline',
                         'inline' => 'table',
                     ])
-                ->end()
-                ->with('Organisation de l\'entreprise (ou du groupement)')
-                    ->add('AQSE', TextType::class, [
-                        'label' => 'Animateur Qualité Sécurité Environnement',
+                    ->add('optionalDICTMessage', TextType::class, [
+                        'label' => 'Renvoyer en annexe',
                         'required' => false
                     ])
-                    ->add('workDirector', TextType::class, [
-                        'label' => 'Directeur de Travaux',
-                        'required' => false
+                ->end()
+                ->with('Organisation de l\'entreprise (ou du groupement)')
+                    ->add('AQSE', ModelAutocompleteType::class, [
+                        'label' => 'Animateur Qualité Sécurité Environnement',
+                        'required' => false,
+                        'multiple' => false,
+                        'property' => 'name'
                     ])
                     ->add('workDirectors', ModelAutocompleteType::class, [
                         'label' => 'Conducteur(s) de Travaux',
@@ -276,19 +310,8 @@ final class PpspsAdmin extends AbstractAdmin
                         'multiple' => true,
                         'property' => 'name'
                     ])
-                    ->add('masterCompanion', ModelAutocompleteType::class, [
-                        'label' => 'Maître compagnon',
-                        'required' => false,
-                        'property' => 'name'
-                    ])
                     ->add('siteManagers', ModelAutocompleteType::class, [
                         'label' => 'Chef(s) de chantier',
-                        'property' => 'name',
-                        'required' => false,
-                        'multiple' => true
-                    ])
-                    ->add('leaders', ModelAutocompleteType::class, [
-                        'label' => 'Chef(s) d\'équipe',
                         'property' => 'name',
                         'required' => false,
                         'multiple' => true
@@ -307,7 +330,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('Intervenants suplémentaires')
+                ->with('Organismes de prévention')
                     ->add('speakers', CollectionType::class, [
                         'label' => false,
                         'required' => false,
@@ -320,19 +343,19 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
-                ->with('C.I.S.S.T.')
+                ->with('C.I.S.S.C.T.')
                     ->add('myCissct', CheckboxType::class, [
                         'label'=> 'Obligation',
                         'required' => false
                     ])
                     ->add('chiefWorkRepresentative', TextType::class, [
-                        'label' => 'Représentant de l\'entreprise au CISST',
+                        'label' => 'Représentant de l\'entreprise au CISSCT',
                         'required' => false
                     ])
                 ->end()
-                ->with('Coordination SPS')
+                ->with('Coordonation SPS')
                     ->add('securityCoordinator', CheckboxType::class, [
-                        'label'=> 'Coordonateur sécurité',
+                        'label'=> 'Coordonnateur sécurité',
                         'required' => false
                     ])
                     ->add('PGC', CheckboxType::class, [
@@ -380,8 +403,24 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
+                    ->add('isControlled', CheckboxType::class, [
+                        'label'=> 'Accès Contrôlé',
+                        'required' => false
+                    ])
+                    ->add('isGuardian', CheckboxType::class, [
+                        'label'=> 'Présence d\'un Gardien',
+                        'required' => false
+                    ])
                 ->end()
                 ->with('Installations de chantier')
+                    ->add('isMaintenedByRougeot', CheckboxType::class, [
+                        'label'=> 'Maintenu par rougeot',
+                        'required' => false
+                    ])
+                    ->add('maintainer', TextType::class, [
+                        'label' => 'Maintenu et entretenu par l\'entreprise',
+                        'required' => false
+                    ])
                     ->add('listOfInstallations', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
@@ -402,12 +441,8 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Autre',
                         'required' => false
                     ])
-                    ->add('maintainer', TextType::class, [
-                        'label' => 'Maintenu et entretenu par l\'entreprise',
-                        'required' => false
-                    ])
                 ->end()
-                ->with('Aptitudes particulières du personnel affecté au chantier')
+                ->with('Autorisation et habilitation particulière du personnel')
                     ->add('suiabilityList', ChoiceType::class, [
                         'label' => false,
                         'choices' => [
@@ -493,6 +528,11 @@ final class PpspsAdmin extends AbstractAdmin
         $datagridMapper->add('siteNumber', null, [
             'label' => 'Numéro du chantier'
         ]);
+        if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            $datagridMapper->add('groupment', null, [
+                'label' => 'Groupe'
+            ]);
+        }
         $datagridMapper->add('status', ChoiceFilter::class, [
             'label' => 'Etat du document',
             'choices' => [
@@ -529,10 +569,27 @@ final class PpspsAdmin extends AbstractAdmin
         ]);
         $listMapper->add('_action', null, [
             'actions' => [
-                'edit' => [],
+                'edit' => ['template' => 'admin/action/customeditaction.html.twig'],
                 'delete' => [],
+                'preview' => ['template' => 'admin/action/preview.html.twig'],
                 'export' => ['template' => 'admin/action/export.html.twig']
             ]
         ]);
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        if (!in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            $query->where($query->expr()->eq($query->getRootAliases()[0] . '.groupment', ':groupmentId'));
+            $query->setParameter('groupmentId', $this->getUser()->getGroupment()->getId());
+        }
+        return $query;
+    }
+
+    private function getUser()
+    {
+        $tokenStorage = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken();
+        return ($tokenStorage) ? $tokenStorage->getUser() : null;
     }
 }

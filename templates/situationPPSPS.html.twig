@@ -1,0 +1,76 @@
+{% set pageCounter = 0 %}
+{% if situations is defined and situations != null %}
+{% for var in situations %}
+{% for items in var %}
+    {% if items is iterable %}
+    {% set counter = ( counter | default(0) ) + 1 %}
+    <div class="pageContainer">
+        <div class="pageContent">
+            <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+            <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+            {% else %}
+            <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+            {% endif %}
+            <h2 class="">1.3 Analyse des risques de ROUGEOT et des sous-traitants</h2>
+            <table class="col1">
+                <tbody>
+                    {% if var['situationGroup'] is defined %}
+                    <tr>
+                        <th colspan="4">{{var['situationGroup']}}</th>
+                    </tr>
+                    {% endif %}
+                    {% for subItems in items %}
+                        {% if subItems is iterable %} 
+                        <tr>
+                        <td class="bold normal">{{subItems.situation}}</td>
+                        {% if subItems['tool'] is defined %}
+                        <td {% if subItems['tool'] == null %} class="grey" {% endif %} class="normal" >
+                            {% for tool in subItems['tool'] %}
+                                <p>{{tool}}</p>
+                            {% endfor %}
+                        </td>
+                        {% else %}
+                        <td class="grey">
+
+                        </td>
+                        {% endif %}    
+                        {% if subItems['risk'] is defined %}
+                        <td {% if subItems['risk'] == null %} class="grey" {% endif %} class="wide" >
+                            {% for risk in subItems['risk'] %}
+                                <p>{{risk}}</p>                          
+                            {% endfor %}
+                        </td>
+                        {% else %}
+                        <td class="grey">
+
+                        </td>
+                        {% endif %}  
+                        {% if subItems['measure'] is defined %}                        
+                        <td {% if subItems['measure'] == null %} class="grey" {% endif %} class="normal" >
+                            {% for measure in subItems['measure'] %}
+                            <p>{{measure}}</p>
+                            {% endfor %}
+                        </td>
+                        {% else %}
+                        <td class="grey">
+
+                        </td>
+                        {% endif %}
+                            <tr>
+                                <td colspan="4" class="grey"></td>
+                            </tr>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="bottomLeft">NOM DU DOCUMENT</div>
+            <div class="rightPage">page {{page + counter}}</div>
+            <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+{% endif %}

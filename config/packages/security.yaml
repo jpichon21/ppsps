@@ -1,22 +1,67 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User: auto # use bcrypt if you are using "symfony/security-bundle" < 4.3
+
+    role_hierarchy:
+        ROLE_ADMIN:
+            - ROLE_SONATA_ADMIN
+            - ROLE_ADMIN_SITUATION_ALL
+            - ROLE_ADMIN_RISK_ALL
+            - ROLE_ADMIN_MEASURE_ALL
+            - ROLE_ADMIN_TOOL_ALL
+            - ROLE_ADMIN_PERSON_ALL
+            - ROLE_ADMIN_USERS_ALL
+            - ROLE_ADMIN_GROUP_ALL
+            - ROLE_ADMIN_GROUPMENTLOGO_ALL
+            - ROLE_ADMIN_SITUATIONGROUP_ALL
+            - ROLE_USER
+        ROLE_USER:
+            - ROLE_SONATA_ADMIN
+            - ROLE_ADMIN_APP_PPSPS_ALL
+            - ROLE_ADMIN_PERSON_LIST
+            - ROLE_ADMIN_DEALER_ALL
+            - ROLE_ADMIN_SPEAKER_ALL
+            - ROLE_ADMIN_EFFECTIVE_ALL
+            - ROLE_ADMIN_UPDATEPPSPS_ALL
+            - ROLE_ADMIN_DIFFUSION_ALL
+            - ROLE_ADMIN_WORKDIRECTOR_ALL
+            - ROLE_ADMIN_LEADERADMIN_ALL
+            - ROLE_ADMIN_SUBCONTRACTEDWORK_ALL
+            - ROLE_ADMIN_ANNEX_ALL
+            - ROLE_ADMIN_PPSPSIMAGE_ALL
+
     providers:
-        in_memory: { memory: ~ }
+        users:
+            id: App\Security\UserProvider
+
     firewalls:
+        # Disabling the security for the web debug toolbar, the profiler and Assetic.
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        # -> custom firewall for the admin area of the URL
+        admin:
+            pattern:            /
+            form_login:
+                provider:       users
+                login_path:     admin_login
+                use_forward:    false
+                check_path:     admin_login
+                failure_path:   null
+            logout:
+                path:           admin_logout
+                target:         admin_login
+            anonymous:          true
+            guard:
+                authenticators:
+                    - App\Security\AdminLoginAuthenticator
         main:
-            anonymous: true
+            anonymous: ~
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/.*, role: [ROLE_ADMIN, ROLE_USER] }
+
+

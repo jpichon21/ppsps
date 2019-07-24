@@ -1,4 +1,7 @@
-pdf:
-    path: /
-    controller: App\Controller\PdfController::index
+previewPDF:
+    path: /preview/{id}
+    controller: App\Controller\PdfController::previewPDF
+generatePDF:
+    path: /generate/{id}
+    controller: App\Controller\PdfController::generatePDF
     

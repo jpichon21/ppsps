@@ -1,0 +1,64 @@
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+        <h3 class="">1.1.2 Organisation de l'entreprise (ou groupement) et intervenants</h3>
+        <div id="bottomPipe"></div>
+        <table class="col3 tableLeft center">
+            <tbody>
+                <tr>
+                    <td class="bold  ">Animateur Qualité Sécurité Environnement</td>
+                </tr>
+            {% if AQSE is defined and AQSE != null %}
+                    <tr>
+                        <td>
+                            {{AQSE.name}}
+                        </td>
+                    </tr>
+             {% endif %}
+            </tbody>
+        </table>
+        <table class="col2 tableRight center">
+            <tbody>
+                <tr>
+                    <td class="bold ">Conducteur(s) de Travaux<br><i class="mini">Diriger et organiser les ressources</i></td>
+                </tr>
+                {% if workDirectors is defined and workDirectors != null %}
+                    {% for item in workDirectors %}
+                        <tr>
+                            <td>
+                                {{item.name}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        <table class="col2 tableRight center">
+            <tbody>
+                <tr>
+                    <td class="bold ">Chef(s) de chantier<br><i class="mini">Mise en oeuvre des moyens et respect des consignes</i></td>
+                </tr>
+            {% if siteManagers is defined and siteManagers != null %}
+                {% for item in siteManagers %}
+                    <tr>
+                        <td>
+                            {{item.name}}
+                        </td>
+                    </tr>
+                {% endfor %}
+             {% endif %}
+            </tbody>
+        </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="rightPage">page {{ page + 1}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+{% if dealers is defined and dealers != null %}
+{% for key, value in dealers %}
+<div class="pageContainer">
+   <div class="pageContent">
+       <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+        {% if logo is not null %}
+       <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+       {% else %}
+       <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+       {% endif %}
+        <table class="col1">
+           <tbody>
+               <tr>
+                   <th>Concessionnaires</th>
+                   <th>Contact</th>
+                   <th>D.C.I.T. envoyée le</th>
+               </tr>
+               {% for subvalue in value %}
+               <tr>
+                   <td>{{subvalue.name}}</td>
+                   <td>{{subvalue.mail}}</td>
+                   {% if subvalue.sendingDate != null %}
+                       <td>{{subvalue.sendingDate}}</td>
+                   {% else %}
+                       <td>{{ "now"|date("d/m/Y", "Europe/Paris") }}</td>
+                   {% endif %}
+               </tr>        
+               {% endfor %}
+           </tbody>
+       </table>
+        <div class="bottomLeft">NOM DU DOCUMENT</div>
+       <div class="rightPage">page {{page + key}}</div>
+       <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+   </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

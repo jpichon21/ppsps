@@ -1,0 +1,18 @@
+vich_uploader:
+    db_driver: orm
+    mappings: 
+      annexs:
+        uri_prefix: /public/annexs
+        upload_destination: '%kernel.project_dir%/public/annexs'
+        namer: vich_uploader.namer_uniqid
+        inject_on_load: true
+      group_logo:
+        uri_prefix: /public/groupLogo
+        upload_destination: '%kernel.project_dir%/public/groupLogo'
+        namer: vich_uploader.namer_uniqid
+        inject_on_load: true
+      ppsps_image:
+        uri_prefix: /public/ppspsImage
+        upload_destination: '%kernel.project_dir%/public/ppspsImage'
+        namer: vich_uploader.namer_uniqid
+        inject_on_load: true

@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Form\Type\ModelType;
 
 final class SituationAdmin extends AbstractAdmin
 {
@@ -25,6 +26,11 @@ final class SituationAdmin extends AbstractAdmin
         $formMapper->add('descr', TextareaType::class, [
             'label' => 'Description'
         ]);
+        $formMapper->add('SituationGroup', ModelType::class , array(
+            'class' => 'App\Entity\SituationGroup',
+            'multiple' => false, 
+            'by_reference' => false,
+            'label'=>'Choissisez le groupe de la situation de travail'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -48,4 +54,12 @@ final class SituationAdmin extends AbstractAdmin
             ]
         ]);
     }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $query->where($query->expr()->isNull($query->getRootAliases()[0] . '.deletedAt'));
+        return $query;
+    }
+
 }

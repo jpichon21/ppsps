@@ -5,3 +5,17 @@ sonata_block:
             contexts: [admin]
 sonata_admin:
     title: ROUGEOT TP
+    templates:
+        user_block: /UserAdmin/user_block.html.twig
+    security:
+        handler: sonata.admin.security.handler.role
+        information:
+            EDIT: EDIT
+            LIST: LIST
+            CREATE: CREATE
+            VIEW: VIEW
+            DELETE: DELETE
+            EXPORT: EXPORT
+            OPERATOR: OPERATOR
+            MASTER: MASTER
+            PUBLIC: PUBLIC

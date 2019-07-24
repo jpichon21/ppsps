@@ -1,0 +1,48 @@
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+{% if diffusions is defined and diffusions != null %}
+    {% for key, value in diffusions %}
+    <div class="pageContainer">
+        <div class="pageContent">
+            <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+            {% if logo is not null %}
+            <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+            {% else %}
+            <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+            {% endif %}
+                <table class="col1">
+                <thead>
+                    <tr>
+                        <th colspan="5">Diffusions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2">Destinataire</th>
+                        <th rowspan="2">Nom</th>
+                        <th rowspan="2">Date</th>
+                        <th colspan="2">Diffusion</th>
+                    </tr>
+                    <tr>
+                        <th>Mail</th>
+                        <th>Papier</th>
+                    </tr>
+                    {% for subvalue in value %}
+                    <tr>
+                        <td>{{subvalue.recipient}}</td>
+                        <td>{{subvalue.name}}</td>
+                        <td>{{subvalue.date}}</td>
+                        <td {% if subvalue.isNumeric == null %}class="grey"{% endif %} >{% if subvalue.isNumeric != null %}Oui{% endif %}</td>
+                        <td {% if subvalue.paper != true %}class="grey"{% endif %} >{% if subvalue.paper == true %}Oui{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="bottomLeft">NOM DU DOCUMENT</div>
+            <div class="rightPage">page {{page + key}}</div>
+            <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

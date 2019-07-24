@@ -1,0 +1,41 @@
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+{% if updatesPpsps is defined and updatesPpsps != null %}
+    {% for key, value in updatesPpsps %}
+    <div class="pageContainer">
+        <div class="pageContent">
+            <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+                {% if logo is not null %}
+            <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+            {% else %}
+            <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+            {% endif %}
+            <h1>Tableau de mise à jour du P.P.S.P.S.</h1>
+            <table class="col1">
+                <tbody>
+                    <tr>
+                        <th>Objet de la modification</th>
+                        <th>Indice</th>
+                        <th>Date</th>
+                        <th>Réalisé par :</th>
+                        <th>Validé par :</th>
+                    </tr>
+                        {% for subvalue in value %}
+                        <tr>
+                            <td>{{subvalue.updateObject}}</td>
+                            <td>{{subvalue.indexUpdate}}</td>
+                            <td>{{subvalue.updateDate}}</td>
+                            <td>{{subvalue.writeBy}}</td>
+                            <td>{{subvalue.aprovedBy}}</td>
+                        </tr>        
+                        {% endfor %}
+                </tbody>
+            </table>
+            <div class="bottomLeft">NOM DU DOCUMENT</div>
+            <div class="rightPage">page {{page + key}}</div>
+            <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -40,7 +40,7 @@ font-family: 'Roboto', sans-serif;
     }
     
     .pageContent {
-        height: 2339px;
+        height: 1680px;
     }
     
     .cornerTop {
@@ -139,7 +139,7 @@ font-family: 'Roboto', sans-serif;
     
     //TABLEAUX 
     .pageContainer {
-        width: 100%;
+        width: 1200px;
         position: relative;
     }
     
@@ -276,15 +276,6 @@ font-family: 'Roboto', sans-serif;
         height: 2339px;
         margin: 0 auto;
         max-width: 1739px;
-    }
-    
-    #bottomPipe {
-        height: 800px;
-        border-left: 2px solid black;
-        position: absolute;
-        left: 975px;
-        top: 73px;
-        z-index: 0;
     }
     
     .rightpipe,

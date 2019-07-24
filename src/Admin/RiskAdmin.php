@@ -63,6 +63,7 @@ final class RiskAdmin extends AbstractAdmin
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
+        $query->where($query->expr()->isNull($query->getRootAliases()[0] . '.deletedAt'));
         $query->orderBy('o.situation');
         return $query;
     }
