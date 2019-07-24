@@ -30,6 +30,15 @@
         ->set('branch', 'dev')
         ->set('deploy_path', '/home/{{account_dir}}/ppsps_dev');
 
+    host('ppspsbyrougeot.com')
+        ->stage('prod')
+        ->user('root')
+        ->hostname('ns4.logomotion-serveur.com')
+        ->port('2222')
+        ->set('account_dir', 'rougeot')
+        ->set('branch', 'master')
+        ->set('deploy_path', '/home/{{account_dir}}/ppsps_prod');
+
     task('deploy', [
         'deploy:info',
         'deploy:prepare',
