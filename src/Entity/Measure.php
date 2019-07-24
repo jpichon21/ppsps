@@ -33,6 +33,8 @@ class Measure
     */
     private $risk;
 
+    private $numRisk;
+
     /**
      * @var datetime $deletedAt
      *
@@ -53,6 +55,13 @@ class Measure
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -115,5 +124,17 @@ class Measure
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumRisk(): ?int
+    {
+        return $this->numRisk;
+    }
+
+    public function setNumRisk(?int $numRisk): self
+    {
+        $this->numRisk = $numRisk;
+
+        return $this;
     }
 }

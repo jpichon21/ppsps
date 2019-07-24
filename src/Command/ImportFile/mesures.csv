@@ -1,0 +1,143 @@
+id,numRisk,name,descr
+1,1,Dysfonctionnement,"Vérifications générales périodiques tous les 6 mois pour GMR & GMR et tous les 12 mois pour GME + visuel quotidien, "
+2,1,Dysfonctionnement,diffusion des consignes de sécurité au grutier
+3,2,Basculement dû au vent,Présence d'un anémomètre avec pré-alarme (feu clignotant orange en cabine) à 50km/h 
+4,2,Basculement dû au vent,Alarme sonore donnant à 72 km/h pour ordre de dépose
+5,3,Heurt personnel / matériels par la charge,Port du casque
+6,3,Heurt personnel / matériels par la charge,respect des procédures de commandement grutier
+7,3,Heurt personnel / matériels par la charge, ne pas rester sous une charge en mouvement
+8,6,Chute de matériaux,Ne pas rester à proximité de l'engin lors du remplissage et levage de benne
+9,7,Ecrasement,"Engins équipés de système de sécurité, ne pas rester dans le périmètre d'action de l'engin "
+10,7,Ecrasement,Signaler sa présence au chauffeur
+11,8,Basculement de l'engin,"Guidage lors du déchargement, benne baissée lors de la circulation, levée de la benne sur sol stable ou mise en fonction du système de calage si terrain en pente"
+12,9,"Camions benne, gravillonneur et semi-remorque","Camions benne, gravillonneur et semi-remorque"
+13,10,Chute de charge,"Activation des stabilisateurs, port du casque et des chaussures de sécurité "
+14,10,Chute de charge,Ne pas rester dans le périmètre d'évolution de l'engin
+15,10,Chute de charge,Respect des consignes d'élingage et utilisation d'élingues adaptées
+16,11,Brûlure,Accès interdit aux personnes non autorisées couvrants
+17,11,Brûlure,Port de vêtements de protection
+18,12,"Brûlures, projections de liquide chaud lors du remplissage",Port de vêtements couvrants
+19,12,"Brûlures, projections de liquide chaud lors du remplissage",Port d'une protection faciale
+20,12,"Brûlures, projections de liquide chaud lors du remplissage",Ne pas rester à proximité lors de l'épandage
+21,13,Chute de hauteur,"Toujours se tenir face à la cabine, utiliser les trois points d'appui"
+22,14,Collisions,Respecter le sens de circulation et les procédures
+23,15,"Heurts, retournement","Ne pas pénétrer dans le périmètre d'action de la pelle, port du casque, poser les stabilisateurs"
+24,16,"Ecrasement, glissement","Engins équipés de systèmes d'alarme, ne pas rester dans le périmètre d'évolution de l'engin, assurer son calage lors de son arrêt sur pente"
+25,17,"Ecrasement, bruit","Prévenir le chauffeur pour toute intervention ou passage à proximité, sinon rester en dehors de son périmètre d'action, port des protections auditives"
+26,18, Eboulement,"Prévenir le chauffeur pour toute intervention ou passage à proximité, sinon rester en dehors de son périmètre d'action, port des protections auditives, surveiller la stabilité du terrain"
+27,19,Bruit,Port de protections auditives
+28,20,Risque électrique,"Matériel vérifié et conforme, mise à la terre du matériel, seules les personnes habilitées peuvent intervenir"
+29,21,Electrocution,"Port de gants isolants, personne intervenante habilitée, installations vérifiées annuellement et au démarrage du chantier"
+30,22,Eboulement - Poussière,"Pose de blindage et étaiements, effectuer un phasage des terrassements - Port d'un masque filtrant"
+31,23,Intempéries,Raccordement d'une pompe au réseau pour évacuer l'eau en fond de fouille
+32,24,"Perçage d'une canalisation, fuites","DICT à respecter, balisage chantier, en cas d'incident alerter les services compétents"
+33,25,"Effondrement de paroi, de talus / ensevelissement","Respect des règles d'étayage et de talutage, si profondeur > 1m30 pose de blindage"
+34,26,Chute de hauteur,"Balisage du chantier, si besoin installation de garde corps"
+35,27,Cf risques récurrents,Cf risques récurrents (22-23-24)
+36,28,Ensevelissement,Fouille vide lors du déchargement
+37,29,Effondrement de paroi de tranchée,Humidification des matériaux
+38,30,Chute de hauteur,"Balisage du chantier, surveillance"
+39,31,Risque biologique,"Port d'EPI couvrants, chaussures montantes, lunettes de protection"
+40,32,"Cf partie Installation de chantier - Utilisation de pelle, chargeur (15-16)","Cf partie Installation de chantier - Utilisation de pelle, chargeur (15 - 16)"
+41,33,Cf partie Installation de chantier - Utilisation d'engins (15-16),Cf partie Installation de chantier - Utilisation d'engins (15 - 16)
+42,34,"Chute, blessures","Délimitation du lieu de creusage, accès interdit aux personnes qui ne participent pas"
+43,35,"Chute d'objets, manutention manuelle","Port du casque, des chaussures de sécurité, de gants"
+44,36,"Irritations, eczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le béton à mains nues, rincer rapidement toute partie du corps ou des vêtement entrées en contact avec le ciment"
+45,37,Cf partie GENERALITES - Bétonnage / Féraillage,Cf partie GENERALITES - Bétonnage / Féraillage
+46,38,Chute d'objet,"Vérification des crochets et moyens de levage, ne pas déplacer les longrines directement sur fourches"
+47,39,Heurts,Accompagnement manuel de la longrine lors de son déplacement sur chantier
+48,40,Cf partie GENERALITES - Accessoires de levage,Cf partie GENERALITES - Accessoires de levage
+49,41,Cf partie GENERALITE - Ferraillage,Cf partie GENERALITE - Ferraillage
+50,42,Cf partie GENERALITE - Bétonnage,Cf partie GENERALITE - Bétonnage
+51,43,Cf partie GENERALITES - Bétonnage / Féraillage,
+52,44,Effondrement des parois de la tranchée,"Balisage autour de la zone d'excavation, respect des procédures"
+53,45,Heurt - collision,"Port du casque, évacuation de la zone du personnel non nécessaire à cette tâche"
+54,46,Effondrement des parois de la tranchée,"Balisage autour de la zone d'excavation, respect des procédures"
+55,47,Heurt - collision,"Port du casque, évacuation de la zone du personnel pas nécessaire à cette tache"
+56,48,Bruit,Port des protections auditives
+57,49,"TMS, blessures, écrasements, pincements","Adoption d'une posture adéquate (genoux pliés dos droit), port de gants manutention et des chaussures de sécurité"
+58,50,Effondrement,"S'assurer de la stabilité du terrain et porter le casque, les chaussures de sécurité, stabilisation à l'avancement"
+59,51,"Maladies respiratoires, irritations, éczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
+60,52,"TMS, blessures, écrasements, pincements","Adoption d'une posture adéquate (genoux pliés dos droit), port de gants manutention et des chaussures de sécurité"
+61,53,Effondrement,"S'assurer de la stabilité du terrain et porter le casque, les chaussures de sécurité, stabilisation des ouvrages"
+62,54,"Maladies respiratoires, irritations, éczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
+63,55,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement","Appliquer les recommandations techniques du fournisseur, vérification du matériel avant utilisation, vérification de la présence des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...), guidage et manoeuvrage pour le déplacement et la pose, stabilisation des banches permanente, mise en place de garde corps face coffrante, ne pas laisser d'outils sur les planches des banches"
+64,56,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
+65,57,Cf partie GENERALITES - Ferraillage,Cf partie GENERALITES - Ferraillage
+66,58,Arrachement de l'étais,Point d'accroche résistant et adapté
+67,59,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement","Appliquer les recommandations techniques du fournisseur, vérification du matériel avant utilisation, vérification de la présence des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...), guidage et manoeuvrage pour le déplacement et la pose,stabilisation des banches permanente, mise en place de garde corps face coffrante, ne pas laisser d'outils sur les planches des banches"
+68,60,"Chute d'objet, écrasement",Vérification des moyens et engins de levage périodiquement
+69,61,"Chocs, heurts, écrasements","Port du casque, des chaussures de sécurité, ne pas rester sur le lieu d'évolution de l'engin manutentionneur"
+70,62,Effondrement,"S'assurer de la stabilité du terrain et porter le casque, les chaussures de sécurité, stabilisation des ouvrages à l'avancement"
+71,63,"Maladies respiratoires, irritations, éczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
+72,64,"Chute d'objet, écrasements, blessures","Vérification de la conformité de l'élingage, port du casque, ne pas se situer dans le périmètre de manutention"
+73,65,Chute,"Vérification de la stabilité du terrain, faire attention"
+74,66,Chute/ effondrement du prémur,"Port du casque et des chaussures de sécurité, vérifier la largeur, l'état et l'emplacement des appuis, ne pas rester à proximité de la pose, stabilisation à la pose, respect de la méthodologie"
+75,67,"Maladies respiratoires, irritations éczema","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
+76,68,Cf partie GENERALITES - Ferraillage,Cf partie GENERALITES - Ferraillage
+77,69,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
+78,70,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement","Appliquer les recommandations techniques du fournisseur, vérification du matériel avant utilisation, vérification de la présence des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...), guidage et manoeuvrage pour le déplacement et la pose, stabilisation des banches permanente, mise en place de garde corps face coffrante, ne pas laisser d'outils sur les planches des banches"
+79,71,Arrachement de l'étais,Point d'accrochage résistant
+80,72,Chute d'objet,"Vérifier l'élingage, suivre les consignes d'élingage, ne pas rester dans le périmètre d'évolution de l'appareil de levage, ce dernier est également vérifié périodiquement"
+81,73,Heurts,"Port du casque, ne pas rester dans le périmètre d'évolution de la charge, communication constante avec le grutier"
+82,74,Arrachement de l'étais,Point d'accroche résistant et adapté
+83,75,Chute de hauteur,"Utilisation des accessoires adaptés au travail en hauteur (tour, échafaudage...)"
+84,76,"Chute d'objets, heurts",Port du casque et des chaussures de sécurité
+85,77,Cf partie GENERALITES - Feraillage,Cf partie GENERALITES - Feraillage
+86,78,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
+87,79,Effondrement,"Suivre les prescriptions, montage conforme"
+88,80,Effondrement,Respect du mode opératoire
+89,81,Chute d'objet - heurts,"Vérification des éléments de manutention, utiliser des cordes pour guider la réception - Port du casque"
+90,82,Cf partie Installation de chantier - Grue fixe (1),Cf partie Installation de chantier - Grue fixe (1-2)
+91,83,Rupture du plancher pré-dalle,Respect du plan d'étaiement fournisseur
+92,84,Chute de hauteur,Utilisation de garde-corps
+93,85,"Chute d'objet, heurts, écrasement","Ne pas rester sous la charge en évolution, port du casque"
+94,86,Cf partie GENERALITES - Bétonnage et Ferraillage,Cf partie GENERALITES - Bétonnage et Ferraillage
+95,87,Cf partie Installation de chantier - Grue fixe (1),Cf partie Installation de chantier - Grue fixe (1-2)
+96,88,Rupture du plancher pré-dalle,Respect du plan d'étaiement fournisseur
+97,89,Chute de hauteur,Utilisation de garde-corps
+98,90,"Chute d'objet, heurts, écrasement","Ne pas rester sous la charge en évolution, port du casque"
+99,91,Cf partie GENERALITES - Bétonnage et Ferraillage,Cf partie GENERALITES - Bétonnage et Ferraillage
+100,92,Cf partie Installation de chantier - Grue fixe (1),Cf partie Installation de chantier - Grue fixe (1-2)
+101,93,Effondrement,Plan d'étaiement à suivre
+102,94,Cf partie GENERALITES - Ferraillage,Cf partie GENERALITES - Ferraillage
+103,95,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
+104,96,"Bruit, vibrations","Utilisation de matériel conforme, limiter l'exposition, port de protections auditives"
+105,97,"Postures inconfortables, TMS, gestes répétitifs","Adopter la bonne posture de manutention manuelle (genous pliés dos droit), organisation des manutentions"
+106,98,Projections - poussières - utilisation de ciment,"Port des lunettes de protection, des gants adaptés étanches à la transpiration, si contact avec peau ou vêtements rincer de suite"
+107,99,Projection d'objets,"Sortir de la chambre d'arrivée, ne pas se situer en face du fourreau mais au dessus, port de lunettes de protection"
+108,100,"Ecrasements, heurts, blessures","Sortir du blindage lors de la manipulation, accrocher le blindage à chaque extrémité, évacuer le périmètre d'évolution de la charge"
+109,101,"Ecrasements, chute d'objet","Berme de sécurité de 40cm le long de la tranchée, ne pas stocker de matériel aux abords de la tranchée, port du casque et des chaussures de sécurité"
+110,102,"Projection d'éclats et de poussières, bruit","Les personnes ne participant pas à cette étape sont interdites d'accès, port de protections respiratoires et auditives"
+111,103,Ensevelissement,"Respecter les règles d'évasement, pose de blindage si profondeur > 1m30, ne pas circuler ni stocker aux abords des tranchées"
+112,104,Chute,"Balisage de la zone de travaux (évoluant avec l'avancée), interdiction de l'accès au personnel qui ne participe pas à cette phase"
+113,105,"TMS, écrasements, chute d'objet, coupure, blessure","Utilisation de porte bordure, port de gants de manutention, des chaussures de sécurité"
+114,106,"Projections (éclats et poussières), bruit","Port des protections auditives, des lunettes de sécurité, des gants spécifiques, d'un masque filtrant"
+115,107,Ecrasement,"Balisage chantier respecté, respect des consignes de la personne chargée de la gestion du traffic, rester hors de la zone d'évolution des engins"
+116,108,Brûlures,"Port de chaussures adaptées, d'un pantalon et d'une veste. Lors de l'étalement de l'enrobé, maintien en mouvement afin d'éviter de rester trop longtemps sur l'enrobé chaud"
+117,109,Bruit,Port des protections auditives
+118,110,TMS,"Utilisation d'outils propres et adaptés, faire des 'petits tas' pour éviter les reprises fatigantes, adoption d'une posture adaptée (plier les genous et non le dos)"
+119,111,Brûlure,"Accès interdit aux personnes non autorisées, port de vêtements de protection couvrants"
+120,112,"Brûlures, projections de liquide chaud lors du remplissage","Port de vêtements couvrants, ne pas rester à proximité lors de l'épandage, port d'une protection faciale"
+121,113,Chute de plain-pied,"Fouille propre et ordonnée, limiter le nombre d'objets au sol"
+122,114,Chute d'objets,"Respect du phasage, chantier balisé, port du casque et des chaussures de sécurité, respect de la méthodologie"
+123,115,"Heurts, collisions","Respect du balisage, ne pas rester dans le périmètre d'évolution des engins, port du casque et du gilet fluo"
+124,116,Projections,"Lunettes de protection, masque filtrant"
+125,117,Rupture de canalisation,"DICT, repérage du réseau existant"
+126,118,Bruit,Port de protections auditives
+127,119,Chute de hauteur et de plain pied,/
+128,120,"Collisions avec engins de chantier, avec personnel","Balisage, signalisation temporaire horizontale et verticale en amont et aval du chantier, port du baudrier (classe II ou III)"
+129,121,"Chute, heurt avec véhicule","Affichage et balisage adapté, zone piétonne et zone chantier séparées, assurance d'un passage sécurisé pour les piétons"
+130,122,"Ecrasement, heurt personnel-véhicule",
+131,123,Collisions,"Les engins à chenille ne traversent pas les voies, respecter les consignes SNCF"
+132,124,Contact électrique,"DICT ou demande de plan de réseau en site privé, consignation de ligne, isolation des conducteurs électriques et inspection complémentaire si besoin"
+133,125,Electrocution,"Réseau > 50000 V, respect de la distance de sécurité de 5m (3m si réseau < 50000V), mise en place d'un gabarit au niveau des zones de passage"
+134,126,Chute de poteau/ pylone,Mise en place d'un étaiement en fouille à proximité des poteaux
+135,127,Fuite,"En cas de fuite arrêter immédiatement le chantier, prévenir l'exploitant et mise hors tension, balisage de la zone"
+136,128,Chute de charge,"Ne pas rester sous une charge en cours de manipulation, port du casque et des chaussures de sécurité"
+137,129, Explosion,"Avoir du matériel ATEX, ne pas effectuer de travail à point chaud"
+138,130,Visibilité réduite induisant des accidents,"Mise en place de systèmes d'éclairage portatifs, port de vêtements haute visibilité, signalisation adaptée (rétro-réfléchissante)"
+139,131,Maladies infectieuses,"Port d'EPI couvrants (gants, manches longues, pantalon, chaussures montantes, lunettes de sécurité), lavage des mains systématique, vaccins à jour"
+140,132,"Coupures, piqures, maladies liées","Manipulation avec des gants, bennes dédiées sur chantier"
+141,133,Emissions de gaz de putréfaction,"Controle du taux d'hydrgène sulfureux, ventilation naturelle, délimitation de la zone, port du masque filtrant et des EPI couvrants, contact avec une personne en dehors de la zone à risques"
+142,134,Noyade,"Baliser la zone de travail, autant que faire se peut ne pas s'approcher des bords d'eau"

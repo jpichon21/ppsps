@@ -45,6 +45,8 @@ class Risk
      */
     private $deletedAt;
 
+    private $numSituation;
+
     /**
      * to string method
      *
@@ -66,6 +68,13 @@ class Risk
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -128,7 +137,10 @@ class Risk
      */
     public function addMeasures($measures)
     {
-        $this->measures[] = $measures;
+        if (!$this->measures->contains($measures)) {
+            $this->measures[] = $measures;
+            $measures->setRisk($this);
+        }
 
         return $this;
     }
@@ -162,5 +174,17 @@ class Risk
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumSituation(): ?int
+    {
+        return $this->numSituation;
+    }
+
+    public function setNumSituation(?int $numSituation): self
+    {
+        $this->numSituation = $numSituation;
+
+        return $this;
     }
 }

@@ -221,7 +221,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($dealersList as $key => $dealer) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $dealers[$page][$key]['name'] = $dealer->getName();

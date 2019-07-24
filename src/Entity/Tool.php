@@ -38,6 +38,8 @@ class Tool
      */
     private $deletedAt;
 
+    private $numSituation;
+
     /**
      * to string method
      *
@@ -51,6 +53,13 @@ class Tool
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -109,5 +118,17 @@ class Tool
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumSituation(): ?int
+    {
+        return $this->numSituation;
+    }
+
+    public function setNumSituation(?int $numSituation): self
+    {
+        $this->numSituation = $numSituation;
+
+        return $this;
     }
 }

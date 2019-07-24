@@ -73,6 +73,13 @@ class Situation
     {
         return $this->id;
     }
+    
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     public function getName(): ?string
     {
@@ -117,7 +124,10 @@ class Situation
      */
     public function addRisks($risks)
     {
-        $this->risks[] = $risks;
+        if (!$this->risks->contains($risks)) {
+            $this->risks[] = $risks;
+            $risks->setSituation($this);
+        }
 
         return $this;
     }
