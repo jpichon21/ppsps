@@ -297,6 +297,11 @@ class PDFparserService
                 }
             }
         }
+        $situations = $this->parseSituation($situations);
+        return $situations;
+    }
+
+    private function parseSituation($situations) {
         foreach ($situations as $key => $situation){
             if(count($situation) > 3) {
                 $chunk = array_chunk($situation, 3, 3);
@@ -307,6 +312,17 @@ class PDFparserService
             }
             if (isset($situation['situationGroup'])) {
                 $situations[$key]['situationGroup'] = $situation['situationGroup'];
+            }
+        }
+        foreach ($situations as $fisrtKey => $situation){
+            foreach ($situation as $secondKey => $oneGroupedSituation) {
+                if(is_array($oneGroupedSituation)) {
+                    foreach ($oneGroupedSituation as $thirdkey => $oneSituation){
+                        if(!is_array($oneSituation)){
+                            unset($situations[$fisrtKey][$secondKey][$thirdkey]);
+                        }
+                    }
+                }
             }
         }
         return $situations;

@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\PDFparserService;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
+use PDFMerger;
 
 class PdfController extends Controller
 {
@@ -42,11 +44,19 @@ class PdfController extends Controller
     public function generatePDF($id)
     {
         $ppsps = $this->PDFparserService->getPpspsById($id);
+        $annexs = $ppsps['annexs'];
+        foreach ($annexs as $annex) {
+           $this->generateAnnex($annex);
+        }
         $html = $this->generateHtml($ppsps);
         return new PdfResponse(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             iconv("UTF-8", "ASCII//TRANSLIT", 'PPSPS'.'_'.$ppsps['siteName'].'_'.$ppsps['siteNumber'].'.pdf')
         );
+    }
+
+    private function generateAnnex($annex) {
+        return $this->file($annex->getFile(), $annex->getAnnexName().'.pdf');
     }
 
     private function generateHtml($ppsps) {
@@ -61,25 +71,44 @@ class PdfController extends Controller
             'updatesPpsps' => $ppsps['updatesPpsps'],
             'page' => $page
         ]);
-
-        $html .= $this->renderView('diffusionPPSPS.html.twig',[
-            'diffusions' => $ppsps['diffusions'],
-            'logo' => $ppsps['logo'],
-            'page' => $page
-        ]);
-        $pageAfter = $page + count($ppsps['diffusions']);
-            
-        $html .= $this->renderView('updatePPSPS.html.twig',[
-            'updatesPpsps' => $ppsps['updatesPpsps'],
-            'logo' => $ppsps['logo'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + count($ppsps['updatesPpsps']);         
         
+        if ($ppsps['diffusions'] !== null) {
+            $html .= $this->renderView('diffusionPPSPS.html.twig',[
+                'diffusions' => $ppsps['diffusions'],
+                'logo' => $ppsps['logo'],
+                'page' => $page
+            ]);
+            $pageAfter = $page + count($ppsps['diffusions']);
+        } else {
+            $pageAfter = $page;
+        }
+        if ($ppsps['diffusions'] !== null) {
+            $html .= $this->renderView('updatePPSPS.html.twig',[
+                'updatesPpsps' => $ppsps['updatesPpsps'],
+                'logo' => $ppsps['logo'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + count($ppsps['updatesPpsps']);         
+        } else {
+            $pageAfter = $page;
+        }
         $summaryWorks = $pageAfter + 4;
-        $summaryPersons =  $summaryWorks + count($ppsps['subContractedWorks']) + count($ppsps['dealers']) + 1;
-        $summaryEffectives = $summaryPersons + count($ppsps['speakers']) + 1;
-        $summaryCoordinator = $summaryEffectives + count($ppsps['effectives']);
+        
+        if($ppsps['subContractedWorks'] !== null && $ppsps['dealers'] !== null) {
+            $summaryPersons =  $summaryWorks + count($ppsps['subContractedWorks']) + count($ppsps['dealers']) + 1;
+        } else {
+            $summaryPersons = $summaryWorks + 1;
+        }
+        if ($ppsps['speakers'] !== null ) {
+            $summaryEffectives = $summaryPersons + count($ppsps['speakers']) + 1;
+        } else {
+            $summaryEffectives = $summaryPersons + 1;
+        }
+        if ($ppsps['effectives'] !== null ) {
+            $summaryCoordinator = $summaryEffectives + count($ppsps['effectives']);
+        } else {
+            $summaryCoordinator = $summaryEffectives;
+        }
         $summaryMedicalAndParticular = $summaryCoordinator + 1;
         $summaryReliefOrganization = $summaryMedicalAndParticular + 2;
         $summaryMandatoryDocument = $summaryReliefOrganization + 1;
@@ -119,45 +148,54 @@ class PdfController extends Controller
             'page' => $pageAfter
         ]);
         $pageAfter = $pageAfter + 1;
-
-        $html .= $this->renderView('subcontractedWorksPPSPS.html.twig',[
-            'logo' => $ppsps['logo'],
-            'subContractedWorks' => $ppsps['subContractedWorks'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + count($ppsps['subContractedWorks']);
+        if ($ppsps['subContractedWorks'] !== null) {
+            $html .= $this->renderView('subcontractedWorksPPSPS.html.twig',[
+                'logo' => $ppsps['logo'],
+                'subContractedWorks' => $ppsps['subContractedWorks'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + count($ppsps['subContractedWorks']);
+        }
         
-        $html .= $this->renderView('dealersPPSPS.html.twig',[
-            'logo' => $ppsps['logo'],
-            'dealers' => $ppsps['dealers'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + count($ppsps['dealers']);
+        if ($ppsps['dealers'] !== null) {
+            $html .= $this->renderView('dealersPPSPS.html.twig',[
+                'logo' => $ppsps['logo'],
+                'dealers' => $ppsps['dealers'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + count($ppsps['dealers']);
+        }
 
-        $html .= $this->renderView('persons.html.twig',[
-            'logo' => $ppsps['logo'],
-            'AQSE' => $ppsps['AQSE'],
-            'workDirectors' => $ppsps['workDirectors'],
-            'siteManagers' => $ppsps['siteManagers'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + 1;
+        if ($ppsps['siteManagers'] !== null) {
+            $html .= $this->renderView('persons.html.twig',[
+                'logo' => $ppsps['logo'],
+                'AQSE' => $ppsps['AQSE'],
+                'workDirectors' => $ppsps['workDirectors'],
+                'siteManagers' => $ppsps['siteManagers'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + 1;
+        }
 
-        $html .= $this->renderView('speakers.html.twig',[
-            'logo' => $ppsps['logo'],
-            'speakers' => $ppsps['speakers'],
-            'myCissct' => $ppsps['myCissct'],
-            'chiefWorkRepresentative' => $ppsps['chiefWorkRepresentative'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + count($ppsps['speakers']);
-
-        $html .= $this->renderView('effectives.html.twig',[
-            'logo' => $ppsps['logo'],
-            'effectives' => $ppsps['effectives'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + count($ppsps['effectives']);
+        if ($ppsps['speakers'] !== null) {
+            $html .= $this->renderView('speakers.html.twig',[
+                'logo' => $ppsps['logo'],
+                'speakers' => $ppsps['speakers'],
+                'myCissct' => $ppsps['myCissct'],
+                'chiefWorkRepresentative' => $ppsps['chiefWorkRepresentative'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + count($ppsps['speakers']);
+        }
+        
+        if ($ppsps['effectives'] !== null) {
+            $html .= $this->renderView('effectives.html.twig',[
+                'logo' => $ppsps['logo'],
+                'effectives' => $ppsps['effectives'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + count($ppsps['effectives']);
+        }
 
         $html .= $this->renderView('bottomPPSPS.html.twig',[
             'logo' => $ppsps['logo'],
@@ -181,13 +219,14 @@ class PdfController extends Controller
         ]);
         $pageAfter = $pageAfter + 6;
 
-        $html .= $this->renderView('situationPPSPS.html.twig',[
-            'logo' => $ppsps['logo'],
-            'situations' => $ppsps['situations'],
-            'page' => $pageAfter
-        ]);
-        $pageAfter = $pageAfter + 6;
-
+        if ($ppsps['situations'] !== null) {
+            $html .= $this->renderView('situationPPSPS.html.twig',[
+                'logo' => $ppsps['logo'],
+                'situations' => $ppsps['situations'],
+                'page' => $pageAfter
+            ]);
+            $pageAfter = $pageAfter + 6;
+        }
         return $html;
     }
 }
