@@ -47,7 +47,7 @@ deploy_dev:
     - curl -L https://deployer.org/releases/v6.4.3/deployer.phar > /usr/local/bin/deployer && chmod +x /usr/local/bin/deployer
     - deployer -f=deploy/deploy.php deploy dev
 deploy_prod:
-  stage: prod
+  stage: deploy
   image: php:7-cli-alpine
   before_script:
     - apk add --update git openssh-client
