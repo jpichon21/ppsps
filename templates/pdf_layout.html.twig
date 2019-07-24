@@ -82,25 +82,6 @@
 
     <base href="{{ absolute_url('/') }}">
     <body>
-        {% if ppsps['image'] is not null %}
-        <div class="pageContainer">
-            <div class="pageContent">
-                <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
-                    {% if ppsps['logo'] is not null %}
-                <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ ppsps['logo']) }}"></div>
-                {% else %}
-                <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
-                {% endif %}
-                <h1>P.P.S.P.S.</h1>
-                <h2>{{ppsps['siteName']}}</h2>
-                <p>Plan Particulier pour la Sécurité et la Protection de la Santé</p>	
-                <img src="{{ asset('ppspsImage/'~ ppsps['image'])}}" height="500px" weight="500px">
-                <div class="bottomLeft">NOM DU DOCUMENT</div>
-                <div class="rightPage">page X</div>
-                <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
-            </div>
-        </div>
-        {% endif %}
         <div class="pageContainer">
             <div class="pageContent">
                 <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
