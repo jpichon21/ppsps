@@ -6,8 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\PDFparserService;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
-use PDFMerger;
 
 class PdfController extends Controller
 {
@@ -60,10 +58,15 @@ class PdfController extends Controller
     }
 
     private function generateHtml($ppsps) {
+
         $page = 1;
         $html = $this->renderView('ppsps.html.twig',[
             'siteName' => $ppsps['siteName'],
             'siteNumber' => $ppsps['siteNumber'],
+            'editor' => $ppsps['editor'],
+            'firstWorkConductor' => $ppsps['firstWorkConductor'],
+            'projectDirector' => $ppsps['projectDirector'],
+            'approbator' => $ppsps['approbator'],
             'globalSiteAddress' => $ppsps['globalSiteAddress'],
             'periodOfExecution' => $ppsps['periodOfExecution'],
             'owner' => $ppsps['owner'],
@@ -74,6 +77,8 @@ class PdfController extends Controller
         
         if ($ppsps['diffusions'] !== null) {
             $html .= $this->renderView('diffusionPPSPS.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'diffusions' => $ppsps['diffusions'],
                 'logo' => $ppsps['logo'],
                 'page' => $page
@@ -84,6 +89,8 @@ class PdfController extends Controller
         }
         if ($ppsps['diffusions'] !== null) {
             $html .= $this->renderView('updatePPSPS.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'updatesPpsps' => $ppsps['updatesPpsps'],
                 'logo' => $ppsps['logo'],
                 'page' => $pageAfter
@@ -116,6 +123,8 @@ class PdfController extends Controller
         $summaryRisks = $summarySpecificSecurity + 1;
 
         $html .= $this->renderView('summaryPPSPS.html.twig',[
+            'siteName' => $ppsps['siteName'],
+            'siteNumber' => $ppsps['siteNumber'],
             'logo' => $ppsps['logo'],
             'summaryWorks' => $summaryWorks,
             'summaryPersons' => $summaryPersons,
@@ -128,9 +137,11 @@ class PdfController extends Controller
             'summaryRisks' => $summaryRisks,
             'page' => $pageAfter
         ]);
-        $pageAfter = $pageAfter + 3;   
+        $pageAfter = $pageAfter + 1;   
 
         $html .= $this->renderView('workPPSPS.html.twig',[
+            'siteName' => $ppsps['siteName'],
+            'siteNumber' => $ppsps['siteNumber'],
             'logo' => $ppsps['logo'],
             'AddressConstrSite' => $ppsps['AddressConstrSite'],
             'AddressAccessSite' => $ppsps['AddressAccessSite'],
@@ -148,8 +159,20 @@ class PdfController extends Controller
             'page' => $pageAfter
         ]);
         $pageAfter = $pageAfter + 1;
+        
+        $html .= $this->renderView('identWorkPPSPS.html.twig',[
+            'logo' => $ppsps['logo'],
+            'image' => $ppsps['image'],
+            'siteName' => $ppsps['siteName'],
+            'siteNumber' => $ppsps['siteNumber'],
+            'page' => $pageAfter,
+        ]);
+        $pageAfter = $pageAfter + 1;
+
         if ($ppsps['subContractedWorks'] !== null) {
             $html .= $this->renderView('subcontractedWorksPPSPS.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'subContractedWorks' => $ppsps['subContractedWorks'],
                 'page' => $pageAfter
@@ -159,6 +182,8 @@ class PdfController extends Controller
         
         if ($ppsps['dealers'] !== null) {
             $html .= $this->renderView('dealersPPSPS.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'dealers' => $ppsps['dealers'],
                 'page' => $pageAfter
@@ -168,6 +193,8 @@ class PdfController extends Controller
 
         if ($ppsps['siteManagers'] !== null) {
             $html .= $this->renderView('persons.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'AQSE' => $ppsps['AQSE'],
                 'workDirectors' => $ppsps['workDirectors'],
@@ -179,6 +206,8 @@ class PdfController extends Controller
 
         if ($ppsps['speakers'] !== null) {
             $html .= $this->renderView('speakers.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'speakers' => $ppsps['speakers'],
                 'myCissct' => $ppsps['myCissct'],
@@ -190,14 +219,20 @@ class PdfController extends Controller
         
         if ($ppsps['effectives'] !== null) {
             $html .= $this->renderView('effectives.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'effectives' => $ppsps['effectives'],
+                'beginStopWork' => $ppsps['beginStopWork'],
+                'endStopWork' => $ppsps['endStopWork'],
                 'page' => $pageAfter
             ]);
             $pageAfter = $pageAfter + count($ppsps['effectives']);
         }
 
         $html .= $this->renderView('bottomPPSPS.html.twig',[
+            'siteName' => $ppsps['siteName'],
+            'siteNumber' => $ppsps['siteNumber'],
             'logo' => $ppsps['logo'],
             'securityCoordinator' => $ppsps['securityCoordinator'],
             'securityCoordinatorName' => $ppsps['securityCoordinatorName'],
@@ -209,18 +244,22 @@ class PdfController extends Controller
             'isControlled' => $ppsps['isControlled'],
             'isGuardian' => $ppsps['isGuardian'],
             'listOfInstallations' => $ppsps['listOfInstallations'],
+            'listOfWorksMandatoryDocs' => $ppsps['listOfWorksMandatoryDocs'],
             'isMaintenedByRougeot' => $ppsps['isMaintenedByRougeot'],
             'maintainer' => $ppsps['maintainer'],
             'suiabilityList' => $ppsps['suiabilityList'],
             'mandatoryDocument' => $ppsps['mandatoryDocument'],
             'particularSecurityMeasure' => $ppsps['particularSecurityMeasure'],
             'particularSecurityDetail' => $ppsps['particularSecurityDetail'],
+            'particularExternalRisk' => $ppsps['particularExternalRisk'],
             'page' => $pageAfter
         ]);
         $pageAfter = $pageAfter + 6;
 
         if ($ppsps['situations'] !== null) {
             $html .= $this->renderView('situationPPSPS.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'situations' => $ppsps['situations'],
                 'page' => $pageAfter

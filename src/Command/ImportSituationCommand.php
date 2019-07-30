@@ -35,8 +35,8 @@ class ImportSituationCommand extends Command
 
     protected function configure()
     {
-           $this->setDescription('Import all situation');
-           $this->setHelp('This command import all situation');
+        $this->setDescription('Import all situation');
+        $this->setHelp('This command import all situation');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

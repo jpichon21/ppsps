@@ -88,6 +88,10 @@ class PDFparserService
             'AddressConstrSite' => $ppsps->getAddressConstrSite(),
             'AddressAccessSite' => $ppsps->getAddressAccessSite(),
             'referent' => $ppsps->getReferent(),
+            'editor' => $ppsps->getEditor(),
+            'firstWorkConductor' => $ppsps->getFirstWorkConductor(),
+            'projectDirector' => $ppsps->getProjectDirector(),
+            'approbator' => $ppsps->getApprobator(),
             'referentPhone' => $ppsps->getReferentPhone(),
             'referentMail' => $ppsps->getReferentMail(),
             'siteType' => $ppsps->getSiteType(),
@@ -110,9 +114,11 @@ class PDFparserService
             'PGCDate' => $this->dateParser($ppsps->getPGCDate()),
             'inspectionVisitDate' => $this->dateParser($ppsps->getInspectionVisitDate()),
             'listOfInstallations' => $ppsps->getListOfInstallations(),
+            'listOfWorksMandatoryDocs' => $ppsps->getListOfWorksMandatoryDocs(),
             'suiabilityList' => $ppsps->getSuiabilityList(),
             'suiability' => $ppsps->getSuiability(),
             'otherInstalation' => $ppsps->getOtherInstalation(),
+            'particularExternalRisk' => $ppsps->getParticularExternalRisk(),
             'particularSecurityMeasure' => $ppsps->getParticularSecurityMeasure(),
             'particularSecurityDetail' => $ppsps->getParticularSecurityDetail(),
             'situations' => $this->situationParser($ppsps->getSituation()),
@@ -150,7 +156,7 @@ class PDFparserService
 
         $page = 0;
         foreach ($diffusionsList as $key => $diffusion) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $diffusions[$page][$key]['recipient'] = $diffusion->getRecipient();
@@ -169,7 +175,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($updatesList as $key => $update) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $updates[$page][$key]['updateObject'] = $update->getUpdateObject();
@@ -187,7 +193,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($speakersList as $key => $speaker) {
-            if ($key % 18 === 0) {
+            if ($key % 15 === 0) {
                 $page++;
             }
             $speakers[$page][$key]['name'] = $speaker->getName();
@@ -205,7 +211,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($effectivesList as $key => $effective) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $effectives[$page][$key]['business'] = $effective->getBusiness();
@@ -237,7 +243,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($subContractedWorksList as $key => $subContractedWork) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $subContractedWorks[$page][$key]['subContractor'] = $subContractedWork->getSubContractor();
@@ -290,7 +296,7 @@ class PDFparserService
                         }
                         if (isset($situation['measure'])) {
                             foreach ($situation['measure'] as $measureKey => $measure) {
-                                $situations[$situationGroup][$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getName();
+                                $situations[$situationGroup][$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getDescr();
                             }
                         }
                     }

@@ -124,13 +124,6 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => true
                     ])
                 ->end()                
-                ->with('Image du chantier')
-                    ->add('image', ModelType::class, [
-                        'label' => 'Image du chantier',
-                        'required' => false,
-                        'by_reference' => false,
-                    ])
-                ->end()
                 ->with('Configuration générale')
                     ->add('siteName', TextType::class, [
                         'label' => 'Nom du chantier',
@@ -152,6 +145,22 @@ final class PpspsAdmin extends AbstractAdmin
                         'label' => 'Maître d\'ouvrage',
                         'required' => false
                     ])
+                    ->add('editor', TextType::class, [
+                        'label' => 'Rédacteur',
+                        'required' => false
+                    ])
+                    ->add('firstWorkConductor', TextType::class, [
+                        'label' => 'Conducteur de Travaux',
+                        'required' => false
+                    ])
+                    ->add('projectDirector', TextType::class, [
+                        'label' => 'Directeur de projet',
+                        'required' => false
+                    ])
+                    ->add('approbator', TextType::class, [
+                        'label' => 'Approbateur',
+                        'required' => false
+                    ])
                     ->add('projectManager', TextType::class, [
                         'label' => 'Maître d\'oeuvre',
                         'required' => false
@@ -171,6 +180,11 @@ final class PpspsAdmin extends AbstractAdmin
                     ->add('referentMail', TextType::class, [
                         'label' => 'Mail du référent',
                         'required' => false
+                    ])
+                    ->add('image', ModelType::class, [
+                        'label' => 'Plan d\'identification des travaux',
+                        'required' => false,
+                        'by_reference' => false,
                     ])
                     ->add('diffusions', CollectionType::class, [
                         'label' => 'Configuration du tableau des diffusions',
@@ -442,6 +456,27 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                 ->end()
+                ->with('Affichage et documents obligatoires sur le chantier')
+                    ->add('listOfWorksMandatoryDocs', ChoiceType::class, [
+                        'label' => false,
+                        'choices' => [
+                            'Le règlement intérieur de l’entreprise' => 'Le règlement intérieur de l’entreprise',
+                            'Les horaires de travail et la période de fermeture de l’entreprise le cas échéant*' => 'Les horaires de travail et la période de fermeture de l’entreprise le cas échéant*',
+                            'Les coordonnées de la médecine du travail*' => 'Les coordonnées de la médecine du travail*',
+                            'Les coordonnées de l’inspection du travail*' => 'Les coordonnées de l’inspection du travail*',
+                            'Le lieu où est située l’infirmerie, pour les chantiers de plus de 300 personnes' => 'Le lieu où est située l’infirmerie, pour les chantiers de plus de 300 personnes',
+                            'Les consignes de sécurité incendie*' => 'Les consignes de sécurité incendie*',
+                            'Les numéros d’urgence et de secours*' => 'Les numéros d’urgence et de secours*',
+                            'L’affiche récapitulative des consignes de premiers secours' => 'L’affiche récapitulative des consignes de premiers secours',
+                            'La liste des Sauveteurs Secouristes présents sur le chantier' => 'La liste des Sauveteurs Secouristes présents sur le chantier',
+                            'L’interdiction de fumer*' => 'L’interdiction de fumer*',
+                            'La liste des membres du CSE*' => 'La liste des membres du CSE*',
+                        ],
+                        'multiple' => true,
+                        'expanded' => true,
+                        'sonata_help' => 'Attention ! Les documents avec * sont à afficher impérativement dans les installations de chantier. Modèles en annexe '
+                    ])
+                ->end()
                 ->with('Autorisation et habilitation particulière du personnel')
                     ->add('suiabilityList', ChoiceType::class, [
                         'label' => false,
@@ -485,9 +520,15 @@ final class PpspsAdmin extends AbstractAdmin
                         'multiple' => true,
                         'expanded' => true,
                     ])
-                    ->add('particularSecurityDetail', TextType::class, [
-                        'label' => 'Détail des mesures particulières',
-                        'required' => false
+                ->end()
+                ->with('Mesure Particulière ou risque importés')
+                    ->add('particularSecurityDetail', CheckboxType::class, [
+                        'label' => 'Mesures particulières au chantier',
+                        'required' => false,
+                    ])
+                    ->add('particularExternalRisk', CheckboxType::class, [
+                        'label'=> 'Existe-t-il des Existe-t-il des risques importés ou exportés particuliers au chantier non traités dans l\'analyse des risques',
+                        'required' => false,
                     ])
                 ->end()
                 ->with('Liste d\'annexes')

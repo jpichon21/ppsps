@@ -67,16 +67,20 @@
                     <th>Directeur de projet</th>
                 </tr>
                 <tr>
-                    <td>Nom : </td>
-                    <td></td>
-                    <td>Nom : </td>
-                    <td></td>
+                    <td>Nom : {{editor}}</td>
+                    <td>Nom : {{firstWorkConductor}}</td></td>
+                    <td>Nom : {{approbator}}</td>
+                    <td>Nom : {{projectDirector}}</td>
                 </tr>
                 <tr>
-                    <td>Date : </td>
-                    <td></td>
-                    <td>Date : </td>
-                    <td></td>
+                    {% if updatesPpsps is defined and updatesPpsps != null %}
+                    {% set lastArray = updatesPpsps|last %}
+                    {% set lastRow = lastArray|last %}
+                        <td>Date : {{lastRow.updateDate}}</td>
+                        <td>Date : {{lastRow.updateDate}}</td>
+                        <td>Date : {{lastRow.updateDate}}</td>
+                        <td>Date : {{lastRow.updateDate}}</td>
+                    {% endif %}
                 </tr>
                 <tr class="row2">
                     <td>Signature : </td>
@@ -87,31 +91,30 @@
             </tbody>
         </table>
         <table class="col1">
-            <thead>
-                <tr>
-                    <th colspan="2">Visas</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
-                    <th>Approbateur</th>
-                    <th>QSE</th>
+                    <th>Présenté a</th>
+                    <th>Le</th>
+                    <th>Signature</th>
                 </tr>
-                <tr>
-                    <td>Nom : </td>
+                <tr class="row2">
                     <td></td>
-                </tr>
-                <tr>
                     <td>Date : </td>
                     <td></td>
                 </tr>
                 <tr class="row2">
-                    <td>Signature : </td>
+                    <td></td>
+                    <td>Date : </td>
+                    <td></td>
+                </tr>
+                <tr class="row2">
+                    <td></td>
+                    <td>Date : </td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
-        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="bottomLeft">PPSPS {{siteName}} - {{siteNumber}}</div>
         <div class="rightPage">page {{page}}</div>
         <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
     </div>
