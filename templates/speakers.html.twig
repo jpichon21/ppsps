@@ -30,10 +30,14 @@
                         <td>{{subvalue.Mail}}</td>
                     </tr>        
                 {% endfor %}
-                <tr>
-                    <td>Sous-traitant </td>
-                    <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
-                </tr>
+                {% if value == speakers|last %}
+                    {% if annexSubworkers == true %}                
+                    <tr>
+                        <td>Sous-traitant </td>
+                        <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
+                    </tr>
+                    {% endif %}
+                {% endif %}
             </tbody>
         </table>
         {% if value == speakers|last %}
@@ -60,7 +64,7 @@
                 <table class="col1">
                     <tbody>
                         <tr>
-                            <td>Le représentant sur le chantier est le Conducteur de Travaux : <b>{{chiefWorkRepresentative}}</b></td>
+                            <td>Le représentant sur le chantier est le Conducteur de Travaux. </td>
                         </tr>
                     </tbody>
                 </table>

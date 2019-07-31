@@ -356,14 +356,14 @@ final class PpspsAdmin extends AbstractAdmin
                         'edit' => 'inline',
                         'inline' => 'table',
                     ])
+                    ->add('annexSubworkers', CheckboxType::class, [
+                        'label'=> 'Liste des sous-traitants en annexe',
+                        'required' => false
+                    ])
                 ->end()
                 ->with('C.I.S.S.C.T.')
                     ->add('myCissct', CheckboxType::class, [
                         'label'=> 'Obligation',
-                        'required' => false
-                    ])
-                    ->add('chiefWorkRepresentative', TextType::class, [
-                        'label' => 'Représentant de l\'entreprise au CISSCT',
                         'required' => false
                     ])
                 ->end()

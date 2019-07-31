@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\PDFparserService;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Component\HttpFoundation\Response;
+use iio\libmergepdf\Merger;
+use iio\libmergepdf\Driver\TcpdiDriver;
 
 class PdfController extends Controller
 {
@@ -43,24 +45,27 @@ class PdfController extends Controller
     {
         $ppsps = $this->PDFparserService->getPpspsById($id);
         $annexs = $ppsps['annexs'];
-        foreach ($annexs as $annex) {
-           $this->generateAnnex($annex);
-        }
         $html = $this->generateHtml($ppsps);
+        $PDF = $this->get('knp_snappy.pdf')->getOutputFromHtml($html);
+        $PDFMerger = new Merger(new TcpdiDriver);
+        $PDFMerger->addRaw($PDF);
+        foreach ($annexs as $annex) {
+            $PDFMerger->addFile($annex->getFile());
+        }
         return new PdfResponse(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            $PDFMerger->merge(),
             iconv("UTF-8", "ASCII//TRANSLIT", 'PPSPS'.'_'.$ppsps['siteName'].'_'.$ppsps['siteNumber'].'.pdf')
         );
     }
 
-    private function generateAnnex($annex) {
-        return $this->file($annex->getFile(), $annex->getAnnexName().'.pdf');
-    }
-
     private function generateHtml($ppsps) {
 
+        $html = $this->renderView('frontPagePPSPS.html.twig',[
+            'siteName' => $ppsps['siteName'],
+            'logo' => $ppsps['logo'],
+        ]);
         $page = 1;
-        $html = $this->renderView('ppsps.html.twig',[
+        $html .= $this->renderView('ppsps.html.twig',[
             'siteName' => $ppsps['siteName'],
             'siteNumber' => $ppsps['siteNumber'],
             'editor' => $ppsps['editor'],
@@ -74,7 +79,7 @@ class PdfController extends Controller
             'updatesPpsps' => $ppsps['updatesPpsps'],
             'page' => $page
         ]);
-        
+
         if ($ppsps['diffusions'] !== null) {
             $html .= $this->renderView('diffusionPPSPS.html.twig',[
                 'siteName' => $ppsps['siteName'],
@@ -99,12 +104,12 @@ class PdfController extends Controller
         } else {
             $pageAfter = $page;
         }
-        $summaryWorks = $pageAfter + 4;
+        $summaryWorks = $pageAfter + 2;
         
         if($ppsps['subContractedWorks'] !== null && $ppsps['dealers'] !== null) {
-            $summaryPersons =  $summaryWorks + count($ppsps['subContractedWorks']) + count($ppsps['dealers']) + 1;
+            $summaryPersons =  $summaryWorks + count($ppsps['subContractedWorks']) + count($ppsps['dealers']) + 2;
         } else {
-            $summaryPersons = $summaryWorks + 1;
+            $summaryPersons = $summaryWorks + 2;
         }
         if ($ppsps['speakers'] !== null ) {
             $summaryEffectives = $summaryPersons + count($ppsps['speakers']) + 1;
@@ -116,10 +121,10 @@ class PdfController extends Controller
         } else {
             $summaryCoordinator = $summaryEffectives;
         }
-        $summaryMedicalAndParticular = $summaryCoordinator + 1;
-        $summaryReliefOrganization = $summaryMedicalAndParticular + 2;
+        $summaryMedicalAndParticular = $summaryCoordinator + 2;
+        $summaryReliefOrganization = $summaryMedicalAndParticular + 1;
         $summaryMandatoryDocument = $summaryReliefOrganization + 1;
-        $summarySpecificSecurity = $summaryMandatoryDocument + 1;
+        $summarySpecificSecurity = $summaryMandatoryDocument + 2;
         $summaryRisks = $summarySpecificSecurity + 1;
 
         $html .= $this->renderView('summaryPPSPS.html.twig',[
@@ -211,7 +216,7 @@ class PdfController extends Controller
                 'logo' => $ppsps['logo'],
                 'speakers' => $ppsps['speakers'],
                 'myCissct' => $ppsps['myCissct'],
-                'chiefWorkRepresentative' => $ppsps['chiefWorkRepresentative'],
+                'annexSubworkers' => $ppsps['annexSubworkers'],
                 'page' => $pageAfter
             ]);
             $pageAfter = $pageAfter + count($ppsps['speakers']);
@@ -254,7 +259,7 @@ class PdfController extends Controller
             'particularExternalRisk' => $ppsps['particularExternalRisk'],
             'page' => $pageAfter
         ]);
-        $pageAfter = $pageAfter + 6;
+        $pageAfter = $pageAfter + 7;
 
         if ($ppsps['situations'] !== null) {
             $html .= $this->renderView('situationPPSPS.html.twig',[
@@ -264,7 +269,6 @@ class PdfController extends Controller
                 'situations' => $ppsps['situations'],
                 'page' => $pageAfter
             ]);
-            $pageAfter = $pageAfter + 6;
         }
         return $html;
     }

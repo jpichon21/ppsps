@@ -209,11 +209,6 @@ class Ppsps
     private $speakers;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $chiefWorkRepresentative;
-
-    /**
      * @ORM\Column(type="boolean", length=255, nullable=true)
      */
     private $myCissct;
@@ -339,6 +334,11 @@ class Ppsps
      * @ORM\Column(type="boolean")
      */
     private $particularExternalRisk;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $annexSubworkers;
 
     /**
      * to string method
@@ -883,18 +883,6 @@ class Ppsps
         return $this;
     }
 
-    public function getChiefWorkRepresentative(): ?string
-    {
-        return $this->chiefWorkRepresentative;
-    }
-
-    public function setChiefWorkRepresentative(?string $chiefWorkRepresentative): self
-    {
-        $this->chiefWorkRepresentative = $chiefWorkRepresentative;
-
-        return $this;
-    }
-
     public function getMyCissct(): ?bool
     {
         return $this->myCissct;
@@ -1287,6 +1275,18 @@ class Ppsps
     public function setParticularExternalRisk(bool $particularExternalRisk): self
     {
         $this->particularExternalRisk = $particularExternalRisk;
+
+        return $this;
+    }
+
+    public function getAnnexSubworkers(): ?bool
+    {
+        return $this->annexSubworkers;
+    }
+
+    public function setAnnexSubworkers(bool $annexSubworkers): self
+    {
+        $this->annexSubworkers = $annexSubworkers;
 
         return $this;
     }
