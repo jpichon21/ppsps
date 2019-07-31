@@ -1,5 +1,5 @@
 version: '3'
- 
+
 services:
     db:
         container_name: ppsps_mysql_con
@@ -14,6 +14,7 @@ services:
     php:
         container_name: ppsps_php_con
         image: thecodingmachine/php:7.2-v2-apache
+        build: .
         volumes:
             - .:/var/www/html/:rw
             - ./var/logs/php:/usr/local/etc/logs
