@@ -309,8 +309,8 @@ class PDFparserService
 
     private function parseSituation($situations) {
         foreach ($situations as $key => $situation){
-            if(count($situation) > 3) {
-                $chunk = array_chunk($situation, 3, 3);
+            if(count($situation) > 2) {
+                $chunk = array_chunk($situation, 2, 2);
                 $situations[$key] = $chunk;
             } else {
                 unset($situations[$key]);

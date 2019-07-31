@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\SituationGroup;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class ImportSituationCommand extends Command
 {
@@ -25,10 +26,11 @@ class ImportSituationCommand extends Command
      */
     private $entityManager;
 
-    public function __construct(?string $name = null, EntityManagerInterface $entityManager)
+    public function __construct(?string $name = null, EntityManagerInterface $entityManager, KernelInterface $kernel)
     {
         parent::__construct($name);
         $this->entityManager = $entityManager;
+        $this->kernel = $kernel;
     }
     // the name of the command (the part after "bin/console")
     protected static $defaultName = 'app:import-situation';
@@ -42,7 +44,7 @@ class ImportSituationCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $finder = new Finder();
-        $finder->files()->in(__DIR__.'/ImportFile');
+        $finder->files()->in($this->kernel->getRootDir().'/ImportFile');
         $serializer = new Serializer([new ArrayDenormalizer(), new GetSetMethodNormalizer()], [new CsvEncoder()]);
         foreach ($finder as $file) {
             if ($file->getFileName() === 'situation.csv') {
