@@ -34,7 +34,7 @@ class PdfController extends Controller
     public function previewPDF($id)
     {   
         $ppsps = $this->PDFparserService->getPpspsById($id);
-        $html = $this->generateHtml($ppsps);
+        $html = $this->generateHtml($ppsps, true);
         return new Response($html);
     }
 
@@ -58,12 +58,16 @@ class PdfController extends Controller
         );
     }
 
-    private function generateHtml($ppsps) {
+    private function generateHtml($ppsps, $preview = false) {
 
-        $html = $this->renderView('frontPagePPSPS.html.twig',[
-            'siteName' => $ppsps['siteName'],
-            'logo' => $ppsps['logo'],
-        ]);
+        if (!$preview) {
+            $html = $this->renderView('frontPagePPSPS.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'logo' => $ppsps['logo'],
+            ]);
+        } else {
+            $html = '';
+        }
         $page = 1;
         $html .= $this->renderView('ppsps.html.twig',[
             'siteName' => $ppsps['siteName'],
