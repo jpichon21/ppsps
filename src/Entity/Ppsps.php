@@ -239,34 +239,6 @@ class Ppsps
     private $subcontractedWorks;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(
-     *      name="ppsps_workdirector",
-     *      joinColumns={
-     *          @ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="cascade")
-     *      },
-     *      inverseJoinColumns={
-     *          @ORM\JoinColumn(name="person_id", referencedColumnName="id")
-     *      }
-     * ) 
-     */
-    private $workDirectors;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(
-     *      name="ppsps_sitemanager",
-     *      joinColumns={
-     *          @ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="cascade")
-     *      },
-     *      inverseJoinColumns={
-     *          @ORM\JoinColumn(name="person_id", referencedColumnName="id")
-     *      }
-     * ) 
-     */
-    private $siteManagers;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $annexs;
@@ -298,6 +270,7 @@ class Ppsps
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Groupment", inversedBy="ppsps")
+     * @ORM\JoinColumn(name="groupment_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $groupment;
 
@@ -357,6 +330,22 @@ class Ppsps
     private $annexSubworkers;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="siteManagerPPSPS")
+     * @ORM\JoinTable(name="ppsps_sitemanager",
+     *      joinColumns={@ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id", onDelete="CASCADE")})
+     */
+    private $siteManagers;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="workDirectorsPPSPS")
+     * @ORM\JoinTable(name="ppsps_workdirector",
+     *      joinColumns={@ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id", onDelete="CASCADE")})
+     */
+    private $workDirectors;
+
+    /**
      * to string method
      *
      * @return string
@@ -378,8 +367,8 @@ class Ppsps
         $this->updatesPpsps = new ArrayCollection();
         $this->dealers = new ArrayCollection();
         $this->subcontractedWorks = new ArrayCollection();
-        $this->siteManagers = new ArrayCollection();
         $this->annexs = new ArrayCollection();
+        $this->siteManagers = new ArrayCollection();
         $this->workDirectors = new ArrayCollection();
     }
 
@@ -1021,58 +1010,6 @@ class Ppsps
     }
 
     /**
-     * @return Collection|Person[]
-     */
-    public function getWorkDirectors(): Collection
-    {
-        return $this->workDirectors;
-    }
-
-    public function addWorkDirector(Person $workDirector): self
-    {
-        if (!$this->workDirectors->contains($workDirector)) {
-            $this->workDirectors[] = $workDirector;
-        }
-
-        return $this;
-    }
-
-    public function removeWorkDirector(Person $workDirector): self
-    {
-        if ($this->workDirectors->contains($workDirector)) {
-            $this->workDirectors->removeElement($workDirector);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
-    public function getSiteManagers(): Collection
-    {
-        return $this->siteManagers;
-    }
-
-    public function addSiteManager(Person $siteManager): self
-    {
-        if (!$this->siteManagers->contains($siteManager)) {
-            $this->siteManagers[] = $siteManager;
-        }
-
-        return $this;
-    }
-
-    public function removeSiteManager(Person $siteManager): self
-    {
-        if ($this->siteManagers->contains($siteManager)) {
-            $this->siteManagers->removeElement($siteManager);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Annex[]
      */
     public function getAnnexs(): Collection
@@ -1303,6 +1240,58 @@ class Ppsps
     public function setAnnexSubworkers(bool $annexSubworkers): self
     {
         $this->annexSubworkers = $annexSubworkers;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getSiteManagers(): Collection
+    {
+        return $this->siteManagers;
+    }
+
+    public function addSiteManager(Person $siteManager): self
+    {
+        if (!$this->siteManagers->contains($siteManager)) {
+            $this->siteManagers[] = $siteManager;
+        }
+
+        return $this;
+    }
+
+    public function removeSiteManager(Person $siteManager): self
+    {
+        if ($this->siteManagers->contains($siteManager)) {
+            $this->siteManagers->removeElement($siteManager);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getWorkDirectors(): Collection
+    {
+        return $this->workDirectors;
+    }
+
+    public function addWorkDirector(Person $workDirector): self
+    {
+        if (!$this->workDirectors->contains($workDirector)) {
+            $this->workDirectors[] = $workDirector;
+        }
+
+        return $this;
+    }
+
+    public function removeWorkDirector(Person $workDirector): self
+    {
+        if ($this->workDirectors->contains($workDirector)) {
+            $this->workDirectors->removeElement($workDirector);
+        }
 
         return $this;
     }

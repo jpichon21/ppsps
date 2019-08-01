@@ -53,9 +53,22 @@ class Person
      */
     private $ppsp;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ppsps", mappedBy="siteManagers")
+     * @ORM\JoinTable(name="ppsps_sitemanager")
+     */
+    private $siteManagerPPSPS;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ppsps", mappedBy="workDirectors")
+     */
+    private $workDirectorsPPSPS;
+
     public function __construct()
     {
         $this->ppsp = new ArrayCollection();
+        $this->siteManagerPPSPS = new ArrayCollection();
+        $this->workDirectorsPPSPS = new ArrayCollection();
     }
 
     public function __toString()
@@ -166,6 +179,62 @@ class Person
             if ($ppsp->getAQSE() === $this) {
                 $ppsp->setAQSE(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ppsps[]
+     */
+    public function getSiteManagerPPSPS(): Collection
+    {
+        return $this->siteManagerPPSPS;
+    }
+
+    public function addSiteManagerPPSP(Ppsps $siteManagerPPSP): self
+    {
+        if (!$this->siteManagerPPSPS->contains($siteManagerPPSP)) {
+            $this->siteManagerPPSPS[] = $siteManagerPPSP;
+            $siteManagerPPSP->addSiteManager($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSiteManagerPPSP(Ppsps $siteManagerPPSP): self
+    {
+        if ($this->siteManagerPPSPS->contains($siteManagerPPSP)) {
+            $this->siteManagerPPSPS->removeElement($siteManagerPPSP);
+            $siteManagerPPSP->removeSiteManager($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ppsps[]
+     */
+    public function getWorkDirectorsPPSPS(): Collection
+    {
+        return $this->workDirectorsPPSPS;
+    }
+
+    public function addWorkDirectorsPPSP(Ppsps $workDirectorsPPSP): self
+    {
+        if (!$this->workDirectorsPPSPS->contains($workDirectorsPPSP)) {
+            $this->workDirectorsPPSPS[] = $workDirectorsPPSP;
+            $workDirectorsPPSP->addWorkDirector($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkDirectorsPPSP(Ppsps $workDirectorsPPSP): self
+    {
+        if ($this->workDirectorsPPSPS->contains($workDirectorsPPSP)) {
+            $this->workDirectorsPPSPS->removeElement($workDirectorsPPSP);
+            $workDirectorsPPSP->removeWorkDirector($this);
         }
 
         return $this;
