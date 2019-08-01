@@ -312,23 +312,26 @@ final class PpspsAdmin extends AbstractAdmin
                     ])
                 ->end()
                 ->with('Organisation de l\'entreprise (ou du groupement)')
-                    ->add('AQSE', ModelAutocompleteType::class, [
+                    ->add('AQSE', ModelType::class, [
                         'label' => 'Animateur Qualité Sécurité Environnement',
                         'required' => false,
                         'multiple' => false,
-                        'property' => 'name'
+                        'property' => 'name',
+                        'btn_add' => false
                     ])
-                    ->add('workDirectors', ModelAutocompleteType::class, [
+                    ->add('workDirectors', ModelType::class, [
                         'label' => 'Conducteur(s) de Travaux',
                         'required' => false,
                         'multiple' => true,
-                        'property' => 'name'
+                        'property' => 'name',
+                        'btn_add' => false
                     ])
-                    ->add('siteManagers', ModelAutocompleteType::class, [
+                    ->add('siteManagers', ModelType::class, [
                         'label' => 'Chef(s) de chantier',
                         'property' => 'name',
                         'required' => false,
-                        'multiple' => true
+                        'multiple' => true,
+                        'btn_add' => false
                     ])
                 ->end()
                 ->with('Effectif')

@@ -114,7 +114,7 @@ class Ppsps
     private $Cissct;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Effective", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Effective", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $effectives;
 
@@ -199,12 +199,12 @@ class Ppsps
     private $situation = [];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $diffusions;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $speakers;
 
@@ -214,12 +214,12 @@ class Ppsps
     private $myCissct;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UpdatePpsps", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\UpdatePpsps", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $updatesPpsps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Dealer", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Dealer", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $dealers;
 
@@ -234,24 +234,40 @@ class Ppsps
     private $siteLevel;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SubcontractedWork", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\SubcontractedWork", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $subcontractedWorks;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_workdirector")
+     * @ORM\JoinTable(
+     *      name="ppsps_workdirector",
+     *      joinColumns={
+     *          @ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="cascade")
+     *      },
+     *      inverseJoinColumns={
+     *          @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     *      }
+     * ) 
      */
     private $workDirectors;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_sitemanager")
+     * @ORM\JoinTable(
+     *      name="ppsps_sitemanager",
+     *      joinColumns={
+     *          @ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="cascade")
+     *      },
+     *      inverseJoinColumns={
+     *          @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     *      }
+     * ) 
      */
     private $siteManagers;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $annexs;
 

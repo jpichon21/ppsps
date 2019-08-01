@@ -96,7 +96,7 @@ class PdfController extends Controller
         } else {
             $pageAfter = $page;
         }
-        if ($ppsps['diffusions'] !== null) {
+        if ($ppsps['updatesPpsps'] !== null) {
             $html .= $this->renderView('updatePPSPS.html.twig',[
                 'siteName' => $ppsps['siteName'],
                 'siteNumber' => $ppsps['siteNumber'],
