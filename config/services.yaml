@@ -134,7 +134,7 @@ services:
         class: App\Admin\SituationGroupAdmin
         arguments: [~, App\Entity\SituationGroup, ~]
         tags:
-          - { name: sonata.admin, manager_type: orm, label: Groupe de situations, group: 'Configuration', show_in_dashboard: true }
+          - { name: sonata.admin, manager_type: orm, label: Activités, group: 'Configuration', show_in_dashboard: true }
     admin.ppspsImage:
         class: App\Admin\PpspsImageAdmin
         arguments: [~, App\Entity\PpspsImage, ~]
