@@ -1,143 +1,842 @@
-id,numRisk,name,descr
-1,1,Dysfonctionnement,"Vérifications générales périodiques tous les 6 mois pour GMR & GMR et tous les 12 mois pour GME + visuel quotidien, "
-2,1,Dysfonctionnement,diffusion des consignes de sécurité au grutier
-3,2,Basculement dû au vent,Présence d'un anémomètre avec pré-alarme (feu clignotant orange en cabine) à 50km/h 
-4,2,Basculement dû au vent,Alarme sonore donnant à 72 km/h pour ordre de dépose
-5,3,Heurt personnel / matériels par la charge,Port du casque
-6,3,Heurt personnel / matériels par la charge,respect des procédures de commandement grutier
-7,3,Heurt personnel / matériels par la charge, ne pas rester sous une charge en mouvement
-8,6,Chute de matériaux,Ne pas rester à proximité de l'engin lors du remplissage et levage de benne
-9,7,Ecrasement,"Engins équipés de système de sécurité, ne pas rester dans le périmètre d'action de l'engin "
-10,7,Ecrasement,Signaler sa présence au chauffeur
-11,8,Basculement de l'engin,"Guidage lors du déchargement, benne baissée lors de la circulation, levée de la benne sur sol stable ou mise en fonction du système de calage si terrain en pente"
-12,9,"Camions benne, gravillonneur et semi-remorque","Camions benne, gravillonneur et semi-remorque"
-13,10,Chute de charge,"Activation des stabilisateurs, port du casque et des chaussures de sécurité "
-14,10,Chute de charge,Ne pas rester dans le périmètre d'évolution de l'engin
-15,10,Chute de charge,Respect des consignes d'élingage et utilisation d'élingues adaptées
-16,11,Brûlure,Accès interdit aux personnes non autorisées couvrants
-17,11,Brûlure,Port de vêtements de protection
-18,12,"Brûlures, projections de liquide chaud lors du remplissage",Port de vêtements couvrants
-19,12,"Brûlures, projections de liquide chaud lors du remplissage",Port d'une protection faciale
-20,12,"Brûlures, projections de liquide chaud lors du remplissage",Ne pas rester à proximité lors de l'épandage
-21,13,Chute de hauteur,"Toujours se tenir face à la cabine, utiliser les trois points d'appui"
-22,14,Collisions,Respecter le sens de circulation et les procédures
-23,15,"Heurts, retournement","Ne pas pénétrer dans le périmètre d'action de la pelle, port du casque, poser les stabilisateurs"
-24,16,"Ecrasement, glissement","Engins équipés de systèmes d'alarme, ne pas rester dans le périmètre d'évolution de l'engin, assurer son calage lors de son arrêt sur pente"
-25,17,"Ecrasement, bruit","Prévenir le chauffeur pour toute intervention ou passage à proximité, sinon rester en dehors de son périmètre d'action, port des protections auditives"
-26,18, Eboulement,"Prévenir le chauffeur pour toute intervention ou passage à proximité, sinon rester en dehors de son périmètre d'action, port des protections auditives, surveiller la stabilité du terrain"
-27,19,Bruit,Port de protections auditives
-28,20,Risque électrique,"Matériel vérifié et conforme, mise à la terre du matériel, seules les personnes habilitées peuvent intervenir"
-29,21,Electrocution,"Port de gants isolants, personne intervenante habilitée, installations vérifiées annuellement et au démarrage du chantier"
-30,22,Eboulement - Poussière,"Pose de blindage et étaiements, effectuer un phasage des terrassements - Port d'un masque filtrant"
-31,23,Intempéries,Raccordement d'une pompe au réseau pour évacuer l'eau en fond de fouille
-32,24,"Perçage d'une canalisation, fuites","DICT à respecter, balisage chantier, en cas d'incident alerter les services compétents"
-33,25,"Effondrement de paroi, de talus / ensevelissement","Respect des règles d'étayage et de talutage, si profondeur > 1m30 pose de blindage"
-34,26,Chute de hauteur,"Balisage du chantier, si besoin installation de garde corps"
-35,27,Cf risques récurrents,Cf risques récurrents (22-23-24)
-36,28,Ensevelissement,Fouille vide lors du déchargement
-37,29,Effondrement de paroi de tranchée,Humidification des matériaux
-38,30,Chute de hauteur,"Balisage du chantier, surveillance"
-39,31,Risque biologique,"Port d'EPI couvrants, chaussures montantes, lunettes de protection"
-40,32,"Cf partie Installation de chantier - Utilisation de pelle, chargeur (15-16)","Cf partie Installation de chantier - Utilisation de pelle, chargeur (15 - 16)"
-41,33,Cf partie Installation de chantier - Utilisation d'engins (15-16),Cf partie Installation de chantier - Utilisation d'engins (15 - 16)
-42,34,"Chute, blessures","Délimitation du lieu de creusage, accès interdit aux personnes qui ne participent pas"
-43,35,"Chute d'objets, manutention manuelle","Port du casque, des chaussures de sécurité, de gants"
-44,36,"Irritations, eczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le béton à mains nues, rincer rapidement toute partie du corps ou des vêtement entrées en contact avec le ciment"
-45,37,Cf partie GENERALITES - Bétonnage / Féraillage,Cf partie GENERALITES - Bétonnage / Féraillage
-46,38,Chute d'objet,"Vérification des crochets et moyens de levage, ne pas déplacer les longrines directement sur fourches"
-47,39,Heurts,Accompagnement manuel de la longrine lors de son déplacement sur chantier
-48,40,Cf partie GENERALITES - Accessoires de levage,Cf partie GENERALITES - Accessoires de levage
-49,41,Cf partie GENERALITE - Ferraillage,Cf partie GENERALITE - Ferraillage
-50,42,Cf partie GENERALITE - Bétonnage,Cf partie GENERALITE - Bétonnage
-51,43,Cf partie GENERALITES - Bétonnage / Féraillage,
-52,44,Effondrement des parois de la tranchée,"Balisage autour de la zone d'excavation, respect des procédures"
-53,45,Heurt - collision,"Port du casque, évacuation de la zone du personnel non nécessaire à cette tâche"
-54,46,Effondrement des parois de la tranchée,"Balisage autour de la zone d'excavation, respect des procédures"
-55,47,Heurt - collision,"Port du casque, évacuation de la zone du personnel pas nécessaire à cette tache"
-56,48,Bruit,Port des protections auditives
-57,49,"TMS, blessures, écrasements, pincements","Adoption d'une posture adéquate (genoux pliés dos droit), port de gants manutention et des chaussures de sécurité"
-58,50,Effondrement,"S'assurer de la stabilité du terrain et porter le casque, les chaussures de sécurité, stabilisation à l'avancement"
-59,51,"Maladies respiratoires, irritations, éczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
-60,52,"TMS, blessures, écrasements, pincements","Adoption d'une posture adéquate (genoux pliés dos droit), port de gants manutention et des chaussures de sécurité"
-61,53,Effondrement,"S'assurer de la stabilité du terrain et porter le casque, les chaussures de sécurité, stabilisation des ouvrages"
-62,54,"Maladies respiratoires, irritations, éczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
-63,55,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement","Appliquer les recommandations techniques du fournisseur, vérification du matériel avant utilisation, vérification de la présence des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...), guidage et manoeuvrage pour le déplacement et la pose, stabilisation des banches permanente, mise en place de garde corps face coffrante, ne pas laisser d'outils sur les planches des banches"
-64,56,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
-65,57,Cf partie GENERALITES - Ferraillage,Cf partie GENERALITES - Ferraillage
-66,58,Arrachement de l'étais,Point d'accroche résistant et adapté
-67,59,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement","Appliquer les recommandations techniques du fournisseur, vérification du matériel avant utilisation, vérification de la présence des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...), guidage et manoeuvrage pour le déplacement et la pose,stabilisation des banches permanente, mise en place de garde corps face coffrante, ne pas laisser d'outils sur les planches des banches"
-68,60,"Chute d'objet, écrasement",Vérification des moyens et engins de levage périodiquement
-69,61,"Chocs, heurts, écrasements","Port du casque, des chaussures de sécurité, ne pas rester sur le lieu d'évolution de l'engin manutentionneur"
-70,62,Effondrement,"S'assurer de la stabilité du terrain et porter le casque, les chaussures de sécurité, stabilisation des ouvrages à l'avancement"
-71,63,"Maladies respiratoires, irritations, éczéma","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
-72,64,"Chute d'objet, écrasements, blessures","Vérification de la conformité de l'élingage, port du casque, ne pas se situer dans le périmètre de manutention"
-73,65,Chute,"Vérification de la stabilité du terrain, faire attention"
-74,66,Chute/ effondrement du prémur,"Port du casque et des chaussures de sécurité, vérifier la largeur, l'état et l'emplacement des appuis, ne pas rester à proximité de la pose, stabilisation à la pose, respect de la méthodologie"
-75,67,"Maladies respiratoires, irritations éczema","Port de gants adaptés et étanches à la transpiration, ne pas toucher le ciment à mains nues, ne pas s'agenouiller sur du ciment, éviter l'exposition au ciment sec, si contact avec peau ou vêtements rincer rapidement à l'eau"
-76,68,Cf partie GENERALITES - Ferraillage,Cf partie GENERALITES - Ferraillage
-77,69,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
-78,70,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement","Appliquer les recommandations techniques du fournisseur, vérification du matériel avant utilisation, vérification de la présence des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...), guidage et manoeuvrage pour le déplacement et la pose, stabilisation des banches permanente, mise en place de garde corps face coffrante, ne pas laisser d'outils sur les planches des banches"
-79,71,Arrachement de l'étais,Point d'accrochage résistant
-80,72,Chute d'objet,"Vérifier l'élingage, suivre les consignes d'élingage, ne pas rester dans le périmètre d'évolution de l'appareil de levage, ce dernier est également vérifié périodiquement"
-81,73,Heurts,"Port du casque, ne pas rester dans le périmètre d'évolution de la charge, communication constante avec le grutier"
-82,74,Arrachement de l'étais,Point d'accroche résistant et adapté
-83,75,Chute de hauteur,"Utilisation des accessoires adaptés au travail en hauteur (tour, échafaudage...)"
-84,76,"Chute d'objets, heurts",Port du casque et des chaussures de sécurité
-85,77,Cf partie GENERALITES - Feraillage,Cf partie GENERALITES - Feraillage
-86,78,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
-87,79,Effondrement,"Suivre les prescriptions, montage conforme"
-88,80,Effondrement,Respect du mode opératoire
-89,81,Chute d'objet - heurts,"Vérification des éléments de manutention, utiliser des cordes pour guider la réception - Port du casque"
-90,82,Cf partie Installation de chantier - Grue fixe (1),Cf partie Installation de chantier - Grue fixe (1-2)
-91,83,Rupture du plancher pré-dalle,Respect du plan d'étaiement fournisseur
-92,84,Chute de hauteur,Utilisation de garde-corps
-93,85,"Chute d'objet, heurts, écrasement","Ne pas rester sous la charge en évolution, port du casque"
-94,86,Cf partie GENERALITES - Bétonnage et Ferraillage,Cf partie GENERALITES - Bétonnage et Ferraillage
-95,87,Cf partie Installation de chantier - Grue fixe (1),Cf partie Installation de chantier - Grue fixe (1-2)
-96,88,Rupture du plancher pré-dalle,Respect du plan d'étaiement fournisseur
-97,89,Chute de hauteur,Utilisation de garde-corps
-98,90,"Chute d'objet, heurts, écrasement","Ne pas rester sous la charge en évolution, port du casque"
-99,91,Cf partie GENERALITES - Bétonnage et Ferraillage,Cf partie GENERALITES - Bétonnage et Ferraillage
-100,92,Cf partie Installation de chantier - Grue fixe (1),Cf partie Installation de chantier - Grue fixe (1-2)
-101,93,Effondrement,Plan d'étaiement à suivre
-102,94,Cf partie GENERALITES - Ferraillage,Cf partie GENERALITES - Ferraillage
-103,95,Cf partie GENERALITES - Bétonnage,Cf partie GENERALITES - Bétonnage
-104,96,"Bruit, vibrations","Utilisation de matériel conforme, limiter l'exposition, port de protections auditives"
-105,97,"Postures inconfortables, TMS, gestes répétitifs","Adopter la bonne posture de manutention manuelle (genous pliés dos droit), organisation des manutentions"
-106,98,Projections - poussières - utilisation de ciment,"Port des lunettes de protection, des gants adaptés étanches à la transpiration, si contact avec peau ou vêtements rincer de suite"
-107,99,Projection d'objets,"Sortir de la chambre d'arrivée, ne pas se situer en face du fourreau mais au dessus, port de lunettes de protection"
-108,100,"Ecrasements, heurts, blessures","Sortir du blindage lors de la manipulation, accrocher le blindage à chaque extrémité, évacuer le périmètre d'évolution de la charge"
-109,101,"Ecrasements, chute d'objet","Berme de sécurité de 40cm le long de la tranchée, ne pas stocker de matériel aux abords de la tranchée, port du casque et des chaussures de sécurité"
-110,102,"Projection d'éclats et de poussières, bruit","Les personnes ne participant pas à cette étape sont interdites d'accès, port de protections respiratoires et auditives"
-111,103,Ensevelissement,"Respecter les règles d'évasement, pose de blindage si profondeur > 1m30, ne pas circuler ni stocker aux abords des tranchées"
-112,104,Chute,"Balisage de la zone de travaux (évoluant avec l'avancée), interdiction de l'accès au personnel qui ne participe pas à cette phase"
-113,105,"TMS, écrasements, chute d'objet, coupure, blessure","Utilisation de porte bordure, port de gants de manutention, des chaussures de sécurité"
-114,106,"Projections (éclats et poussières), bruit","Port des protections auditives, des lunettes de sécurité, des gants spécifiques, d'un masque filtrant"
-115,107,Ecrasement,"Balisage chantier respecté, respect des consignes de la personne chargée de la gestion du traffic, rester hors de la zone d'évolution des engins"
-116,108,Brûlures,"Port de chaussures adaptées, d'un pantalon et d'une veste. Lors de l'étalement de l'enrobé, maintien en mouvement afin d'éviter de rester trop longtemps sur l'enrobé chaud"
-117,109,Bruit,Port des protections auditives
-118,110,TMS,"Utilisation d'outils propres et adaptés, faire des 'petits tas' pour éviter les reprises fatigantes, adoption d'une posture adaptée (plier les genous et non le dos)"
-119,111,Brûlure,"Accès interdit aux personnes non autorisées, port de vêtements de protection couvrants"
-120,112,"Brûlures, projections de liquide chaud lors du remplissage","Port de vêtements couvrants, ne pas rester à proximité lors de l'épandage, port d'une protection faciale"
-121,113,Chute de plain-pied,"Fouille propre et ordonnée, limiter le nombre d'objets au sol"
-122,114,Chute d'objets,"Respect du phasage, chantier balisé, port du casque et des chaussures de sécurité, respect de la méthodologie"
-123,115,"Heurts, collisions","Respect du balisage, ne pas rester dans le périmètre d'évolution des engins, port du casque et du gilet fluo"
-124,116,Projections,"Lunettes de protection, masque filtrant"
-125,117,Rupture de canalisation,"DICT, repérage du réseau existant"
-126,118,Bruit,Port de protections auditives
-127,119,Chute de hauteur et de plain pied,/
-128,120,"Collisions avec engins de chantier, avec personnel","Balisage, signalisation temporaire horizontale et verticale en amont et aval du chantier, port du baudrier (classe II ou III)"
-129,121,"Chute, heurt avec véhicule","Affichage et balisage adapté, zone piétonne et zone chantier séparées, assurance d'un passage sécurisé pour les piétons"
-130,122,"Ecrasement, heurt personnel-véhicule",
-131,123,Collisions,"Les engins à chenille ne traversent pas les voies, respecter les consignes SNCF"
-132,124,Contact électrique,"DICT ou demande de plan de réseau en site privé, consignation de ligne, isolation des conducteurs électriques et inspection complémentaire si besoin"
-133,125,Electrocution,"Réseau > 50000 V, respect de la distance de sécurité de 5m (3m si réseau < 50000V), mise en place d'un gabarit au niveau des zones de passage"
-134,126,Chute de poteau/ pylone,Mise en place d'un étaiement en fouille à proximité des poteaux
-135,127,Fuite,"En cas de fuite arrêter immédiatement le chantier, prévenir l'exploitant et mise hors tension, balisage de la zone"
-136,128,Chute de charge,"Ne pas rester sous une charge en cours de manipulation, port du casque et des chaussures de sécurité"
-137,129, Explosion,"Avoir du matériel ATEX, ne pas effectuer de travail à point chaud"
-138,130,Visibilité réduite induisant des accidents,"Mise en place de systèmes d'éclairage portatifs, port de vêtements haute visibilité, signalisation adaptée (rétro-réfléchissante)"
-139,131,Maladies infectieuses,"Port d'EPI couvrants (gants, manches longues, pantalon, chaussures montantes, lunettes de sécurité), lavage des mains systématique, vaccins à jour"
-140,132,"Coupures, piqures, maladies liées","Manipulation avec des gants, bennes dédiées sur chantier"
-141,133,Emissions de gaz de putréfaction,"Controle du taux d'hydrgène sulfureux, ventilation naturelle, délimitation de la zone, port du masque filtrant et des EPI couvrants, contact avec une personne en dehors de la zone à risques"
-142,134,Noyade,"Baliser la zone de travail, autant que faire se peut ne pas s'approcher des bords d'eau"
+"id","NumRisk","NumTool","numSituation","numSituationGroup","name"
+1,1,1,1,1,"Vérification périodique annuelle des harnais et des longes"
+2,2,2,1,1,"Contrôle visuel de tous les EPI à la prise de poste et avant leur utilisation
+Contrôle des dates limites d’utilisation et remplacement si besoin"
+3,3,2,1,1,"Rappel régulier sur l'adéquation entre les EPI et leur usage (gants par exemple)"
+4,4,3,2,1,"Port des gants adaptés
+Controle périodique des outils"
+5,5,4,3,1,"Utilisation des outils conformément à la notice d'utilisation
+Matériel vérifé périodiquement et changement des pièces usées le cas échéant (ex : entretien de la chaine)
+Utilisation des  ustensiles de découpe adaptés (ex : disque)
+Ne jamais retirer les capotages de protection"
+6,6,5,4,1,"Port des EPI correspondants
+Contrôle périodique du matériel électroportatif et remplacement des éléments défectueux (organes de sécurité, arrêt d’urgence, élément principaux)
+Respect des dispositifs de sécurité : ne démonter les protections sous aucun prétexte
+Formation à l'utilisation du nouveau matériel dispensée par le chef d'atelier, le chef de chantier ou le fournisseur de matériel
+Respect des conditions d'utilisation du matériel décrites dans la notice
+Ne jamais retirer les capotages de protection"
+7,7,5,4,1,"Vérification de l’état des câbles électriques avant toute utilisation du matériel
+Vérification périodique de l’ensemble du matériel électrique 
+Le remplacement des éléments défectueux est assuré dès que possible
+Le matériel électrique hors service est mis au rebut ou stocké de manière à en empêcher l’utilisation"
+8,7,5,4,1,"Raccordement au réseau via une armoire électrique équipée d'un disjoncteur 30mA"
+9,7,5,4,1,"Utilisation de matériel électroportatif sans fil, avec batterie"
+10,8,5,4,1,"Port de protections auditives
+Vérification de l'état du matériel avec de commencer la tâche (organes de sécurité, arrêt d’urgence, élément principaux).
+Utilisation de matériel conforme aux normes en vigueur, entretenu et contrôle périodiquement
+Consultation systématique des valeurs indiquées sur les notices techniques avant achat des équipements
+Extinction des sources de bruit dès que possible
+Limitation du temps d’exposition des salariés (pause, alternance des tâches)"
+11,9,6,5,1,"Vérification de l'état du matériel avec de commencer la tâche
+Utilisation de matériel conforme aux normes en vigueur, entretenu et contrôlé périodiquement
+Consultation systématique des valeurs indiquées sur les notices techniques avant achat des équipements
+Alternance des tâches et limitation du temps d'exposition des salariés (pauses)
+Le port des gants permet de réduire le syndrôme vibratoire"
+12,10,7,6,1,"Port de vêtements ignifugés et de gants anti-brulures
+Vérification de l'état du matériel avec de commencer la tâche
+Matériel vérifié périodiquement et réparé dès que nécessaire"
+13,11,7,6,1,"Permis de feu, extincteur à proximité
+Les travaux à risques sont exécutés par le personnel permanent  formé et non par les intérimaires (Permis de feu lorsque c'est nécessaire)
+Interdiction à toute personne non autorisée de se trouver à proximité de travaux chauds.
+"
+14,12,7,6,1,"Port du masque de soudure 
+Respect des procédures et méthodes d'utilisation
+Mise en place d'un écran de protection (ou paravent ) quand c'est possible
+Mise à disposition d'extincteurs, entrenus et vérifiés annuellement"
+15,13,8,7,1,"Port de gants adaptés à la manutention et des chaussure de sécurité
+Utilisation de diable, d'outil d'aide à la manutention
+Adoption de la bonne posture (genoux pliés, dos droit)
+Privilégier le port des charges à 2 personnes"
+16,14,9,7,1,"Déchargements effectués sur des surfaces non encombrées et planes
+Port de gants adaptés à la manutention et de chaussures de sécurité"
+17,15,10,7,1,"Stockage à hauteur d'homme dès que possible
+Organisation du rangement
+Port de gants adaptés à la manutention et de chaussures de sécurité"
+18,15,10,7,1,"Utilisation de racks de rangement directement apportés sur le chantier par un engin"
+19,16,11,8,1,"Les engins sont équipés de système d’alerte
+Les salariés portent des vêtements de travail haute visibilité
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d’engins (vitesse, signalisation temporaire ou non)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Respect des distances de sécurité dans les zones d’évolution des engins
+Les conducteurs d'engins sont formés et autorisés à conduire"
+20,17,11,8,1,"Des zones de stockage et de livraison sont délimitées et balisées"
+21,18,12,8,1,"Le personnel de chantier est équipé de chaussures de sécurité montantes et antidérapantes ou de bottes antidérapantes
+Stockage des outils portatifs à portée de main dans la zone de travail et rangement après utilisation
+Entretien régulier de la zone de travail"
+22,18,12,8,1,"Définition de cheminement piéton 
+Entretien des allées de circulation "
+23,19,13,9,1,"Engins équipés de système d'alerte
+Mise en place d'une zone d'exclusion autour des pelles
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d'engins (vitesse, signalisation)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail "
+24,19,13,9,1,"Respect du plan de circulation du chantier"
+25,20,13,9,1,"Engins conformes aux normes en vigueur et controlés périodiquement, pièces défectueuses changées immédiatement"
+26,21,13,9,1,"Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d'engins (vitesse, signalisation)."
+27,21,13,9,1,"Préparation des trajets en amont et optimisation des déplacements
+Prise en compte du temps de trajet dans l’organisation de la journée de travail
+Aménagement de pauses lors des longs trajets
+Interdiction de consommer de l'alcool ou des substances illicites sur le lieu de travail 
+Respect du code de la route et des règles de sécurité liées à la conduite (vitesse, signalisation)
+Vérification annuelle de la possession du permis de conduire par les utilisateurs de VL ou VU de l’entreprise
+Interdiction d'utiliser le téléphone au volant"
+28,22,13,9,1,"Les engins et camions sont contrôlés périodiquement
+Le remplacement des équipements vétustes est assuré dès que possible
+Les engins et camions sont équipés de sièges et cabines suspendus
+Consigne donnée aux salariés de diminuer la vitesse pour limiter les vibrations
+Seuls les salariés aptes médicalement conduisent les engins et les camions"
+29,23,13,9,1,"Descente de l'engin toujours face à la cabine, avec trois points d'appui"
+30,24,13,9,1,"Arrosage des pistes et zone de chantier"
+31,25,14,9,1,"Vérification de l'attelage pour chaque remorquage
+Contrôle de l'usure
+Conductucteur détenteur du premis et autorisé
+Respect du code de la route"
+32,25,15,9,1,"Vérification de l'arrimage
+Respect des poids limites de chargement
+Conducteur détenteur du permis et autorisé à conduire"
+33,25,15,9,1,"Autorisations de circulation en bonne et due forme"
+34,26,16,10,1,"Guidage lors du déchargement des camions
+Benne baissée lors de la circulation
+Bennage sur sol stable ou mise en fonction du système de calage si terrain en pente
+Respecter les charges limites autorisées
+Repartir uniformément le chargement dans la benne"
+35,27,16,10,1,"Ne pas rester à proximité de l'engin lors du chargement et du levage de la benne
+Port du casque OBLIGATOIRE"
+36,27,16,10,1,"Respecter les charges limites autorisées
+Repartir uniformément le chargement dans la benne"
+37,27,16,10,1,"Couvrir la benne "
+38,28,17,11,1,"Port de vêtements de travail adaptés au froid et à la pluie (isolement thermique): gants, chaussures, parka. "
+39,29,17,11,1,"Adaptation des temps de travail : temps de récupération en locaux de vie chauffés"
+40,30,18,11,1,"Saler, poser des barres sur du contreplaqué pour se tenir"
+41,31,19,12,1,"Hydratation régulière
+Application d'un tissu humide sous le casque qui couvre la nuque (saharienne raffraichissante)
+Adaptation du temps de travail et des horaires
+Aménagement de pauses à l'ombre ou dans local ventilé et aéré"
+42,32,20,13,1,"Le personnel de chantier est équipé de chaussures de sécurité montantes et antidérapantes ou de bottes antidérapantes"
+43,33,21,13,1,"Ne pas orienter le LASER vers les autres personnes
+Ne pas regarder le LASER
+Respecter le mode opératoire
+Eteindre l'appareil après utilisation
+Utilisation du laser réservée au personnel formé"
+44,34,22,13,1,"Les engins sont équipés de système d’alerte
+Les salariés portent des vêtements de travail haute visibilité
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d’engins (vitesse, signalisation temporaire ou non)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Respect des distances de sécurité dans les zones d’évolution des engins
+Les conducteurs d'engins sont formés et autorisés à conduire
+Port des EPI obligatoires et protections auditives"
+45,35,23,14,1,"Port du casque obligatoire"
+46,36,24,14,1,"Utilisation des racks de rangement à disposition, rangement des éléments les plus lourds au plus près du sol, ne pas faire dépasser le stockage du rangement"
+47,37,25,15,1,"Port OBLIGATOIRE de vêtements couvrants, de gants adaptés au risque et remontant sur les poignets
+Lavage systématique des mains après utilisation de produits chimiques"
+48,38,26,15,1,"Port de masques respiratoires pour se protéger des vapeurs des produits chimiques
+Lavage systématique des mains après utilisation de produits chimiques"
+49,38,26,15,1,"Mise en oeuvre de techniques d'humidification pour éviter de respirer les poussières des produits chimiques."
+50,39,27,16,1,"Affichage des FDS
+Vérification des incompatibilités entre produit
+Stockage sur bac de rétention
+Transvasement uniquement dans contenants adaptés et étiquetés"
+51,40,28,17,1,"Réduction autant que possible du nombre de produits chimiques sur chantier
+Lavage systématique des mains après utilisation de produits chimiques
+Transvasement uniquement dans contenants adaptés et étiquetés"
+52,41,28,17,1,"Utilisation du kit antipllution avec port des gants"
+53,42,29,18,1,"Présence d'extincteurs sur le chantier
+Eloignement des produits des zones de travail
+Compatibilité entre produits respectée"
+54,43,30,19,1,"Mise en place de systèmes d'éclairage portatifs
+Port de vêtements haute visibilité
+Mise en place d'une signalisation adaptée (rétro-réfléchissante)"
+55,44,31,20,2,"Le personnel de chantier est équipé de chaussures de sécurité montantes et antidérapantes ou de bottes antidérapantes"
+56,45,32,20,2,"Stockage des panneaux sur des racks
+Portage en binôme si nécessaire"
+57,46,33,21,2,"Stockage des barrières sur des racks et déchargement à proximité de la zone d'installation
+Portage en binôme si nécessaire"
+58,47,33,21,2,"Respect des consignes d'élingage et de levage :
+Vérification de l'adéquation entre la charge et la capacité de levage
+Utilisation d'élingues adaptées, conformes et vérifiées
+Personnel formé et autorisé exclusivement
+Respect des consignes de guidage
+Respect de la zone d'évolution du bras du camion-grue
+Port des EPI obligatoires"
+59,48,34,22,2,"Les engins sont équipés de système d’alerte
+Les salariés portent des vêtements de travail haute visibilité
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d’engins (vitesse, signalisation temporaire ou non)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Respect des distances de sécurité dans les zones d’évolution des engins
+Les conducteurs d'engins sont formés et autorisés à conduire
+Port des EPI obligatoires et protections auditives"
+60,49,35,22,2,"Ne pas orienter le LASER vers les autres personnes
+Ne pas regarder le LASER
+Respecter le mode opératoire
+Utilisation du laser réservée au personnel formé"
+61,50,36,22,2,"Le personnel de chantier est équipé de chaussures de sécurité montantes et antidérapantes ou de bottes antidérapantes"
+62,51,37,23,2,"Respect des consignes d'élingage et de levage :
+Vérification de l'adéquation entre la charge et la capacité de levage
+Utilisation d'élingues adaptées, conformes et vérifiées
+Personnel formé et autorisé exclusivement
+Respect des consignes de guidage
+Respect de la zone d'évolution du bras du camion-grue"
+63,52,38,24,2,"Demande d'autorisation de raccordement
+Demande de consignation auprès des exploitants de réseaux avant le raccordement
+Vérification des installations électriques avant mise en service"
+64,53,39,25,2,"Guidage de la manœuvre de la remorque
+Respect de la zone d'évolution de l'attelage
+Personnel formés et habilités au tirage de la remorque
+Port d'EPI adaptés"
+65,54,40,26,2,"Port de protections auditives"
+66,55,40,26,2,"Matériel vérifié et conforme
+Mise à la terre du matériel
+Utilisation réservée au personnel habilité"
+67,56,41,27,2,"Port de gants isolants
+Personne intervenante habilitée
+Installations vérifiées annuellement et au démarrage du chantier
+Armoire équipée d'un disjoncteur 30mA"
+68,57,42,28,3,"Elargissement de la fouille compte tenu de la nature du sol et profondeur"
+69,57,42,28,3,"Profondeur de la fouille >1,30m : protection de la fouille par un blindage
+Progression par tronçons successifs systématiquement protégés par un blindage"
+70,57,42,28,3,"Compte-tenu des spécificités de la fouille et l'environement du terrain, dimensionnement et fourniture des blindages par entreprise spécialisée"
+71,58,42,28,3,"Balisage du chantier "
+72,58,42,28,3,"Mise en place de protections antichute : garde-corps, barrières de fouilles, passerelles"
+73,59,43,29,3,"Pose d'un deuxième caisson de blindage dans le prolongement de la fouille
+Sortie des intervenants du premier caisson vers le deuxième caisson de blindage et transfert des outils"
+74,60,43,29,3,"Elingage du caisson de blindage 
+Contrôle annuel des élingues et chaines
+Vérification visuelle des élingues et interdiction de réutiliser des élingues à usage unique
+Vérification de l'adéquation de la capacité de levage avec les charges"
+75,61,44,30,3,"Respect des DT et réalisation des dossiers DICT
+Marquage et piquetage du chantier réalisé avant intervention et entretenu pendant la durée de chantier
+Adaptation des techniques de terrassement : mécanique puis manuel à l'approche des réseaux
+Personnel formé et habilité aux interventions à proximité des réseaux"
+76,61,44,30,3,"Intervention sous consignation"
+77,62,45,30,3,"Respect des distances de sécurité
+Installation de gabarit à proximité des lignes
+Interdiction de circuler benne levée"
+78,63,46,30,3,"Maîtrise de la règle des 4A : Arrêter - Alerter les pompiers et l'exploitant - Aménager le périmètre de sécurité- Accueillir les services compétents"
+79,64,47,30,3,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+80,65,48,31,3,"Respect des règles d'étayage et de talutage"
+81,66,48,31,3,"Balisage du chantier "
+82,66,48,31,3,"Mise en place de protections antichute : garde-corps, barrières de fouilles, passerelles"
+83,66,48,31,3,"Aménagement des accès en fond de fouilles : escaliers, échelles fixées sur talus, main-courante"
+84,67,49,32,3,"Voir Généralités / Conduite d'engin de chantier"
+85,68,50,33,3,"Voir Généralités / Opération de chargement et déchargement"
+86,69,51,34,3,"Respect des règles d'étayage et de talutage
+Protection des talus avec la technique adaptée en fonction de la profondeur"
+87,70,51,34,3,"Voir Généralités / Conduite d'engin de chantier"
+88,71,52,35,3,"Voir Généralités / Conduite d'engin de chantier"
+89,72,53,36,3,"Voir Généralités / Circulation piétonne sur chantier"
+90,73,54,37,4,"Voir généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+91,74,55,37,4,"Voir Généralités / Circulation piétonne sur chantier"
+92,75,56,37,4,"Voir Généralités / Opération de chargement et déchargement"
+93,76,57,38,4,"Voir généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+94,77,58,38,4,"Voir Généralités / Circulation piétonne sur chantier"
+95,78,59,38,4,"Voir Généralités / Opération de chargement et déchargement"
+96,79,60,39,4,"Voir généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+97,80,61,39,4,"Voir Généralités / Circulation piétonne sur chantier"
+98,81,62,39,4,"Voir Généralités / Opération de chargement et déchargement"
+99,82,63,40,4,"Engins équipés de système d'alerte
+Respect de la zone de circulation du compacteur, éloigné des autres ateliers
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Conducteur formé et autorisé à conduire l'engin"
+100,83,64,40,4,"Engins sont équipés de système d’alerte
+Port de vêtements de travail haute visibilité
+Respect de la zone d'évolution du compacteur
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Respect des distances de sécurité dans les zones d’évolution des engins
+Conducteur d'engin formé et autorisé à conduire"
+101,84,65,41,4,"Port obligatoire d'EPI adaptés : masques et vêtements couvrants
+Exclusion de la zone à tout personnel non nécessaire
+Pas de travaux de traitement en période de vent
+Respect des distances de sécurité"
+102,85,65,41,4,"Voir généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+103,86,66,42,5,"Voir Généralités / Circulation piétonne sur chantier"
+104,87,67,42,5,"Voir Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+105,88,68,42,5,"Voir Généralités / Opération de chargement et déchargement"
+106,89,69,42,5,"Machines utilisées conformes aux normes, entretenues et vérifiées régulièrement
+Machines équipées de système d'aspiration et de capotage"
+107,89,69,42,5,"Humifidication des zones de rabotage"
+108,89,69,42,5,"Port obligatoire d'EPI spécifiques : notamment protections respiratoires"
+109,89,69,42,5,"Mise à dispositon des FDS "
+110,90,70,43,5,"Accès à la zone de travail limité aux personnes de l'atelier
+Port de chaussures adaptées à semelle isolantes et de vêtements couvrant tout le corps
+Limitation du temps d'exposition sur l'enrobé chaud"
+111,91,70,43,5,"Port des EPI adaptés : protections respiratoires"
+112,92,70,43,5,"Mise à dispositon des FDS 
+Port des EPI adaptés : protections auditives"
+113,93,70,43,5,"Utilisation d'outils propres et adaptés
+Eviter les reprises fatigantes en privilégiant la reprise de petits tas
+Adoption d'une posture adaptée (genoux pliés)"
+114,94,70,43,5,"Respect de la zone d'évolution de l'engin
+Accès à la zone de travail limité aux personnes de l'atelier
+Balisage du chantier"
+115,95,71,43,5,"Accès à la zone de travail limité aux personnes de l'atelier
+Port d'une protection faciale et de vêtements couvrant tout le corps
+Limitation du temps d'exposition à proximité de l'engin
+Mise à dispositon des FDS "
+116,96,71,43,5,"Respect de la zone d'évolution de l'engin
+Accès à la zone de travail limité aux personnes de l'atelier
+Balisage du chantier"
+117,97,71,43,5,"Port des EPI adaptés : protections auditives"
+118,98,72,44,6,"Port obligatoire des EPI adaptés : notamment masque respiratoire, lunettes ou visière, gants, protections auditives
+Interdiction de retirer les protections
+Respect des conditions d'utilisation de la notice d'utilisation"
+119,99,72,44,6,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+120,100,72,44,6,"Calage de la bordure"
+121,101,73,45,6,"Port de charge en binôme
+Adoptation de la bonne posture de travail"
+122,102,74,45,6,"Utiliser l'accessoire de levage : lève-bordure"
+123,103,75,45,6,"Port des EPI obligatoires
+Rangement régulier de la zone de travail
+Rassemblement des outils"
+124,104,75,45,6,"Port obligatoire des EPI adaptés : notamment gants de manutention"
+125,105,76,46,6,"Utiliser l'outil d'aide à la manutention dès que possible
+Soulever le tampon en binôme
+Protèger la trémie une fois le tampon enlevé avec de barrières pliables
+Ne jamais enjamber la fouille"
+126,106,77,47,6,"Port des EPI adaptés oligatoires : gants, lunettes de protection et masque notamment"
+127,107,77,47,6,"Port de gants adaptés et étanches à la transpiration
+Ne pas toucher le ciment à mains nues
+Ne pas s'agenouiller sur du ciment
+Eviter l'exposition au ciment sec
+En cas de contact avec la peau ou les vêtements rincer rapidement à l'eau"
+128,107,77,47,6,"Mise à disposition des FDS"
+129,108,77,47,6,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+130,109,78,48,6,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+131,110,78,48,6,"Port des gants adaptés
+Controle périodique des outils"
+132,111,79,49,7,"Voir Fouilles et terrassement / Terrassement en tranchée"
+133,112,80,49,7,"Les engins sont équipés de système d’alerte
+Les salariés portent des vêtements de travail haute visibilité
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d’engins (vitesse, signalisation temporaire ou non)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Conducteur de l'aspiratrice formé et autorisé à conduire
+Respect des règles d'utilisation de l'aspiratrice"
+134,113,81,49,7,"Engins équipés de système d'alerte
+Mise en place d'une zone d'exclusion autour des pelles
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d'engins (vitesse, signalisation)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail "
+135,113,81,49,7,"Respect du plan de circulation du chantier"
+136,114,81,49,7,"Engins conformes aux normes en vigueur et controlés périodiquement, pièces défectueuses changées immédiatement"
+137,115,81,49,7,"Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d'engins (vitesse, signalisation)."
+138,115,81,49,7,"Préparation des trajets en amont et optimisation des déplacements
+Prise en compte du temps de trajet dans l’organisation de la journée de travail
+Aménagement de pauses lors des longs trajets
+Interdiction de consommer de l'alcool ou des substances illicites sur le lieu de travail 
+Respect du code de la route et des règles de sécurité liées à la conduite (vitesse, signalisation)
+Vérification annuelle de la possession du permis de conduire par les utilisateurs de VL ou VU de l’entreprise
+Interdiction d'utiliser le téléphone au volant"
+139,116,81,49,7,"Descente de l'engin toujours face à la cabine, avec trois points d'appui
+Equipement du toit de l'aspiratrice de garde-corps pliables pour les interventions en hauteur"
+140,117,81,49,7,"Port obligatoire d'EPI adaptés"
+141,118,82,50,7,"Voir Fouilles et terrassement / Terrassement à proximité de réseaux"
+142,119,83,51,7,"Voir Fouilles et terrassement / Déplacement du blindage"
+143,120,84,52,7,"Voir Généralités / Circulation piétonne sur chantier"
+144,121,85,53,7,"Ne pas stocker les déblais en bordure de tranchée"
+145,122,86,54,7,"Voir Généralités / Opération de chargement et déchargement"
+146,123,87,55,7,"Ne pas orienter le LASER vers les autres personnes
+Ne pas regarder le LASER
+Respecter le mode opératoire
+Eteindre l'appareil après utilisation
+Utilisation du laser réservée au personnel formé"
+147,124,88,56,7,"Sortir du blindage lors du déversement des granulats
+Porter un masque de protection en plus des EPI obligatoires"
+148,125,89,57,7,"Ne pas retirer les protections"
+149,126,90,58,7,"Eloignement du poste de découpe des autres ateliers
+Port des EPI obligatoires
+Port de protections respiratoires et auditives, de lunettes ou visière, de gants adaptés
+Respecter les conditions d'utilisation décrites dans la notice d'utilisation"
+150,127,90,58,7,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+151,128,90,58,7,"Calage de la canalisation à découper"
+152,129,91,59,7,"Respect des règles d'élingage :
+Contrôle annuel des élingues et chaines
+Vérification visuelle des élingues et interdiction de réutiliser des élingues à usage unique
+Vérification de l'adéquation du la capacité de levage avec les charges"
+153,130,91,59,7,"Guidage du chauffeur de pelle dans l'opération de levage
+Guidage du tuyau élingué jusqu'au fond de la fouille"
+154,131,92,60,7,"Port obligatoire d'EPI adaptés"
+155,132,92,60,7,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+156,133,93,61,7,"Voir Généralités / Opération de chargement et déchargement"
+157,134,94,62,7,"Respect des règles d'élingage :
+Contrôle annuel des élingues et chaines
+Vérification visuelle des élingues et interdiction de réutiliser des élingues à usage unique
+Vérification de l'adéquation du la capacité de levage avec les charges"
+158,135,94,62,7,"Guidage du chauffeur de pelle dans l'opération de levage
+Guidage de la carotteuse élinguée jusqu'au fond de la fouille"
+159,136,95,63,7,"Port des EPI obligatoires
+Port de protections respiratoires et auditives, de lunettes ou visière, de gants adaptés
+Usage réservé au personnel formé
+Utilisation conforme à la notice d'utilisation"
+160,137,95,63,7,"Utilisation de matériel conforme aux normes, entretenu et vérifée régulièrement
+Vérification visuelle du bon état avant usage"
+161,138,95,63,7,"Alternance des postes de travail
+Choix de la meilleure posture de travail"
+162,139,96,64,7,"Respect des règles d'élingage :
+Contrôle annuel des élingues et chaines
+Vérification visuelle des élingues et interdiction de réutiliser des élingues à usage unique
+Vérification de l'adéquation du la capacité de levage avec les charges"
+163,140,96,64,7,"Guidage du chauffeur de pelle dans l'opération de levage
+Guidage du tuyau élingué jusqu'au fond de la fouille"
+164,141,97,65,7,"Utiliser l'outil d'aide à la manutention dès que possible
+Soulever le tampon en binôme"
+165,142,97,65,7,"Protèger la trémie une fois le tampon enlevé avec de barrières pliables
+Ne jamais enjamber la fouille"
+166,143,98,66,7,"Port obligatoire des EPI adaptés : masque respiratoire, gants couvrants et cuissardes 
+Contrôle de l'atmosphère au moyen d'un appareil avant et pendant l'intervention
+Respect des règles d'hygiène : nettoyage soigneux des mains et de toutes plaies après intervention
+Port de tenues imperméables soigneusement nettoyées après l'intervention
+Tenue à jour des vaccinations du personnel (tétanos, leptospirose)"
+167,144,99,67,8,"Voir dans Généralités / Port obligatoire des équipements de protection individuelle"
+168,145,100,68,8,"Voir dans Généralités / Manutention manuelle de charges"
+169,146,101,69,8,"Port obligatoire des EPI adaptés : gants et lunettes ou visière notamment
+Controle périodique des outils"
+170,147,102,70,8,"Voir dans Généralités / Utilisation de matériels outils tranchants "
+171,148,103,71,8,"Voir dans Généralités / Utilisation de matériels électroportatifs"
+172,149,104,72,8,"Voir dans Généralités / Circulation piétonne sur chantier"
+173,150,105,73,8,"Voir dans Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+174,151,106,74,8,"Voir dans Généralités / Opération de chargement et déchargement"
+175,152,107,75,8,"Respect des DT et réalisation des dossiers DICT
+Marquage et piquetage du chantier réalisé avant intervention et entretenu pendant la durée de chantier
+Adaptation des techniques de terrassement à l'approche des réseaux
+Personnel formé et habilité aux interventions à proximité des réseaux"
+176,152,107,75,8,"Intervention sous consignation"
+177,153,108,75,8,"Respect des distances de sécurité
+Installation de gabarit à proximité des lignes
+Interdiction de circuler benne levée"
+178,154,109,75,8,"Maîtrise de la règle des 4A : Arrêter - Alerter les pompiers et l'exploitant - Aménager le périmètre de sécurité- Accueillir les services compétents"
+179,155,110,76,8,"Balisage de la zone de chantier
+Interdiction de stationner dans la zone d'évolution des engins
+Port des EPI obligatoires"
+180,156,111,76,8,"Identification des cheminements piétons"
+181,157,112,76,8,"Vérification la stabilité et de la planéité de la zone d'installation de la nacelle
+Utilisation des stabilisateurs"
+182,157,112,76,8,"Utilisation d'un matériel conforme, entretenu et régulièrement vérifié 
+Personnel formé et habilité
+Ne pas travailler en cas de vent fort"
+183,158,112,76,8,"Ne pas encombrer la plate-forme d'outils
+Baliser au sol la zone d'évolution de la nacelle
+Porter les EPI obligatoires et adaptés (harnais le cas échéant)"
+184,159,113,77,8,"Port obligatoire des EPI adaptés : gants et lunettes ou visière notamment
+Controle périodique des outils"
+185,160,114,77,8,"Port des EPI adaptés oligatoire : gants, lunettes de protection, masque"
+186,161,114,77,8,"Port de gants adaptés et étanches à la transpiration
+Ne pas toucher le ciment à mains nues
+Ne pas s'agenouiller sur du ciment
+Eviter l'exposition au ciment sec
+En cas de contact avec la peau ou les vêtements rincer rapidement à l'eau"
+187,161,114,77,8,"Mise à disposition des FDS sur site"
+188,162,115,78,9,"Ne pas intervenir avant la réception de mesures libératoires"
+189,163,116,79,10,"Respect des consignes d'élingage et de levage :
+Vérification de l'adéquation entre la charge et la capacité de levage
+Utilisation d'élingues adaptées, conformes et vérifiées
+Respect des consignes de guidage"
+190,163,116,79,10,"Balisage et respect de la zone d'évolution de la grue
+Présence d'un chef de manoeuvre
+Port des EPI au sol"
+191,163,116,79,10,"Interdiction de rester sous une charge en déplacement"
+192,164,116,79,10,"Respect des zones d'implantation
+Respect des distances de sécurité : 3 à 5 m selon voltage
+Affectation d'une personne à la surveillance des distance"
+193,164,116,79,10,"Demande de mise en consignation des réseaux électriques dès que possible"
+194,165,117,79,10,"Mise en place de gabarit pour délimiter les distances de sécurité"
+195,166,118,80,10,"Balisage de la zone d'implantation de la grue"
+196,167,118,80,10,"Vérifications de la résistance du terrain et ouvrages enterrés
+CEC actif pendant les opérations préalables au levage et pendant les opérations de repli"
+197,168,119,81,10,"Balisage de la zone d'implantation
+Montage de la grue par une entreprise spécialisée
+Contrôle du PV de montage et de conformité"
+198,169,120,82,10,"Vérifications électriques avant mise en service
+Visites périodiques de la grue et de ses éléments
+Carnet entretien tenu à jour"
+199,170,120,82,10,"Gestion des zones interdites, d'accès limité et d'interférence  :
+Rappel des consignes de levage aux grutiers
+Définition des zones interdites"
+200,171,120,82,10,"Gestion des zones interdites, d'accès limité et d'interférence  : 
+Respect des zones d'implantation
+Installation et vérifications des dispositifs de sécurité anti-collision"
+201,172,120,82,10,"Contrôle de la vitesse du vent et adaptation : 
+Anémomètre en pied de grue
+Avertisseur en cabine pour vents>50km/h
+Respect des recommandations CARSAT
+Alarme avec arrêt de travail et mise en girouette si vents>70 km/h"
+202,173,120,82,10,"Utilisation d'outils d'aide au guidage et de vidéo si possible"
+203,174,120,82,10,"Mise en place d'un asenceur de grue pour grue >  30m
+Organisation d 'un temps de pose lors de l'ascension si nécessaire
+Port des EPI obligatoire en pied de grue lors de la circulation sur le chantier du grutier"
+204,175,120,82,10,"Présence d'un extincteur dans la cabine"
+205,176,121,83,10,"Délimitation et balisage d'une zone de livraison
+Vérification de la résistance du terrain
+Activation des stabilisateurs"
+206,177,122,84,10,"Respect des consignes d'élingage et de levage :
+Vérification de l'adéquation entre la charge et la capacité de levage
+Utilisation d'élingues adaptées, conformes et vérifiées
+Personnel formé et autorisé exclusivement
+Respect des consignes de guidage"
+207,177,122,84,10,"Respect de la zone d'évolution du bras de la grue
+Port des EPI obligatoires
+Guidage de l'opération de levage"
+208,178,123,85,10,"Ne pas rester dans la zone de manoeuvrage de la charge
+Port des EPI obligatoires"
+209,179,123,85,10,"Vérification périodique des appareils de levage
+Ne pas rester dans la zone de manoeuvrage de la charge
+Vérification périodique des élingues et chaines 
+Vérification visuelle de l'état des élingues avant chaque utillisation
+Aucune conservation des élingues à usage unique et contrôle fait régulièrement
+Vérification de l'adéquation des accessoires et appareils de levage avec la charge"
+210,180,124,86,11,"Vérification de la stabilité de la zone d'installation de l'échafaudage
+Montage et démontage réalisé uniquement par du personnel formé
+Vérification de la conformité MDS de l'échafaudage
+Respect des consignes de montage et de la notice fournisseur
+Balisage de la zone de montage de l'échafaudage
+Port des EPI adaptés obligatoires, et notamment le harnais
+Vérification de la conformité du montage par le personnel formé et établissement du PV de vérification avec autorisation d'accès
+Accès réservé au personnel autorisé"
+211,181,125,87,11,"Vérification visuelle avant l'utilisation de l'échafaudage
+Respect des consignes de sécurité
+Montée via les échelles adaptées et les trappes d'accès
+Fermeture des trappes d'accès après passage
+Port des EPI obligatoires
+Mise en place de filet de protection autour de l'échafaudage"
+212,182,126,88,12,"Vérification de la stabilité de la zone d'installation de l'échafaudage
+Montage et démontage réalisé uniquement par du personnel formé
+Vérification de la conformité MDS de l'échafaudage
+Respect des consignes de montage et de la notice fournisseur
+Balisage de la zone de montage de l'échafaudage
+Port des EPI adaptés obligatoires, et notamment le harnais
+Activation des freins des roues après installation
+Vérification de la conformité du montage par le personnel formé et établissement du PV de vérification avec autorisation d'accès
+Accès réservé au personnel autorisé"
+213,183,127,89,12,"Vérification visuelle de la présence des protections collectives avant l'utilisation de l'échafaudage
+Vérification des freins des roues
+Respect des consignes de sécurité
+Montée via les échelles adaptées et les trappes d'accès
+Fermeture des trappes d'accès après passage
+Port des EPI obligatoires"
+214,184,128,90,12,"Pas de personnel sur l'échafaudage lors du déplacement
+Vérification de la planéité du sol avant déplacement
+Repositionnement et activation des freins des roues après le déplacement"
+215,185,129,91,13,"Vérification la stabilité et de la planéité de la zone d'installation de la nacelle
+Utilisation des stabilisateurs"
+216,185,130,92,13,"Utilisation d'un matériel conforme, entretenu et régulièrement vérifié 
+Personnel formé et habilité
+Ne pas travailler en cas de vent fort"
+217,186,130,92,13,"Ne pas encombrer la plate-forme d'outils
+Baliser au sol la zone d'évolution de la nacelle
+Porter les EPI obligatoires et adaptés (harnais le cas échéant)"
+218,187,131,93,14,"Port de gants adaptés au ferraillage obligatoire"
+219,188,131,93,14,"Port des EPI obligatoires
+Vaccins contre tétanos à jour"
+220,189,131,93,14,"Respecter les consignes de levage et d'élingage :
+Vérification de l'adéquation entre la charge et l'appareil de levage
+Utilisation d'élingues vérifiées, contrôlées et adaptées
+Respect des consignes de sécurité du chef
+Respect des consignes de guidage
+Interdiction de rester sous la charge pendant son déplacement"
+221,190,132,93,14,"Port des EPI et équipements de protection adaptés obligatoire
+Utilisation d'un disque à métal"
+222,191,133,93,14,"Protection systématique des aciers en attente par crossage ou utilisation de bouchons de protection ou de réglettes"
+223,192,134,94,14,"Port des EPI adaptés oligatoire : gants, lunettes de protection
+Mise à disposition des FDS sur site"
+224,193,135,94,14,"Manipulation à deux personnes aussi souvent que nécessaire
+Respect de la notice d'utilisation et notamment de la posture 
+Utilisation de matériel conforme aux normes, entretenu et vérifié régulièrement"
+225,194,136,94,14,"Identfication de la zone d'installation de la toupie ou de la pompe à béton
+Respect de la zone d'évolution de la pompe ou du bras de la toupie
+Guidage de la pompe ou du bras de la toupie
+Port des EPI adaptés obligatoire"
+226,195,136,94,14,"Vérification et entretien périodique de la pompe et du système d'acheminement du béton"
+227,196,137,95,14,"Respecter les consignes de levage et d'élingage :
+Vérification de l'adéquation entre la charge et l'appareil de levage
+Utilisation d'élingues vérifiées, contrôlées et adaptées
+Respect des consignes de sécurité du chef
+Respect des consignes de guidage
+Interdiction de rester sous la charge pendant son déplacement
+Utiliser la corde pour ouvrir la benne en déporté"
+228,197,138,96,14,"Port des EPI spécifiques adaptés (masques, lunettes et gants)
+Utilisation d'huiles bio"
+229,198,139,97,14,"Vérifier l'installation de la zone de nettoyage
+Vérifier la pose de la benne et sa stabilité avant de commencer à nettoyer
+Se placer à la bonne hauteur pour le nettoyage"
+230,199,140,98,15,"Délimitation du lieu de creusage
+Interdiction de l'accès interdit aux personnes qui ne participent pas
+Guidage du creusage par une personne à pied
+Port des EPI obligatoires"
+231,200,141,99,15,"Port  des EPI obligatoires et des gants"
+232,201,142,100,15,"Voir dans Activité Bétonnage / Ferraillage"
+233,202,143,101,15,"Voir dans Activité Bétonnage / Ferraillage"
+234,203,144,102,15,"Voir dans Généralités/utilisation d'outils à source de chaleur"
+235,204,145,103,15,"Vérification des crochets et moyens de levage
+Ne pas déplacer les longrines directement sur fourches"
+236,205,145,103,15,"Accompagnement manuel de la longrine lors de son déplacement sur chantier"
+237,206,146,104,15,"Voir dans Généralités / Levage"
+238,207,147,105,15,"Voir dans Activité Bétonnage / Ferraillage"
+239,208,148,106,15,"Voir dans Activité Bétonnage / Ferraillage"
+240,209,149,107,15,"Voir dans Activité Bétonnage / Ferraillage"
+241,210,150,107,15,"Voir dans Activité Bétonnage / Ferraillage"
+242,211,151,108,15,"Réalisation des travaux par une entreprise spécialisée
+Balisage autour de la zone d'excavation
+Respect des distances de sécurité"
+243,212,151,108,15,"Réalisation des travaux par une entreprise spécialisée
+Balisage de la zone d'évolution de la machine
+Interdiction d'accès à toute personne non autorisée ou non nécessaire
+Port des EPI obligatoires"
+244,213,151,108,15,"Port de protections auditives à proximité de la machine"
+245,214,152,109,15,"Réalisation des travaux par une entreprise spécialisée
+Balisage autour de la zone d'excavation
+Respect des distances de sécurité"
+246,215,153,110,15,"Réalisation des travaux par une entreprise spécialisée
+Balisage de la zone d'évolution de la machine
+Interdiction d'accès à toute personne non autorisée ou non nécessaire
+Port des EPI obligatoires"
+247,216,154,110,15,"Port des protections auditives"
+248,217,155,111,16,"Adoption d'une posture adéquate (genoux pliés dos droit)
+Port des EPI obligatoires et des gants de manutention"
+249,218,155,111,16,"S'assurer de la stabilité du terrain
+Stabiliser la construction à l'avancement
+Port des EPI obligatoires"
+250,219,156,111,16,"Port de gants adaptés et étanches à la transpiration
+Ne pas toucher le ciment à mains nues
+Ne pas s'agenouiller sur du ciment
+Eviter l'exposition au ciment sec
+En cas de contact avec la peau ou les vêtements rincer rapidement à l'eau"
+251,220,157,112,16,"Adoption d'une posture adéquate (genoux pliés dos droit)
+Port des EPI obligatoires et de gants manutention"
+252,221,158,112,16,"S'assurer de la stabilité du terrain
+Stabiliser les ouvrages
+Porter les EPI obligatoires"
+253,222,159,113,16,"Port de gants adaptés et étanches à la transpiration
+Ne pas toucher le ciment à mains nues
+Ne pas s'agenouiller sur du ciment
+Eviter l'exposition au ciment sec
+En cas de contact avec la peau ou les vêtements rincer rapidement à l'eau"
+254,223,160,114,16,"Application stricte des recommandations techniques du fournisseur
+Vérification du matériel  et inventaire  des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...) avant utilisation
+Guidage et manoeuvrage pour le déplacement et la pose des banches
+Stabilisation permanente des banches "
+255,224,160,114,16,"Mise en place de garde corps sur la face coffrante
+Interdiction de laisser des outils sur les planches des banches"
+256,225,160,114,16,"Voir dans Généralités / Levage"
+257,226,161,115,16,"Voir dans Activité Bétonnage / Ferraillage"
+258,227,162,116,16,"Voir dans Activité Bétonnage / Ferraillage"
+259,228,163,117,16,"Identification d'un point d'accroche résistant et adapté"
+260,229,164,118,16,"Voir dans Généralités / Levage"
+261,230,165,118,16,"S'assurer de la stabilité du terrain
+Stabiliser l'ouvrage à l'avancement
+Port des EPI obligatoires"
+262,231,166,118,16,"Voir dans Activité Bétonnage / Ferraillage"
+263,232,167,119,16,"Voir dans Généralités / Levage"
+264,233,168,119,16,"Port des EPI obligatoires
+Respect de la méthodologie
+Vérification de la largeur, de l'état et de l'emplacement des appuis
+Stabilisation de la pose à l'avancement
+Respect des distances de sécurité par rapport à la zone de pose"
+265,234,169,120,16,"Vérification de la stabilité du terrain"
+266,235,170,121,16,"Voir dans Activité Bétonnage / Ferraillage"
+267,236,171,122,16,"Voir dans Activité Bétonnage / Ferraillage"
+268,237,172,122,16,"Voir dans Activité Bétonnage / Ferraillage"
+269,238,173,122,16,"Application stricte des recommandations techniques du fournisseur
+Vérification du matériel  et inventaire  des éléments nécessaires (étais, lests, compas, passerelles intermédiaires, échelles, garde-corps...) avant utilisation
+Guidage et manoeuvrage pour le déplacement et la pose des banches
+Stabilisation permanente des banches "
+270,239,173,122,16,"Mise en place de garde corps sur la face coffrante
+Interdiction de laisser des outils sur les planches des banches"
+271,240,173,122,16,"Voir dans Généralités / Levage"
+272,241,174,122,16,"Identification d'un point d'accroche résistant et adapté"
+273,242,175,123,16,"Voir dans Généralités / Levage"
+274,243,176,123,16,"Identification d'un point d'accroche résistant et adapté"
+275,244,177,123,16,"Choix de l'accessoire pour le travail en hauteur adapté"
+276,245,177,123,16,"Voir Utilisation d'échafaudage"
+277,246,178,124,16,"Port des EPI obligatoires"
+278,247,179,124,16,"Port des EPI spécifiques adaptés (masques, lunettes et gants)
+Utilisation d'huiles bio"
+279,248,180,125,16,"Voir dans Activité Bétonnage / Ferraillage"
+280,249,181,126,16,"Voir dans Activité Bétonnage / Ferraillage"
+281,250,182,127,17,"Suivre les prescriptions
+S'assurer de la conformité du montage"
+282,251,183,128,17,"Respect du mode opératoire"
+283,252,184,129,17,"Vérification des éléments de manutention
+Utilisation de cordes pour guider la réception
+Port des EPI oblliagtoires "
+284,253,185,129,17,"Voir dans Opérations de levage/utilisation d'une grue"
+285,254,186,130,17,"Respect du plan d'étaiement fournisseur"
+286,255,187,130,17,"Mise en place de garde-corps"
+287,256,188,130,17,"Ne pas rester sous la charge en évolution
+Port des EPI obligatoires"
+288,257,189,130,17,"Voir dans Activité Bétonnage / Ferraillage"
+289,258,190,130,17,"Voir dans Opérations de levage/utilisation d'une grue"
+290,259,191,131,17,"Respect du plan d'étaiement fournisseur"
+291,260,192,131,17,"Mise en place de garde-corps"
+292,261,193,131,17,"Ne pas rester sous la charge en évolution
+Port des EPI obligatoires"
+293,262,194,131,17,"Voir dans Activité Bétonnage / Ferraillage"
+294,263,195,131,17,"Voir dans Opérations de levage/utilisation d'une grue"
+295,264,196,132,17,"Suivre le plan d'étaiement"
+296,265,197,132,17,"Voir dans Activité Bétonnage / Ferraillage"
+297,266,198,132,17,"Voir dans Activité Bétonnage / Ferraillage"
+298,267,199,133,17,"Utilisation de matériel conforme aux normes, entretenu et vérifé
+Limite de la durée d'exposition
+Port de protections auditives"
+299,268,200,133,17,"Adopter la bonne posture de manutention manuelle (genous pliés dos droit)
+Organisation des manutentions"
+300,269,201,134,17,"Port des lunettes de protection, des gants adaptés étanches à la transpiration
+En cas de contact avec la peau ou les vêtements : rincer immédiatement"
+301,270,202,135,18,"Les engins sont équipés de système d’alerte
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d’engins (vitesse, signalisation temporaire ou non)
+Interdiction de consommer de l’alcool ou des substances illicites sur le lieu de travail 
+Respect des distances de sécurité dans les zones d’évolution des engins
+Les conducteurs d'engins sont formés et autorisés à conduire
+Port des EPI obligatoire pour toute personne intervenant sur le chantier"
+302,271,203,136,18,"Interdiction d'accès au chantier au public
+Chantier balisé ou cloturé
+Panneaux d'information et signalisation"
+303,272,204,137,18,"Chantier balisé ou cloturé, présence de signalisation et de panneau d'information
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d'engins (vitesse, signalisation) 
+Véhicules et engins conformes aux normes en vigueur, entretenus et vérifiés régulièrement"
+304,273,205,138,18,"Interdiction de consommer de l'alcool ou des substances illicites sur le lieu de travail 
+Respect du code de la route et des règles de sécurité liées à la conduite (vitesse, signalisation)
+Vérification annuelle de la possession du permis de conduire par les utilisateurs de VL ou VU de l’entreprise
+Interdiction d'utiliser le téléphone au volant"
+305,274,206,139,18,"Vérification de l'attelage pour chaque remorquage
+Contrôle de l'usure
+Conductucteur détenteur du premis et autorisé
+Respect du code de la route"
+306,275,207,140,18,"Vérification de l'arrimage
+Respect des poids limites de chargement
+Conducteur détenteur du permis et autorisé à conduire
+Autiorisations de circulation en bonne et due forme"
+307,276,208,141,18,"Arrosage des pistes et zone de chantier
+Nettoyage des routes d'accès"
+308,277,209,142,18,"Accès interdit aux personnes non autorisées
+Chantier balisé ou cloturé
+Surveillance et guidage des manoeuvres et opérations de levage
+Ne pas rester dans la zone d'évolution des engins de chantier et /ou de manoeuvrage de la charge
+Ne pas rester sous une charge en cours de manipulation
+Port des EPI obligatoires pour tout personne accédant au chantier"
+309,278,210,143,18,"Vérifications de la résistance du terrain et ouvrages enterrés avant installation
+CEC actif pendant les opérations préalables au levage et pendant les opérations de repli"
+310,279,211,144,18,"Vérifications de la résistance du terrain et ouvrages enterrés avant installation
+Montage de la grue par une entreprise spécialisée
+Contrôle du PV de montage et de conformité"
+311,280,212,144,18,"Contrôle de la vitesse du vent et adaptation : 
+Anémomètre en pied de grue
+Avertisseur en cabine pour vents>50km/h
+Respect des recommandations CARSAT
+Alarme avec arrêt de travail et mise en girouette si vents>70 km/h"
+312,281,212,144,18,"Gestion des zones interdites, d'accès limité et d'interférence  :
+Rappel des consignes de levage aux grutiers
+Définition des zones interdites"
+313,282,212,144,18,"Gestion des zones interdites, d'accès limité et d'interférence  : 
+Respect des zones d'implantation
+Installation et vérifications des dispositifs de sécurité anti-collision"
+314,283,213,145,18,"Ne pas rester à proximité de l'engin lors du chargement et du levage de la benne
+Port du casque OBLIGATOIRE"
+315,284,214,146,18,"Utilisation de matériel conforme aux normes en vigueur, entrenu et vérifié régulièrement
+Port de protections auditives ou port d'un masque
+Interdiction d'accès aux personnel non concerné à proximité de l'atelier"
+316,285,215,147,18,"Utilisation de matériel conforme aux normes en vigueur, entrenu et vérifié régulièrement
+Port de protections auditives ou port d'un masque
+Interdiction d'accès aux personnel non concerné à proximité de l'atelier"
+317,286,216,148,18,"Interdiction à toute personne non autorisée de se trouver à proximité de travaux chauds.
+Mise en place d'un écran de protection (ou paravent )"
+318,287,217,149,18,"Protections auditives des salariés avoisinants
+Travaux réalisés ponctuellement"
+319,288,218,150,18,"Accès interdit aux personnes non autorisées 
+Balisage du chantier et de la zone d'évolution de l'engin
+Utilisation d'engins conformes aux normes en vigueur, entrenus et vérifiés régulièrement
+Conducteur formé et autorisé à conduire"
+320,289,219,151,18,"Balisage d'une zone d'interdiction d'accès autour de l'échafaudage"
+321,290,220,152,18,"Accès interdit aux personnes non autorisées 
+Chantier balisé, présence de signalisation et de panneau d'information
+Enteindre l'appareil en dehors des périodes d'utililsation 
+Ne pas viser les autres personnes"
+322,291,221,153,18,"Protections auditives des salariés avoisinants
+Utilisation de matériel conforme aux normes, entretenu et contrôlé"
+323,292,222,154,18,"Chantier balisé, présence de signalisation et de panneau d'information
+Accès interdit aux personnes non autorisées 
+En cas de traavux à proximité, port des EPI adaptés obligatoire : gants, lunettes de protection, masque respiratoire"
+324,293,223,155,18,"Accès interdit aux personnes non autorisées
+Chantier balisé, présence de signalisation et de panneau d'information
+Présence d'extincteurs sur le chantier"
+325,294,224,156,18,"Réduction autant que possible du nombre de produits chimiques sur chantier
+En cas de pollution accidentelle, équipement des chefs de chantier en kit anti-pollution"
+326,295,225,157,18,"Accès interdit aux personnes non autorisées
+Balisage du chantier
+Installation de barrières autour de la trémie ouverte"
+327,296,226,158,18,"Accès interdit aux personnes non autorisées
+Balisage du chantier
+Installation de barrières, garde-corps ou passerelles"
+328,297,227,159,18,"Respect des DT et réalisation des dossiers DICT
+Marquage et piquetage du chantier réalisé avant intervention et entretenu pendant la durée de chantier
+Adaptation des techniques de terrassement : mécanique puis manuel à l'approche des réseaux
+Personnel formé et habilité aux interventions à proximité des réseaux"
+329,298,227,159,18,"Maîtrise de la règle des 4A : Arrêter - Alerter les pompiers et l'exploitant - Aménager le périmètre de sécurité- Accueillir les services compétents"
+330,299,228,160,18,"Accès interdit aux personnes non autorisées
+Balisage ou cloture du chantier, surveillance des accès
+Protection systématique des aciers en attente par crossage ou utilisation de bouchons de protection ou de réglettes"
+331,300,229,161,19,"Participation aux réunions de coordination
+Partage des plannings d'exécution
+Respect des balisages des zones de travail
+Signature d'une convention de mise à disposition de grue ou d'échaufaudage en cas de prêt
+Connaissance des PPSPS des autres entreprises intervenants pour la partie risques ""exportés""
+Respect des préconisations des autres entreprises"
+332,301,230,162,19,"Respect des balisages et zones de travail
+Respect des zones d'évolution des engins
+Port des EPI obligatoires"
+333,302,231,163,19,"Respect des balisages et zones de travail
+Respect des zones d'évolution des engins
+Respect du plan de circulation du chantier et des règles de sécurité liées à la conduite d'engins (vitesse, signalisation) "
+334,303,232,164,19,"Respect du balisage de la zone de levage
+Ne pas rester dans la zone d'évolution et de manoeuvre de la charge
+Port des EPI obligatoires"
+335,304,233,165,19,"Respect du balisage de la zone de travail
+Port des EPI obligatoires"
+336,305,234,166,19,"Balisage, signalisation temporaire horizontale et verticale en amont et aval du chantier
+Mise en sécurité des zones de travail
+Travaux et circulation à l'intérieur de la zone balisée et signalée
+Port OBLIGATOIRE des vêtements Haute Visibilité  (classe II ou III)"
+337,306,235,167,19,"Respecter les consignes SNCF, la signalitique des feux Attendre levée des barrières"
+338,307,236,167,19,"Les engins à chenille ne traversent pas les voies, respecter les consignes SNCF"
+339,308,237,168,19,"Dépôt du dossier de DICT ou demande de plan de réseau en site privé
+Demande de consignation de ligne
+Isolation des conducteurs électriques et inspection complémentaire si besoin
+Personnel formé et habilité"
+340,309,238,168,19,"Réseau > 50000 V, respect de la distance de sécurité de 5m (3m si réseau < 50000V), mise en place d'un gabarit au niveau des zones de passage"
+341,310,239,168,19,"Mise en place d'un étaiement en fouille à proximité des poteaux"
+342,311,240,169,19,"Respect des DT et réalisation des dossiers DICT
+Marquage et piquetage du chantier réalisé avant intervention et entretenu pendant la durée de chantier
+Adaptation des techniques de terrassement : mécanique puis manuel à l'approche des réseaux
+Personnel formé et habilité aux interventions à proximité des réseaux"
+343,312,240,169,19,"Maîtrise de la règle des 4A : Arrêter - Alerter les pompiers et l'exploitant - Aménager le périmètre de sécurité- Accueillir les services compétents"
+344,313,241,170,19,"Avoir du matériel ATEX
+Ne pas effectuer de travail à point chaud"
+345,314,242,171,19,"Port d'EPI couvrants (gants, manches longues, pantalon, chaussures montantes, lunettes de sécurité)
+Lavage des mains systématique
+Tenue des vaccins à jour"
+346,315,243,171,19,"Manipulation avec des gants
+Bennes dédiées sur chantier"
+347,316,244,171,19,"Controle du taux d'hydrogène sulfureux
+Ventilation naturelle
+Port du masque filtrant et des EPI couvrants
+Maintien du contact avec une personne située en dehors de la zone à risques"
+348,317,245,172,19,"Baliser la zone de travail
+Respecter les distances de sécurité"
+349,318,246,173,19,"Balisage autour de la zone d'excavation
+Respect des distances de sécurité"
+350,319,246,173,19,"Balisage de la zone d'évolution de la machine
+Interdiction d'accès à toute personne non autorisée ou non nécessaire
+Port des EPI obligatoires"
+351,320,246,173,19,"Port de protections auditives à proximité de la machine"
+352,321,247,174,19,"Balisage autour de la zone d'excavation
+Respect des distances de sécurité"
+353,322,248,175,19,"Balisage de la zone d'évolution de la machine
+Interdiction d'accès à toute personne non autorisée ou non nécessaire
+Port des EPI obligatoires"
+354,323,248,175,19,"Port des protections auditives"
+355,324,249,176,19,"Demander les résultats des mesures libératoires
+Respecter la zone de travaux de désamiantage en cas d'intervention à proximité
+Consulter le DTA"
+356,325,250,177,19,"Sensibilisation du personnel aux différentes situations suceptibles de contenir de l'amiante
+Retrait du chantier et information du Maître d'ouvrage"

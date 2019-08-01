@@ -23,11 +23,6 @@ class Measure
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descr;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Risk", inversedBy="measures")
      * @ORM\JoinColumn(name="risk_id", referencedColumnName="id", nullable=false)
     */
@@ -72,18 +67,6 @@ class Measure
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(?string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }

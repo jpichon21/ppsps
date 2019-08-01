@@ -47,6 +47,9 @@ class ImportSituationCommand extends Command
         $finder->files()->in($this->kernel->getRootDir().'/ImportFile');
         $serializer = new Serializer([new ArrayDenormalizer(), new GetSetMethodNormalizer()], [new CsvEncoder()]);
         foreach ($finder as $file) {
+            if ($file->getFileName() === 'activites.csv') {
+                $situationGroups = $serializer->deserialize($file->getContents(),SituationGroup::class.'[]','csv');
+            }
             if ($file->getFileName() === 'situation.csv') {
                 $situations = $serializer->deserialize($file->getContents(),Situation::class.'[]','csv');
             }
@@ -60,12 +63,14 @@ class ImportSituationCommand extends Command
                 $measures = $serializer->deserialize($file->getContents(),Measure::class.'[]','csv');
             }
         }
-        $situationGroup = new SituationGroup();
-        $situationGroup->setName('Test');
-        $situationGroup->setDescr('Descr');
 
         foreach ($situations as $situation) {
-            $situationGroup->addSituation($situation);
+            foreach($situationGroups as $situationGroup) {
+                if($situationGroup->getId() === $situation->getNumSituationGroup()){
+                    $situationGroup->addSituation($situation);
+                    $this->entityManager->persist($situationGroup);
+                }
+            }
             foreach ($tools as $tool) {
                 if ($tool->getNumSituation() === $situation->getId()) {
                     $situation->addTool($tool);
@@ -75,11 +80,11 @@ class ImportSituationCommand extends Command
             foreach ($risks as $risk) {
                 if ($risk->getNumSituation() === $situation->getId()) {
                     $situation->addRisks($risk);
+                    $this->entityManager->persist($risk);
                 }
             }
             $this->entityManager->persist($situation);
         }
-        $this->entityManager->persist($situationGroup);
         foreach ($risks as $risk) {
             foreach ($measures as $measure){
                 if ($measure->getNumRisk() === $risk->getId()) {

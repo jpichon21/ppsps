@@ -23,13 +23,8 @@ class Risk
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descr;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Situation", inversedBy="risks")
-     * @ORM\JoinColumn(name="situation_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="situation_id", referencedColumnName="id", nullable=true)
     */
     private $situation;
 
@@ -54,7 +49,7 @@ class Risk
     */
     public function __toString()
     {
-        return $this->getName().' - '.$this->situation->getName();
+        return $this->getName();
     }
 
     /**
@@ -85,18 +80,6 @@ class Risk
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(?string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }

@@ -296,7 +296,7 @@ class PDFparserService
                         }
                         if (isset($situation['measure'])) {
                             foreach ($situation['measure'] as $measureKey => $measure) {
-                                $situations[$situationGroup][$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getDescr();
+                                $situations[$situationGroup][$key]['measure'][$measureKey] = $this->measureRepository->findById($measure)[0]->getName();
                             }
                         }
                     }

@@ -1,130 +1,252 @@
-id,numSituation,name,descr
-1,1,Utilisation de la grue,
-2,1,Manutention de charges,
-3,1,Présence du grutier en cabine,
-4,2,"Camions benne, toupie, gravillonneur et semi-remorque",
-5,2,"Camions benne, toupie, gravillonneur et semi-remorque",
-6,2,"Camions benne, toupie, gravillonneur et semi-remorque",
-7,2,Camion grue,
-8,2,Manutention de charge par camion grue,
-9,2,Finisseur,
-10,2,Répandeuse à liant,
-11,2,Montée-descente d'engin,
-12,3,Chargement de béton,
-13,4,Manutention,
-14,4,Chargeur,
-15,5,Compacteur < 2.5t,
-16,5,Compacteur > 2.5t,
-17,6,Groupe électrogène,
-18,6,Groupe électrogène,
-19,6,Armoire électrique,
-20,7,Activité fouilles-terrassements,
-21,7,Activité fouilles-terrassements,
-22,7,"Utilisation de camions, de pelles et autres engins",
-23,7,Présence de réseaux existants,
-24,8,Fouilles,
-25,8,Fouilles / tranchées,
-26,9,Cf Risques récurrents (7),
-27,10,Remblais de fondations,
-28,11,Ouverture de regard,
-29,11,Présence d'eaux usées,
-30,13,Décapage de terres végétales,
-31,13,Evacuation des terres végétales,
-32,14,Creusage de fond,
-33,14,Coffrage des semelles,
-34,14,Coulage du béton,
-35,14,Création des semelles,
-36,15,Manutention,
-37,15,Manutention,
-38,15,Utilisation d'engin,
-39,16,Ferraillage,
-40,16,Bétonnage,
-41,17,Scellement-encuvement,
-42,18,Paroi moulée,
-43,19,Paroi clouée,
-44,20,Manutention manuelle,
-45,20,Construction du mur,
-46,20,Utilisation de ciment,
-47,21,Manutention manuelle,
-48,21,Construction du mur,
-49,21,Utilisation de ciment,
-50,21,Banches,
-51,22,Bétonnage,
-52,22,Ferraillage,
-53,22,Etais tire-pousse,
-54,22,Banches,
-55,22,Manutention,
-56,23,Manutention,
-57,23,Installation des murs,
-58,23,Utilisation de ciment,
-59,24,Manutention,
-60,24,"Elingage, mise en place et retrait des stabilisations provisoires (, clavetage)",
-61,24,Pose du prémur,
-62,24,Remplissage béton - Utilisation de ciment,
-63,25,Pose d'armature,
-64,25,Coulage béton,
-65,25,Banches,
-66,25,Etais,
-67,26,Manutention de charge,
-68,26,Manutention de charge,
-69,26,Etais,
-70,26,Mise en place,
-71,27,Pose d'éléments de coffrage,
-72,27,Disposition de treillis métallique,
-73,27,Remplissage,
-74,28,Tour d'étaiement - Coffrage bois,
-75,29,Tour d'étaiement,
-76,30,Tire-fort,
-77,30,Grue,
-78,31,Tour d'étaiement,
-79,31,Etais,
-80,31,Palonnier,
-81,31,Platelage,
-82,31,Grue,
-83,32,Tour d'étaiement,
-84,32,Etais,
-85,32,Palonnier,
-86,32,Platelage,
-87,32,Grue,
-88,33,Tour d'étaiement,
-89,33,Ferraillage,
-90,33,Bétonnage,
-91,34,Dallage,
-92,34,Pose de dalles,
-93,35,Béton projeté - enduit,
-94,36,Aiguillage des fourreaux,
-95,36,Manutention,
-96,36,Travail en tranchée,
-97,36,Découpe de matériaux,
-98,36,Travail en tranchée,
-99,37,Dénivellation,
-100,37,Pose de bordure,
-101,37,Découpe de bordure,
-102,38,Mise en oeuvre de l'enrobé,
-103,38,Enrobé mis en oeuvre,
-104,38,Mise en oeuvre des enrobés,
-105,38,Mise en oeuvre des enrobés,
-106,38,Finisseur,
-107,38,Répandeuse à liants,
-108,39,Mise en oeuvre,
-109,41,Travaux de démolition,
-110,41,Evolution d'engins,
-111,41,Démolition,
-112,41,Démolition,
-113,41,Utilisation d'outils,
-114,41,Travaux de démolition,
-115,42,Circulation routière à proximité du chantier,
-116,42,Circulation piétonne,
-117,43,Circulation de véhicules,
-118,43,Circulation d'engins à proximité de voies,
-119,44,Présence de lignes électriques,
-120,44,Circulation d'engins à proximité de lignes électriques,
-121,44,Fouilles sous lignes électriques,
-122,45,DICT,
-123,46,Levage de matériel,
-124,47,Milieu explosif,
-125,48,Travail dans l'obscurité,
-126,49,"Présence d'eau croupie, de matières putrescibles, travail à proximité ou dans les égouts",
-127,49,Présence de matériaux rouillé,
-128,49,Travaux en égouts,
-129,50,Etendue d'eau/ rivière à proximité de chantier,
+"id","numSituation","numSituationGroup","name"
+1,1,1,"Harnais et longe"
+2,1,1,"EPI: casque, gilet Haute-Visibilité, chaussures, gants, lunettes, protections auditives…"
+3,2,1," Marteau, pince, pelle manuelle, barre à mine, etc."
+4,3,1," Scie, meuleuse, disqueuse, tronçonneuse…"
+5,4,1," Scie, meuleuse, disqueuse,…"
+6,5,1,"Marteaux piqueurs, visseuses, treuils,…"
+7,6,1,"Poste à souder, chalumeau"
+8,7,1,"Différentes charges"
+9,7,1,"Déchargement de matériel"
+10,7,1,"Stockage matériel"
+11,8,1,"Engins et personnel à pied"
+12,8,1,"Personnel à pied"
+13,9,1,"Véhicules, camions, engins"
+14,9,1,"Véhicule à remorque"
+15,9,1,"Véhicule à remorque / Porte-char"
+16,10,1,"Tombereau, camion benne, toupie, gravillonneur et semi-remorque"
+17,11,1,"Basses températures"
+18,11,1,"Neige, gel"
+19,12,1,"Températures élevées"
+20,13,1,"Personnel à pied"
+21,13,1,"Laser / niveau"
+22,13,1,"Engins de chantier / Personnel à pied"
+23,14,1,"Matériel stocké en hauteur"
+24,14,1,"Rangement du matériel"
+25,15,1,"Utilisation de produits chimiques irritants, nocifs, toxiques, corrosifs"
+26,15,1,"Emissions de fumées, gaz"
+27,16,1,"Produits chimiques"
+28,17,1,"Produits chimiques"
+29,18,1,"Produits inflammables"
+30,19,1,
+31,20,2,"Personnel à pied"
+32,20,2,"Personnel à pied / Panneaux de signalisation"
+33,21,2,"Camion grue / Barrières / Personnel à pied"
+34,22,2,"Engins de chantier / Personnel à pied"
+35,22,2,"Laser / niveau"
+36,22,2,"Personnel à pied"
+37,23,2,"Camion grue / Bungalow / Personnel à pied"
+38,24,2,"Engins de chantier"
+39,25,2,"Camion avec remorque / Personnel à pied"
+40,26,2,"Groupe électrogène"
+41,27,2,"Armoire électrique"
+42,28,3,"Engin de terrassement"
+43,29,3,"Pelle hydraulique utilisée comme engin de levage / Blindage"
+44,30,3,"Engins de terrassement"
+45,30,3,"Engins de terrassement / Camions"
+46,30,3,"Engins de terrassement"
+47,30,3,"Pelle manuelle"
+48,31,3,"Engins de terrassement"
+49,32,3,"Véhicules, camions, engins"
+50,33,3,"Tombereau, camion benne, toupie, gravillonneur et semi-remorque"
+51,34,3,"Petits engins de chantier / Auto-benne"
+52,35,3,"Engins de terrassement"
+53,36,3,"Personnel à pied"
+54,37,4,"Engins, camion"
+55,37,4,"Engins de chantier / Personnel à pied"
+56,37,4,"Tombereaux, camions"
+57,38,4,"Engins, camion"
+58,38,4,"Engins de chantier / Personnel à pied"
+59,38,4,"Tombereaux, camions"
+60,39,4,"Engins, camion"
+61,39,4,"Engins de chantier / Personnel à pied"
+62,39,4,"Camions"
+63,40,4,"Compacteur"
+64,40,4,"Compacteur / Personnel à pied"
+65,41,4,"Répandeuse de ciment ou de chaux"
+66,42,5,"Engins de chantier / Personnel à pied"
+67,42,5,"Engins de chantier"
+68,42,5,"Engins de chantier / Camion"
+69,42,5,"Raboteuse"
+70,43,5,"Finisseur / Personnel à pied"
+71,43,5,"Répandeuse à liant / Personnel à pied"
+72,44,6,"Tronçonneuse thermique"
+73,45,6,"Port de charge"
+74,45,6,"Lève-bordure"
+75,45,6,"Port de charge / Lève-bordure"
+76,46,6,"Pied de biche / Lève tampon"
+77,47,6,"Mortier / Ciment"
+78,48,6," Marteau, pince, pelle manuelle, barre à mine, etc."
+79,49,7,"Engins de chantier"
+80,49,7,"Aspiratrice / Personnel à pied"
+81,49,7,"Aspiratrice"
+82,50,7,"Engins de terrassement / Pelle manuelle"
+83,51,7,"Pelle hydraulique utilisée comme engin de levage / Blindage"
+84,52,7,"Engins et personnel à pied"
+85,53,7,"Pelle hydraulique"
+86,54,7,"Camion benne"
+87,55,7,"Laser / niveau"
+88,56,7,"Chargeuse / Pelle"
+89,57,7,"Pelle manuelle / Rateau"
+90,58,7,"Tronçonneuse / Chanfreineuse"
+91,59,7,"Pelle hydraulique utilisée comme engin de levage / Tuyau"
+92,60,7,"Pied de biche"
+93,61,7,"Pelle hydraulique"
+94,62,7,"Pelle hydraulique utilisée comme engin de levage / Carotteuse"
+95,63,7,"Carotteuse thermique"
+96,64,7,"Pelle utilisée comme engin de levage / Elément préfabriqué"
+97,65,7,"Pied de biche / Lève tampon"
+98,66,7,"Personnel à pied"
+99,67,8,"Voir Généralités"
+100,68,8,"Voir Généralités"
+101,69,8," Marteau, pince, pelle manuelle, barre à mine, etc."
+102,70,8,"Voir Généralités"
+103,71,8,"Voir Généralités"
+104,72,8,"Voir Généralités"
+105,73,8,"Voir Généralités"
+106,74,8,"Voir Généralités"
+107,75,8,"Engins"
+108,75,8,"Engins / Camions"
+109,75,8,"Engins / Camions"
+110,76,8,"Engins"
+111,76,8,"Engins"
+112,76,8,"Nacelles élévatrices automotrices / PEMP "
+113,77,8,"Outils à main"
+114,77,8,"Ciment / enduit / mortier"
+115,78,9,
+116,79,10,"Grue fixe / grue mobile"
+117,79,10,"Grue mobile"
+118,80,10,"Grue mobile"
+119,81,10,"Grue à tour"
+120,82,10,"Grue à tour"
+121,83,10,"Camion grue"
+122,84,10,"Camion grue"
+123,85,10,"Pelle hydraulique /  Chaines / Elingues"
+124,86,11,"Echafaudage de pied"
+125,87,11,"Echafaudage de pied"
+126,88,12,"Echafaudage roulant"
+127,89,12,"Echafaudage roulant"
+128,90,12,"Echafaudage roulant"
+129,91,13,"Nacelles élévatrices automotrices / PEMP "
+130,92,13,"Nacelles élévatrices automotrices / PEMP "
+131,93,14,"Ferraille et  treillis soudés"
+132,93,14,"Matériel électroportatif pour découpe"
+133,93,14,"Aciers en attente"
+134,94,14,"Béton/ciment"
+135,94,14,"Vibreur à béton"
+136,94,14,"Toupie/pompes à béton"
+137,95,14,"Benne à béton"
+138,96,14,"Huile de décoffrage"
+139,97,14,"Podium de lavage de benne"
+140,98,15,"Pelle hydraulique"
+141,99,15,"Coffrage des semelles"
+142,100,15,"Ferraille / treillis soudé"
+143,101,15,"Béton/ciment/vibreur/pompe à béton/benne à béton"
+144,102,15,"Poste à souder"
+145,103,15,"Outil/accessoire de levage"
+146,104,15,"Outil/accessoire de levage"
+147,105,15,"Ferraille / treillis soudé"
+148,106,15,"Béton/ciment/vibreur/pompe à béton/benne à béton"
+149,107,15,"Béton/ciment/vibreur/pompe à béton/benne à béton"
+150,107,15,"Ferraille / treillis soudé"
+151,108,15,"Haveuse"
+152,109,15,"Pelle hydraulique"
+153,110,15,"Machine "
+154,110,15,"Machine "
+155,111,16,"Agglos, briques, pierres taillées"
+156,111,16,"Ciment/enduit"
+157,112,16,"Etais  / matériel de stabilisation"
+158,112,16,"Matériaux et matériels"
+159,113,16,"Ciment"
+160,114,16,"Banches"
+161,115,16,"Béton/ciment"
+162,116,16,"Ferraille / treillis soudé"
+163,117,16,"Etais tire-pousse"
+164,118,16,"Engins de manutention et de levage"
+165,118,16,"Murs péfabriqués"
+166,118,16,"Béton/ciment"
+167,119,16,"Engins de manutention et de levage"
+168,119,16,"Prémur"
+169,120,16,"Matériel de travail en hauteur, outils pour clavetage"
+170,121,16,"Béton / Ciment"
+171,122,16,"Armature / ferraille / treillis soudé"
+172,122,16,"Béton / Ciment"
+173,122,16,"Banches"
+174,122,16,"Etais tire-pousse"
+175,123,16,"Engins de manutention et de levage"
+176,123,16,"Etais tire-pousse"
+177,123,16,"Echafaudage / Tour d'échafaudage"
+178,124,16,"Etais et outils de coffrage "
+179,124,16,"Huile de décoffrage"
+180,125,16,"Treillis métalliques"
+181,126,16,"Béton / Ciment"
+182,127,17,"Tour d'étaiement - Coffrage bois"
+183,128,17,"Tour d'étaiement"
+184,129,17,"Tire-fort"
+185,129,17,"Grue"
+186,130,17,"Tour d'étaiement"
+187,130,17,"Etais"
+188,130,17,"Palonnier"
+189,130,17,"Platelage"
+190,130,17,"Grue"
+191,131,17,"Tour d'étaiement"
+192,131,17,"Etais"
+193,131,17,"Palonnier"
+194,131,17,"Platelage"
+195,131,17,"Grue"
+196,132,17,"Tour d'étaiement"
+197,132,17,"Ferraillage"
+198,132,17,"Bétonnage"
+199,133,17,"Vibreur, hélicoptère"
+200,133,17,"Outils de lissage de surface"
+201,134,17,"Béton projeté - enduit"
+202,135,18,"Engins et personnel à pied"
+203,136,18,"Personne à pied"
+204,137,18,"Véhicules, camions, engins"
+205,138,18,"Véhicules, camions"
+206,139,18,"Véhicule à remorque"
+207,140,18,"Véhicule à remorque / Porte-char"
+208,141,18,"Véhicules, camions, engins"
+209,142,18,"Engins de manutention et de levage, grue fixe ou mobile"
+210,143,18,"Grue mobile"
+211,144,18,"Grue à tour"
+212,144,18,"Grue à tour"
+213,145,18,"Tombereau, camion benne, toupie, gravillonneur et semi-remorque"
+214,146,18,"Scie, meuleuse, disqueuse, tronçonneuse, chanfreineuse,…"
+215,147,18,"Marteaux piqueurs, visseuses, treuils,…"
+216,148,18,"Poste à souder, chalumeau"
+217,149,18,"Décapage jet haute pression /utilisation nettoyage HP"
+218,150,18,"Finisseur, répandeuse à liant"
+219,151,18,"Echafaudage de pied sur voie publique"
+220,152,18,"Laser / niveau"
+221,153,18,"Groupe électrogène"
+222,154,18,"Emissions de fumées, gaz
+Béton/ciment"
+223,155,18,"Produits inflammables présents sur place"
+224,156,18,"Produits chimiques"
+225,157,18,"Ouverture de regard"
+226,158,18,"Engins de chantier / Blindage"
+227,159,18,"Engins de terrassement"
+228,160,18,"Aciers en attente"
+229,161,19,
+230,162,19,"Personnel à pied"
+231,163,19,"Véhicules, camions, engins"
+232,164,19,"Grue fixe / grue mobile / engin de manutention"
+233,165,19,"Echafaudage, nacelle"
+234,166,19,"Circulation routière à proximité du chantier"
+235,167,19,"Circulation de véhicules"
+236,167,19,"Circulation d'engins à proximité de voies"
+237,168,19,"Présence de lignes électriques"
+238,168,19,"Circulation d'engins à proximité de lignes électriques"
+239,168,19,"Fouilles sous lignes électriques"
+240,169,19,"Engins de terrassement"
+241,170,19,"Milieu explosif"
+242,171,19,"Présence d'eau croupie, de matières putrescibles, travail à proximité ou dans les égouts"
+243,171,19,"Présence de matériaux rouillé"
+244,171,19,"Travaux en égouts"
+245,172,19,"Etendue d'eau/ rivière à proximité de chantier"
+246,173,19,"Haveuse"
+247,174,19,"Pelle hydraulique"
+248,175,19,"Machine "
+249,176,19,
+250,177,19,

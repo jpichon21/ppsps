@@ -1,135 +1,328 @@
-id,numSituation,name,descr
-1,1,Dysfonctionnement,
-2,1,Basculement dû au vent,
-3,1,Heurt personnel / matériels par la charge,
-4,1,Incendie,
-5,1,Ascension de la grue,
-6,2,Chute de matériaux,
-7,2,Ecrasement,
-8,2,Basculement de l'engin,
-9,2,"Cf. Camions benne, gravillonneur et semi-remorque",
-10,2,Chute de charge,
-11,2,Brûlure,
-12,2,"Brûlures, projections de liquide chaud lors du remplissage",
-13,2,Chute de hauteur,
-14,3,Collisions,
-15,4,"Heurts, retournement",
-16,4,"Ecrasement, glissement",
-17,5,"Ecrasement, bruit",
-18,5,Eboulement,
-19,6,Bruit,
-20,6,Risque électrique,
-21,6,Electrocution,
-22,7,Eboulement - Poussière,
-23,7,Intempéries,
-24,7,"Perçage d'une canalisation, fuites",
-25,8,"Effondrement de paroi, de talus / ensevelissement",
-26,8,Chute de hauteur,
-27,9,Cf risques récurrents (7),
-28,10,Ensevelissement,
-29,10,Effondrement de paroi de tranchée,
-30,11,Chute de hauteur,
-31,11,Risque biologique,
-32,13,"Cf partie Installation de chantier - Utilisation de pelle, chargeur (4)",
-33,13,Cf partie Installation de chantier - Utilisation d'engins (4),
-34,14,"Chute, blessures",
-35,14,"Chute d'objets, manutention manuelle",
-36,14,"Irritations, eczéma",
-37,14,Cf partie GENERALITES - Bétonnage / Féraillage,
-38,15,Chute d'objet,
-39,15,Heurts,
-40,15,Cf partie GENERALITES - Accessoires de levage,
-41,16,Cf partie GENERALITE - Ferraillage,
-42,16,Cf partie GENERALITE - Bétonnage,
-43,17,Cf partie GENERALITES - Bétonnage / Féraillage,
-44,18,Effondrement des parois de la tranchée,
-45,18,Heurt - collision,
-46,19,Effondrement des parois de la tranchée,
-47,19,Heurt - collision,
-48,19,Bruit,
-49,20,"TMS, blessures, écrasements, pincements",
-50,20,Effondrement,
-51,20,"Maladies respiratoires, irritations, éczéma",
-52,21,"TMS, blessures, écrasements, pincements",
-53,21,Effondrement,
-54,21,"Maladies respiratoires, irritations, éczéma",
-55,21,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement",
-56,22,Cf partie GENERALITES - Bétonnage,
-57,22,Cf partie GENERALITES - Ferraillage,
-58,22,Arrachement de l'étais,
-59,22,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement",
-60,22,"Chute d'objet, écrasement",
-61,23,"Chocs, heurts, écrasements",
-62,23,Effondrement,
-63,23,"Maladies respiratoires, irritations, éczéma",
-64,24,"Chute d'objet, écrasements, blessures",
-65,24,Chute,
-66,24,Chute/ effondrement du prémur,
-67,24,"Maladies respiratoires, irritations éczema",
-68,25,Cf partie GENERALITES - Ferraillage,
-69,25,Cf partie GENERALITES - Bétonnage,
-70,25,"Renversement, écrasement, chute de hauteur, chute d'objet, heurt pendant le déplacement",
-71,25,Arrachement de l'étais,
-72,26,Chute d'objet,
-73,26,Heurts,
-74,26,Arrachement de l'étais,
-75,26,Chute de hauteur,
-76,27,"Chute d'objets, heurts",
-77,27,Cf partie GENERALITES - Feraillage,
-78,27,Cf partie GENERALITES - Bétonnage,
-79,28,Effondrement,
-80,29,Effondrement,
-81,30,Chute d'objet - heurts,
-82,30,Cf partie Installation de chantier - Grue fixe (1),
-83,31,Rupture du plancher pré-dalle,
-84,31,Chute de hauteur,
-85,31,"Chute d'objet, heurts, écrasement",
-86,31,Cf partie GENERALITES - Bétonnage et Ferraillage,
-87,31,Cf partie Installation de chantier - Grue fixe (1),
-88,32,Rupture du plancher pré-dalle,
-89,32,Chute de hauteur,
-90,32,"Chute d'objet, heurts, écrasement",
-91,32,Cf partie GENERALITES - Bétonnage et Ferraillage,
-92,32,Cf partie Installation de chantier - Grue fixe (1),
-93,33,Effondrement,
-94,33,Cf partie GENERALITES - Ferraillage,
-95,33,Cf partie GENERALITES - Bétonnage,
-96,34,"Bruit, vibrations",
-97,34,"Postures inconfortables, TMS, gestes répétitifs",
-98,35,Projections - poussières - utilisation de ciment,
-99,36,Projection d'objets,
-100,36,"Ecrasements, heurts, blessures",
-101,36,"Ecrasements, chute d'objet",
-102,36,"Projection d'éclats et de poussières, bruit",
-103,36,Ensevelissement,
-104,37,Chute,
-105,37,"TMS, écrasements, chute d'objet, coupure, blessure",
-106,37,"Projections (éclats et poussières), bruit",
-107,38,Ecrasement,
-108,38,Brûlures,
-109,38,Bruit,
-110,38,TMS,
-111,38,Brûlure,
-112,38,"Brûlures, projections de liquide chaud lors du remplissage",
-113,39,Chute de plain-pied,
-114,41,Chute d'objets,
-115,41,"Heurts, collisions",
-116,41,Projections,
-117,41,Rupture de canalisation,
-118,41,Bruit,
-119,41,Chute de hauteur et de plain pied,
-120,42,"Collisions avec engins de chantier, avec personnel",
-121,42,"Chute, heurt avec véhicule",
-122,43,"Ecrasement, heurt personnel-véhicule",
-123,43,Collisions,
-124,44,Contact électrique,
-125,44,Electrocution,
-126,44,Chute de poteau/ pylone,
-127,45,Fuite,
-128,46,Chute de charge,
-129,47, Explosion,
-130,48,Visibilité réduite induisant des accidents,
-131,49,Maladies infectieuses,
-132,49,"Coupures, piqures, maladies liées",
-133,49,Emissions de gaz de putréfaction,
-134,50,Noyade,
+"id","NumTool","numSituation","numSituationGroup","name"
+1,1,1,1,"Usure prématurée"
+2,2,1,1,"Usure, péremption"
+3,2,1,1,"Mauvaise utilisation par les  ouvriers"
+4,3,2,1,"Pincement, piqûre, écrasement"
+5,4,3,1,"Coupures, sectionnements"
+6,5,4,1,"Coupures, perforations, sectionnements Projections, éclats"
+7,5,4,1,"Risque électrique"
+8,5,4,1,"Bruit"
+9,6,5,1,"TMS"
+10,7,6,1,"Brûlures"
+11,7,6,1,"Explosion"
+12,7,6,1,"Emission de rayonnement UV"
+13,8,7,1,"TMS, blessures, coupures, fractures"
+14,9,7,1,"TMS, blessures, coupures, fractures"
+15,10,7,1,"Chute d'objets, TMS, Coupure, écrasements, fractures"
+16,11,8,1,"Heurts avec engins et camions"
+17,11,8,1,"Heurts avec engins et camions"
+18,12,8,1,"Chute de plain pied"
+19,13,9,1,"Collision avec d'autres engins"
+20,13,9,1,"Usure, émissions sonores, émissions polluantes"
+21,13,9,1,"Risque routier"
+22,13,9,1,"Vibration"
+23,13,9,1,"Chute de hauteur"
+24,13,9,1,"Emission de poussière"
+25,14,9,1,"Risque routier"
+26,16,10,1,"Basculement, renversement"
+27,16,10,1,"Projections, chute d'objet"
+28,17,11,1,"Gelures- Hypothermie"
+29,17,11,1,"Engourdissement- Perte de dextérité"
+30,18,11,1,"Chute de plain pied"
+31,19,12,1,"Coup de chaleur"
+32,20,13,1,"Chute de plain pied"
+33,21,13,1,"Problèmes visuels, cessité"
+34,22,13,1,"Heurt / Collision /Bruit"
+35,23,14,1,"Chute d'objet"
+36,24,14,1,"Chute d'objet"
+37,25,15,1,"Brulures, irritations, allergies"
+38,26,15,1,"Intoxication par inhalation"
+39,27,16,1,"Risques d'explosion, d'incendie"
+40,28,17,1,"Risque de pollution"
+41,28,17,1,"Fuite, renversement accidentel sur le sol "
+42,29,18,1,"Incendie - explosion"
+43,30,19,1,"Visibilité réduite"
+44,31,20,2,"Chute de plain pied"
+45,32,20,2,"TMS / Heurt"
+46,33,21,2,"TMS"
+47,33,21,2,"Heurt / Chute d'objet"
+48,34,22,2,"Heurt / Collision /Bruit"
+49,35,22,2,"Problèmes visuels, cessité"
+50,36,22,2,"Chute de plain pied"
+51,37,23,2,"Heurt / Ecrasement"
+52,38,24,2,"Risque électrique "
+53,39,25,2,"Heurt / Ecrasement / Coupure / Pincement"
+54,40,26,2,"Bruit"
+55,40,26,2,"Risque électrique"
+56,41,27,2,"Electrocution"
+57,42,28,3,"Enfouissement / Ensevelissement"
+58,42,28,3,"Chute de hauteur"
+59,43,29,3,"Enfouissement / Ensevelissement / Basculement / Renversement"
+60,43,29,3,"Basculement / Renversement / Ecrasement / Heurt"
+61,44,30,3,"Risque électrique / gaz / endommagement ouvrages"
+62,45,30,3,"Risque électrique aérien"
+63,46,30,3,"Endommagement ouvrages"
+64,47,30,3,"TMS"
+65,48,31,3,"Effondrement de paroi, de talus / ensevelissement / enfouissement"
+66,48,31,3,"Chute de hauteur"
+67,49,32,3,"Voir Généralités / Conduite d'engin de chantier"
+68,50,33,3,"Voir Généralités / Opération de chargement et déchargement"
+69,51,34,3,"Effondrement de paroi, de talus / ensevelissement / enfouissement"
+70,51,34,3,"Voir Généralités / Conduite d'engin de chantier"
+71,52,35,3,"Voir Généralités / Conduite d'engin de chantier"
+72,53,36,3,"Voir Généralités / Circulation piétonne sur chantier"
+73,54,37,4,"Voir Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+74,55,37,4,"Voir Généralités / Circulation piétonne sur chantier"
+75,56,37,4,"Voir Généralités / Opération de chargement et déchargement"
+76,57,38,4,"Voir Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+77,58,38,4,"Voir Généralités / Circulation piétonne sur chantier"
+78,59,38,4,"Voir Généralités / Opération de chargement et déchargement"
+79,60,39,4,"Voir Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+80,61,39,4,"Voir Généralités / Circulation piétonne sur chantier"
+81,62,39,4,"Voir Généralités / Opération de chargement et déchargement"
+82,63,40,4,"Collision avec d'autres engins"
+83,64,40,4,"Heurts avec engin"
+84,65,41,4,"Risque chimique"
+85,65,41,4,"Voir Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+86,66,42,5,"Voir Généralités / Circulation piétonne sur chantier"
+87,67,42,5,"Voir Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+88,68,42,5,"Voir Généralités / Opération de chargement et déchargement"
+89,69,42,5,"Inhalation produits chimiques"
+90,70,43,5,"Brûlure"
+91,70,43,5,"Intoxication par inhalation / Allergie"
+92,70,43,5,"Bruit"
+93,70,43,5,"TMS"
+94,70,43,5,"Heurt"
+95,71,43,5,"Inhalation produits chimiques / Brûlures"
+96,71,43,5,"Heurt"
+97,71,43,5,"Bruit"
+98,72,44,6,"Coupures / Projections / Bruit"
+99,72,44,6,"TMS"
+100,72,44,6,"Chute de plain pied"
+101,73,45,6,"TMS "
+102,74,45,6,"TMS"
+103,75,45,6,"Chute de plain-pied"
+104,75,45,6,"Coupure / Pincement / Ecrasement"
+105,76,46,6,"Chute de hauteur / TMS"
+106,77,47,6,"Emission de poussière"
+107,77,47,6,"Risque biologique et chimique"
+108,77,47,6,"TMS"
+109,78,48,6,"TMS"
+110,78,48,6,"Pincement, piqûre, écrasement"
+111,79,49,7,"Voir Fouilles et terrassement / Terrassement en tranchée"
+112,80,49,7,"Heurts"
+113,81,49,7,"Collision avec d'autres engins"
+114,81,49,7,"Usure, émissions sonores, émissions polluantes"
+115,81,49,7,"Risque routier"
+116,81,49,7,"Chute de hauteur"
+117,81,49,7,"Projection"
+118,82,50,7,"Voir Fouilles et terrassement / Terrassement à proximité de réseaux"
+119,83,51,7,"Voir Fouilles et terrassement / Déplacement du blindage"
+120,84,52,7,"Voir Généralités / Circulation piétonne sur chantier"
+121,85,53,7,"Effondrement de paroi, de talus / ensevelissement / enfouissement"
+122,86,54,7,"Voir Généralités / Opération de chargement et déchargement"
+123,87,55,7,"Problèmes visuels, cessité"
+124,88,56,7,"Emission de poussière"
+125,89,57,7,"TMS"
+126,90,58,7,"Projection d'éclats / émission de poussière / bruit"
+127,90,58,7,"TMS"
+128,90,58,7,"Chute de plain-pied"
+129,91,59,7,"Chute de charge"
+130,91,59,7,"Heurt"
+131,92,60,7,"Pincement"
+132,92,60,7,"TMS"
+133,93,61,7,"Voir Généralités / Opération de chargement et déchargement"
+134,94,62,7,"Chute de charge"
+135,94,62,7,"Heurt"
+136,95,63,7,"Projection d'éclats / émission de poussière / bruit"
+137,95,63,7,"Vibration"
+138,95,63,7,"TMS"
+139,96,64,7,"Chute de charge"
+140,96,64,7,"Heurt"
+141,97,65,7,"TMS"
+142,97,65,7,"Chute de hauteur"
+143,98,66,7,"Infection / Intoxication"
+144,99,67,8,"Voir dans Généralités / Port obligatoire des équipements de protection individuelle"
+145,100,68,8,"Voir dans Généralités / Manutention manuelle de charges"
+146,101,69,8,"Pincement, piqûre, écrasement, projections éclats"
+147,102,70,8,"Voir dans Généralités / Utilisation de matériels outils tranchants "
+148,103,71,8,"Voir dans Généralités / Utilisation de matériels électroportatifs"
+149,104,72,8,"Voir dans Généralités / Circulation piétonne sur chantier"
+150,105,73,8,"Voir dans Généralités / Conduite d'engin de chantier, de camions, de véhicules de l'entreprise"
+151,106,74,8,"Voir dans Généralités / Opération de chargement et déchargement"
+152,107,75,8,"Risque électrique / gaz / endommagement ouvrages"
+153,108,75,8,"Risque électrique aérien"
+154,109,75,8,"Endommagement ouvrages"
+155,110,76,8,"Chute d'objet"
+156,111,76,8,"Chute d'objet"
+157,112,76,8,"Chute de hauteur / basculement / Heurt"
+158,112,76,8,"Chute de hauteur / Chute d'objet"
+159,113,77,8,"Pincement, piqûre, écrasement, projections éclats"
+160,114,77,8,"Emission de poussière"
+161,114,77,8,"Risque biologique et chimique"
+162,115,78,9,
+163,116,79,10,"Heurt / chute d'objet "
+164,116,79,10,"Electrique"
+165,117,79,10,"Electrique"
+166,118,80,10,"Heurt "
+167,118,80,10,"Renversement de la grue"
+168,119,81,10,"Heurt / Renversement de la grue "
+169,120,82,10,"Dysfonctionnement"
+170,120,82,10,"Survol de zones de danger"
+171,120,82,10,"Interférences entre grues"
+172,120,82,10,"Basculement de l'engin"
+173,120,82,10,"Heurt / chute d'objet "
+174,120,82,10,"Chute de hauteur"
+175,120,82,10,"Incendie"
+176,121,83,10,"Renversement"
+177,122,84,10,"Heurt / chute d'objet "
+178,123,85,10,"Chute d'objet"
+179,123,85,10,"Heurt/Ecrasement/Chute de charge"
+180,124,86,11,"Chute de hauteur/chute objet"
+181,125,87,11,"Chute de hauteur/chute objet/renversement"
+182,126,88,12,"Chute de hauteur/chute objet"
+183,127,89,12,"Chute de hauteur/chute d'objet/basculement/heurt"
+184,128,90,12,"Chute de hauteur/chute d'objet/basculement/heurt"
+185,129,91,13,"Chute de hauteur / basculement / Heurt"
+186,130,92,13,"Chute de hauteur / Chute d'objet"
+187,131,93,14,"Coupure/plaie"
+188,131,93,14,"biologique"
+189,131,93,14,"Heurt, chute d'objet, renversement"
+190,132,93,14,"Brûlure thermique"
+191,133,93,14,"Empalement"
+192,134,94,14,"Chimique et biologique"
+193,135,94,14,"TMS / Vibration"
+194,136,94,14,"Heurt, chute d'objet, renversement"
+195,136,94,14,"Bouchage/ rupture du flexible"
+196,137,95,14,"Heurt, chute d'objet, renversement"
+197,138,96,14,"Biologique, chimique"
+198,139,97,14,"Chute de hauteur, renversement"
+199,140,98,15,"Chute de hauteur/heurt "
+200,141,99,15,"Chute d'objets, manutention manuelle"
+201,142,100,15,"Voir dans Activité Bétonnage / Ferraillage"
+202,143,101,15,"Voir dans Activité Bétonnage / Ferraillage"
+203,144,102,15,"Voir dans Généralités/Utilisation d'outils à source de chaleur"
+204,145,103,15,"Chute d'objet"
+205,145,103,15,"Heurts"
+206,146,104,15,"Voir dans Généralités / Levage"
+207,147,105,15,"Voir dans Activité Bétonnage / Ferraillage"
+208,148,106,15,"Voir dans Activité Bétonnage / Ferraillage"
+209,149,107,15,"Voir dans Activité Bétonnage / Ferraillage"
+210,150,107,15,"Voir dans Activité Bétonnage / Ferraillage"
+211,151,108,15,"Effondrement des parois de la tranchée"
+212,151,108,15,"Heurt / collision"
+213,151,108,15,"Bruit"
+214,152,109,15,"Effondrement des parois de la tranchée"
+215,153,110,15,"Heurt / collision"
+216,154,110,15,"Bruit"
+217,155,111,16,"TMS, blessures, écrasements, pincements"
+218,155,111,16,"Effondrement"
+219,156,111,16,"Risque biologique et chimique"
+220,157,112,16,"TMS, blessures, écrasements, pincements"
+221,158,112,16,"Effondrement"
+222,159,113,16,"Risque biologique et chimique"
+223,160,114,16,"Renversement, écrasement"
+224,160,114,16," Chute de hauteur, chute d'objet"
+225,160,114,16," Heurt pendant les opérations de levage"
+226,161,115,16,"Voir dans Activité Bétonnage / Ferraillage"
+227,162,116,16,"Voir dans Activité Bétonnage / Ferraillage"
+228,163,117,16,"Arrachement des étais"
+229,164,118,16,"Voir dans Généralités / Levage"
+230,165,118,16,"Effondrement"
+231,166,118,16,"Voir dans Activité Bétonnage / Ferraillage"
+232,167,119,16,"Voir dans Généralités / Levage"
+233,168,119,16,"Chute/ effondrement du prémur"
+234,169,120,16,"Chute"
+235,170,121,16,"Voir dans Activité Bétonnage / Ferraillage"
+236,171,122,16,"Voir dans Activité Bétonnage / Ferraillage"
+237,172,122,16,"Voir dans Activité Bétonnage / Ferraillage"
+238,173,122,16,"Renversement, écrasement"
+239,173,122,16," Chute de hauteur, chute d'objet"
+240,173,122,16," Heurt pendant les opérations de levage"
+241,174,122,16,"Arrachement des étais"
+242,175,123,16,"Voir dans Généralités / Levage"
+243,176,123,16,"Arrachement des étais"
+244,177,123,16,"Chute de hauteur"
+245,177,123,16,"Voir Utilisation d'échafaudage"
+246,178,124,16,"Chute d'objets, heurts"
+247,179,124,16,"Biologique, chimique"
+248,180,125,16,"Voir dans Activité Bétonnage / Ferraillage"
+249,181,126,16,"Voir dans Activité Bétonnage / Ferraillage"
+250,182,127,17,"Effondrement"
+251,183,128,17,"Effondrement"
+252,184,129,17,"Chute d'objet - heurts"
+253,185,129,17,"Voir dans Opérations de levage/utilisation d'une grue"
+254,186,130,17,"Rupture du plancher pré-dalle"
+255,187,130,17,"Chute de hauteur"
+256,188,130,17,"Chute d'objet, heurts, écrasement"
+257,189,130,17,"Voir dans Activité Bétonnage / Ferraillage"
+258,190,130,17,"Voir dans Opérations de levage/utilisation d'une grue"
+259,191,131,17,"Rupture du plancher pré-dalle"
+260,192,131,17,"Chute de hauteur"
+261,193,131,17,"Chute d'objet, heurts, écrasement"
+262,194,131,17,"Voir dans Activité Bétonnage / Ferraillage"
+263,195,131,17,"Voir dans Opérations de levage/utilisation d'une grue"
+264,196,132,17,"Effondrement"
+265,197,132,17,"Voir dans Activité Bétonnage / Ferraillage"
+266,198,132,17,"Voir dans Activité Bétonnage / Ferraillage"
+267,199,133,17,"Bruit, vibrations"
+268,200,133,17,"Postures inconfortables, TMS"
+269,201,134,17,"Projections / Emission de poussières / Risque biologique et chimique"
+270,202,135,18,"Heurts avec engins et camions"
+271,203,136,18,"Heurt / Projection"
+272,204,137,18,"Collision/heurt avec d'autres engins / émissions sonores / émissions polluantes"
+273,205,138,18,"Risque routier"
+274,206,139,18,"Risque routier"
+275,207,140,18,"Risque routier"
+276,208,141,18,"Emission de poussière"
+277,209,142,18,"Chute de charge, basculement engin, heurt"
+278,210,143,18,"Renversement de la grue"
+279,211,144,18,"Renversement de la grue "
+280,212,144,18,"Renversement"
+281,212,144,18,"Survol de zones de danger"
+282,212,144,18,"Interférences entre grues"
+283,213,145,18,"Projections, chute d'objet"
+284,214,146,18,"Bruit, poussières"
+285,215,147,18,"Bruit, poussières"
+286,216,148,18,"Explosion 
+Emission de rayonnement UV"
+287,217,149,18,"Emission sonore"
+288,218,150,18,"Brûlure"
+289,219,151,18,"Chute de hauteur/chute objet"
+290,220,152,18,"Problèmes visuels, cessité"
+291,221,153,18,"Emission sonore"
+292,222,154,18,"Risque chimique et biologique / projections / allergie /
+Intoxication par inhalation "
+293,223,155,18,"Incendie - explosion"
+294,224,156,18,"Risque de pollution"
+295,225,157,18,"Chute de hauteur"
+296,226,158,18,"Chute de hauteur"
+297,227,159,18,"Risque électrique / gaz / endommagement ouvrages"
+298,227,159,18,"Endommagement ouvrages"
+299,228,160,18,"Empalement"
+300,229,161,19,"Ensemble des risques identifés dans les PPSPS des autres entreprises intervenantes"
+301,230,162,19,"Heurt / Projection / Heurts avec engins et camions"
+302,231,163,19,"Collision/heurt avec d'autres engins / émissions sonores / émissions polluantes"
+303,232,164,19,"Chute d'objet / chute de charge / heurt"
+304,233,165,19,"Chute d'objet / chute de charge / heurt"
+305,234,166,19,"Heurts ou collisions avec véhicule / risque routier"
+306,235,167,19,"Ecrasement, heurt personnel-véhicule"
+307,236,167,19,"Collisions"
+308,237,168,19,"Contact électrique"
+309,238,168,19,"Electrocution"
+310,239,168,19,"Chute de poteau/ pylone"
+311,240,169,19,"Risque électrique / gaz / endommagement ouvrages"
+312,240,169,19,"Endommagement ouvrages"
+313,241,170,19," Explosion"
+314,242,171,19,"Maladies infectieuses"
+315,243,171,19,"Coupures, piqures, maladies liées"
+316,244,171,19,"Emissions de gaz de putréfaction"
+317,245,172,19,"Noyade"
+318,246,173,19,"Effondrement des parois de la tranchée"
+319,246,173,19,"Heurt / collision"
+320,246,173,19,"Bruit"
+321,247,174,19,"Effondrement des parois de la tranchée"
+322,248,175,19,"Heurt / collision"
+323,248,175,19,"Bruit"
+324,249,176,19,"Emission produit chimique dangereux"
+325,250,177,19,"Emisison produit chimique dangereux"

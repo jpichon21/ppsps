@@ -24,11 +24,6 @@ class SituationGroup
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $descr;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Situation", mappedBy="situationGroup")
      */
     private $situations;
@@ -60,6 +55,13 @@ class SituationGroup
         return $this->id;
     }
 
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -68,18 +70,6 @@ class SituationGroup
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }
