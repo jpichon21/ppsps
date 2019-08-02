@@ -49,7 +49,6 @@ class ImportPersonnCommand extends Command
         }
 
         foreach ($persons as $person) {
-            dump($person);
             $this->entityManager->persist($person);
         }
         $this->entityManager->flush();
