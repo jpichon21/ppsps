@@ -62,6 +62,7 @@ class PdfController extends Controller
 
         if (!$preview) {
             $html = $this->renderView('frontPagePPSPS.html.twig',[
+                'updatesPpsps' => $ppsps['updatesPpsps'],
                 'siteName' => $ppsps['siteName'],
                 'logo' => $ppsps['logo'],
             ]);
