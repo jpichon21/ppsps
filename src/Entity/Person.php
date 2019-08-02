@@ -64,6 +64,8 @@ class Person
      */
     private $workDirectorsPPSPS;
 
+    private $function;
+
     public function __construct()
     {
         $this->ppsp = new ArrayCollection();
@@ -236,6 +238,18 @@ class Person
             $this->workDirectorsPPSPS->removeElement($workDirectorsPPSP);
             $workDirectorsPPSP->removeWorkDirector($this);
         }
+
+        return $this;
+    }
+
+    public function getFunction(): ?string
+    {
+        return $this->function;
+    }
+
+    public function setFunction(?string $function): self
+    {
+        $this->function = $function;
 
         return $this;
     }
