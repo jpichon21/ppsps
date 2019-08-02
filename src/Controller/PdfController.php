@@ -169,14 +169,16 @@ class PdfController extends Controller
         ]);
         $pageAfter = $pageAfter + 1;
         
-        $html .= $this->renderView('identWorkPPSPS.html.twig',[
-            'logo' => $ppsps['logo'],
-            'image' => $ppsps['image'],
-            'siteName' => $ppsps['siteName'],
-            'siteNumber' => $ppsps['siteNumber'],
-            'page' => $pageAfter,
-        ]);
-        $pageAfter = $pageAfter + 1;
+        if ($ppsps['logo'] !== null) {
+            $html .= $this->renderView('identWorkPPSPS.html.twig',[
+                'logo' => $ppsps['logo'],
+                'image' => $ppsps['image'],
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
+                'page' => $pageAfter,
+            ]);
+            $pageAfter = $pageAfter + 1;
+        }
 
         if ($ppsps['subContractedWorks'] !== null) {
             $html .= $this->renderView('subcontractedWorksPPSPS.html.twig',[
