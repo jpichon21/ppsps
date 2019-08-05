@@ -2,8 +2,8 @@
 {% extends "basePPSPS.html.twig" %}
 {% block page %}
 <div class="pageContainer" id="frontPage">
-    {% if logo is not null %}
-    <div class="cornerFront"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+    {% if inversedLogo is not null %}
+    <div class="cornerFront"><img src="{{ asset('groupLogo/' ~ inversedLogo) }}"></div>
     {% else %}
     <div class="cornerFront"><img src="{{ asset('img/logo.png') }}"></div>
     {% endif %}
@@ -14,7 +14,7 @@
        {% if updatesPpsps is defined and updatesPpsps != null %}
        {% set lastArray = updatesPpsps|last %}
        {% set lastRow = lastArray|last %}
-            <span class="frontWhiteDate">{{lastRow.indexUpdate}}</span>
+            <span class="frontWhiteDate">{{lastRow.updateDate}}</span>
            {% else %}
            <span class="frontWhiteDate">{{ "now"|date("d/m/Y", "Europe/Paris") }}</span>
         {% endif %}

@@ -13,6 +13,7 @@ security:
             - ROLE_ADMIN_USERS_ALL
             - ROLE_ADMIN_GROUP_ALL
             - ROLE_ADMIN_GROUPMENTLOGO_ALL
+            - ROLE_ADMIN_INVERSEDGROUPMENTLOGO_ALL
             - ROLE_ADMIN_SITUATIONGROUP_ALL
             - ROLE_USER
         ROLE_USER:

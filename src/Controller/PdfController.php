@@ -64,7 +64,7 @@ class PdfController extends Controller
             $html = $this->renderView('frontPagePPSPS.html.twig',[
                 'updatesPpsps' => $ppsps['updatesPpsps'],
                 'siteName' => $ppsps['siteName'],
-                'logo' => $ppsps['logo'],
+                'inversedLogo' => $ppsps['inversedLogo'],
             ]);
         } else {
             $html = '';
@@ -170,7 +170,7 @@ class PdfController extends Controller
         ]);
         $pageAfter = $pageAfter + 1;
         
-        if ($ppsps['logo'] !== null) {
+        if ($ppsps['image'] !== null) {
             $html .= $this->renderView('identWorkPPSPS.html.twig',[
                 'logo' => $ppsps['logo'],
                 'image' => $ppsps['image'],

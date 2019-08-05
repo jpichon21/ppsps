@@ -77,6 +77,14 @@ class PDFparserService
         } else {
             $logo = $ppsps->getGroupment()->getLogo()->getImageFile()->getBasename();
         }
+
+        if ($ppsps->getGroupment() == null) {
+            $inversedLogo = null;
+        } else if ($ppsps->getGroupment()->getInversedLogo() == null) {
+            $inversedLogo = null;
+        } else {
+            $inversedLogo = $ppsps->getGroupment()->getInversedLogo()->getImageFile()->getBasename();
+        }
         
         if ($ppsps->getImage() == null) {
             $image = null;
@@ -145,6 +153,7 @@ class PDFparserService
             'annexs' => $ppsps->getAnnexs()->getValues(),
             'mandatoryDocument' => $ppsps->getMandatoryDocument(),
             'logo' => $logo,
+            'inversedLogo' => $inversedLogo,
             'image' => $image
         ];
     }
