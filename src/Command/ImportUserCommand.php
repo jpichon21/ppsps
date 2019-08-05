@@ -45,7 +45,7 @@ class ImportUserCommand extends Command
         $finder->files()->in($this->kernel->getRootDir().'/ImportFile');
         $serializer = new Serializer([new ArrayDenormalizer(), new GetSetMethodNormalizer()], [new CsvEncoder()]);
         foreach ($finder as $file) {
-            if ($file->getFileName() === 'personne.csv') {
+            if ($file->getFileName() === 'user.csv') {
                 $persons = $serializer->deserialize($file->getContents(),Person::class.'[]','csv');
             }
         }
@@ -67,12 +67,17 @@ class ImportUserCommand extends Command
             $groupment = new Groupment;
             $groupment->setName($group);
             foreach ($persons as $person) {
-                if (($person->getFunction() === 'Conducteur de travaux' || $person->getFunction() === 'Conductrice de travaux') && $person->getCompany() === $group) {
+                if ($person->getCompany() === $group) {
                     $user = new User;
                     $user->setName($person->getName());
                     $user->setEmail($person->getEmail());
-                    $user->setRoles(["ROLE_USER"]);
-                    $user->setPassword('$2y$10$QcT1FX1OL.NHu3ABDtpSWeofaIsTG6mGl0vlqIF2M.PaDwzfkd4oG');
+                    if ($person->getFunction() === "user") {
+                        $user->setRoles(["ROLE_USER"]);
+                        $user->setPassword('$2y$10$QcT1FX1OL.NHu3ABDtpSWeofaIsTG6mGl0vlqIF2M.PaDwzfkd4oG');
+                    } else {
+                        $user->setRoles(["ROLE_ADMIN"]);
+                        $user->setPassword('$2y$10$MCq7B/nR/zhg7f0i/mlQkOriE/VqTA4H3A4hShFrhGbDHF7Ixraxm');
+                    }
                     $groupment->addUser($user);
                     $this->entityManager->persist($user);
                 }
