@@ -45,6 +45,7 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Groupment", inversedBy="users")
+     * @ORM\JoinColumn(name="groupment_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $groupment;
 

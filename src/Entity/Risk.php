@@ -23,13 +23,8 @@ class Risk
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descr;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Situation", inversedBy="risks")
-     * @ORM\JoinColumn(name="situation_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="situation_id", referencedColumnName="id", nullable=true)
     */
     private $situation;
 
@@ -45,6 +40,8 @@ class Risk
      */
     private $deletedAt;
 
+    private $numSituation;
+
     /**
      * to string method
      *
@@ -52,7 +49,7 @@ class Risk
     */
     public function __toString()
     {
-        return $this->getName().' - '.$this->situation->getName();
+        return $this->getName();
     }
 
     /**
@@ -68,6 +65,13 @@ class Risk
         return $this->id;
     }
 
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -76,18 +80,6 @@ class Risk
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(?string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }
@@ -128,7 +120,10 @@ class Risk
      */
     public function addMeasures($measures)
     {
-        $this->measures[] = $measures;
+        if (!$this->measures->contains($measures)) {
+            $this->measures[] = $measures;
+            $measures->setRisk($this);
+        }
 
         return $this;
     }
@@ -162,5 +157,17 @@ class Risk
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumSituation(): ?int
+    {
+        return $this->numSituation;
+    }
+
+    public function setNumSituation(?int $numSituation): self
+    {
+        $this->numSituation = $numSituation;
+
+        return $this;
     }
 }

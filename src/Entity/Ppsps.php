@@ -114,7 +114,7 @@ class Ppsps
     private $Cissct;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Effective", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Effective", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $effectives;
 
@@ -189,7 +189,7 @@ class Ppsps
     private $particularSecurityMeasure;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $particularSecurityDetail;
 
@@ -199,19 +199,14 @@ class Ppsps
     private $situation = [];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Diffusion", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $diffusions;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Speaker", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $speakers;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $chiefWorkRepresentative;
 
     /**
      * @ORM\Column(type="boolean", length=255, nullable=true)
@@ -219,12 +214,12 @@ class Ppsps
     private $myCissct;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UpdatePpsps", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\UpdatePpsps", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $updatesPpsps;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Dealer", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Dealer", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $dealers;
 
@@ -239,24 +234,12 @@ class Ppsps
     private $siteLevel;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SubcontractedWork", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\SubcontractedWork", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $subcontractedWorks;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_workdirector")
-     */
-    private $workDirectors;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person")
-     * @ORM\JoinTable(name="ppsps_sitemanager")
-     */
-    private $siteManagers;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Annex", mappedBy="ppsps", cascade={"persist", "remove"})
      */
     private $annexs;
 
@@ -287,6 +270,7 @@ class Ppsps
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Groupment", inversedBy="ppsps")
+     * @ORM\JoinColumn(name="groupment_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $groupment;
 
@@ -304,6 +288,62 @@ class Ppsps
      * @ORM\ManyToOne(targetEntity="App\Entity\PpspsImage", inversedBy="ppsps")
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $firstWorkConductor;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $editor;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $projectDirector;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $approbator;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $secondApprobator;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $listOfWorksMandatoryDocs = [];
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $particularExternalRisk;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $annexSubworkers;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="siteManagerPPSPS")
+     * @ORM\JoinTable(name="ppsps_sitemanager",
+     *      joinColumns={@ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id", onDelete="CASCADE")})
+     */
+    private $siteManagers;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="workDirectorsPPSPS")
+     * @ORM\JoinTable(name="ppsps_workdirector",
+     *      joinColumns={@ORM\JoinColumn(name="ppsps_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="person_id", referencedColumnName="id", onDelete="CASCADE")})
+     */
+    private $workDirectors;
 
     /**
      * to string method
@@ -327,8 +367,8 @@ class Ppsps
         $this->updatesPpsps = new ArrayCollection();
         $this->dealers = new ArrayCollection();
         $this->subcontractedWorks = new ArrayCollection();
-        $this->siteManagers = new ArrayCollection();
         $this->annexs = new ArrayCollection();
+        $this->siteManagers = new ArrayCollection();
         $this->workDirectors = new ArrayCollection();
     }
 
@@ -762,12 +802,12 @@ class Ppsps
         return $this;
     }
 
-    public function getParticularSecurityDetail(): ?string
+    public function getParticularSecurityDetail(): ?bool
     {
         return $this->particularSecurityDetail;
     }
 
-    public function setParticularSecurityDetail(?string $particularSecurityDetail): self
+    public function setParticularSecurityDetail(?bool $particularSecurityDetail): self
     {
         $this->particularSecurityDetail = $particularSecurityDetail;
 
@@ -844,18 +884,6 @@ class Ppsps
                 $speaker->setPpsps(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getChiefWorkRepresentative(): ?string
-    {
-        return $this->chiefWorkRepresentative;
-    }
-
-    public function setChiefWorkRepresentative(?string $chiefWorkRepresentative): self
-    {
-        $this->chiefWorkRepresentative = $chiefWorkRepresentative;
 
         return $this;
     }
@@ -976,58 +1004,6 @@ class Ppsps
             if ($subcontractedWork->getPpsps() === $this) {
                 $subcontractedWork->setPpsps(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
-    public function getWorkDirectors(): Collection
-    {
-        return $this->workDirectors;
-    }
-
-    public function addWorkDirector(Person $workDirector): self
-    {
-        if (!$this->workDirectors->contains($workDirector)) {
-            $this->workDirectors[] = $workDirector;
-        }
-
-        return $this;
-    }
-
-    public function removeWorkDirector(Person $workDirector): self
-    {
-        if ($this->workDirectors->contains($workDirector)) {
-            $this->workDirectors->removeElement($workDirector);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
-    public function getSiteManagers(): Collection
-    {
-        return $this->siteManagers;
-    }
-
-    public function addSiteManager(Person $siteManager): self
-    {
-        if (!$this->siteManagers->contains($siteManager)) {
-            $this->siteManagers[] = $siteManager;
-        }
-
-        return $this;
-    }
-
-    public function removeSiteManager(Person $siteManager): self
-    {
-        if ($this->siteManagers->contains($siteManager)) {
-            $this->siteManagers->removeElement($siteManager);
         }
 
         return $this;
@@ -1172,4 +1148,151 @@ class Ppsps
         return $this;
     }
 
+    public function getFirstWorkConductor(): ?string
+    {
+        return $this->firstWorkConductor;
+    }
+
+    public function setFirstWorkConductor(?string $firstWorkConductor): self
+    {
+        $this->firstWorkConductor = $firstWorkConductor;
+
+        return $this;
+    }
+
+    public function getEditor(): ?string
+    {
+        return $this->editor;
+    }
+
+    public function setEditor(?string $editor): self
+    {
+        $this->editor = $editor;
+
+        return $this;
+    }
+
+    public function getProjectDirector(): ?string
+    {
+        return $this->projectDirector;
+    }
+
+    public function setProjectDirector(?string $projectDirector): self
+    {
+        $this->projectDirector = $projectDirector;
+
+        return $this;
+    }
+
+    public function getApprobator(): ?string
+    {
+        return $this->approbator;
+    }
+
+    public function setApprobator(?string $approbator): self
+    {
+        $this->approbator = $approbator;
+
+        return $this;
+    }
+
+    public function getSecondApprobator(): ?string
+    {
+        return $this->secondApprobator;
+    }
+
+    public function setSecondApprobator(?string $secondApprobator): self
+    {
+        $this->secondApprobator = $secondApprobator;
+
+        return $this;
+    }
+
+    public function getListOfWorksMandatoryDocs(): ?array
+    {
+        return $this->listOfWorksMandatoryDocs;
+    }
+
+    public function setListOfWorksMandatoryDocs(?array $listOfWorksMandatoryDocs): self
+    {
+        $this->listOfWorksMandatoryDocs = $listOfWorksMandatoryDocs;
+
+        return $this;
+    }
+
+    public function getParticularExternalRisk(): ?bool
+    {
+        return $this->particularExternalRisk;
+    }
+
+    public function setParticularExternalRisk(bool $particularExternalRisk): self
+    {
+        $this->particularExternalRisk = $particularExternalRisk;
+
+        return $this;
+    }
+
+    public function getAnnexSubworkers(): ?bool
+    {
+        return $this->annexSubworkers;
+    }
+
+    public function setAnnexSubworkers(bool $annexSubworkers): self
+    {
+        $this->annexSubworkers = $annexSubworkers;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getSiteManagers(): Collection
+    {
+        return $this->siteManagers;
+    }
+
+    public function addSiteManager(Person $siteManager): self
+    {
+        if (!$this->siteManagers->contains($siteManager)) {
+            $this->siteManagers[] = $siteManager;
+        }
+
+        return $this;
+    }
+
+    public function removeSiteManager(Person $siteManager): self
+    {
+        if ($this->siteManagers->contains($siteManager)) {
+            $this->siteManagers->removeElement($siteManager);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getWorkDirectors(): Collection
+    {
+        return $this->workDirectors;
+    }
+
+    public function addWorkDirector(Person $workDirector): self
+    {
+        if (!$this->workDirectors->contains($workDirector)) {
+            $this->workDirectors[] = $workDirector;
+        }
+
+        return $this;
+    }
+
+    public function removeWorkDirector(Person $workDirector): self
+    {
+        if ($this->workDirectors->contains($workDirector)) {
+            $this->workDirectors->removeElement($workDirector);
+        }
+
+        return $this;
+    }
 }

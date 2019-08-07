@@ -23,9 +23,6 @@ final class MeasureAdmin extends AbstractAdmin
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
-        $formMapper->add('descr', TextareaType::class, [
-            'label' => 'Description'
-        ]);
         $formMapper->add('Risk', ModelType::class , array(
             'class' => 'App\Entity\Risk',
             'multiple' => false, 
@@ -45,9 +42,6 @@ final class MeasureAdmin extends AbstractAdmin
         unset($this->listModes['mosaic']);
         $listMapper->add('name', null, [
             'label' => 'Nom'
-        ]);
-        $listMapper->add('descr', null, [
-            'label' => 'Description'
         ]);
         $listMapper->add('risk', null, [
             'label' => 'Risque associé'

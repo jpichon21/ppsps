@@ -23,15 +23,12 @@ class Measure
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descr;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Risk", inversedBy="measures")
      * @ORM\JoinColumn(name="risk_id", referencedColumnName="id", nullable=false)
     */
     private $risk;
+
+    private $numRisk;
 
     /**
      * @var datetime $deletedAt
@@ -55,6 +52,13 @@ class Measure
         return $this->id;
     }
 
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -63,18 +67,6 @@ class Measure
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(?string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }
@@ -115,5 +107,17 @@ class Measure
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumRisk(): ?int
+    {
+        return $this->numRisk;
+    }
+
+    public function setNumRisk(?int $numRisk): self
+    {
+        $this->numRisk = $numRisk;
+
+        return $this;
     }
 }

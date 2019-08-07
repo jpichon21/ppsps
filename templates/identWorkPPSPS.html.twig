@@ -1,0 +1,21 @@
+
+{% extends "basePPSPS.html.twig" %}
+{% block page %}
+<div class="pageContainer">
+    <div class="pageContent">
+        <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
+         {% if logo is not null %}
+        <div class="cornerRight"><img src="{{ asset('groupLogo/' ~ logo) }}"></div>
+        {% else %}
+        <div class="cornerRight"><img src="{{ asset('img/logo.png') }}"></div>
+        {% endif %}
+            <h2>Plan d'identification des travaux</h2>
+            <br>
+            <img src="{{ asset('ppspsImage/'~ image)}}" id='frontPageImage'>
+        </div>
+        <div class="bottomLeft">PPSPS {{siteName}} - {{siteNumber}}</div>
+        <div class="rightPage">page {{page + 1}}</div>
+        <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
+    </div>
+</div>
+{% endblock %}

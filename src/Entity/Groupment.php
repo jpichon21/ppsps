@@ -41,6 +41,11 @@ class Groupment
      */
     private $logo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\GroupmentLogo", inversedBy="groupments2", cascade={"persist"})
+     * @ORM\JoinColumn(name="inversedlogo_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $inversedLogo;
 
     /**
      * to string method
@@ -168,6 +173,18 @@ class Groupment
     public function setLogo(?GroupmentLogo $logo): self
     {
         $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getInversedLogo(): ?GroupmentLogo
+    {
+        return $this->inversedLogo;
+    }
+
+    public function setInversedLogo(?GroupmentLogo $inversedLogo): self
+    {
+        $this->inversedLogo = $inversedLogo;
 
         return $this;
     }

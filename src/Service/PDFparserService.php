@@ -77,6 +77,14 @@ class PDFparserService
         } else {
             $logo = $ppsps->getGroupment()->getLogo()->getImageFile()->getBasename();
         }
+
+        if ($ppsps->getGroupment() == null) {
+            $inversedLogo = null;
+        } else if ($ppsps->getGroupment()->getInversedLogo() == null) {
+            $inversedLogo = null;
+        } else {
+            $inversedLogo = $ppsps->getGroupment()->getInversedLogo()->getImageFile()->getBasename();
+        }
         
         if ($ppsps->getImage() == null) {
             $image = null;
@@ -88,6 +96,10 @@ class PDFparserService
             'AddressConstrSite' => $ppsps->getAddressConstrSite(),
             'AddressAccessSite' => $ppsps->getAddressAccessSite(),
             'referent' => $ppsps->getReferent(),
+            'editor' => $ppsps->getEditor(),
+            'firstWorkConductor' => $ppsps->getFirstWorkConductor(),
+            'projectDirector' => $ppsps->getProjectDirector(),
+            'approbator' => $ppsps->getApprobator(),
             'referentPhone' => $ppsps->getReferentPhone(),
             'referentMail' => $ppsps->getReferentMail(),
             'siteType' => $ppsps->getSiteType(),
@@ -110,16 +122,18 @@ class PDFparserService
             'PGCDate' => $this->dateParser($ppsps->getPGCDate()),
             'inspectionVisitDate' => $this->dateParser($ppsps->getInspectionVisitDate()),
             'listOfInstallations' => $ppsps->getListOfInstallations(),
+            'listOfWorksMandatoryDocs' => $ppsps->getListOfWorksMandatoryDocs(),
             'suiabilityList' => $ppsps->getSuiabilityList(),
             'suiability' => $ppsps->getSuiability(),
             'otherInstalation' => $ppsps->getOtherInstalation(),
+            'particularExternalRisk' => $ppsps->getParticularExternalRisk(),
             'particularSecurityMeasure' => $ppsps->getParticularSecurityMeasure(),
             'particularSecurityDetail' => $ppsps->getParticularSecurityDetail(),
             'situations' => $this->situationParser($ppsps->getSituation()),
             'diffusions' => $this->diffusionParser($ppsps->getDiffusions()->getValues()),
             'speakers' => $this->speakerParser($ppsps->getSpeakers()->getValues()),
-            'chiefWorkRepresentative' => $ppsps->getChiefWorkRepresentative(),
             'myCissct' => $ppsps->getMyCissct(),
+            'annexSubworkers' => $ppsps->getAnnexSubworkers(),
             'updatesPpsps' => $this->updateParser($ppsps->getUpdatesPpsps()->getValues()),
             'dealers' => $this->dealerParser($ppsps->getDealers()->getValues()),
             'securityCoordinatorName' => $ppsps->getSecurityCoordinatorName(),
@@ -139,6 +153,7 @@ class PDFparserService
             'annexs' => $ppsps->getAnnexs()->getValues(),
             'mandatoryDocument' => $ppsps->getMandatoryDocument(),
             'logo' => $logo,
+            'inversedLogo' => $inversedLogo,
             'image' => $image
         ];
     }
@@ -150,7 +165,7 @@ class PDFparserService
 
         $page = 0;
         foreach ($diffusionsList as $key => $diffusion) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $diffusions[$page][$key]['recipient'] = $diffusion->getRecipient();
@@ -169,7 +184,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($updatesList as $key => $update) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $updates[$page][$key]['updateObject'] = $update->getUpdateObject();
@@ -187,7 +202,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($speakersList as $key => $speaker) {
-            if ($key % 18 === 0) {
+            if ($key % 15 === 0) {
                 $page++;
             }
             $speakers[$page][$key]['name'] = $speaker->getName();
@@ -205,7 +220,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($effectivesList as $key => $effective) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $effectives[$page][$key]['business'] = $effective->getBusiness();
@@ -221,7 +236,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($dealersList as $key => $dealer) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $dealers[$page][$key]['name'] = $dealer->getName();
@@ -237,7 +252,7 @@ class PDFparserService
         }
         $page = 0;
         foreach ($subContractedWorksList as $key => $subContractedWork) {
-            if ($key % 29 === 0) {
+            if ($key % 25 === 0) {
                 $page++;
             }
             $subContractedWorks[$page][$key]['subContractor'] = $subContractedWork->getSubContractor();
@@ -303,8 +318,8 @@ class PDFparserService
 
     private function parseSituation($situations) {
         foreach ($situations as $key => $situation){
-            if(count($situation) > 3) {
-                $chunk = array_chunk($situation, 3, 3);
+            if(count($situation) > 2) {
+                $chunk = array_chunk($situation, 2, 2);
                 $situations[$key] = $chunk;
             } else {
                 unset($situations[$key]);

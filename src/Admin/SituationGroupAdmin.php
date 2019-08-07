@@ -21,9 +21,6 @@ final class SituationGroupAdmin extends AbstractAdmin
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
-        $formMapper->add('descr', TextareaType::class, [
-            'label' => 'Description'
-        ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -36,9 +33,6 @@ final class SituationGroupAdmin extends AbstractAdmin
         unset($this->listModes['mosaic']);
         $listMapper->add('name', null, [
             'label' => 'Nom'
-        ]);
-        $listMapper->add('descr', null, [
-            'label' => 'Description'
         ]);
         $listMapper->add('_action', null, [
             'actions' => [

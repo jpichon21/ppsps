@@ -24,6 +24,12 @@ final class GroupmentAdmin extends AbstractAdmin
             'required' => false,
             'btn_add' => true,
         ]);
+        $formMapper
+        ->add('inversedLogo', ModelListType::class, [
+            'label' => 'Logo page de garde du groupe',
+            'required' => false,
+            'btn_add' => true,
+        ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

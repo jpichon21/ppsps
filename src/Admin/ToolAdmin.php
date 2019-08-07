@@ -23,9 +23,6 @@ final class ToolAdmin extends AbstractAdmin
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
-        $formMapper->add('descr', TextareaType::class,[
-            'label' => 'Description'
-        ]);
         $formMapper->add('Situation', ModelType::class , array(
             'class' => 'App\Entity\Situation',
             'multiple' => false, 
@@ -45,9 +42,6 @@ final class ToolAdmin extends AbstractAdmin
         unset($this->listModes['mosaic']);
         $listMapper->add('name', null, [
             'label' => 'Nom'
-        ]);
-        $listMapper->add('descr', null, [
-            'label' => 'Description'
         ]);
         $listMapper->add('situation', null, [
             'label' => 'Situation de travail'

@@ -49,9 +49,15 @@ class GroupmentLogo implements \Serializable
      */
     private $groupments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Groupment", mappedBy="inversedLogo", cascade={"persist"})
+     */
+    private $groupments2;
+
     public function __construct()
     {
         $this->groupments = new ArrayCollection();
+        $this->groupments2 = new ArrayCollection();
     }
 
     public function __toString()
@@ -151,6 +157,37 @@ class GroupmentLogo implements \Serializable
               // set the owning side to null (unless already changed)
               if ($groupment->getLogo() === $this) {
                   $groupment->setLogo(null);
+              }
+          }
+
+          return $this;
+      }
+
+      /**
+       * @return Collection|Groupment[]
+       */
+      public function getGroupment2s(): Collection
+      {
+          return $this->groupment2s;
+      }
+
+      public function addGroupment2(Groupment $groupment2): self
+      {
+          if (!$this->groupment2s->contains($groupment2)) {
+              $this->groupment2s[] = $groupment2;
+              $groupment2->setLogo($this);
+          }
+
+          return $this;
+      }
+
+      public function removeGroupment2(Groupment $groupment2): self
+      {
+          if ($this->groupment2s->contains($groupment2)) {
+              $this->groupment2s->removeElement($groupment2);
+              // set the owning side to null (unless already changed)
+              if ($groupment2->getLogo() === $this) {
+                  $groupment2->setLogo(null);
               }
           }
 

@@ -30,10 +30,14 @@
                         <td>{{subvalue.Mail}}</td>
                     </tr>        
                 {% endfor %}
-                <tr>
-                    <td>Sous-traitant </td>
-                    <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
-                </tr>
+                {% if value == speakers|last %}
+                    {% if annexSubworkers == true %}                
+                    <tr>
+                        <td>Sous-traitant </td>
+                        <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
+                    </tr>
+                    {% endif %}
+                {% endif %}
             </tbody>
         </table>
         {% if value == speakers|last %}
@@ -53,21 +57,21 @@
                     <td></td>
                     <td colspan="4">&nbsp;- pour les opérations de génie civil : volume travaux > 10 000 hommes-jour et plus de 5 entreprises</td>
                 </tr>
-                {# <tr>
+                <tr>
                     <td colspan="2"><input type="checkbox" name="" {% if myCissct == true %}checked="true"{% endif %} />&nbsp;Oui</td>
                     <td colspan="2"><input type="checkbox" name="" {% if myCissct == false %}checked="true"{% endif %} />&nbsp;Non</td>
-                </tr> #}
+                </tr>
                 <table class="col1">
                     <tbody>
                         <tr>
-                            {# <td>Le représentant sur le chantier est le Conducteur de Travaux : <b>{{chiefWorkRepresentative}}</b></td> #}
+                            <td>Le représentant au CISSCT sur le chantier est le Conducteur de Travaux. </td>
                         </tr>
                     </tbody>
                 </table>
             </tbody>
         </table>
         {% endif %}
-        <div class="bottomLeft">NOM DU DOCUMENT</div>
+        <div class="bottomLeft">PPSPS {{siteName}} - {{siteNumber}}</div>
         <div class="rightPage">page {{page + key}}</div>
         <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
     </div>

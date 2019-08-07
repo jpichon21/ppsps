@@ -1,9 +1,10 @@
 {% set pageCounter = 0 %}
 {% if situations is defined and situations != null %}
+{% set counter = "" %}
 {% for var in situations %}
 {% for items in var %}
     {% if items is iterable %}
-    {% set counter = ( counter | default(0) ) + 1 %}
+    {% set counter = ( counter | default(page) ) + 1 %}
     <div class="pageContainer">
         <div class="pageContent">
             <div class="cornerTop"><img src="{{ asset('img/left-corner-top.jpg') }}"></div>
@@ -18,6 +19,12 @@
                     {% if var['situationGroup'] is defined %}
                     <tr>
                         <th colspan="4">{{var['situationGroup']}}</th>
+                    </tr>
+                    <tr>
+                        <th>Situations de travail</th>
+                        <th>Moyens et matériels</th>
+                        <th>Risques associés</th>
+                        <th>Mesures</th>
                     </tr>
                     {% endif %}
                     {% for subItems in items %}
@@ -57,16 +64,13 @@
 
                         </td>
                         {% endif %}
-                            <tr>
-                                <td colspan="4" class="grey"></td>
-                            </tr>
                         </tr>
                         {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
-            <div class="bottomLeft">NOM DU DOCUMENT</div>
-            <div class="rightPage">page {{page + counter}}</div>
+            <div class="bottomLeft">PPSPS {{siteName}} - {{siteNumber}}</div>
+            <div class="rightPage">page {{counter}}</div>
             <div class="bottomRight"><img src="{{ asset('img/right-corner-bottom.jpg') }}"></div>
         </div>
     </div>

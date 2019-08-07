@@ -23,14 +23,11 @@ final class SituationAdmin extends AbstractAdmin
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
-        $formMapper->add('descr', TextareaType::class, [
-            'label' => 'Description'
-        ]);
         $formMapper->add('SituationGroup', ModelType::class , array(
             'class' => 'App\Entity\SituationGroup',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissisez le groupe de la situation de travail'));
+            'label'=>'Choissisez l\'activité'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -43,9 +40,6 @@ final class SituationAdmin extends AbstractAdmin
         unset($this->listModes['mosaic']);
         $listMapper->add('name', null, [
             'label' => 'Nom'
-        ]);
-        $listMapper->add('descr', null, [
-            'label' => 'Description'
         ]);
         $listMapper->add('_action', null, [
             'actions' => [

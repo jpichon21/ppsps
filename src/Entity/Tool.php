@@ -22,11 +22,6 @@ class Tool
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descr;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="tools")
      */
     private $situation;
@@ -37,6 +32,8 @@ class Tool
      * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
+
+    private $numSituation;
 
     /**
      * to string method
@@ -53,6 +50,13 @@ class Tool
         return $this->id;
     }
 
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -61,18 +65,6 @@ class Tool
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(?string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }
@@ -109,5 +101,17 @@ class Tool
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumSituation(): ?int
+    {
+        return $this->numSituation;
+    }
+
+    public function setNumSituation(?int $numSituation): self
+    {
+        $this->numSituation = $numSituation;
+
+        return $this;
     }
 }

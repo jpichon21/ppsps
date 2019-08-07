@@ -24,11 +24,6 @@ class Situation
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $descr;
-
-    /**
     * @ORM\OneToMany(targetEntity="Risk", mappedBy="situation", orphanRemoval=true)
     */
     private $risks;
@@ -49,6 +44,8 @@ class Situation
      * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
+
+    private $numSituationGroup;
 
     /**
      * to string method
@@ -73,6 +70,13 @@ class Situation
     {
         return $this->id;
     }
+    
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     public function getName(): ?string
     {
@@ -82,18 +86,6 @@ class Situation
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescr(): ?string
-    {
-        return $this->descr;
-    }
-
-    public function setDescr(?string $descr): self
-    {
-        $this->descr = $descr;
 
         return $this;
     }
@@ -117,7 +109,10 @@ class Situation
      */
     public function addRisks($risks)
     {
-        $this->risks[] = $risks;
+        if (!$this->risks->contains($risks)) {
+            $this->risks[] = $risks;
+            $risks->setSituation($this);
+        }
 
         return $this;
     }
@@ -194,5 +189,17 @@ class Situation
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    public function getNumSituationGroup(): ?int
+    {
+        return $this->numSituationGroup;
+    }
+
+    public function setNumSituationGroup(?int $numSituationGroup): self
+    {
+        $this->numSituationGroup = $numSituationGroup;
+
+        return $this;
     }
 }

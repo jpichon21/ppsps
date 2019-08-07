@@ -98,12 +98,12 @@ class SituationFormType extends AbstractType
             if (isset($event->getData()['risk'])) {
                 if($event->getData()['risk'] !== []){
                     $riskChoiceList = $this->getMeasureListFromRisk($event->getData()['risk']);
-                    if ($toolChoiceList !== false) {
+                    if ($riskChoiceList !== false) {
                         $form->add('measure', ChoiceType::class, [
                             'label' => 'Mesures prises en compte',
                             'multiple' => true,
                             'expanded' => true,
-                            'choices' => $toolChoiceList,
+                            'choices' => $riskChoiceList,
                         ]);
                     }
                 }
