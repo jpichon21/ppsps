@@ -21,7 +21,7 @@ final class AdminLoginController extends Controller
     }
 
     /**
-     * @Route("/admin/login", name="admin_login")
+     * @Route("/login", name="admin_login")
      */
     public function loginAction(): Response
     {
@@ -37,7 +37,7 @@ final class AdminLoginController extends Controller
     }
 
     /**
-     * @Route("/admin/logout", name="admin_logout")
+     * @Route("/logout", name="admin_logout")
      */
     public function logoutAction(): void
     {

@@ -27,7 +27,7 @@ final class MeasureAdmin extends AbstractAdmin
             'class' => 'App\Entity\Risk',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissise le risque associé à cette mesure'));
+            'label'=>'Choissisez le risque associé à cette mesure'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
