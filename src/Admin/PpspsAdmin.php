@@ -138,7 +138,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                     ->add('periodOfExecution', TextType::class, [
-                        'label' => 'Période d\'execution',
+                        'label' => 'Période d\'exécution',
                         'required' => false
                     ])        
                     ->add('owner', TextType::class, [
@@ -272,7 +272,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                 ->end()
-                ->with('Arrêts de chantier')
+                ->with('Arrêt de chantier')
                     ->add('beginStopWork', DatePickerType::class, [
                         'label' => 'Du',
                         'dp_side_by_side'       => true,
@@ -530,7 +530,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                     ->add('particularExternalRisk', CheckboxType::class, [
-                        'label'=> 'Existe-t-il des Existe-t-il des risques importés ou exportés particuliers au chantier non traités dans l\'analyse des risques',
+                        'label'=> 'Existe-t-il des risques importés ou exportés particuliers au chantier non traités dans l\'analyse des risques',
                         'required' => false,
                     ])
                 ->end()
@@ -600,7 +600,7 @@ final class PpspsAdmin extends AbstractAdmin
             'label' => 'Adresse du chantier'
         ]);        
         $listMapper->add('periodOfExecution', null, [
-            'label' => 'Période d\'éxecution'
+            'label' => 'Période d\'exécution'
         ]);
         $listMapper->add('owner', null, [
             'label' => 'Maître d\'ouvrage',

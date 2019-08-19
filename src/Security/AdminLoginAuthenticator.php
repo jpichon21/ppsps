@@ -49,7 +49,7 @@ final class AdminLoginAuthenticator extends AbstractFormLoginAuthenticator imple
 
     public function supports(Request $request): bool
     {
-        if ($request->getPathInfo() != '/admin/login' || $request->getMethod() != 'POST') {
+        if ($request->getPathInfo() != '/login' || $request->getMethod() != 'POST') {
             return false;
         }
 

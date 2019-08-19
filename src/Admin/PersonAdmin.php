@@ -17,8 +17,8 @@ final class PersonAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextType::class, ['label' => 'nom'])
-        ->add('company', TextType::class, ['label' => 'Enité', 'required' => false])
+        $formMapper->add('name', TextType::class, ['label' => 'Nom'])
+        ->add('company', TextType::class, ['label' => 'Entité', 'required' => false])
         ->add('address', TextType::class, ['label' => 'Adresse', 'required' => false])
         ->add('fax', TextType::class, ['label' => 'Fax', 'required' => false])
         ->add('email', TextType::class, ['label' => 'Email', 'required' => false])

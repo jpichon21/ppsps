@@ -27,7 +27,7 @@ final class ToolAdmin extends AbstractAdmin
             'class' => 'App\Entity\Situation',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissisez la situation de travail associée a ce moyen/matériel'));
+            'label'=>'Choissisez la situation de travail associée à ce moyen/matériel'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
