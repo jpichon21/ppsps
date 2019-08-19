@@ -138,7 +138,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                     ->add('periodOfExecution', TextType::class, [
-                        'label' => 'Période d\'execution',
+                        'label' => 'Période d\'exécution',
                         'required' => false
                     ])        
                     ->add('owner', TextType::class, [
@@ -272,7 +272,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                 ->end()
-                ->with('Arrêts de chantier')
+                ->with('Arrêt de chantier')
                     ->add('beginStopWork', DatePickerType::class, [
                         'label' => 'Du',
                         'dp_side_by_side'       => true,
