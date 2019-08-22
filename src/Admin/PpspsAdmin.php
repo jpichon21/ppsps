@@ -568,7 +568,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'expanded' => true,
                     ])
                 ->end()
-                ->with('Mesure Particulière ou risque importés')
+                ->with('Mesures Particulières ou risques importés')
                     ->add('particularSecurityDetail', CheckboxType::class, [
                         'label' => 'Mesures particulières au chantier',
                         'required' => false,

@@ -277,7 +277,7 @@ class PdfController extends Controller
             'page' => $pageAfter
         ]);
         $pageAfter = $pageAfter + 7;
-
+        
         if ($ppsps['situations'] !== null) {
             $html .= $this->renderView('situationPPSPS.html.twig',[
                 'siteName' => $ppsps['siteName'],
