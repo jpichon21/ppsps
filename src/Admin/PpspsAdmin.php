@@ -462,6 +462,8 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
+                ->end()
+                ->with('Accès, circulation et clôtures »')
                     ->add('isControlled', CheckboxType::class, [
                         'label'=> 'Accès Contrôlé',
                         'required' => false
