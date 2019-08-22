@@ -346,6 +346,56 @@ class Ppsps
     private $workDirectors;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $MondayMorning;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $MondayAfternoon;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tuesdayMorning;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tuesdayAfternoon;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $wednesdayMorning;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $wednesdayAfternoon;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $thursdayMorning;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $thursdayAfternoon;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fridayMorning;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fridayAfternoon;
+
+    /**
      * to string method
      *
      * @return string
@@ -1292,6 +1342,126 @@ class Ppsps
         if ($this->workDirectors->contains($workDirector)) {
             $this->workDirectors->removeElement($workDirector);
         }
+
+        return $this;
+    }
+
+    public function getMondayMorning(): ?string
+    {
+        return $this->MondayMorning;
+    }
+
+    public function setMondayMorning(?string $MondayMorning): self
+    {
+        $this->MondayMorning = $MondayMorning;
+
+        return $this;
+    }
+
+    public function getMondayAfternoon(): ?string
+    {
+        return $this->MondayAfternoon;
+    }
+
+    public function setMondayAfternoon(?string $MondayAfternoon): self
+    {
+        $this->MondayAfternoon = $MondayAfternoon;
+
+        return $this;
+    }
+
+    public function getTuesdayMorning(): ?string
+    {
+        return $this->tuesdayMorning;
+    }
+
+    public function setTuesdayMorning(?string $tuesdayMorning): self
+    {
+        $this->tuesdayMorning = $tuesdayMorning;
+
+        return $this;
+    }
+
+    public function getTuesdayAfternoon(): ?string
+    {
+        return $this->tuesdayAfternoon;
+    }
+
+    public function setTuesdayAfternoon(?string $tuesdayAfternoon): self
+    {
+        $this->tuesdayAfternoon = $tuesdayAfternoon;
+
+        return $this;
+    }
+
+    public function getWednesdayMorning(): ?string
+    {
+        return $this->wednesdayMorning;
+    }
+
+    public function setWednesdayMorning(?string $wednesdayMorning): self
+    {
+        $this->wednesdayMorning = $wednesdayMorning;
+
+        return $this;
+    }
+
+    public function getWednesdayAfternoon(): ?string
+    {
+        return $this->wednesdayAfternoon;
+    }
+
+    public function setWednesdayAfternoon(?string $wednesdayAfternoon): self
+    {
+        $this->wednesdayAfternoon = $wednesdayAfternoon;
+
+        return $this;
+    }
+
+    public function getThursdayMorning(): ?string
+    {
+        return $this->thursdayMorning;
+    }
+
+    public function setThursdayMorning(?string $thursdayMorning): self
+    {
+        $this->thursdayMorning = $thursdayMorning;
+
+        return $this;
+    }
+
+    public function getThursdayAfternoon(): ?string
+    {
+        return $this->thursdayAfternoon;
+    }
+
+    public function setThursdayAfternoon(?string $thursdayAfternoon): self
+    {
+        $this->thursdayAfternoon = $thursdayAfternoon;
+
+        return $this;
+    }
+
+    public function getFridayMorning(): ?string
+    {
+        return $this->fridayMorning;
+    }
+
+    public function setFridayMorning(?string $fridayMorning): self
+    {
+        $this->fridayMorning = $fridayMorning;
+
+        return $this;
+    }
+
+    public function getFridayAfternoon(): ?string
+    {
+        return $this->fridayAfternoon;
+    }
+
+    public function setFridayAfternoon(?string $fridayAfternoon): self
+    {
+        $this->fridayAfternoon = $fridayAfternoon;
 
         return $this;
     }
