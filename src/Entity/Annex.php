@@ -45,6 +45,11 @@ class Annex
      */
     private $updatedAt;
     
+    public function __toString()
+    {
+        return $this->getAnnexName();
+    }
+
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
      *

@@ -154,7 +154,17 @@ class PDFparserService
             'mandatoryDocument' => $ppsps->getMandatoryDocument(),
             'logo' => $logo,
             'inversedLogo' => $inversedLogo,
-            'image' => $image
+            'image' => $image,
+            'MondayMorning' => $ppsps->getMondayMorning(),
+            'MondayAfternoon' => $ppsps->getMondayAfternoon(),
+            'tuesdayMorning' => $ppsps->getTuesdayMorning(),
+            'tuesdayAfternoon' => $ppsps->getTuesdayAfternoon(),
+            'wednesdayMorning' => $ppsps->getWednesdayMorning(),
+            'wednesdayAfternoon' => $ppsps->getWednesdayAfternoon(),
+            'thursdayMorning' => $ppsps->getThursdayMorning(),
+            'thursdayAfternoon' => $ppsps->getThursdayAfternoon(),
+            'fridayMorning' => $ppsps->getFridayMorning(),
+            'fridayAfternoon' => $ppsps->getFridayAfternoon()
         ];
     }
 

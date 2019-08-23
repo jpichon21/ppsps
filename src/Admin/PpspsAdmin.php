@@ -347,6 +347,48 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
+                ->with('Horraires sur le chantier')
+                    ->add('MondayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Lundi Matin'
+                    ])
+                    ->add('MondayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Lundi Après-Midi'
+                    ])
+                    ->add('tuesdayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mardi Matin'
+                    ])
+                    ->add('tuesdayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mardi Après-Midi'
+                    ])
+                    ->add('wednesdayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mercredi Matin'
+                    ])
+                    ->add('wednesdayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mercredi Après-Midi'
+                    ])
+                    ->add('thursdayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Jeudi Matin'
+                    ])
+                    ->add('thursdayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Jeudi Après-Midi'
+                    ])
+                    ->add('fridayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Vendredi Matin'
+                    ])
+                    ->add('fridayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Vendredi Après-Midi'
+                    ])
+                ->end()
                 ->with('Organismes de prévention')
                     ->add('speakers', CollectionType::class, [
                         'label' => false,
@@ -420,6 +462,8 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
+                ->end()
+                ->with('Accès, circulation et clôtures »')
                     ->add('isControlled', CheckboxType::class, [
                         'label'=> 'Accès Contrôlé',
                         'required' => false
@@ -524,7 +568,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'expanded' => true,
                     ])
                 ->end()
-                ->with('Mesure Particulière ou risque importés')
+                ->with('Mesures Particulières ou risques importés')
                     ->add('particularSecurityDetail', CheckboxType::class, [
                         'label' => 'Mesures particulières au chantier',
                         'required' => false,

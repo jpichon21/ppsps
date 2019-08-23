@@ -233,6 +233,16 @@ class PdfController extends Controller
             $html .= $this->renderView('effectives.html.twig',[
                 'siteName' => $ppsps['siteName'],
                 'siteNumber' => $ppsps['siteNumber'],
+                'MondayMorning' => $ppsps['MondayMorning'],
+                'MondayAfternoon' => $ppsps['MondayAfternoon'],
+                'tuesdayMorning' => $ppsps['tuesdayMorning'],
+                'tuesdayAfternoon' => $ppsps['tuesdayAfternoon'],
+                'wednesdayMorning' => $ppsps['wednesdayMorning'],
+                'wednesdayAfternoon' => $ppsps['wednesdayAfternoon'],
+                'thursdayMorning' => $ppsps['thursdayMorning'],
+                'thursdayAfternoon' => $ppsps['thursdayAfternoon'],
+                'fridayMorning' => $ppsps['fridayMorning'],
+                'fridayAfternoon' => $ppsps['fridayAfternoon'],
                 'logo' => $ppsps['logo'],
                 'effectives' => $ppsps['effectives'],
                 'beginStopWork' => $ppsps['beginStopWork'],
@@ -267,7 +277,7 @@ class PdfController extends Controller
             'page' => $pageAfter
         ]);
         $pageAfter = $pageAfter + 7;
-
+        
         if ($ppsps['situations'] !== null) {
             $html .= $this->renderView('situationPPSPS.html.twig',[
                 'siteName' => $ppsps['siteName'],
