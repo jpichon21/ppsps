@@ -287,6 +287,16 @@ class PdfController extends Controller
                 'page' => $pageAfter
             ]);
         }
+
+        if ($ppsps['annexs'] !== null) {
+            $html .= $this->renderView('annex_list.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
+                'logo' => $ppsps['logo'],
+                'annexs' => $ppsps['annexs'],
+                'page' => $pageAfter
+            ]);
+        }
         return $html;
     }
 }

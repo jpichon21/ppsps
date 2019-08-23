@@ -18,7 +18,8 @@ final class PpspsImageAdmin extends AbstractAdmin
         $formMapper
             ->add('name', TextType::class, [
                 'label' => 'Nom du fichier',
-                'required' => true
+                'required' => true,
+                'sonata_help' => 'Veuillez insérer une image au format jpeg, Jpg, pjpeg ou Png d\'une taille maximum de 2 Mo'
             ]);               
         $formMapper
             ->add('imageFile', VichFileType::class, [
