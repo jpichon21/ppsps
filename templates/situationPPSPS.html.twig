@@ -3,7 +3,7 @@
 {% set counter = "" %}
 {% for var in situations %}
 {% for items in var %}
-    {% if items is iterable %}
+    {% if items is iterable and items != [] %}
     {% set counter = ( counter | default(page) ) + 1 %}
     <div class="pageContainer">
         <div class="pageContent">
