@@ -43,7 +43,7 @@
                         </td>
                         {% endif %}    
                         {% if subItems['risk'] is defined %}
-                        <td {% if subItems['risk'] == null %} class="grey" {% endif %} class="wide" >
+                        <td {% if subItems['risk'] == null %} class="grey" {% endif %} class="normal" >
                             {% for risk in subItems['risk'] %}
                                 <p>{{risk}}</p>                          
                             {% endfor %}
@@ -54,7 +54,7 @@
                         </td>
                         {% endif %}  
                         {% if subItems['measure'] is defined %}                        
-                        <td {% if subItems['measure'] == null %} class="grey" {% endif %} class="normal" >
+                        <td {% if subItems['measure'] == null %} class="grey" {% endif %} class="large" >
                             {% for measure in subItems['measure'] %}
                             <p>{{measure}}</p>
                             {% endfor %}

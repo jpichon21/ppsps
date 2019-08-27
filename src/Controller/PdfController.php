@@ -186,6 +186,7 @@ class PdfController extends Controller
                 'siteName' => $ppsps['siteName'],
                 'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
+                'annexSubworkers' => $ppsps['annexSubworkers'],
                 'subContractedWorks' => $ppsps['subContractedWorks'],
                 'page' => $pageAfter
             ]);
@@ -223,7 +224,6 @@ class PdfController extends Controller
                 'logo' => $ppsps['logo'],
                 'speakers' => $ppsps['speakers'],
                 'myCissct' => $ppsps['myCissct'],
-                'annexSubworkers' => $ppsps['annexSubworkers'],
                 'page' => $pageAfter
             ]);
             $pageAfter = $pageAfter + count($ppsps['speakers']);
