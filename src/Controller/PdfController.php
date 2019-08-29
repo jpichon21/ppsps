@@ -49,8 +49,10 @@ class PdfController extends Controller
         $PDF = $this->get('knp_snappy.pdf')->getOutputFromHtml($html);
         $PDFMerger = new Merger(new TcpdiDriver);
         $PDFMerger->addRaw($PDF);
-        foreach ($annexs as $annex) {
-            $PDFMerger->addFile($annex->getFile());
+        foreach ($annexs as $annex) {   
+            if($annex->getFile() !== null) {
+                $PDFMerger->addFile($annex->getFile());
+            }
         }
         return new PdfResponse(
             $PDFMerger->merge(),
