@@ -23,9 +23,6 @@ final class RiskAdmin extends AbstractAdmin
         $formMapper->add('name', TextType::class, [
             'label' => 'Nom'
         ]);
-        $formMapper->add('descr', TextareaType::class, [
-            'label' => 'Description'
-        ]);
         $formMapper->add('Situation', ModelType::class , array(
             'class' => 'App\Entity\Situation',
             'multiple' => false, 

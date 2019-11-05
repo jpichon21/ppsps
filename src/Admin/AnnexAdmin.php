@@ -14,31 +14,62 @@ final class AnnexAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper
-            ->add('annexName', TextType::class, [
+        
+
+        if ($this->getSubject() === null || $this->getSubject()->getFile() === null) {
+            $formMapper->add('annexName', TextType::class, [
                 'label' => 'Nom du fichier',
                 'required' => true
-            ]);               
-        $formMapper
-            ->add('file', VichFileType::class, [
-                'label' => 'Fichier',
-                'required' => false,
-                'allow_delete'  => false, 
-                'download_link' => false,
-                'attr' => [
-                    'accept' => "application/pdf", "application/x-pdf"
-                ],
-                'constraints' => [
-                    new File([
-                        'maxSize' => '2M',
-                        'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf'
-                        ],
-                        'mimeTypesMessage' => 'Please upload an image file',
-                    ])
-                ]
-        ]);       
+            ]);
+            $formMapper
+                ->add('file', VichFileType::class, [
+                    'label' => 'Fichier',
+                    'required' => false,
+                    'allow_delete'  => false, 
+                    'download_link' => false,
+                    'attr' => [
+                        'accept' => "application/pdf", "application/x-pdf"
+                    ],
+                    'constraints' => [
+                        new File([
+                            'maxSize' => '2M',
+                            'mimeTypes' => [
+                                'application/pdf',
+                                'application/x-pdf'
+                            ],
+                            'mimeTypesMessage' => 'Please upload an image file',
+                        ])
+                    ]
+            ]);
+  
+        } else {
+            $formMapper->add('annexName', TextType::class, [
+                'label' => 'Nom du fichier',
+                'required' => true,
+                'sonata_help' => 'Le fichier a bien été uploader'
+            ]);
+            $formMapper
+                ->add('file', VichFileType::class, [
+                    'label' => 'Fichier',
+                    'required' => false,
+                    'allow_delete'  => false, 
+                    'download_link' => false,
+                    'disabled' => true,
+                    'attr' => [
+                        'accept' => "application/pdf", "application/x-pdf"
+                    ],
+                    'constraints' => [
+                        new File([
+                            'maxSize' => '2M',
+                            'mimeTypes' => [
+                                'application/pdf',
+                                'application/x-pdf'
+                            ],
+                            'mimeTypesMessage' => 'Please upload an image file',
+                        ])
+                    ]
+            ]);
+        }
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

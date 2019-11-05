@@ -27,7 +27,7 @@ final class SituationAdmin extends AbstractAdmin
             'class' => 'App\Entity\SituationGroup',
             'multiple' => false, 
             'by_reference' => false,
-            'label'=>'Choissisez l\'activité'));
+            'label'=>'Choisissez l\'activité'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

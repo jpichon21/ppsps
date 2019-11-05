@@ -138,7 +138,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                     ->add('periodOfExecution', TextType::class, [
-                        'label' => 'Période d\'execution',
+                        'label' => 'Période d\'exécution',
                         'required' => false
                     ])        
                     ->add('owner', TextType::class, [
@@ -239,6 +239,10 @@ final class PpspsAdmin extends AbstractAdmin
                         'edit' => 'inline',
                         'inline' => 'table',
                     ])
+                    ->add('annexSubworkers', CheckboxType::class, [
+                        'label'=> 'Liste des sous-traitants en annexe',
+                        'required' => false
+                    ])
                 ->end()
                 ->with('Calendrier des travaux')
                     ->add('dateBegin', DatePickerType::class, [
@@ -272,7 +276,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false,
                     ])
                 ->end()
-                ->with('Arrêts de chantier')
+                ->with('Arrêt de chantier')
                     ->add('beginStopWork', DatePickerType::class, [
                         'label' => 'Du',
                         'dp_side_by_side'       => true,
@@ -347,6 +351,48 @@ final class PpspsAdmin extends AbstractAdmin
                         'inline' => 'table',
                     ])
                 ->end()
+                ->with('Horraires sur le chantier')
+                    ->add('MondayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Lundi Matin'
+                    ])
+                    ->add('MondayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Lundi Après-Midi'
+                    ])
+                    ->add('tuesdayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mardi Matin'
+                    ])
+                    ->add('tuesdayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mardi Après-Midi'
+                    ])
+                    ->add('wednesdayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mercredi Matin'
+                    ])
+                    ->add('wednesdayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Mercredi Après-Midi'
+                    ])
+                    ->add('thursdayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Jeudi Matin'
+                    ])
+                    ->add('thursdayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Jeudi Après-Midi'
+                    ])
+                    ->add('fridayMorning', TextType::class, [
+                        'required' => false,
+                        'label' => 'Vendredi Matin'
+                    ])
+                    ->add('fridayAfternoon', TextType::class, [
+                        'required' => false,
+                        'label' => 'Vendredi Après-Midi'
+                    ])
+                ->end()
                 ->with('Organismes de prévention')
                     ->add('speakers', CollectionType::class, [
                         'label' => false,
@@ -358,10 +404,6 @@ final class PpspsAdmin extends AbstractAdmin
                     ], [
                         'edit' => 'inline',
                         'inline' => 'table',
-                    ])
-                    ->add('annexSubworkers', CheckboxType::class, [
-                        'label'=> 'Liste des sous-traitants en annexe',
-                        'required' => false
                     ])
                 ->end()
                 ->with('C.I.S.S.C.T.')
@@ -420,6 +462,8 @@ final class PpspsAdmin extends AbstractAdmin
                         'dp_min_view_mode'      => 'days',
                         'required' => false,
                     ])
+                ->end()
+                ->with('Accès, circulation et clôtures »')
                     ->add('isControlled', CheckboxType::class, [
                         'label'=> 'Accès Contrôlé',
                         'required' => false
@@ -524,13 +568,13 @@ final class PpspsAdmin extends AbstractAdmin
                         'expanded' => true,
                     ])
                 ->end()
-                ->with('Mesure Particulière ou risque importés')
+                ->with('Mesures Particulières ou risques importés')
                     ->add('particularSecurityDetail', CheckboxType::class, [
                         'label' => 'Mesures particulières au chantier',
                         'required' => false,
                     ])
                     ->add('particularExternalRisk', CheckboxType::class, [
-                        'label'=> 'Existe-t-il des Existe-t-il des risques importés ou exportés particuliers au chantier non traités dans l\'analyse des risques',
+                        'label'=> 'Existe-t-il des risques importés ou exportés particuliers au chantier non traités dans l\'analyse des risques',
                         'required' => false,
                     ])
                 ->end()
@@ -600,7 +644,7 @@ final class PpspsAdmin extends AbstractAdmin
             'label' => 'Adresse du chantier'
         ]);        
         $listMapper->add('periodOfExecution', null, [
-            'label' => 'Période d\'éxecution'
+            'label' => 'Période d\'exécution'
         ]);
         $listMapper->add('owner', null, [
             'label' => 'Maître d\'ouvrage',

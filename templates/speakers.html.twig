@@ -30,14 +30,6 @@
                         <td>{{subvalue.Mail}}</td>
                     </tr>        
                 {% endfor %}
-                {% if value == speakers|last %}
-                    {% if annexSubworkers == true %}                
-                    <tr>
-                        <td>Sous-traitant </td>
-                        <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
-                    </tr>
-                    {% endif %}
-                {% endif %}
             </tbody>
         </table>
         {% if value == speakers|last %}

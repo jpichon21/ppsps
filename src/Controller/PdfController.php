@@ -51,12 +51,14 @@ class PdfController extends Controller
         $PDFMerger->addRaw($PDF);
         /** @var  $annex */
         foreach ($annexs as $annex) {
-            $PDFMerger->addFile($annex->getFile());
+            if($annex->getFile() !== null) {
+                $PDFMerger->addFile($annex->getFile());
+            }
         }
 
         $cleanedTitle = str_replace('/', '-', $ppsps['siteName']);
         $cleanedTitle = str_replace('\\', '-', $cleanedTitle);
-        
+
         return new PdfResponse(
             $PDFMerger->merge(),
             iconv("UTF-8", "ASCII//TRANSLIT", 'PPSPS'.'_'.$cleanedTitle.'_'.$ppsps['siteNumber'].'.pdf')
@@ -191,6 +193,7 @@ class PdfController extends Controller
                 'siteName' => $ppsps['siteName'],
                 'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
+                'annexSubworkers' => $ppsps['annexSubworkers'],
                 'subContractedWorks' => $ppsps['subContractedWorks'],
                 'page' => $pageAfter
             ]);
@@ -228,7 +231,6 @@ class PdfController extends Controller
                 'logo' => $ppsps['logo'],
                 'speakers' => $ppsps['speakers'],
                 'myCissct' => $ppsps['myCissct'],
-                'annexSubworkers' => $ppsps['annexSubworkers'],
                 'page' => $pageAfter
             ]);
             $pageAfter = $pageAfter + count($ppsps['speakers']);
@@ -238,6 +240,16 @@ class PdfController extends Controller
             $html .= $this->renderView('effectives.html.twig',[
                 'siteName' => $ppsps['siteName'],
                 'siteNumber' => $ppsps['siteNumber'],
+                'MondayMorning' => $ppsps['MondayMorning'],
+                'MondayAfternoon' => $ppsps['MondayAfternoon'],
+                'tuesdayMorning' => $ppsps['tuesdayMorning'],
+                'tuesdayAfternoon' => $ppsps['tuesdayAfternoon'],
+                'wednesdayMorning' => $ppsps['wednesdayMorning'],
+                'wednesdayAfternoon' => $ppsps['wednesdayAfternoon'],
+                'thursdayMorning' => $ppsps['thursdayMorning'],
+                'thursdayAfternoon' => $ppsps['thursdayAfternoon'],
+                'fridayMorning' => $ppsps['fridayMorning'],
+                'fridayAfternoon' => $ppsps['fridayAfternoon'],
                 'logo' => $ppsps['logo'],
                 'effectives' => $ppsps['effectives'],
                 'beginStopWork' => $ppsps['beginStopWork'],
@@ -279,6 +291,16 @@ class PdfController extends Controller
                 'siteNumber' => $ppsps['siteNumber'],
                 'logo' => $ppsps['logo'],
                 'situations' => $ppsps['situations'],
+                'page' => $pageAfter
+            ]);
+        }
+
+        if ($ppsps['annexs'] !== null) {
+            $html .= $this->renderView('annex_list.html.twig',[
+                'siteName' => $ppsps['siteName'],
+                'siteNumber' => $ppsps['siteNumber'],
+                'logo' => $ppsps['logo'],
+                'annexs' => $ppsps['annexs'],
                 'page' => $pageAfter
             ]);
         }

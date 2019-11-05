@@ -32,6 +32,12 @@
                             <td>{{subvalues.address}}</td>
                         </tr>
                         {% endfor %}
+                        {% if annexSubworkers == true %}                
+                        <tr>
+                            <td>Sous-traitant </td>
+                            <td colspan="5" class="center">Cf : Liste des Sous-taitants disponible sur chantier</td>
+                        </tr>
+                        {% endif %}
                     </tbody>
             </table>
         <div class="bottomLeft">PPSPS {{siteName}} - {{siteNumber}}</div>
