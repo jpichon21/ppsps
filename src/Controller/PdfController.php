@@ -49,12 +49,17 @@ class PdfController extends Controller
         $PDF = $this->get('knp_snappy.pdf')->getOutputFromHtml($html);
         $PDFMerger = new Merger(new TcpdiDriver);
         $PDFMerger->addRaw($PDF);
+        /** @var  $annex */
         foreach ($annexs as $annex) {
             $PDFMerger->addFile($annex->getFile());
         }
+
+        $cleanedTitle = str_replace('/', '-', $ppsps['siteName']);
+        $cleanedTitle = str_replace('\\', '-', $cleanedTitle);
+        
         return new PdfResponse(
             $PDFMerger->merge(),
-            iconv("UTF-8", "ASCII//TRANSLIT", 'PPSPS'.'_'.$ppsps['siteName'].'_'.$ppsps['siteNumber'].'.pdf')
+            iconv("UTF-8", "ASCII//TRANSLIT", 'PPSPS'.'_'.$cleanedTitle.'_'.$ppsps['siteNumber'].'.pdf')
         );
     }
 
