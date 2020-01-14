@@ -93,7 +93,7 @@ class PDFparserService
         }
 
         return [
-            'AddressConstrSite' => $ppsps->getAddressConstrSite(),
+            'AddressConstrSite' => $ppsps->getGlobalSiteAddress(),
             'AddressAccessSite' => $ppsps->getAddressAccessSite(),
             'referent' => $ppsps->getReferent(),
             'editor' => $ppsps->getEditor(),
