@@ -28,7 +28,6 @@ final class PpspsAdmin extends AbstractAdmin
         $collection->remove('export');
     }
 
-
     public function prePersist($object)
     {
         $this->preUpdate($object);
