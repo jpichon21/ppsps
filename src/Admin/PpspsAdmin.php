@@ -224,7 +224,7 @@ final class PpspsAdmin extends AbstractAdmin
                         'required' => false
                     ])
                     ->add('descrWork', TextareaType::class, [
-                        'label' => 'Description des travaux propres à ROUGEOT (ou du Groupement)',
+                        'label' => 'Description des travaux propres à l\'entreprise (ou du Groupement)',
                         'required' => false 
                     ])
                     ->add('subcontractedWorks', CollectionType::class, [
