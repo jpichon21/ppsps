@@ -18,12 +18,14 @@
 * Mettre à jour le projet (ex: après un pull) `script/bootstrap`
 * Emplacement des logs var/logs
 
-## Production
-- ssh as user logomotion
-- `sudo su`
-- `cd /root/ppsps`
-- `docker-compose -f docker-compose.prod.yml up -d`
-
+## Production (scaleway)
+```sh
+ssh root@51.15.250.186
+cd ppsps/
+git pull
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```
 
 ## Conventions
 * Respect des standards Symfony https://symfony.com/doc/4.3/contributing/code/standards.html
