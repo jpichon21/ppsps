@@ -1,0 +1,25 @@
+debug = true
+
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+      [entryPoints.http.redirect]
+        entryPoint = "https"
+  [entryPoints.https]
+    address = ":443"
+      [entryPoints.https.tls]
+
+[file]
+  directory = "/etc/traefik/rules/"
+  watch = true
+
+[acme]
+email = "production@logomotion.fr"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+caServer = "https://acme-v02.api.letsencrypt.org/directory"
+[acme.httpChallenge]
+entryPoint = "http"
